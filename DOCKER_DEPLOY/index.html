@@ -751,10 +751,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pre-requisitos" class="md-nav__link">
+  <a href="#instalacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pré-requisitos
+        Instalação
       
     </span>
   </a>
@@ -809,9 +809,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Compartilhando as métricas com a equipe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -819,6 +820,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1008,10 +1014,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pre-requisitos" class="md-nav__link">
+  <a href="#instalacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pré-requisitos
+        Instalação
       
     </span>
   </a>
@@ -1066,9 +1072,10 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Compartilhando as métricas com a equipe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1076,6 +1083,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1102,13 +1114,8 @@
 <h1 id="docker-deploy">Docker Deploy<a class="headerlink" href="#docker-deploy" title="Permanent link">&para;</a></h1>
 <p>Este guia explica como usar Docker para simular um ambiente de produção distribuído do Fleven. A arquitetura padrão é <strong>híbrida</strong>: seu PC executará o servidor (SuperLink) e os containers Docker executam apenas os clientes (SuperNodes). Utilizamos a biblioteca <code>cryptography</code> para gerar certificados TLS (Transport Layer Security) para testes.</p>
 <p>O <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security</a> (TLS) é um protocolo criptográfico projetado para fornecer segurança nas comunicações em uma rede de computadores, como a Internet. Aplicações cliente-servidor usam TLS para se comunicar em uma rede de forma a evitar espionagem e adulteração.</p>
-<h2 id="pre-requisitos">Pré-requisitos<a class="headerlink" href="#pre-requisitos" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Docker Desktop</strong> instalado:</li>
-<li>Windows: <a href="https://www.docker.com/products/docker-desktop/">Download Docker Desktop</a></li>
-<li>Linux: <code>sudo apt install docker.io docker-compose</code></li>
-</ol>
-<p>Com o Docker instalado, agora crie as imagens dos três clientes:</p>
+<h2 id="instalacao">Instalação<a class="headerlink" href="#instalacao" title="Permanent link">&para;</a></h2>
+<p>Com o Docker instalado, crie as imagens dos três clientes:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>build
 </code></pre></div>
 <p>se ainda não instalou as dependências na sua máquina (que age como servidor), então execute com o extra de desenvolvimento:</p>
@@ -1136,7 +1143,7 @@
 </ul>
 <p><code>mlflow ui</code>   # abre em http://127.0.0.1:5000</p>
 <blockquote>
-<p><strong>Nota📝</strong> Não é preciso alterar o <code>mlflow-tracking-uri</code> para ver os resultados — o <code>mlflow ui</code> lê o <code>mlflow.db</code> local. Para <strong>compartilhar com a equipe</strong>, use <code>fleven push</code> (envia os runs para o DagsHub). Veja <a href="#compartilhando-as-metricas-com-a-equipe">Compartilhando as métricas com a equipe</a>.</p>
+<p><strong>Nota📝</strong> Não é preciso alterar o <code>mlflow-tracking-uri</code> para ver os resultados, o <code>mlflow ui</code> lê o <code>mlflow.db</code> local. Para <strong>compartilhar com a equipe</strong>, use <code>fleven push</code> (envia os runs para o DagsHub). Veja <a href="#compartilhando-as-metricas-com-a-equipe">Compartilhando as métricas com a equipe</a>.</p>
 </blockquote>
 <p><strong>Terminal 3 - Execute o treinamento:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment-tls<span class="w"> </span>--stream
@@ -1167,7 +1174,7 @@ Inicie o servidor</p>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">fleven</span> <span class="n">push</span>
 </code></pre></div>
 <p>O comando lê o <code>mlflow.db</code> local e copia os runs para o servidor MLflow do DagsHub via API REST, pulando automaticamente os que já existem. Para empurrar automaticamente após cada experimento em lote, use <code>fleven run --push-dagshub</code>.</p>
-<h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<h3 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://docs.docker.com/">Docker Documentation</a></li>
 <li><a href="https://docs.docker.com/compose/">Docker Compose</a></li>

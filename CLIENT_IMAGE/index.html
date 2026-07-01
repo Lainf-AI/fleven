@@ -23,7 +23,7 @@
     
     
       
-        <title>Imagem do FlevenClient (fleven-client) - Fleven</title>
+        <title>FlevenClient - Fleven</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#imagem-do-flevenclient-fleven-client" class="md-skip">
+        <a href="#flevenclient" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Imagem do FlevenClient (fleven-client)
+              FlevenClient
             
           </span>
         </div>
@@ -886,18 +886,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#baixar-a-imagem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Baixar a imagem
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Baixar a imagem">
+    <nav class="md-nav" aria-label="Pré-requisitos">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1019,16 +1008,13 @@
   
 
 
-<h1 id="imagem-do-flevenclient-fleven-client">Imagem do FlevenClient (<code>fleven-client</code>)<a class="headerlink" href="#imagem-do-flevenclient-fleven-client" title="Permanent link">&para;</a></h1>
-<p>Imagem Docker do cliente federado do Fleven, o SuperNode que roda embarcado (por exemplo num Raspberry Pi) e se conecta ao servidor. Publicada no GitHub Container Registry como <code>ghcr.io/josewilsonsouza/fleven-client</code>.</p>
-<p>A imagem é multi-arquitetura: a mesma tag serve para <code>amd64</code> (PC, para testes) e <code>arm64</code> (Raspberry Pi).</p>
+<h1 id="flevenclient">FlevenClient<a class="headerlink" href="#flevenclient" title="Permanent link">&para;</a></h1>
+<p>Imagem Docker do cliente federado do Fleven, o SuperNode que roda embarcado e se conecta ao servidor. Publicada no GitHub Container Registry como <code>ghcr.io/josewilsonsouza/fleven-client</code>.</p>
 <h2 id="pre-requisitos">Pré-requisitos<a class="headerlink" href="#pre-requisitos" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Docker</strong> instalado no dispositivo.</li>
 <li>Se o pacote estiver <strong>privado</strong>, um <strong>token de leitura</strong> do GitHub (permissão <code>read:packages</code>). Se estiver <strong>público</strong>, nenhum token é necessário para baixar.</li>
 </ul>
-<h2 id="baixar-a-imagem">Baixar a imagem<a class="headerlink" href="#baixar-a-imagem" title="Permanent link">&para;</a></h2>
-<p>O passo depende da visibilidade do pacote no GHCR.</p>
 <h3 id="pacote-publico">Pacote público<a class="headerlink" href="#pacote-publico" title="Permanent link">&para;</a></h3>
 <p>Basta baixar, sem login:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>ghcr.io/josewilsonsouza/fleven-client:1.0.0

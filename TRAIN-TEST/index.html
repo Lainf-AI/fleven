@@ -671,20 +671,21 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#split-treinoteste" class="md-nav__link">
+    <nav class="md-nav" aria-label="Treino e Teste">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#split" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Split Treino/Teste
+        Split
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#normalizacao" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -693,8 +694,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Normalização">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#inverse-transform-nas-predicoes" class="md-nav__link">
@@ -988,20 +988,21 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#split-treinoteste" class="md-nav__link">
+    <nav class="md-nav" aria-label="Treino e Teste">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#split" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Split Treino/Teste
+        Split
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#normalizacao" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1010,8 +1011,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Normalização">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#inverse-transform-nas-predicoes" class="md-nav__link">
@@ -1098,7 +1098,7 @@
     L --&gt; N
     M --&gt; O
     N --&gt; O</code></pre>
-<h2 id="split-treinoteste">Split Treino/Teste<a class="headerlink" href="#split-treinoteste" title="Permanent link">&para;</a></h2>
+<h3 id="split">Split<a class="headerlink" href="#split" title="Permanent link">&para;</a></h3>
 <p>O split é feito por trip, não por linha, com proporção configurada em <code>train-test-split</code> (70% treino). A seleção das trips de teste foi realizada <strong>pelo consumo médio</strong>, seguindo estes passos:</p>
 <ol>
 <li>O consumo médio de energia é calculado para cada trip do cliente.</li>
@@ -1107,7 +1107,7 @@
 <li>A trip <strong>central</strong> de cada grupo é selecionada para o conjunto de teste.</li>
 </ol>
 <p>O resultado é um conjunto de teste que cobre toda a faixa de consumo do cliente: baixo, médio e alto, independente da ordem temporal das trips. Isso evita que o teste seja composto apenas por trips de um único regime de consumo, tornando a avaliação mais representativa.</p>
-<h2 id="normalizacao">Normalização<a class="headerlink" href="#normalizacao" title="Permanent link">&para;</a></h2>
+<h3 id="normalizacao">Normalização<a class="headerlink" href="#normalizacao" title="Permanent link">&para;</a></h3>
 <p>Utilizamos o <code>StandardScaler</code>ajustando-o exclusivamente nas trips de treino e aplicado a treino e teste. Isso evita que o modelo não tenha informação do conjunto de teste durante a normalização.</p>
 <h3 id="inverse-transform-nas-predicoes">Inverse Transform nas predições<a class="headerlink" href="#inverse-transform-nas-predicoes" title="Permanent link">&para;</a></h3>
 <p>O loss de FL (MSE) é calculado na escala normalizada (média 0, desvio padrão 1), para que seja comparável entre clientes com diferentes faixas de consumo. Mas as predições salvas em <code>final_predictions.json</code> são convertidas de volta à escala original antes de serem gravadas. Adotamos isso para que a métrica do <span class="arithmatex">\(R^2\)</span>, RMSE e MAE em <code>fleven eval</code> sejam calculados em unidade física, na mesma unidade de <code>Energy_Consumption</code>.</p>
