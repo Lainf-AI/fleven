@@ -1,0 +1,25 @@
+/* Paleta derivada da logo do Fleven (figures/fleven-logo-1.png)
+   Cor de marca: âmbar #F5970A (tom predominante da logo).
+   accent: laranja profundo #C2410C (corange das figuras TikZ) para hover/links.
+   Modo escuro: fundo darkbg #0A0A0F (figuras de arquitetura). */
+
+:root {
+  --md-primary-fg-color:        #fbb040;
+  --md-primary-fg-color--light: #fbb040;
+  --md-primary-fg-color--dark:  #c2730a;
+  /* Texto/ícones sobre o header âmbar: escuro, para contraste legível */
+  --md-primary-bg-color:        #16130e;
+  --md-primary-bg-color--light: #332004;
+  --md-accent-fg-color:         #c2410c;
+}
+
+/* Modo escuro: header âmbar mais quente sobre o fundo darkbg das figuras */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #fbb040;
+  --md-primary-bg-color:        #211400;
+  --md-accent-fg-color:         #fb923c;
+  --md-default-bg-color:        #0a0a0f;
+  --md-default-bg-color--light: #12121a;
+  /* Links no corpo em âmbar (em vez do azul padrão do slate) */
+  --md-typeset-a-color:         #fbb040;
+}

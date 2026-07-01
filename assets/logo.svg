@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 48" fill="none" role="img" aria-label="Fleven">
+  <!-- Federação: enlaces hub -> clientes -->
+  <g stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" opacity="0.95">
+    <line x1="28" y1="24" x2="28" y2="9"/>
+    <line x1="28" y1="24" x2="11" y2="39"/>
+    <line x1="28" y1="24" x2="45" y2="39"/>
+  </g>
+  <!-- Clientes (verde, como no diagrama de arquitetura) -->
+  <g fill="#22c55e" stroke="#ffffff" stroke-width="1.6">
+    <circle cx="28" cy="8" r="5.2"/>
+    <circle cx="11" cy="40" r="5.2"/>
+    <circle cx="45" cy="40" r="5.2"/>
+  </g>
+  <!-- Servidor / framework Fleven (azul, hub central) -->
+  <rect x="19" y="15" width="18" height="18" rx="5" fill="#2563eb" stroke="#ffffff" stroke-width="1.8"/>
+</svg>
