@@ -4,22 +4,26 @@
    Modo escuro: fundo darkbg #0A0A0F (figuras de arquitetura). */
 
 :root {
-  --md-primary-fg-color:        #fbb040;
+  --md-primary-fg-color:        #F5C518 ;
   --md-primary-fg-color--light: #fbb040;
   --md-primary-fg-color--dark:  #c2730a;
   /* Texto/ícones sobre o header âmbar: escuro, para contraste legível */
   --md-primary-bg-color:        #16130e;
   --md-primary-bg-color--light: #332004;
-  --md-accent-fg-color:         #c2410c;
+  /* Links no tema claro: o âmbar dava 1.84:1 sobre branco e era ilegível.
+     Cyan-700 (5.36:1) fica na família do aqua da marca e passa em AA;
+     o hover escurece para cyan-800 (7.27:1) — clarear reprovaria. */
+  --md-accent-fg-color:         #155e75;
+  --md-typeset-a-color:         #0e7490;
 }
 
 /* Modo escuro: header âmbar mais quente sobre o fundo darkbg das figuras */
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color:        #fbb040;
+  --md-primary-fg-color:        #00FFFF;
   --md-primary-bg-color:        #211400;
   --md-accent-fg-color:         #fb923c;
   --md-default-bg-color:        #0a0a0f;
   --md-default-bg-color--light: #12121a;
-  /* Links no corpo em âmbar (em vez do azul padrão do slate) */
-  --md-typeset-a-color:         #fbb040;
+  /* Links no corpo em ciano (em vez do azul padrão do slate): 6.40:1 */
+  --md-typeset-a-color:         #00b9f1d8;
 }
