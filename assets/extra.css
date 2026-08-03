@@ -4,7 +4,7 @@
    Modo escuro: fundo darkbg #0A0A0F (figuras de arquitetura). */
 
 :root {
-  --md-primary-fg-color:        #F5C518 ;
+  --md-primary-fg-color:        #fbb040 ;
   --md-primary-fg-color--light: #fbb040;
   --md-primary-fg-color--dark:  #c2730a;
   /* Texto/ícones sobre o header âmbar: escuro, para contraste legível */
