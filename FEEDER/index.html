@@ -662,6 +662,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../CLEVEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Baseline centralizado (cleven)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../DOCKER_DEPLOY/" class="md-nav__link">
         
   
@@ -890,6 +918,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Saídas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#provedor-de-rota-valhalla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provedor de rota (Valhalla)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1022,6 +1067,69 @@
 </tbody>
 </table>
 <p>Schema do <code>live_predictions</code>: <code>timestamp, trip, y_pred (lista H), y_true (lista H), residual (lista H)</code>.</p>
+<h3 id="provedor-de-rota-valhalla">Provedor de rota (Valhalla)<a class="headerlink" href="#provedor-de-rota-valhalla" title="Permanent link">&para;</a></h3>
+<p>Por padrão o feeder copia as colunas de contexto da via (limite de velocidade,
+altitude etc.) direto do eVED, como o resto da viagem. Com <code>--route-provider
+valhalla</code>, ele passa a produzir essas colunas consultando um Valhalla local, em
+vez de copiá-las — a premissa é a de <strong>rota definida</strong>: o condutor já escolheu o
+destino, então a poligonal de coordenadas da viagem é conhecida antes de
+percorrê-la, e o provedor responde "quais são os atributos da via nestes
+pontos" de uma vez, não ponto a ponto conforme o carro anda.</p>
+<p>Quatro flags novas:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--route-provider {none,valhalla}</code></td>
+<td>fonte das colunas de contexto (<code>none</code> = copia do eVED, default)</td>
+</tr>
+<tr>
+<td><code>--valhalla-url</code></td>
+<td>URL do Valhalla local (default <code>http://localhost:8002</code>)</td>
+</tr>
+<tr>
+<td><code>--extract-version</code></td>
+<td>identificador do extrato do mapa; <strong>obrigatório quando <code>--route-cache</code> é usado</strong></td>
+</tr>
+<tr>
+<td><code>--route-cache</code></td>
+<td>pasta do cache de rota (se omitida, cada viagem consulta o serviço de novo)</td>
+</tr>
+</tbody>
+</table>
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G05_ICE_20L_ND_2500</span> <span class="p">-</span><span class="n">-target</span> <span class="n">sim</span><span class="p">/</span><span class="n">obd_g05</span> <span class="p">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  <span class="p">-</span><span class="n">-route-provider</span> <span class="n">valhalla</span> <span class="p">-</span><span class="n">-extract-version</span> <span class="n">michigan</span><span class="p">-</span><span class="n">2026</span><span class="p">-</span><span class="n">08</span> <span class="p">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  <span class="p">-</span><span class="n">-route-cache</span> <span class="p">.</span><span class="n">cache</span><span class="p">/</span><span class="n">rota</span>
+</code></pre></div>
+<p>Serviço fora do ar <strong>impede o início</strong> do feeder (<code>health_check</code> falha cedo, antes
+de processar qualquer viagem) — não é um modo degradado silencioso. Já um buraco
+no mapa (trecho sem cobertura) não derruba a viagem: a coluna daquele ponto vira
+NaN, contado no resumo de cobertura impresso ao fim da corrida.</p>
+<p><strong>Não misture fontes entre treino e serviço</strong>: se o modelo foi treinado com
+colunas de rota vindas do eVED (ou de um extrato de mapa), sirva com a mesma
+fonte/extrato — trocar de fonte entre treino e inferência muda a distribuição
+das features de rota sem aviso. <code>--extract-version</code> existe justamente para que
+essa troca fique registrada na chave do cache, em vez de passar despercebida.</p>
+<p>Para medir o quanto as duas fontes divergem e inventariar a cobertura das
+colunas novas na região do dataset, use <code>tools/validate_route.py</code> (ferramenta de
+operador, exige um Valhalla no ar — fora da suíte de testes):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">validate_route</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G05_ICE_20L_ND_2500</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="n">http</span><span class="p">://</span><span class="n">localhost</span><span class="p">:</span><span class="n">8002</span>
+</code></pre></div>
+<p>O relatório não é um portão de aprovação: o objetivo é melhorar o modelo, não
+reproduzir o eVED. A comparação é feita sobre os <strong>vetores de rota</strong> (o que o
+modelo de fato vê), não sobre as colunas cruas, porque <code>delta</code> e <code>positive_sum</code>
+de altitude são invariantes a deslocamento — um Valhalla que reporte tudo 12 m
+acima do eVED (datum diferente) ainda produz esses vetores idênticos, e
+comparar altitude absoluta reprovaria uma fonte perfeitamente utilizável. A
+divergência é reportada em <code>dif_media_sd</code> (diferença média em desvios-padrão da
+própria feature, não em unidade física — o que a torna comparável entre
+features de escalas diferentes), ao lado de <code>correlacao</code> e <code>cobertura</code>.</p>
 <h2 id="cuidados">Cuidados<a class="headerlink" href="#cuidados" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><code>--time-scale 0</code> (instantâneo) só para o fluxo de dados.</strong> Com <code>--predict</code>, o instantâneo vira um loop apertado de inferências por ponto e trava. Use <code>--time-scale</code> moderado (1 a ~600) com predição.</li>

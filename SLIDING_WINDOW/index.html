@@ -649,6 +649,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#previsao-por-distancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Previsão por distância
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Previsão por distância">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atributos-do-trecho-a-frente-rota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos do trecho à frente (rota)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#o-passo" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -722,6 +750,34 @@
     
   
     FedPer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLEVEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Baseline centralizado (cleven)
   
 
     
@@ -912,6 +968,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#previsao-por-distancia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Previsão por distância
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Previsão por distância">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#atributos-do-trecho-a-frente-rota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos do trecho à frente (rota)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#o-passo" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -960,6 +1044,43 @@
 <div class="arithmatex">\[ Janela_2:  X = [t_5 … t_{54}]  \rightarrow  Y = [t_{55} … t_{59}]\]</div>
 <div class="arithmatex">\[ Janela_3:  X = [t_{10} … t_{59}]  \rightarrow  Y = [t_{60} … t_{64}]\]</div>
 <p>As janelas são criadas dentro de cada trip individualmente, nunca cruzando a fronteira entre trips. Uma trip com menos de <code>sequence_length + prediction_length</code> pontos é descartada.</p>
+<h2 id="previsao-por-distancia">Previsão por distância<a class="headerlink" href="#previsao-por-distancia" title="Permanent link">&para;</a></h2>
+<p>Com <code>prediction-mode = "distance-energy"</code>, <code>X</code> continua sendo um contexto fixo
+de leituras, mas <code>Y</code> passa a ser um escalar: a soma de <code>Energy_Consumption</code> desde
+o fim do contexto até o veículo atingir <code>prediction-distance-km</code>. A distância é
+integrada por trapézios usando <code>Timestamp(ms)</code> e <code>Vehicle Speed[km/h]</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">prediction-mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;distance-energy&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">prediction-distance-km</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
+</code></pre></div>
+<p>No teste, a próxima janela começa no fim do trecho anterior, evitando sobrepor
+os quilômetros avaliados. Use <code>prediction-mode = "steps"</code> para reproduzir o
+comportamento multi-step anterior.</p>
+<p>O horizonte padrão (<code>prediction-distance-km</code>) passou de 1,0 para 0,5 km. Um
+horizonte menor é uma tarefa mais fácil (menos distância para acumular erro),
+então runs com horizontes diferentes não são comparáveis entre si, veja a
+ressalva equivalente sobre <code>G04_fedper_fedavg</code> no <code>CLAUDE.md</code>.</p>
+<h3 id="atributos-do-trecho-a-frente-rota">Atributos do trecho à frente (rota)<a class="headerlink" href="#atributos-do-trecho-a-frente-rota" title="Permanent link">&para;</a></h3>
+<p>Quando o contrato (<code>data-contract</code>) declara um ou mais <code>[[route_feature]]</code>
+(ex.: <code>contracts/eved_rota.toml</code>), <code>X</code> ganha colunas extras: uma por feature
+de rota, repetidas (broadcast) em todos os passos da janela, porque o valor é
+um único escalar por trecho, não uma leitura por passo. O <code>input_size</code>
+cresce de <code>F + 1</code> para <code>F + 1 + R</code>, onde <code>R</code> é o número de features de rota
+(<code>derive_input_size</code> soma esse termo automaticamente).</p>
+<p>Essas colunas são agregadas sobre uma <strong>grade de distância</strong> (passo
+<code>route_grid_m</code>, padrão 25 m), nunca sobre as leituras OBD cruas. Agregar por
+leitura vazaria a velocidade futura para dentro das features: o OBD amostra
+por tempo, então um trecho percorrido devagar contribui com mais linhas e
+puxa a média na direção de quem "sabe" que vai andar devagar ali. Exemplo
+medido (<code>fleven/data/route.py</code>): a mesma rampa, com a troca de velocidade
+acontecendo dentro da janela de 0,5 km, produz uma média por leitura de 49,1
+km/h contra uma média por distância de 65,0 km/h, o mesmo trecho físico dando
+números bem diferentes dependendo de como ele foi percorrido. A agregação por
+grade de distância é invariante à velocidade (mesma geometria, mesmo valor,
+tenha o carro passado devagar ou rápido); a por leitura não é.</p>
+<p><code>prediction-mode = "distance-energy"</code> é <strong>obrigatório</strong> quando o contrato tem
+<code>route_features</code>: no modo <code>steps</code> não existe um trecho futuro com distância
+definida para agregar, então <code>build_dataloaders</code> recusa a combinação com
+<code>ValueError</code>.</p>
 <h2 id="o-passo">O passo<a class="headerlink" href="#o-passo" title="Permanent link">&para;</a></h2>
 <p>Quando o <code>stride</code> é 1, janelas vizinhas são quase idênticas, pois deslocam um único ponto. Isso gera muita redundância e infla o volume de treino. Por isso treino e teste usam strides diferentes:</p>
 <table>
@@ -997,14 +1118,14 @@
 <tr>
 <td><code>sequence_length</code></td>
 <td><code>sequence-length</code></td>
-<td>50</td>
+<td>100</td>
 <td>Tamanho da janela de entrada (leituras OBD históricas)</td>
 </tr>
 <tr>
 <td><code>prediction_length</code></td>
 <td><code>prediction-length</code></td>
-<td>5</td>
-<td>Horizonte de previsão (leituras OBD futuras)</td>
+<td>15</td>
+<td>Horizonte em leituras, usado somente no modo <code>steps</code>.</td>
 </tr>
 <tr>
 <td><code>train_stride</code></td>
@@ -1012,9 +1133,29 @@
 <td>2</td>
 <td>Passo entre janelas de treino. Maior valor, treino mais rápido e menos dados.</td>
 </tr>
+<tr>
+<td><code>prediction_mode</code></td>
+<td><code>prediction-mode</code></td>
+<td><code>distance-energy</code></td>
+<td><code>steps</code> para pontos futuros ou <code>distance-energy</code> para energia acumulada.</td>
+</tr>
+<tr>
+<td><code>prediction_distance_km</code></td>
+<td><code>prediction-distance-km</code></td>
+<td>0.5</td>
+<td>Horizonte físico em km no modo por distância.</td>
+</tr>
+<tr>
+<td><code>route_grid_m</code></td>
+<td><code>route_grid_m</code> (no contrato)</td>
+<td>25.0</td>
+<td>Passo da grade de distância usada para agregar features de rota. Só relevante com <code>route_features</code>.</td>
+</tr>
 </tbody>
 </table>
-<p>Com os valores padrão, cada janela usa <strong>50 leituras passadas</strong> para prever as <strong>próximas 5</strong>, e o treino avança de 2 em 2 pontos. Confira os valores configuráveis no <a href="../pyproject.toml"><code>pyproject.toml</code></a>.</p>
+<p>Com os valores atuais, cada janela usa <strong>100 leituras passadas</strong> para prever a
+energia acumulada nos <strong>próximos 0,5 km</strong>, e o treino avança de 2 em 2 pontos.
+Confira os valores configuráveis no <a href="../pyproject.toml"><code>pyproject.toml</code></a>.</p>
 
 
 

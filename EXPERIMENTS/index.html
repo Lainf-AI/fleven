@@ -681,6 +681,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#contrato-com-rota-contractseved_rotatoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato com rota (contracts/eved_rota.toml)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -761,6 +772,34 @@
     
   
     FedPer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLEVEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Baseline centralizado (cleven)
   
 
     
@@ -1011,6 +1050,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#contrato-com-rota-contractseved_rotatoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato com rota (contracts/eved_rota.toml)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1131,6 +1181,10 @@
 <blockquote>
 <p>Mais simples: <code>fleven run --only G01</code> já faz tudo isso (caminho dos dados, num_supernodes, <code>--stream</code> e a avaliação) automaticamente.</p>
 </blockquote>
+<p>Cada execução em lote grava métricas em um diretório próprio com timestamp,
+por exemplo <code>metrics/G05_fedper_fedavg/20260805_133000/</code>. Isso impede que um
+<code>--no-skip-existing</code> misture históricos de runs anteriores. Passe esse diretório
+exato a <code>fleven eval</code> ao reavaliar manualmente.</p>
 <ol>
 <li>Avaliar resultados (após o run terminar)</li>
 </ol>
@@ -1183,6 +1237,10 @@ EC [\text{kWh/amostra}] = -\frac{I_{HV}[\text{A}] \times V_{HV} [\text{V}]}{3.6 
 <blockquote>
 <p>📝 <strong>Para o G08 (PHEV):</strong> MAF e fuel trims não são entradas significativas, pois o EC é derivado da bateria. Se rodar experimentos no G08, edite o <strong>contrato</strong> (ou aponte <code>data-contract</code> para um contrato do G08) trocando o conjunto de features por <code>HV Battery Current[A]</code> e <code>HV Battery Voltage[V]</code>.</p>
 </blockquote>
+<h2 id="contrato-com-rota-contractseved_rotatoml">Contrato com rota (<code>contracts/eved_rota.toml</code>)<a class="headerlink" href="#contrato-com-rota-contractseved_rotatoml" title="Permanent link">&para;</a></h2>
+<p>Além do contrato padrão, existe <a href="../contracts/eved_rota.toml"><code>contracts/eved_rota.toml</code></a>, que acrescenta atributos do trecho à frente às mesmas quatro features do eVED. A premissa é que o condutor já definiu o trajeto, então o perfil da via que vem pela frente (limite de velocidade, desnível, subida acumulada) é conhecido de antemão, não algo que o modelo precisa adivinhar. Por isso ele usa apenas atributos derivados da via, nunca latitude/longitude cruas.</p>
+<p>Correlação medida no G01, dentro de cada cliente, com horizonte de 0,5 km, entre cada atributo de rota e o alvo (<code>Energy_Consumption</code> acumulado no trecho): limite de velocidade +0,501, desnível líquido +0,390, subida acumulada +0,238. Para comparação, saber a velocidade real do trecho (que o modelo não tem, por ser informação do futuro) correlaciona +0,473. Ou seja, o limite de velocidade sozinho carrega mais sinal sobre o consumo do trecho futuro do que a velocidade real observada, o que faz sentido: o limite é a causa que a velocidade em geral segue, mas sem o ruído de tráfego, semáforo ou estilo de condução de uma viagem específica.</p>
+<p>Esse contrato exige <code>prediction-mode = "distance-energy"</code> (o modo <code>steps</code> não tem um trecho futuro com distância definida para agregar; <code>build_dataloaders</code> recusa a combinação). Como a tarefa fica mais fácil (o modelo recebe informação sobre o futuro que antes não tinha), o R² obtido com o contrato de rota <strong>não é comparável</strong> ao R² obtido com <code>contracts/eved.toml</code>: uma diferença entre os dois pode vir do contrato, não da mudança de modelo, estratégia ou grupo.</p>
 
 
 

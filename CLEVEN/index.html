@@ -10,9 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://lainf-ai.github.io/fleven/REALISES/">
+        <link rel="canonical" href="https://lainf-ai.github.io/fleven/CLEVEN/">
       
       
+        <link rel="prev" href="../FEDPER_GUIDE/">
+      
+      
+        <link rel="next" href="../DOCKER_DEPLOY/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Migração Flower 1.22 -> 1.31 - Fleven</title>
+        <title>Baseline centralizado (cleven) - Fleven</title>
       
     
     
@@ -57,13 +61,13 @@
 
     
     <meta property="og:type" content="website">
-  <meta property="og:title" content="Migração Flower 1.22 -&gt; 1.31 - Fleven">
+  <meta property="og:title" content="Baseline centralizado (cleven) - Fleven">
   <meta property="og:description" content="Federated Learning for Vehicular Environment">
   <meta property="og:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
-  <meta property="og:url" content="https://lainf-ai.github.io/fleven/REALISES/">
+  <meta property="og:url" content="https://lainf-ai.github.io/fleven/CLEVEN/">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Migração Flower 1.22 -&gt; 1.31 - Fleven">
+  <meta name="twitter:title" content="Baseline centralizado (cleven) - Fleven">
   <meta name="twitter:description" content="Federated Learning for Vehicular Environment">
   <meta name="twitter:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
 
@@ -86,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#migracao-flower-122-131" class="md-skip">
+        <a href="#cleven" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -119,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Migração Flower 1.22 -&gt; 1.31
+              Baseline centralizado (cleven)
             
           </span>
         </div>
@@ -269,10 +273,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../EXPERIMENTS/" class="md-tabs__link">
           
   
@@ -495,26 +501,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -532,7 +543,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -659,10 +670,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../CLEVEN/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Baseline centralizado (cleven)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -678,6 +716,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que é
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxo-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fluxo de uso
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocolo-selecao-por-validacao-teste-so-no-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocolo: seleção por validação, teste só no final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metricas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métricas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comportamento-de-saida-do-cleven-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comportamento de saída do cleven sweep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eixo-weight_decay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Eixo weight_decay
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitacoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitações
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grade-padrao-sweepsbaselinetoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grade padrão (sweeps/baseline.toml)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -860,10 +1006,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dependencias" class="md-nav__link">
+  <a href="#o-que-e" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Dependências
+        O que é
       
     </span>
   </a>
@@ -871,10 +1017,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#api-do-flower-sem-mudanca-no-codigo" class="md-nav__link">
+  <a href="#fluxo-de-uso" class="md-nav__link">
     <span class="md-ellipsis">
       
-        API do Flower (sem mudança no código)
+        Fluxo de uso
       
     </span>
   </a>
@@ -882,10 +1028,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#federacoes-e-config-de-simulacao" class="md-nav__link">
+  <a href="#protocolo-selecao-por-validacao-teste-so-no-final" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Federações e config de simulação
+        Protocolo: seleção por validação, teste só no final
       
     </span>
   </a>
@@ -893,10 +1039,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comportamento-de-execucao" class="md-nav__link">
+  <a href="#metricas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Comportamento de execução
+        Métricas
       
     </span>
   </a>
@@ -904,10 +1050,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mlflow" class="md-nav__link">
+  <a href="#comportamento-de-saida-do-cleven-sweep" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MLflow
+        Comportamento de saída do cleven sweep
       
     </span>
   </a>
@@ -915,10 +1061,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#seguranca-e-autenticacao-de-no" class="md-nav__link">
+  <a href="#eixo-weight_decay" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Segurança e autenticação de nó
+        Eixo weight_decay
       
     </span>
   </a>
@@ -926,10 +1072,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#correcoes-aproveitadas-na-validacao" class="md-nav__link">
+  <a href="#limitacoes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Correções aproveitadas na validação
+        Limitações
       
     </span>
   </a>
@@ -937,21 +1083,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#windows" class="md-nav__link">
+  <a href="#grade-padrao-sweepsbaselinetoml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Windows
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#documentacao-atualizada" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Documentação atualizada
+        Grade padrão (sweeps/baseline.toml)
       
     </span>
   </a>
@@ -978,57 +1113,69 @@
   
 
 
-<h1 id="migracao-flower-122-131">Migração Flower 1.22 -&gt; 1.31<a class="headerlink" href="#migracao-flower-122-131" title="Permanent link">&para;</a></h1>
-<p>Registro das mudanças feitas para migrar o Fleven do Flower <code>1.22.0</code> para o <code>1.31.0</code>. O Flower andou 9 versões minor nesse intervalo, então várias coisas mudaram de lugar ou de formato, mas o núcleo do Fleven (treino, agregação, modelo) seguiu compatível.</p>
-<h2 id="dependencias">Dependências<a class="headerlink" href="#dependencias" title="Permanent link">&para;</a></h2>
+<h1 id="cleven">CLEVEN<a class="headerlink" href="#cleven" title="Permanent link">&para;</a></h1>
+<h2 id="o-que-e">O que é<a class="headerlink" href="#o-que-e" title="Permanent link">&para;</a></h2>
+<p>O <code>cleven</code> é a bancada <strong>centralizada</strong> do Fleven: um pacote irmão (<code>cleven/</code>, entry point <code>cleven</code>) que treina um modelo por grupo de veículos (G01 a G05), concatenando as janelas de todos os clientes do grupo num único conjunto de treino, em vez de treinar de forma federada. O objetivo é descobrir quais modelos, features, hiperparâmetros e janelamentos tornam a previsão de energia por quilômetro aprendível, antes de voltar ao Fleven federado com uma configuração já filtrada.</p>
+<p>O <code>cleven</code> reusa o pipeline de dados do <code>fleven</code> (<code>build_dataloaders</code>, o mesmo <code>DataContract</code>, o mesmo <code>StandardScaler</code> por cliente) e o mesmo <code>MLflowTracker</code> de registro, então os experimentos aparecem lado a lado com os runs federados no MLflow, só que em experimentos <code>cleven_{grupo}</code> separados dos <code>{grupo}_{model_type}_{strategy}</code> do federado.</p>
+<h2 id="fluxo-de-uso">Fluxo de uso<a class="headerlink" href="#fluxo-de-uso" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. Calibrar o custo antes de soltar a grade inteira (não toca em dados nem treina nada)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cleven<span class="w"> </span>sweep<span class="w"> </span>--only<span class="w"> </span>G05<span class="w"> </span>--dry-run
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 2. Rodar a grade de verdade, só com validação</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>cleven<span class="w"> </span>sweep<span class="w"> </span>--only<span class="w"> </span>G05
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 3. Ver o ranking dos runs do grupo, ordenado por val/r2 (pooled, default)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>cleven<span class="w"> </span>report<span class="w"> </span>-g<span class="w"> </span>G05
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>cleven<span class="w"> </span>report<span class="w"> </span>-g<span class="w"> </span>G05<span class="w"> </span>--order-by<span class="w"> </span>r2_mean<span class="w">   </span><span class="c1"># ranking menos otimista, ver abaixo</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>cleven<span class="w"> </span>report<span class="w"> </span>-g<span class="w"> </span>G05<span class="w"> </span>-c<span class="w"> </span>sweeps/baseline.toml<span class="w">   </span><span class="c1"># lê a tracking_uri do TOML</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># 4. Avaliação única no teste, para a config vencedora</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>cleven<span class="w"> </span>final<span class="w"> </span>--config-hash<span class="w"> </span>&lt;hash&gt;
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>cleven<span class="w"> </span>final<span class="w"> </span>--config-hash<span class="w"> </span>&lt;hash&gt;<span class="w"> </span>--force<span class="w">   </span><span class="c1"># só para re-execução legítima, ver protocolo</span>
+</code></pre></div>
+<p><code>&lt;hash&gt;</code> é o <code>config_hash</code> impresso pelo <code>--dry-run</code> (ou visível na coluna <code>hash</code> de <code>cleven report</code>): um md5 de 12 caracteres sobre a configuração achatada (grupo, contrato, janela, hiperparâmetros de treino), usado tanto para nomear o run no MLflow quanto para o dedup de <code>cleven sweep</code>.</p>
+<h2 id="protocolo-selecao-por-validacao-teste-so-no-final">Protocolo: seleção por validação, teste só no <code>final</code><a class="headerlink" href="#protocolo-selecao-por-validacao-teste-so-no-final" title="Permanent link">&para;</a></h2>
+<p>A seleção de hiperparâmetros (<code>cleven sweep</code>) usa <strong>validação</strong>, nunca o conjunto de teste. O teste só é construído e avaliado por <code>cleven final</code>, uma única vez, para a config já escolhida.</p>
+<p><strong>Trava de uso único do <code>final</code></strong>: o <code>cleven final</code> recusa rodar quando o grupo já tem um run FINISHED com a métrica <code>test/r2</code> gravada no experimento <code>cleven_{grupo}</code>, e sai com código 1 explicando o motivo. A razão é que rodar <code>final</code> várias vezes, com hashes diferentes ou não, permitiria escolher o melhor resultado de teste entre tentativas, que é exatamente a forma de vazamento que separar validação de teste existe para impedir. Para a re-execução legítima (correção de bug, contrato novo, mudança de pipeline) use <code>--force</code>: o comando então apenas avisa e prossegue. A checagem é fail-open, ou seja, se o MLflow estiver indisponível o comando roda com aviso em vez de travar o trabalho.</p>
+<p><strong>Recorte de validação</strong> (<code>cleven/data.py</code>, <code>split_validation</code>): para cada cliente, as janelas de treino chegam do pipeline do fleven em ordem de trip. <code>cleven</code> recorta o <strong>fim</strong> desse bloco como validação - uma aproximação de holdout temporal, sem re-embaralhar:</p>
 <ul>
-<li><code>flwr</code> <code>1.22.0</code> -&gt; <code>1.31.0</code> (base e extra <code>dev</code>).</li>
-<li><strong>Python 3.10 -&gt; 3.11</strong>: a 1.31 dropou o suporte ao 3.10. A imagem Docker do cliente passou de <code>python:3.10-slim</code> para <code>python:3.11-slim</code>.</li>
-<li>PyTorch continua CPU-only no cliente (sem os pacotes CUDA).</li>
+<li><strong>Corte</strong>: os últimos <code>val_fraction</code> (default 0.15) das janelas do bloco de treino do cliente viram candidatas a validação.</li>
+<li><strong>Embargo</strong>: as <code>sequence_length</code> janelas imediatamente antes do corte são descartadas do treino (não viram nem treino nem validação). Sem esse embargo, a última janela de treino e a primeira de validação compartilhariam a maior parte dos pontos (o treino avança de <code>train_stride</code> em <code>train_stride</code>, bem menor que <code>sequence_length</code>), vazando informação do "futuro" de validação para o treino.</li>
+<li><strong>Decimação de 25</strong>: dentro do bloco de validação, só 1 a cada 25 janelas é mantida. As janelas vizinhas dentro do mesmo bloco se sobrepõem quase totalmente (mesmo motivo do embargo), então sem decimar a métrica de validação seria essencialmente a média de milhares de cópias quase idênticas da mesma amostra - infla artificialmente a confiança sem agregar informação nova.</li>
 </ul>
-<h2 id="api-do-flower-sem-mudanca-no-codigo">API do Flower (sem mudança no código)<a class="headerlink" href="#api-do-flower-sem-mudanca-no-codigo" title="Permanent link">&para;</a></h2>
+<p><strong>Modo varredura não expõe o teste</strong>: <code>load_group(..., with_test=False)</code> (o modo usado por <code>cleven sweep</code>) nunca inclui <code>X_test</code>/<code>y_test</code>/<code>idx_test</code> no <code>GroupDataset</code> retornado - a seleção de hiperparâmetros não tem como alcançá-los, mesmo por engano. Isso é uma garantia de <strong>inalcançabilidade</strong>, não de <strong>não-cálculo</strong>: <code>build_dataloaders</code> (do <code>fleven.data.pipeline</code>, compartilhado com o federado) não tem parâmetro para pular o cálculo das janelas de teste, então ele sempre as monta internamente; <code>cleven</code> simplesmente as descarta antes de devolver o <code>GroupDataset</code>. É desperdício de CPU conhecido e aceito, não um risco de vazamento.</p>
+<h2 id="metricas">Métricas<a class="headerlink" href="#metricas" title="Permanent link">&para;</a></h2>
+<p>Todas em unidade física (Wh/km, ou a unidade do target do contrato), invertidas janela a janela pelo <code>StandardScaler</code> do cliente de origem - cada cliente tem seu próprio scaler, então não dá para inverter em bloco.</p>
+<p><code>cleven/metrics.py</code> (<code>summarize</code>) calcula, sobre o conjunto de validação (ou de teste, no <code>final</code>):</p>
 <ul>
-<li>Os imports do <code>server.py</code> e <code>client.py</code> já usavam os caminhos novos (<code>flwr.app</code>, <code>flwr.serverapp</code>, <code>flwr.clientapp</code>), então a relocação de módulos da 1.31 <strong>não afetou</strong> o projeto.</li>
-<li>O padrão de decorators (<code>@app.train()</code>, <code>@app.evaluate()</code>, <code>@app.main()</code>) e os records (<code>ArrayRecord</code>, <code>MetricRecord</code>, <code>RecordDict</code>, <code>Message</code>, <code>Context</code>) seguem iguais.</li>
-<li>Os construtores das estratégias adaptativas (<code>FedAdam</code>, <code>FedYogi</code>, <code>FedAdagrad</code>) mantêm os mesmos parâmetros que o <code>server.py</code> passa (<code>eta</code>, <code>beta_1</code>, <code>beta_2</code>, <code>tau</code>, <code>fraction_train</code>, <code>min_train_nodes</code>, etc.). Confirmado na doc oficial.</li>
+<li><strong>R² pooled</strong>: sobre todas as janelas de todos os clientes juntas, como se fossem uma amostra só.</li>
+<li><strong>R² médio</strong>: média simples do R² por cliente (todo cliente pesa igual, independente de quantas janelas tem).</li>
+<li><strong>R² ponderado</strong>: média do R² por cliente, ponderada pelo número de janelas (<code>n</code>) de cada cliente.</li>
+<li><strong>RMSE, MAE, Pearson</strong>: pooled, mesma lógica do R² pooled.</li>
+<li><strong>N efetivo</strong> (<code>effective_n</code>): tamanho amostral corrigido pela autocorrelação AR(1) da série, <code>N_eff = N·(1-r)/(1+r)</code>, onde <code>r</code> é a correlação lag-1 medida sobre a sequência inteira do cliente (aproximação: cruza fronteiras de trip). <code>N_eff</code> tem teto em <code>N</code> (nunca reporta mais amostras efetivas que reais) e cai para <code>N</code> quando a série é curta demais, constante, ou <code>r</code> é numericamente instável perto de -1.</li>
 </ul>
-<h2 id="federacoes-e-config-de-simulacao">Federações e config de simulação<a class="headerlink" href="#federacoes-e-config-de-simulacao" title="Permanent link">&para;</a></h2>
+<p><strong>Qual métrica usar para escolher o vencedor (<code>cleven report --order-by</code>)</strong>: <code>cleven report</code> ordena por <code>val_r2</code> (pooled) por padrão, mas exibe também <code>val_r2_mean</code> e <code>val_r2_w</code> como colunas, e aceita <code>--order-by {r2, r2_mean, r2_weighted}</code> para reordenar por qualquer uma delas. As três divergem porque, em unidade física, cada cliente tem uma média de alvo diferente (veículos diferentes consomem energia por km em faixas diferentes); no R² pooled, a variância ENTRE veículos entra no mesmo denominador que a variância dentro de cada veículo, então um modelo que aprende a diferença de escala entre carros (sem prever nenhuma dinâmica de verdade) já pontua bem - o R² pooled infla. <code>val_r2_mean</code> (média simples do R² por cliente, todo cliente pesa igual) e <code>val_r2_w</code> (média ponderada por <code>n</code> de janelas) medem, cada uma à sua forma, se o modelo prevê dentro de cada veículo, não só entre veículos. Um caso medido pelo revisor com dois clientes de escalas 1x e 2x: <code>val_r2</code> pooled 0.470 contra <code>r2_mean</code> de -0.057 - o modelo parecia bom só porque acertava "qual carro é mais caro", não a dinâmica dentro de cada um. <strong>Recomendação</strong>: use <code>val_r2</code> (default) para uma primeira triagem rápida, mas confirme o vencedor por <code>r2_mean</code> (o mais conservador, não deixa clientes com mais janelas dominarem) antes de rodar <code>cleven final</code> - se as duas ordenações discordam muito, é sinal de que o modelo está aprendendo a distinguir veículos em vez de prever a série.</p>
+<p><strong>Por que o N nominal engana</strong>: janelas vizinhas cobrem quilômetros consecutivos da mesma trip, então são fortemente correlacionadas - não são <code>N</code> observações independentes. Numa auditoria manual dos parquets do G01 feita antes da implementação (não reproduzida por nenhum script do repositório; ver método abaixo), das 1049 janelas nominais do conjunto de teste o <code>N_eff</code> agregado ficava em torno de 594 - quase metade da "amostra" nominal era redundância, não informação nova. Em alguns clientes o R² individual estava apoiado em apenas ~12 amostras efetivas, mesmo com centenas de janelas nominais - um R² calculado sobre isso não é confiável por cliente, por mais que pareça sólido olhando só o <code>n</code>.</p>
+<p><strong>Método da auditoria (para reproduzir)</strong>: a fração de NaN foi contada por trip sobre as colunas obrigatórias do contrato mais o alvo (<code>Energy_Consumption</code>); uma trip cujas linhas são 100% NaN nessas colunas não sobrevive à limpeza e não produz nenhuma janela. A correlação usada no <code>N_eff</code> é a lag-1 entre os rótulos de janelas vizinhas dentro do mesmo cliente (mesmo cálculo de <code>effective_n</code> em <code>cleven/metrics.py</code>), e o <code>N_eff</code> em si é a correção AR(1) <code>N·(1-r)/(1+r)</code> aplicada sobre essas janelas. Os números acima (594 agregado, ~12 no pior cliente) vêm dessa contagem manual, não de um artefato salvo no repositório.</p>
+<p><strong>Onde conferir o <code>n_eff</code> por cliente</strong>: nem <code>cleven report</code> nem <code>cleven final</code> mostram <code>n</code>/<code>n_eff</code> por cliente na saída de terminal. <code>cleven report</code> lista só métricas agregadas do run (<code>val_r2</code>, <code>val_r2_mean</code>, <code>val_r2_w</code>, <code>val_rmse</code>), uma linha por run e não por cliente; <code>cleven final</code> imprime <code>n</code> (sem <code>n_eff</code>) na linha de validação, e <code>n</code>/<code>n_eff_total</code> (a soma agregada, não por cliente) na linha de teste. O <code>n</code> e o <code>n_eff</code> por cliente são calculados e registrados, mas só chegam ao MLflow: <code>val/client_N/n</code> e <code>val/client_N/n_eff</code> (e, no modo <code>final</code>, <code>test/client_N/n</code> e <code>test/client_N/n_eff</code>) - ver <code>_logar</code> em <code>cleven/experiment.py</code>. Para ler o R² de um cliente com confiança é preciso abrir essas métricas no MLflow; a saída resumida dos comandos não substitui essa conferência, especialmente em grupos com poucos clientes ou trips curtas, onde o <code>n_eff</code> por cliente pode ser bem menor que sugere a saída agregada.</p>
+<p>Trips 100% NaN reduzem ainda mais o dado útil disponível, bem abaixo do que o número de trips alocadas sugere: na mesma auditoria do G01, 77 das 397 trips alocadas ao conjunto de teste não produzem nenhuma janela (todas as linhas descartadas antes do janelamento, pelo mesmo critério de NaN acima), e o cliente 3 sozinho perde 94 de suas 150 trips. O <code>n</code>/<code>n_eff</code> (agregados na saída dos comandos, por cliente no MLflow) já refletem essa perda - é o motivo de sempre olhar as métricas realizadas, não o inventário nominal de trips, para saber quanto dado um cliente de fato contribuiu.</p>
+<h2 id="comportamento-de-saida-do-cleven-sweep">Comportamento de saída do <code>cleven sweep</code><a class="headerlink" href="#comportamento-de-saida-do-cleven-sweep" title="Permanent link">&para;</a></h2>
 <ul>
-<li>A config de <strong>conexão</strong> das federações saiu do <code>pyproject.toml</code> e foi para o arquivo do Flower (<code>.flwr/config.toml</code>). Versionamos esse arquivo no repositório e o lemos via <code>FLWR_HOME</code> apontando para <code>./.flwr</code>, recuperando a portabilidade.</li>
-<li>O estilo <code>options.</code> (ex.: <code>options.num-supernodes</code> no config) foi <strong>deprecado na 1.28</strong>. O número de clientes agora vai por run via <code>--federation-config "num_supernodes=N"</code> (chave com <strong>underscore</strong>, não hífen).</li>
-<li>As federações por grupo (<code>g01</code>-<code>g05</code>) foram <strong>consolidadas</strong> numa única <code>local-simulation</code>. O <code>run_experiments.py</code> passa o <code>num_supernodes</code> de cada grupo por <code>--federation-config</code>.</li>
-<li>O <code>run_experiments.py</code> define <code>FLWR_HOME</code> automaticamente (via <code>os.environ.setdefault</code>), então o <code>fleven run</code> usa a config versionada sem configuração manual.</li>
+<li><code>cleven sweep</code> sai com código <strong>1</strong> se qualquer experimento da grade rodou e levantou exceção (<code>resultado.falhas</code> não vazio). Um <code>--dry-run</code> nunca roda nada, então nunca tem falhas e sempre sai com código 0.</li>
+<li>Falhas na <strong>checagem de dedup</strong> (<code>already_done</code>, ex.: MLflow indisponível, tracking URI incorreta) são tratadas como fail-open: o experimento roda de novo, avisado no stdout e registrado em <code>resultado.checagens_dedup_falhas</code> (lista estruturada, não só log). Essas falhas <strong>não</strong> alteram o código de saída - o fail-open é deliberado, o pior caso é um rerun redundante, não um dado incorreto, então não é tratado como falha de experimento.</li>
+<li>Configs puladas por dedup (<code>already_done</code> retornou <code>True</code>) não aparecem nem em sucesso nem em <code>.falhas</code>.</li>
 </ul>
-<h2 id="comportamento-de-execucao">Comportamento de execução<a class="headerlink" href="#comportamento-de-execucao" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Na 1.31, o <code>flwr run .</code> puro apenas <strong>inicia</strong> o run e volta ao prompt; o treino roda em segundo plano. Use <code>--stream</code> para acompanhar e esperar terminar.</li>
-<li>O <code>run_experiments.py</code> passou a usar <code>--stream</code>. Sem isso, o <code>evaluate</code> rodava <strong>antes</strong> do treino terminar e lia métricas velhas (bug silencioso).</li>
-</ul>
-<h2 id="mlflow">MLflow<a class="headerlink" href="#mlflow" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>log_model</code> adaptado para a API do MLflow 3.x: <code>name=</code> no lugar de <code>artifact_path</code>, e <code>serialization_format="pickle"</code> (o padrão <code>pt2</code> exige <code>input_example</code>).</li>
-<li>O <code>push_to_dagshub</code> foi validado contra o MLflow novo (construtores de <code>Metric</code>/<code>Param</code> e <code>copy_run</code> continuam funcionando).</li>
-</ul>
-<h2 id="seguranca-e-autenticacao-de-no">Segurança e autenticação de nó<a class="headerlink" href="#seguranca-e-autenticacao-de-no" title="Permanent link">&para;</a></h2>
-<ul>
-<li>O CSV estático de chaves (<code>--auth-list-public-keys</code>) foi <strong>deprecado na 1.23</strong>. O cadastro de nós passou a ser dinâmico via CLI (<code>flwr supernode register</code> / <code>unregister</code> / <code>list</code>, com o SuperLink subindo com <code>--enable-supernode-auth</code>), sem reiniciar o servidor.</li>
-<li>Modelo confirmado na doc: TLS é de <strong>servidor</strong> (mão única), e a autenticação de cliente é por <strong>par de chaves EC</strong>, não por certificado X.509. O <code>generate_certificates.py</code> foi atualizado para gerar essas chaves EC (P-384, OpenSSH) por nó em vez do certificado por cliente vestigial, e o entrypoint Docker liga a autenticação de nó via <code>NODE_AUTH_ENABLED</code> (opt-in, exige TLS).</li>
-</ul>
-<h2 id="correcoes-aproveitadas-na-validacao">Correções aproveitadas na validação<a class="headerlink" href="#correcoes-aproveitadas-na-validacao" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>explore_data.py</code>: coluna 100% NaN (ex.: feature sem dados num grupo) deixou de quebrar a geração do PDF.</li>
-<li><code>server.py</code>: o log das métricas finais resolve <code>metrics-base-path</code> vazio para <code>&lt;raiz&gt;/metrics</code>, igual ao cliente, corrigindo o <code>final_predictions.json não encontrado</code>.</li>
-</ul>
-<h2 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h2>
-<ul>
-<li>O <code>WinError 1114</code> (DLL do PyTorch com o Ray) <strong>não ocorre mais</strong> na 1.31. O workaround do <code>sitecustomize.py</code> deixou de ser necessário.</li>
-<li>O ruído do Ray (<code>access violation</code>, stack traces do raylet) na simulação no Windows é inofensivo (<code>0 failures</code>) e só existe na simulação, não no deployment.</li>
-</ul>
-<h2 id="documentacao-atualizada">Documentação atualizada<a class="headerlink" href="#documentacao-atualizada" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>README.md</code>, <code>docs/EXPERIMENTS.md</code>, <code>docs/LAINF-DEPLOY.md</code>: referências ao formato antigo (<code>[tool.flwr.federations]</code> no pyproject) trocadas pelo <code>.flwr/config.toml</code> e pelo <code>--federation-config</code>.</li>
-<li><code>docs/FLEVENCLIENT_PRODUCAO.md</code>: seção de segurança reescrita para o modelo da 1.31 (autenticação de nó por CLI).</li>
-</ul>
+<h2 id="eixo-weight_decay">Eixo <code>weight_decay</code><a class="headerlink" href="#eixo-weight_decay" title="Permanent link">&para;</a></h2>
+<p>O <code>TrainConfig</code> do <code>cleven</code> expõe <code>weight_decay</code> (default <code>0.0</code>), repassado até <code>fleven.core.utils.train</code>. O eixo funciona: <code>train</code> usa <code>torch.optim.AdamW</code> nos dois ramos de treino (parâmetros únicos e param groups do FedPer), com o <code>weight_decay</code> passado diretamente ao otimizador. Com o default <code>0.0</code>, o comportamento é <strong>idêntico bit a bit</strong> ao <code>Adam</code> anterior (verificado numericamente) - nenhum run federado ou centralizado já registrado muda de resultado.</p>
+<p>A escolha foi <code>AdamW</code>, não <code>Adam</code> com penalidade L2 acoplada ao gradiente: no <code>Adam</code>, a penalidade L2 entra somada ao gradiente e passa pela normalização adaptativa do otimizador, então pesos com gradiente histórico grande acabam recebendo <em>menos</em> decaimento efetivo - o oposto do que se pretende ao pedir mais regularização. O <code>AdamW</code> aplica o decaimento direto no peso, desacoplado do gradiente, então o efeito de <code>weight_decay &gt; 0</code> é previsível independente da escala do gradiente de cada parâmetro.</p>
+<h2 id="limitacoes">Limitações<a class="headerlink" href="#limitacoes" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>O baseline herda personalização por scaler.</strong> Reusar <code>build_dataloaders</code> mantém a normalização por cliente (um <code>StandardScaler</code> por veículo), então o modelo centralizado já vê features calibradas por veículo - não é um centralizado "cru", sem nenhuma forma de personalização. Medir o efeito de um scaler único por grupo é um eixo futuro, fora do escopo atual.</li>
+<li><strong>O cache do pipeline é invalidado ao varrer eixos de janela.</strong> A chave do cache (<code>_cache/client_N_&lt;hash&gt;.npz</code>) inclui a configuração de janelamento, então varrer <code>sequence_length</code> ou <code>prediction_distance_km</code> invalida o cache e reprocessa os parquets a cada combinação nova. Varrer eixos de modelo e de treino (tipo de modelo, learning rate, hidden size) é barato - reaproveita o cache. Por isso <code>cleven sweep</code> ordena a grade agrupando por (grupo, contrato, janela), para que as combinações que compartilham janela rodem em sequência.</li>
+<li><strong>Trips 100% NaN reduzem o dado útil bem abaixo do número de trips.</strong> Ver a seção de métricas acima: no G01, 77 de 397 trips do teste não produzem nenhuma janela, e o cliente 3 perde 94 de 150 trips.</li>
+</ol>
+<h2 id="grade-padrao-sweepsbaselinetoml">Grade padrão (<code>sweeps/baseline.toml</code>)<a class="headerlink" href="#grade-padrao-sweepsbaselinetoml" title="Permanent link">&para;</a></h2>
+<p>A grade em <code>sweeps/baseline.toml</code> varia <code>train.model_type</code> (<code>lstm</code>, <code>lstm_dense</code>, <code>mlp</code>), <code>train.learning_rate</code> (<code>0.001</code>, <code>0.0005</code>) e <code>train.hidden_size</code> (<code>64</code>, <code>128</code>) - 12 combinações - sobre os grupos G01 a G05, com janela e demais hiperparâmetros de treino fixos em <code>[defaults]</code>. Isso dá 12 experimentos por grupo e 60 no total. <code>model_type = "fedper"</code> não é aceito pelo <code>cleven</code> (<code>build_model</code> rejeita explicitamente): a cauda pessoal do FedPer só faz sentido em esquema federado, onde ela nunca sai do cliente.</p>
 
 
 
