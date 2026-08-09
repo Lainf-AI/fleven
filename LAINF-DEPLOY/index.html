@@ -1142,7 +1142,7 @@ Abra <em>outro</em> terminal no seu PC, ative o ambiente virtual e execute o <co
 </ul>
 </li>
 </ol>
-<p><strong>Nota sobre features:</strong> as features e o target vêm do contrato (<code>data-contract = contracts/eved.toml</code>) através do FAB, para cada Pi; o servidor envia o <em>fingerprint</em> do contrato em cada mensagem e o cliente recusa participar se o seu contrato não bater, garantindo o mesmo <code>input_size</code> na federação.</p>
+<p><strong>Nota sobre features:</strong> as features e o target vêm do contrato (<code>data-contract = contracts/eved_potencia_rota.toml</code>) através do FAB, para cada Pi; o servidor envia o <em>fingerprint</em> do contrato em cada mensagem e o cliente recusa participar se o seu contrato não bater, garantindo o mesmo <code>input_size</code> na federação.</p>
 <p>O <code>pyproject.toml</code> presente nos Raspberry Pis <strong>não é lido</strong> durante a execução do <code>ClientApp</code>; ele serve apenas para o <code>pip install -e .</code> saber quais dependências instalar.
 Toda configuração vem do servidor via FAB (Flower Application Bundle).</p>
 <h2 id="como-o-flower-distribui-as-configuracoes">Como o Flower distribui as configurações<a class="headerlink" href="#como-o-flower-distribui-as-configuracoes" title="Permanent link">&para;</a></h2>

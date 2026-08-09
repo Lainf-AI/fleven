@@ -938,6 +938,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#replay-e-de-sensor-nao-de-tudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replay é de sensor, não de tudo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#cuidados" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1066,15 +1077,21 @@
 </tr>
 </tbody>
 </table>
+<p>As trips escritas pelo feeder contêm quatro colunas que <strong>não existem</strong> no parquet
+de origem: <code>Total Power[kW]</code>, <code>Fuel Power[kW]</code>, <code>Battery Power[kW]</code> e
+<code>Power Quality</code>. O feeder faz o papel do coletor, e potência é calculada, não
+medida. Por isso a saída nunca é cópia byte a byte da entrada, mesmo sem provedor
+de rota.</p>
 <p>Schema do <code>live_predictions</code>: <code>timestamp, trip, y_pred (lista H), y_true (lista H), residual (lista H)</code>.</p>
 <h3 id="provedor-de-rota-valhalla">Provedor de rota (Valhalla)<a class="headerlink" href="#provedor-de-rota-valhalla" title="Permanent link">&para;</a></h3>
-<p>Por padrão o feeder copia as colunas de contexto da via (limite de velocidade,
-altitude etc.) direto do eVED, como o resto da viagem. Com <code>--route-provider
-valhalla</code>, ele passa a produzir essas colunas consultando um Valhalla local, em
-vez de copiá-las — a premissa é a de <strong>rota definida</strong>: o condutor já escolheu o
-destino, então a poligonal de coordenadas da viagem é conhecida antes de
-percorrê-la, e o provedor responde "quais são os atributos da via nestes
-pontos" de uma vez, não ponto a ponto conforme o carro anda.</p>
+<p>Se o contrato declara <code>[[route_feature]]</code>, o feeder precisa de um provedor que
+produza essas colunas de contexto (limite de velocidade, altitude etc.) — ele
+não copia mais essas colunas do eVED, ver a seção "Replay é de sensor, não de
+tudo" abaixo. Com <code>--route-provider valhalla</code>, o feeder produz essas colunas
+consultando um Valhalla local — a premissa é a de <strong>rota definida</strong>: o condutor
+já escolheu o destino, então a poligonal de coordenadas da viagem é conhecida
+antes de percorrê-la, e o provedor responde "quais são os atributos da via
+nestes pontos" de uma vez, não ponto a ponto conforme o carro anda.</p>
 <p>Quatro flags novas:</p>
 <table>
 <thead>
@@ -1117,9 +1134,9 @@ fonte/extrato — trocar de fonte entre treino e inferência muda a distribuiç�
 das features de rota sem aviso. <code>--extract-version</code> existe justamente para que
 essa troca fique registrada na chave do cache, em vez de passar despercebida.</p>
 <p>Para medir o quanto as duas fontes divergem e inventariar a cobertura das
-colunas novas na região do dataset, use <code>tools/validate_route.py</code> (ferramenta de
+colunas novas na região do dataset, use <code>tools/feeder/validate_route.py</code> (ferramenta de
 operador, exige um Valhalla no ar — fora da suíte de testes):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">validate_route</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G05_ICE_20L_ND_2500</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="n">http</span><span class="p">://</span><span class="n">localhost</span><span class="p">:</span><span class="n">8002</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">feeder</span><span class="p">/</span><span class="n">validate_route</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G05_ICE_20L_ND_2500</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="n">http</span><span class="p">://</span><span class="n">localhost</span><span class="p">:</span><span class="n">8002</span>
 </code></pre></div>
 <p>O relatório não é um portão de aprovação: o objetivo é melhorar o modelo, não
 reproduzir o eVED. A comparação é feita sobre os <strong>vetores de rota</strong> (o que o
@@ -1130,6 +1147,21 @@ comparar altitude absoluta reprovaria uma fonte perfeitamente utilizável. A
 divergência é reportada em <code>dif_media_sd</code> (diferença média em desvios-padrão da
 própria feature, não em unidade física — o que a torna comparável entre
 features de escalas diferentes), ao lado de <code>correlacao</code> e <code>cobertura</code>.</p>
+<h2 id="replay-e-de-sensor-nao-de-tudo">Replay é de sensor, não de tudo<a class="headerlink" href="#replay-e-de-sensor-nao-de-tudo" title="Permanent link">&para;</a></h2>
+<p>O barramento OBD entrega <strong>só sensor</strong>. O feeder separa isso em duas peças:</p>
+<ul>
+<li><code>CarSimulator</code> (<code>tools/feeder/car.py</code>) é transporte puro: lê, respeita a cadência
+  de <code>Timestamp(ms)</code>, emite ponto a ponto e finaliza a trip atomicamente.</li>
+<li><code>DerivingCollector</code> (<code>tools/feeder/collector.py</code>) é o coletor: consulta o
+  contexto por posição e calcula as grandezas derivadas.</li>
+</ul>
+<p>O eVED entrega sensor, contexto (<code>Speed Limit[km/h]</code>, <code>Elevation Smoothed[m]</code>) e
+derivada (<code>Energy_Consumption</code>) misturados no mesmo parquet. Copiar o arquivo e
+chamar de replay fingiria que as três vieram do barramento.</p>
+<p>Por isso, <strong>se o contrato declara <code>[[route_feature]]</code> e nenhum provedor foi
+configurado, o feeder recusa rodar</strong>. Sem provedor essas colunas só poderiam vir
+copiadas do dataset de origem, e em campo elas não existem. Use
+<code>--route-provider valhalla</code>, ou um contrato sem features de rota.</p>
 <h2 id="cuidados">Cuidados<a class="headerlink" href="#cuidados" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><code>--time-scale 0</code> (instantâneo) só para o fluxo de dados.</strong> Com <code>--predict</code>, o instantâneo vira um loop apertado de inferências por ponto e trava. Use <code>--time-scale</code> moderado (1 a ~600) com predição.</li>

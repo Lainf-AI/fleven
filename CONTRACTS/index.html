@@ -1112,7 +1112,7 @@ dois lugares e torcer para não divergirem, ambos derivam a forma do mesmo contr
 e comparam um resumo dele antes de trocar parâmetros.</p>
 <p>O contrato é indicado pela chave <code>data-contract</code> em <code>pyproject.toml</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contracts/eved.toml&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contracts/eved_potencia_rota.toml&quot;</span>
 </code></pre></div>
 <h2 id="onde-o-arquivo-e-procurado">Onde o arquivo é procurado<a class="headerlink" href="#onde-o-arquivo-e-procurado" title="Permanent link">&para;</a></h2>
 <p><code>_resolve_contract_path</code> tenta, nesta ordem:</p>
@@ -1176,6 +1176,16 @@ dizendo onde procurou.</p>
 <td><code>route_grid_m</code></td>
 <td><code>25.0</code></td>
 <td>Passo da grade de distância das features de rota, em metros</td>
+</tr>
+<tr>
+<td><code>target_kind</code></td>
+<td>não</td>
+<td><code>"value"</code> (padrão) ou <code>"rate"</code>. Com <code>"rate"</code> o alvo é uma taxa instantânea (ex.: potência em kW) e o rótulo passa a ser a integral trapezoidal no tempo, em vez da soma dos valores.</td>
+</tr>
+<tr>
+<td><code>trip_gap_split_s</code></td>
+<td>não</td>
+<td>Segundos. Um intervalo maior que este entre leituras consecutivas encerra o segmento; janelas nunca atravessam o buraco. Ausente = não corta. Recomendado 60,0 para o eVED.</td>
 </tr>
 </tbody>
 </table>
@@ -1322,9 +1332,9 @@ distância, o <code>prediction-distance-km</code>. Um servidor antigo que não e
 nenhum é tolerado, por compatibilidade.</p>
 <p>Duas propriedades que valem conhecer:</p>
 <ul>
-<li><strong>Contrato sem rota tem fingerprint idêntico ao de antes de a rota existir.</strong> O
-  <code>contracts/eved.toml</code> continua produzindo <code>1b5c90d3856f628f</code>, então federações em
-  execução não foram invalidadas.</li>
+<li><strong>Contrato sem rota tem fingerprint idêntico ao de antes de a rota existir.</strong>
+  Acrescentar o bloco de rota a um contrato que não o usa não muda o hash, então
+  federações em execução não são invalidadas.</li>
 <li><strong>Mudar apenas o caminho do arquivo não muda o fingerprint.</strong> Ele descreve o
   conteúdo, não a origem.</li>
 </ul>
@@ -1360,19 +1370,30 @@ eVED e <code>Energy_Consumption</code> como alvo.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>contracts/eved.toml</code></td>
+<td><code>contracts/eved_potencia.toml</code></td>
 <td>5</td>
-<td><code>1b5c90d3856f628f</code></td>
-<td>Padrão. Quatro sinais OBD, sem rota</td>
+<td><code>1dea1b17b81835ea</code></td>
+<td>Quatro sinais OBD, sem rota. Único que roda no fluxo OBD sem Valhalla</td>
 </tr>
 <tr>
-<td><code>contracts/eved_rota.toml</code></td>
+<td><code>contracts/eved_potencia_rota.toml</code></td>
 <td>8</td>
-<td><code>995b351c93017f57</code></td>
-<td>Os mesmos quatro sinais mais três atributos da via</td>
+<td><code>460b0cc4790a794e</code></td>
+<td><strong>Padrão.</strong> Os mesmos sinais mais três atributos da via. Melhor medido (+0,4107 no G05)</td>
+</tr>
+<tr>
+<td><code>contracts/eved_potencia_rota_speed.toml</code></td>
+<td>9</td>
+<td><code>51dbd56954d2335d</code></td>
+<td>Acrescenta a velocidade típica da via. <strong>Exige o feeder com Valhalla</strong>; sobre os parquets do eVED a coluna vira constante</td>
 </tr>
 </tbody>
 </table>
+<p>Todos apontam para <code>Total Power[kW]</code>, materializado em memória pela fonte. Os
+contratos do alvo antigo (<code>eved.toml</code>, <code>eved_rota.toml</code>, <code>eved_rota_speed.toml</code>,
+<code>eved_rota_plus.toml</code>) foram <strong>removidos</strong>: mediram +0,0173 de <code>r2_weighted</code> contra
++0,3610 do alvo corrigido na mesma grade. Ver
+<code>docs/superpowers/specs/2026-08-08-target-de-energia-design.md</code>.</p>
 <h2 id="criando-um-contrato-novo">Criando um contrato novo<a class="headerlink" href="#criando-um-contrato-novo" title="Permanent link">&para;</a></h2>
 <p>Copie um dos existentes, ajuste, e aponte <code>data-contract</code> para ele. Confira o
 resultado antes de rodar:</p>

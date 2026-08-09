@@ -682,10 +682,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#contrato-com-rota-contractseved_rotatoml" class="md-nav__link">
+  <a href="#contrato-com-rota-contractseved_potencia_rotatoml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contrato com rota (contracts/eved_rota.toml)
+        Contrato com rota (contracts/eved_potencia_rota.toml)
       
     </span>
   </a>
@@ -1051,10 +1051,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#contrato-com-rota-contractseved_rotatoml" class="md-nav__link">
+  <a href="#contrato-com-rota-contractseved_potencia_rotatoml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contrato com rota (contracts/eved_rota.toml)
+        Contrato com rota (contracts/eved_potencia_rota.toml)
       
     </span>
   </a>
@@ -1232,15 +1232,35 @@ EC [\text{kWh/amostra}] = -\frac{I_{HV}[\text{A}] \times V_{HV} [\text{V}]}{3.6 
 \]</div>
 <p>A convenção de sinal é: corrente negativa durante descarga (consumo), logo multiplicar por <span class="arithmatex">\(-1\)</span> resulta em valor positivo. Nenhum dado de MAF ou fuel trim é utilizado.</p>
 <h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
-<p>Os experimentos atuais utilizam as seguintes features, definidas no <strong>contrato de dados</strong> (<a href="../contracts/eved.toml"><code>contracts/eved.toml</code></a>):
-<code>Vehicle Speed[km/h]</code>, <code>MAF[g/sec]</code>, <code>Engine RPM[RPM]</code>, <code>Absolute Load[%]</code>, com target <code>Energy_Consumption</code>.</p>
+<p>Os experimentos atuais utilizam as seguintes features, definidas no <strong>contrato de dados</strong> (<a href="../contracts/eved_potencia_rota.toml"><code>contracts/eved_potencia_rota.toml</code></a>):
+<code>Vehicle Speed[km/h]</code>, <code>MAF[g/sec]</code>, <code>Engine RPM[RPM]</code>, <code>Absolute Load[%]</code>, com target <code>Total Power[kW]</code>.</p>
 <blockquote>
-<p>📝 <strong>Para o G08 (PHEV):</strong> MAF e fuel trims não são entradas significativas, pois o EC é derivado da bateria. Se rodar experimentos no G08, edite o <strong>contrato</strong> (ou aponte <code>data-contract</code> para um contrato do G08) trocando o conjunto de features por <code>HV Battery Current[A]</code> e <code>HV Battery Voltage[V]</code>.</p>
+<p>⚠️ <strong>O target mudou.</strong> <code>Energy_Consumption</code>, herdado do eVED, multiplicava a taxa de
+queima pela velocidade instantânea, o que não está no Algoritmo 1 do artigo do VED.
+Na mesma grade de 12 configurações no G05, ele mediu <code>r2_weighted</code> de <strong>+0,0173</strong>
+contra <strong>+0,3610</strong> do alvo corrigido. Os contratos que apontavam para ele foram
+removidos. Ver <code>docs/superpowers/specs/2026-08-08-target-de-energia-design.md</code>.</p>
+<p>📝 <strong>Para o G08 (PHEV):</strong> com o alvo corrigido, MAF <strong>passa a ser entrada
+significativa também no G08</strong>. O alvo antigo usava só o ramo da bateria e ignorava o
+combustível, apesar de os clientes do G08 terem MAF a 100%: em <code>G08/client_0</code>, 46,4%
+das leituras com o motor queimando tinham alvo menor ou igual a zero. <code>Total
+Power[kW]</code> soma os dois termos, então o conjunto de features padrão serve.</p>
 </blockquote>
-<h2 id="contrato-com-rota-contractseved_rotatoml">Contrato com rota (<code>contracts/eved_rota.toml</code>)<a class="headerlink" href="#contrato-com-rota-contractseved_rotatoml" title="Permanent link">&para;</a></h2>
-<p>Além do contrato padrão, existe <a href="../contracts/eved_rota.toml"><code>contracts/eved_rota.toml</code></a>, que acrescenta atributos do trecho à frente às mesmas quatro features do eVED. A premissa é que o condutor já definiu o trajeto, então o perfil da via que vem pela frente (limite de velocidade, desnível, subida acumulada) é conhecido de antemão, não algo que o modelo precisa adivinhar. Por isso ele usa apenas atributos derivados da via, nunca latitude/longitude cruas.</p>
-<p>Correlação medida no G01, dentro de cada cliente, com horizonte de 0,5 km, entre cada atributo de rota e o alvo (<code>Energy_Consumption</code> acumulado no trecho): limite de velocidade +0,501, desnível líquido +0,390, subida acumulada +0,238. Para comparação, saber a velocidade real do trecho (que o modelo não tem, por ser informação do futuro) correlaciona +0,473. Ou seja, o limite de velocidade sozinho carrega mais sinal sobre o consumo do trecho futuro do que a velocidade real observada, o que faz sentido: o limite é a causa que a velocidade em geral segue, mas sem o ruído de tráfego, semáforo ou estilo de condução de uma viagem específica.</p>
-<p>Esse contrato exige <code>prediction-mode = "distance-energy"</code> (o modo <code>steps</code> não tem um trecho futuro com distância definida para agregar; <code>build_dataloaders</code> recusa a combinação). Como a tarefa fica mais fácil (o modelo recebe informação sobre o futuro que antes não tinha), o R² obtido com o contrato de rota <strong>não é comparável</strong> ao R² obtido com <code>contracts/eved.toml</code>: uma diferença entre os dois pode vir do contrato, não da mudança de modelo, estratégia ou grupo.</p>
+<h2 id="contrato-com-rota-contractseved_potencia_rotatoml">Contrato com rota (<code>contracts/eved_potencia_rota.toml</code>)<a class="headerlink" href="#contrato-com-rota-contractseved_potencia_rotatoml" title="Permanent link">&para;</a></h2>
+<p>Este é o contrato padrão. Ele acrescenta atributos do trecho à frente às quatro features do eVED. A premissa é que o condutor já definiu o trajeto, então o perfil da via que vem pela frente (limite de velocidade, desnível, subida acumulada) é conhecido de antemão, não algo que o modelo precisa adivinhar. Por isso usa apenas atributos derivados da via, nunca latitude/longitude cruas.</p>
+<p><strong>As features de rota se pagam.</strong> Comparação pareada no G05, mesma grade de 12 configurações, <code>sequence_length=100</code>, variando apenas o contrato: elas vencem em <strong>12 de 12</strong>, com ganho médio de <strong>+0,0455</strong> em <code>r2_weighted</code> (teste de sinais, p = 0,0005). O melhor resultado sobe de +0,3610 para +0,4107.</p>
+<p>Correlação medida no G05, dentro de cada cliente, com horizonte de 0,5 km, contra <code>Total Power[kW]</code> acumulado no trecho: limite de velocidade <strong>-0,222</strong>, desnível líquido +0,218, subida acumulada +0,207.</p>
+<blockquote>
+<p>⚠️ <strong>O sinal do limite de velocidade é negativo, e versões anteriores deste
+documento afirmavam +0,501.</strong> Aquele número foi medido contra <code>Energy_Consumption</code>,
+cujo peso de velocidade espúrio inverte a relação. O valor negativo é o fisicamente
+correto: para uma distância <strong>fixa</strong> de 500 m, andar mais rápido significa menos
+tempo, menos marcha lenta e menos energia. Medido: 0-10 km/h custa 21,93 L/100km
+contra 5,61 em cruzeiro de 70-80 km/h. Pelo mesmo motivo, a afirmação de que o
+limite de velocidade carregaria mais sinal que a velocidade real observada
+<strong>foi retirada</strong>: ela dependia inteiramente do alvo defeituoso.</p>
+</blockquote>
+<p>Esse contrato exige <code>prediction-mode = "distance-energy"</code> (o modo <code>steps</code> não tem um trecho futuro com distância definida para agregar; <code>build_dataloaders</code> recusa a combinação).</p>
 
 
 

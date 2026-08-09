@@ -1,0 +1,1755 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Federated Learning for Vehicular Environment">
+      
+      
+      
+        <link rel="canonical" href="https://lainf-ai.github.io/fleven/ARQUITETURA/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/fleven-favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Arquitetura: as três direções do projeto - Fleven</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    <meta property="og:type" content="website">
+  <meta property="og:title" content="Arquitetura: as três direções do projeto - Fleven">
+  <meta property="og:description" content="Federated Learning for Vehicular Environment">
+  <meta property="og:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
+  <meta property="og:url" content="https://lainf-ai.github.io/fleven/ARQUITETURA/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arquitetura: as três direções do projeto - Fleven">
+  <meta name="twitter:description" content="Federated Learning for Vehicular Environment">
+  <meta name="twitter:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#arquitetura-as-tres-direcoes-do-projeto" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href=".." title="Fleven" class="md-header__button md-logo" aria-label="Fleven" data-md-component="logo">
+      
+  <img src="../assets/fleven-logo-car-cheio-best.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fleven
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arquitetura: as três direções do projeto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/josewilsonsouza/fleven" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Fleven
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../getting-started/instalacao/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../EXPERIMENTS/" class="md-tabs__link">
+          
+  
+  
+  Guias
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../CLI-COMANDS/" class="md-tabs__link">
+          
+  
+  
+  Referencias CLI
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Fleven" class="md-nav__button md-logo" aria-label="Fleven" data-md-component="logo">
+      
+  <img src="../assets/fleven-logo-car-cheio-best.png" alt="logo">
+
+    </a>
+    Fleven
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/josewilsonsouza/fleven" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Fleven
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/instalacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/execucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Execução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guias
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guias
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXPERIMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SLIDING_WINDOW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Janela deslizante
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRAIN-TEST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split treino/teste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDPER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FedPer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLEVEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Baseline centralizado (cleven)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_DEPLOY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy com Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LAINF-DEPLOY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy em Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias CLI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referencias CLI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI-COMANDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandos CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-problema-de-origem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema de origem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#as-tres-direcoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        As três direções
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="As três direções">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cleven-o-baseline-centralizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. cleven, o baseline centralizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-experimentos-federados-fleven-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Experimentos federados (fleven run)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-feeder-e-producao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Feeder e produção
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-eixo-real-fonte-de-dados-modo-de-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O eixo real: fonte de dados × modo de execução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-camada-flevendata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A camada fleven/data/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A camada fleven/data/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tripsource-o-adaptador-de-coletor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TripSource: o adaptador de coletor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O contrato
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-fronteira-coletor-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A fronteira coletor / framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A fronteira coletor / framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quem-materializa-o-alvo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quem materializa o alvo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-eved-e-um-caso-especial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o eVED é um caso especial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semantica-da-coluna-taxa-nao-energia-acumulada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semântica da coluna: taxa, não energia acumulada
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-feeder-como-coletor-simulado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O feeder como coletor simulado
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fronteira-de-viagem-e-buracos-no-fluxo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fronteira de viagem e buracos no fluxo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fronteira de viagem e buracos no fluxo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-problema-no-dado-gravado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema, no dado gravado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-isso-e-conserto-de-dado-de-terceiro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que isso é conserto de dado de terceiro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-criterio-certo-nao-e-duracao-e-o-que-o-veiculo-estava-fazendo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O critério certo não é duração, é o que o veículo estava fazendo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uma-opcao-que-so-producao-tem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Uma opção que só produção tem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-falta-para-producao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que falta para produção
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="O que falta para produção">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pendencia-especifica-acidentes-de-via-cruzamento-travessia-ponto-de-onibus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pendência específica: acidentes de via (cruzamento, travessia, ponto de ônibus)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-codigo-disso-foi-removido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o código disso foi removido
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rota-contexto-e-o-que-nao-cabe-no-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rota, contexto e o que não cabe no contrato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rota, contexto e o que não cabe no contrato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-nao-tem-como-ser-expresso-hoje" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que não tem como ser expresso hoje
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-isso-nao-foi-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que isso NÃO foi implementado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="arquitetura-as-tres-direcoes-do-projeto">Arquitetura: as três direções do projeto<a class="headerlink" href="#arquitetura-as-tres-direcoes-do-projeto" title="Permanent link">&para;</a></h1>
+<p>Este documento explica <strong>por que</strong> o Fleven está organizado como está. Os outros
+documentos explicam como operar cada peça: <a href="../FEEDER/">FEEDER.md</a> é operacional,
+<a href="../CONTRACTS/">CONTRACTS.md</a> é referência de schema,
+<a href="../FLEVENCLIENT_PRODUCAO/">FLEVENCLIENT_PRODUCAO.md</a> é o design do cliente embarcado.
+Aqui está o raciocínio que amarra os três.</p>
+<blockquote>
+<p><strong>Convenção de status.</strong> Este documento descreve decisões de arquitetura, e nem
+todas já estão no código. Onde houver diferença, ela é marcada: <strong>[implementado]</strong>,
+<strong>[planejado]</strong> com a tarefa que o entrega, ou <strong>[não existe]</strong>. Uma decisão
+registrada aqui sem marcação de status é raciocínio, não código.</p>
+</blockquote>
+<h2 id="o-problema-de-origem">O problema de origem<a class="headerlink" href="#o-problema-de-origem" title="Permanent link">&para;</a></h2>
+<p>O produto final é aprendizado federado sobre dados de OBD que chegam <strong>em fluxo</strong>,
+gerados por veículos reais, em dispositivos que não estão sob nosso controle. Não
+temos essa frota. Não temos sequer um coletor embarcado rodando.</p>
+<p>Sem poder testar o caso real, restam duas opções ruins e uma boa. A primeira ruim é
+adiar: construir só o federado sobre dataset fixo e deixar a coleta para depois, o
+que garante uma reescrita quando o fluxo chegar. A segunda é adivinhar: projetar
+para um coletor hipotético e descobrir tarde que a hipótese era errada.</p>
+<p>A opção adotada foi terceira: <strong>separar o que dá para provar hoje do que só dá para
+provar com frota real, e construir a fronteira entre os dois antes de precisar
+dela</strong>. Daí saem as três direções.</p>
+<h2 id="as-tres-direcoes">As três direções<a class="headerlink" href="#as-tres-direcoes" title="Permanent link">&para;</a></h2>
+<p>Cada direção prova uma coisa diferente. Confundi-las leva a exigir de uma o que só a
+outra pode dar.</p>
+<h3 id="1-cleven-o-baseline-centralizado">1. <code>cleven</code>, o baseline centralizado<a class="headerlink" href="#1-cleven-o-baseline-centralizado" title="Permanent link">&para;</a></h3>
+<p>Escolhe modelo, features e janelamento <strong>sem o ruído da federação</strong>. Um modelo por
+grupo, todos os clientes juntos, seleção por validação, teste uma única vez.</p>
+<p>Prova: que existe sinal no dado e qual configuração o extrai melhor. Se o <code>cleven</code>
+não aprende, o federado também não vai, e o problema não é a federação.</p>
+<p>Não prova: nada sobre federação, privacidade ou heterogeneidade entre veículos.</p>
+<h3 id="2-experimentos-federados-fleven-run">2. Experimentos federados (<code>fleven run</code>)<a class="headerlink" href="#2-experimentos-federados-fleven-run" title="Permanent link">&para;</a></h3>
+<p>Roda a grade grupo × modelo × estratégia sobre os dados já coletados do eVED, em
+simulação Ray. Métricas no MLflow, dedup por fingerprint de contrato.</p>
+<p>Prova: <strong>quanto custa federar</strong>. É a única direção onde dá para medir qualidade de
+modelo com rigor, porque exige dataset fixo, held-out reproduzível e comparação
+pareada. É também onde se compara FedAvg contra FedYogi, FedPer contra LSTM, e onde
+se mede se uma feature nova paga o próprio custo.</p>
+<p>Não prova: nada sobre fluxo de dados, coleta, finalização de viagem ou operação.</p>
+<h3 id="3-feeder-e-producao">3. Feeder e produção<a class="headerlink" href="#3-feeder-e-producao" title="Permanent link">&para;</a></h3>
+<p>O feeder (<code>tools/feeder/</code>) reproduz viagens do eVED <strong>em wall-clock</strong>, respeitando a
+cadência real de <code>Timestamp(ms)</code>, materializando trips uma a uma numa pasta que o
+<code>ObdTripSource</code> lê como se fossem viagens recém-finalizadas de um carro.</p>
+<p>Prova: <strong>que a arquitetura fecha</strong>. Que o dado chega em fluxo, que a viagem finaliza
+atomicamente, que o cliente treina sobre dado que cresce entre rounds, que o modelo
+federado serve inferência ao vivo, que o SuperNode autentica, que o FAB entrega o
+contrato certo.</p>
+<p>Não prova: acurácia. O dado é vivo e crescente por construção, então não há held-out
+estável nem cache reproduzível (<a href="../fleven/data/sources/obd.py"><code>obd.py</code></a> devolve
+<code>None</code> em <code>cache_root</code> e <code>trips_fingerprint</code> de propósito). Medir R² aqui seria medir
+uma coisa que muda a cada leitura.</p>
+<blockquote>
+<p>Regra prática: uma feature nova se justifica nos <strong>experimentos</strong>; um mecanismo
+novo se justifica no <strong>feeder</strong>. Nunca o contrário.</p>
+</blockquote>
+<h2 id="o-eixo-real-fonte-de-dados-modo-de-execucao">O eixo real: fonte de dados × modo de execução<a class="headerlink" href="#o-eixo-real-fonte-de-dados-modo-de-execucao" title="Permanent link">&para;</a></h2>
+<p>É tentador chamar isso de "modo de simulação" contra "modo de produção", mas são dois
+eixos independentes, e o Flower já distingue os dois.</p>
+<ul>
+<li><strong>Fonte de dados</strong> (<code>data-source</code>): <code>eved</code> (coletado, dataset fixo em disco) ou
+  <code>obd</code> (fluxo, viagens que aparecem ao longo do tempo).</li>
+<li><strong>Modo de execução</strong>: simulação (Ray, um processo, atores) ou deployment
+  (SuperLink + SuperNodes, processos ou máquinas separadas).</li>
+</ul>
+<p>Das quatro combinações, três se usam:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>simulação (Ray)</th>
+<th>deployment (SuperLink)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>eved</code></strong> (coletado)</td>
+<td><code>fleven run</code>, a bancada de medição</td>
+<td>dados já coletados, um Pi por cliente</td>
+</tr>
+<tr>
+<td><strong><code>obd</code></strong> (fluxo)</td>
+<td>não usável</td>
+<td>produção real, e o feeder no lugar do coletor</td>
+</tr>
+</tbody>
+</table>
+<p>A célula vazia é consequência do design, não omissão. O <code>ObdTripSource</code> resolve
+identidade por <code>context.node_id</code> (a identidade nativa do SuperNode, vinculada ao par
+de chaves EC registrado) e lê <code>obd-data-path</code> do <code>run_config</code>, que é <strong>compartilhado
+por todos os nós</strong> de uma simulação. Todos os clientes simulados leriam a mesma
+pasta. Fluxo pressupõe deployment, porque fluxo pressupõe que cada nó tenha o seu
+próprio dado local.</p>
+<p>Isso também mostra por que "rodar em dispositivos dos clientes" não é sinônimo de
+produção. Dá para fazer deployment real, com Raspberry Pis, sobre dados <strong>já
+coletados</strong> (célula superior direita). Isso testa rede, TLS, autenticação de nó e
+orquestração, sem tocar no problema de coleta.</p>
+<h2 id="a-camada-flevendata">A camada <code>fleven/data/</code><a class="headerlink" href="#a-camada-flevendata" title="Permanent link">&para;</a></h2>
+<p>Essa pasta existe para que a troca de fonte de dados não vaze para o resto do
+sistema. Ela contém:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>fleven/data/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── contract.py   # DataContract, derive_input_size, contract_fingerprint
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── pipeline.py   # build_dataloaders: split, scaler, janelamento, cache
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── windows.py    # janelas deslizantes em NumPy, agnósticas de runtime
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── route.py      # agregação de features de rota numa grade de distância
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── source.py     # protocolo TripSource + registry
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>└── sources/
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ├── eved.py   # dataset coletado
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    └── obd.py    # dado vivo/crescente
+</code></pre></div>
+<h3 id="tripsource-o-adaptador-de-coletor"><code>TripSource</code>: o adaptador de coletor<a class="headerlink" href="#tripsource-o-adaptador-de-coletor" title="Permanent link">&para;</a></h3>
+<p>O protocolo (<a href="../fleven/data/source.py"><code>source.py</code></a>) é deliberadamente pequeno:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">TripSource</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">list_clients</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span> <span class="o">...</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">read_trips</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span> <span class="o">...</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">cache_root</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">resolve_client_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="o">...</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">trips_fingerprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span> <span class="o">...</span>
+</code></pre></div>
+<p>Cinco métodos, e cada um encapsula uma diferença real entre dataset e fluxo:</p>
+<ul>
+<li><code>resolve_client_id</code> separa <strong>seleção de dados</strong> de <strong>identidade</strong>. No eVED a
+  partição é o índice do diretório (<code>node_config["partition-id"]</code>); no OBD os dados
+  já são locais e o que importa é quem o nó é (<code>context.node_id</code>).</li>
+<li><code>cache_root</code> e <code>trips_fingerprint</code> deixam a fonte decidir se cachear faz sentido.
+  Dataset fixo cacheia e valida por mtime+tamanho; dado crescente devolve <code>None</code> nos
+  dois e sempre reprocessa, porque uma viagem nova precisa aparecer no round seguinte.</li>
+<li><code>read_trips</code> devolve DataFrames <strong>no schema que o contrato descreve</strong>. Esta é a
+  responsabilidade que importa para a seção seguinte.</li>
+</ul>
+<p>O resto do sistema (<code>pipeline.py</code>, <code>client.py</code>, <code>cleven</code>) só conhece o protocolo.
+Trocar <code>eved</code> por <code>obd</code> é mudar uma string de config.</p>
+<h3 id="o-contrato">O contrato<a class="headerlink" href="#o-contrato" title="Permanent link">&para;</a></h3>
+<p>O <code>DataContract</code> nasceu para um problema do <strong>federado</strong>, não do fluxo: o
+<code>input_size</code> precisa ser idêntico em todos os nós, senão a agregação de parâmetros
+não fecha. O contrato torna isso derivável (<code>derive_input_size</code>) e verificável
+(<code>contract_fingerprint</code> no handshake, com o cliente recusando participar se divergir).</p>
+<p>A segunda função veio depois e é a que interessa aqui: o contrato é também a
+<strong>especificação que o coletor tem que cumprir</strong>. Ele nomeia as colunas, as unidades,
+as faixas válidas e o alvo. Um coletor embarcado que produza trips conformes ao
+contrato é, por construção, compatível com a federação.</p>
+<h2 id="a-fronteira-coletor-framework">A fronteira coletor / framework<a class="headerlink" href="#a-fronteira-coletor-framework" title="Permanent link">&para;</a></h2>
+<p>Esta é a decisão central, e a que motivou este documento.</p>
+<p><strong>O framework não deriva grandezas físicas a partir de sinais brutos. O coletor
+materializa, o framework consome.</strong></p>
+<p>O alvo é o caso que torna a regra concreta. Nenhum barramento OBD reporta potência ou
+energia consumida. O que chega são MAF, fuel trims, corrente e tensão de bateria,
+velocidade e timestamps. Alguém tem que aplicar a fórmula. Se esse alguém for o
+<code>pipeline.py</code>, três coisas quebram:</p>
+<ol>
+<li>O cliente embarcado passa a carregar colunas brutas que só existem para alimentar
+   uma conta, engordando o payload e o schema do contrato.</li>
+<li>A fórmula fica presa ao framework, então um coletor de outro fabricante teria que
+   entregar sinais brutos no formato que o nosso pipeline espera, em vez de entregar
+   a grandeza acordada.</li>
+<li>O contrato deixa de descrever o dado e passa a descrever um cálculo, o que é uma
+   fronteira muito pior de versionar.</li>
+</ol>
+<h3 id="quem-materializa-o-alvo">Quem materializa o alvo<a class="headerlink" href="#quem-materializa-o-alvo" title="Permanent link">&para;</a></h3>
+<p>Uma fórmula canônica, em <a href="../fleven/data/energy.py"><code>fleven/data/energy.py</code></a>, com três
+chamadores previstos. Hoje existe um:</p>
+<table>
+<thead>
+<tr>
+<th>caminho</th>
+<th>quem chama</th>
+<th>quando</th>
+<th>status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eVED (<code>fleven run</code>, <code>cleven</code>)</td>
+<td><code>EvedTripSource.read_trips</code></td>
+<td>ao ler, em memória</td>
+<td><strong>[implementado]</strong> <code>sources/eved.py</code></td>
+</tr>
+<tr>
+<td>feeder (replay)</td>
+<td><code>DerivingCollector.process</code></td>
+<td>ao materializar a viagem</td>
+<td><strong>[implementado]</strong> <code>tools/feeder/collector.py</code></td>
+</tr>
+<tr>
+<td>produção OBD</td>
+<td>coletor embarcado</td>
+<td>ao finalizar a viagem</td>
+<td><strong>[não existe]</strong></td>
+</tr>
+</tbody>
+</table>
+<p>O <code>pipeline.py</code> não sabe da fórmula, e <strong>não pode saber</strong>: ele recebe DataFrames que
+já têm a coluna que o contrato nomeia. Essa é a regra que a fronteira existe para
+proteger.</p>
+<h3 id="por-que-o-eved-e-um-caso-especial">Por que o eVED é um caso especial<a class="headerlink" href="#por-que-o-eved-e-um-caso-especial" title="Permanent link">&para;</a></h3>
+<p>Os parquets do eVED são a gravação de um coletor que já existiu: os notebooks
+originais do dataset, que materializaram a coluna <code>Energy_Consumption</code>. Do ponto de
+vista da arquitetura, aquele notebook <strong>era</strong> o coletor.</p>
+<p>O problema é que aquele coletor errou. A coluna <code>Energy_Consumption</code> guardada tem três
+defeitos medidos:</p>
+<ol>
+<li>Multiplica a taxa de queima pela velocidade instantânea, o que não está no
+   Algoritmo 1 do artigo do VED. O valor guardado é a energia fisicamente correta
+   multiplicada por <code>v/127,65</code> (identidade exata, correlação 1,0000000000 medida no
+   G05). Consequência: veículo parado com motor ligado tem alvo exatamente zero, em
+   15,7% das leituras (medido em <code>G05/client_0</code>, 60 viagens).</li>
+<li>Converte MAF de "galões" para litros multiplicando por 3,78541, mas MAF está em
+   gramas por segundo. Faltava dividir pela densidade da gasolina. Erro constante,
+   inofensivo isolado.</li>
+<li>Assume amostragem de 1 Hz nos dois ramos (combustão e bateria). O eVED tem mediana
+   de 700 ms entre leituras, p1 de 100 ms e p99 de 2400 ms, com apenas 10,1% dos
+   intervalos exatamente em 1000 ms. Ao somar por 0,5 km, isso distorce cada rótulo
+   por um fator entre 0,56 e 1,01, CV de 13,8%.</li>
+</ol>
+<p>Além disso, para PHEV o ramo usado é só o da bateria, ignorando o combustível, e os
+clientes do G08 têm MAF a 100%, ou seja o lado do combustível está disponível e
+simplesmente não foi usado. Em <code>G08/client_0</code>, 46,4% das leituras com motor queimando
+têm alvo menor ou igual a zero. Em <code>client_171</code>, um PHEV que reporta <code>Fuel Rate</code> do
+OEM, são 82,8% das leituras com o motor comprovadamente ligado (6,04 L/h em média).</p>
+<p>Por isso o <code>EvedTripSource</code> assume o papel de coletor: ele aplica a fórmula canônica
+na leitura e entrega a coluna correta, sem tocar nos parquets. Os arquivos originais
+ficam intactos, <code>Energy_Consumption</code> continua existindo como artefato histórico, e os
+runs antigos do MLflow continuam reproduzíveis.</p>
+<p>A decisão de <strong>não escrever no disco</strong> tem três razões: não muta o dataset de origem,
+não duplica dezenas de GB, e principalmente mantém o paralelo com produção, onde
+também não existe uma etapa de reprocessamento em lote. Em produção o coletor calcula
+uma vez, ao fechar a viagem, e pronto.</p>
+<h3 id="semantica-da-coluna-taxa-nao-energia-acumulada">Semântica da coluna: taxa, não energia acumulada<a class="headerlink" href="#semantica-da-coluna-taxa-nao-energia-acumulada" title="Permanent link">&para;</a></h3>
+<p>A coluna materializada guarda <strong>potência instantânea em kW</strong> <strong>[implementado]</strong>, não
+energia já integrada por leitura. A integração de <code>taxa × dt</code> na construção do rótulo,
+pela regra do trapézio e simétrica com a integração de distância que já existe no
+<code>pipeline.py</code>, é <strong>[implementado]</strong>: quando <code>target_kind = "rate"</code>, <code>pipeline.py</code>
+integra o alvo pela mesma quadratura usada para a distância, em vez de somar os
+valores crus.</p>
+<p>O motivo é de transferência entre coletores. Energia por leitura é propriedade do
+veículo <strong>e da cadência do logger</strong>. Decompondo a variância no G05, em log, 66,8% da
+variação de energia-por-leitura vem do <code>dt</code> e não do veículo (correlação de +0,761
+com <code>log dt</code>, contra -0,086 para a taxa). Como a coluna do alvo também entra como
+entrada autorregressiva do modelo, isso significaria alimentar o LSTM com uma feature
+cuja maior fonte de variação é o jitter do logger. E um modelo treinado na cadência do
+eVED não transferiria para a cadência do coletor OBD.</p>
+<p>Taxa é invariante à cadência, é o que qualquer coletor consegue produzir de forma
+idêntica, e é interpretável quando o <code>prediction-mode</code> é <code>steps</code> (potência futura em
+kW).</p>
+<h2 id="o-feeder-como-coletor-simulado">O feeder como coletor simulado<a class="headerlink" href="#o-feeder-como-coletor-simulado" title="Permanent link">&para;</a></h2>
+<p>Com a fronteira definida, o papel do feeder fica exato: ele é a <strong>implementação de
+referência do coletor</strong>, rodando sobre dados gravados em vez de sobre um barramento
+CAN.</p>
+<p>Ele faz parte do que o coletor embarcado vai fazer:</p>
+<ul>
+<li><strong>[implementado]</strong> lê pontos em cadência real, ponto a ponto (<code>on_point</code>), não em lote;</li>
+<li><strong>[implementado]</strong> materializa a trip atomicamente, com <code>*.tmp</code> durante a escrita,
+  para que o <code>ObdTripSource</code> nunca leia um arquivo pela metade;</li>
+<li><strong>[implementado]</strong> consulta o contexto de rota por posição, via Valhalla, em vez de
+  copiar as colunas de mapa que o eVED já traz;</li>
+<li><strong>[implementado]</strong> calcula o alvo (<code>materializar</code>);</li>
+<li><strong>[implementado]</strong> separa transporte de coleta, com o <code>DerivingCollector</code> recusando
+  rodar quando o contrato exige contexto e nenhum provedor foi configurado.</li>
+</ul>
+<p>Uma coisa que ele <strong>[não faz]</strong>, e é importante não confundir: <strong>o feeder não decide
+onde uma viagem começa e termina</strong>. Ele itera sobre os arquivos <code>trip_*.parquet</code> que o
+eVED já delimitou e reproduz cada um. As fronteiras são herdadas do dataset, não
+decididas. Em produção essa decisão é do coletor, e é o assunto da seção seguinte.</p>
+<p>Quando o coletor real existir, ele substitui o feeder sem que nada acima dele mude.
+É por isso que o feeder vive em <code>tools/</code> e <strong>não entra no FAB nem na imagem slim do
+cliente</strong>: ele é a peça que será trocada.</p>
+<h2 id="fronteira-de-viagem-e-buracos-no-fluxo">Fronteira de viagem e buracos no fluxo<a class="headerlink" href="#fronteira-de-viagem-e-buracos-no-fluxo" title="Permanent link">&para;</a></h2>
+<p>Esta seção registra uma decisão que só faz sentido tomar quando o coletor embarcado
+for desenhado, e o raciocínio que a sustenta.</p>
+<h3 id="o-problema-no-dado-gravado">O problema, no dado gravado<a class="headerlink" href="#o-problema-no-dado-gravado" title="Permanent link">&para;</a></h3>
+<p>Uma viagem do eVED pode ter buracos: leituras consecutivas separadas por minutos. O
+arquivo não sinaliza nada; são só duas linhas com timestamps distantes.</p>
+<p>O pipeline calcula distância integrando <code>velocidade × tempo</code>, então um buraco de 10
+minutos a 50 km/h vira <strong>8,3 km percorridos num único passo</strong>. Isso é ficção: ninguém
+sabe o que o veículo fez ali.</p>
+<p>O estrago concreto é no rótulo. Uma janela que encosta no buraco pergunta "ande até
+completar 0,5 km", o passo seguinte pula 8,3 km, e ela para ali. O rótulo então soma a
+energia de <strong>uma leitura</strong>, meio segundo de viagem, e é gravado como se fosse a energia
+de 0,5 km. Numa viagem sintética de teste:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>rótulo honesto (72 leituras) : 720
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>rótulo produzido (1 leitura) :  10     &lt;- 72 vezes menor, e entra no treino como fato
+</code></pre></div>
+<p>Essas janelas <strong>não deveriam existir</strong>. O segmento acabou, não há dado, não há como
+medir os próximos 0,5 km. O certo é descartá-las, que é o que aconteceria se o arquivo
+simplesmente terminasse ali, que é a verdade.</p>
+<p><code>trip_gap_split_s</code> <strong>[implementado]</strong> faz esse descarte, cortando a viagem no buraco.</p>
+<h3 id="por-que-isso-e-conserto-de-dado-de-terceiro">Por que isso é conserto de dado de terceiro<a class="headerlink" href="#por-que-isso-e-conserto-de-dado-de-terceiro" title="Permanent link">&para;</a></h3>
+<p>Em produção o buraco <strong>não deveria chegar ao arquivo</strong>. O coletor está ao vivo: ele
+sabe, no momento, que o fluxo parou e quando voltou. O comportamento certo é fechar a
+viagem quando o fluxo para e abrir outra quando volta. As leituras de antes viram a
+viagem N, as de depois a N+1. Nada se perde, exceto as janelas a cavalo do buraco, que
+não teriam rótulo possível de qualquer forma.</p>
+<p>Ou seja: em produção não existe "corte", porque não existe buraco dentro de uma viagem.
+As viagens nascem limpas. O campo do contrato existe porque o eVED foi gravado por
+outra pessoa, com outro critério, e herdamos os buracos prontos. Mantê-lo no pipeline é
+defesa em profundidade, para o caso de um coletor cair no meio de uma viagem e voltar.</p>
+<h3 id="o-criterio-certo-nao-e-duracao-e-o-que-o-veiculo-estava-fazendo">O critério certo não é duração, é o que o veículo estava fazendo<a class="headerlink" href="#o-criterio-certo-nao-e-duracao-e-o-que-o-veiculo-estava-fazendo" title="Permanent link">&para;</a></h3>
+<p>Um limiar de tempo é <strong>proxy</strong>. O critério real é outro, e só o coletor tem acesso a ele:</p>
+<table>
+<thead>
+<tr>
+<th>situação</th>
+<th>o que houve</th>
+<th>decisão certa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parado no semáforo, start-stop desliga o motor</td>
+<td>barramento silencia por 40 s, o carro não saiu do lugar</td>
+<td><strong>manter a viagem aberta</strong>: essa marcha lenta é parte do padrão de condução que queremos modelar, e o consumo ali é genuinamente perto de zero</td>
+</tr>
+<tr>
+<td>estacionou</td>
+<td>ignição desligada, minutos ou horas</td>
+<td><strong>fechar a viagem</strong></td>
+</tr>
+<tr>
+<td>perdeu o barramento andando</td>
+<td>adaptador soltou, ECU dormiu, processo caiu</td>
+<td><strong>fechar a viagem</strong>: não sabemos o que houve naqueles segundos de condução</td>
+</tr>
+</tbody>
+</table>
+<p>O que decide é <strong>se o veículo estava em movimento</strong> e se a ignição foi desligada. O
+coletor sabe as duas coisas em tempo real; um dataset gravado, não.</p>
+<p>O limiar de 60 s funciona no eVED porque lá as duas populações coincidem quase
+perfeitamente com a duração:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>buracos de 10 a 60 s : 99,3% com o carro PARADO nas duas pontas, MAF médio 0,20
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>buracos acima de 60 s:  0,0% parado, velocidade média 84,6 km/h, MAF médio 13,21
+</code></pre></div>
+<p>Abaixo de 60 s é o carro parado com o logger ocioso, e atravessar não inventa nada
+porque não havia nada acontecendo. Acima é o carro em rodovia com o registro falhando.
+A coincidência é do dataset, não um princípio: <strong>em produção, usar o proxy seria pior
+que usar o critério direto, que está disponível</strong>.</p>
+<h3 id="uma-opcao-que-so-producao-tem">Uma opção que só produção tem<a class="headerlink" href="#uma-opcao-que-so-producao-tem" title="Permanent link">&para;</a></h3>
+<p>O coletor pode <strong>registrar</strong> a interrupção em vez de só partir a viagem: uma coluna
+marcando "aqui o fluxo caiu por N segundos" preserva a informação, e o pipeline decide
+o que fazer com ela. Fechar a viagem descarta o fato de que houve falha; um marcador
+não.</p>
+<p><strong>[não existe]</strong>, e é decisão para o desenho do coletor embarcado, não para agora.</p>
+<h2 id="o-que-falta-para-producao">O que falta para produção<a class="headerlink" href="#o-que-falta-para-producao" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Coletor embarcado real</strong>, lendo do barramento OBD-II. O feeder define parte do
+  contrato de comportamento que ele tem que cumprir, mas não todo: fronteira de viagem
+  o feeder herda do eVED e não decide.</li>
+<li><strong>Política de fronteira de viagem</strong>, conforme a seção "Fronteira de viagem e buracos
+  no fluxo": fechar por ignição desligada e por perda de barramento em movimento, não
+  por limiar de tempo. Inclui decidir se a interrupção vira marcador no dado.</li>
+<li><strong>Alvo derivado de sinais realmente disponíveis no barramento.</strong> A fórmula canônica
+  usa MAF, fuel trims, corrente e tensão de bateria. Nem todo veículo expõe todos;
+  a coluna de qualidade materializada junto ao alvo registra quais termos entraram.</li>
+<li><strong>Registro operacional de nós.</strong> O mecanismo existe (<code>flwr supernode register</code>,
+  chaves EC P-384, <code>--enable-supernode-auth</code>), falta o procedimento de frota.</li>
+<li><strong>Reprodutibilidade do scaler entre reinícios do cliente</strong>, apontada em
+  <a href="../FLEVENCLIENT_PRODUCAO/">FLEVENCLIENT_PRODUCAO.md</a>.</li>
+<li><strong>Provedor de rota em produção.</strong> Hoje o Valhalla é local e o extrato é regional
+  (<code>--extract-version</code>). Em campo isso vira dependência de serviço, com latência e
+  disponibilidade a tratar.</li>
+<li><strong>Densidade de acidentes de via a partir do provedor</strong>, detalhado abaixo.</li>
+</ul>
+<h3 id="pendencia-especifica-acidentes-de-via-cruzamento-travessia-ponto-de-onibus">Pendência específica: acidentes de via (cruzamento, travessia, ponto de ônibus)<a class="headerlink" href="#pendencia-especifica-acidentes-de-via-cruzamento-travessia-ponto-de-onibus" title="Permanent link">&para;</a></h3>
+<p><strong>Estas features funcionam nos experimentos e NÃO funcionam em produção</strong>, e o motivo
+é a assimetria que este documento descreve: elas vêm de colunas que os autores do eVED
+juntaram do mapa, não do barramento.</p>
+<p>O que foi medido (G05, janelas de 0,5 km, correlação intra-cliente com
+<code>Total Power[kW]</code>, contando eventos distintos e não leituras):</p>
+<table>
+<thead>
+<tr>
+<th>variável</th>
+<th>correlação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cruzamentos</td>
+<td>+0,2489</td>
+</tr>
+<tr>
+<td>travessias</td>
+<td>+0,1912</td>
+</tr>
+<tr>
+<td>pontos de ônibus</td>
+<td>+0,0815</td>
+</tr>
+</tbody>
+</table>
+<p>Para comparação, o limite de velocidade dá -0,2222 e o desnível +0,2181. Ou seja,
+cruzamento é competitivo com as features de rota que já usamos, e o mecanismo é o
+mais forte que medimos: parar custa 21,93 L/100km contra 5,61 em cruzeiro, um fator
+de 3,9.</p>
+<p>Duas armadilhas encontradas no caminho, e elas voltarão a aparecer para quem
+implementar isso a partir dos nós do Valhalla:</p>
+<ol>
+<li><strong>Agregar o marcador cru pela grade de distância não funciona.</strong> No eVED a coluna
+   é <code>1.0</code> onde há o acidente e <code>NaN</code> no resto; interpolada, ela vira <code>NaN</code> com zero
+   ou um acidente e <code>1.0</code> constante com dois ou mais. Não distingue contagem alguma.</li>
+<li><strong>Contar leituras marcadas vaza velocidade.</strong> O marcador dura 4 leituras em
+   mediana, e o comprimento do evento correlaciona -0,35 com a velocidade: quem passa
+   devagar pelo mesmo cruzamento gera mais leituras marcadas. A correlação medida cai
+   de +0,2976 para +0,2489 ao trocar contagem de leituras por eventos distintos, e a
+   diferença era vazamento.</li>
+</ol>
+<p>A solução para as duas é materializar o marcador como <strong>0/1</strong> e deixar a média sobre a
+grade de distância produzir uma densidade por distância. Verificado sinteticamente,
+mesma via a três cadências: 40 leituras dão densidade 0,0857, 120 dão 0,0952 e 400 dão
+0,0952, enquanto a contagem crua de leituras marcadas vai de 3 para 32.</p>
+<h3 id="por-que-o-codigo-disso-foi-removido">Por que o código disso foi removido<a class="headerlink" href="#por-que-o-codigo-disso-foi-removido" title="Permanent link">&para;</a></h3>
+<p>A implementação existiu (<code>fleven/data/context.py</code> mais o contrato
+<code>contracts/eved_potencia_contexto.toml</code>) e <strong>foi removida</strong>. O motivo não é que
+estivesse errada, e sim que a evidência ficou contrária em duas frentes:</p>
+<ul>
+<li><strong>Mediu pior.</strong> Acrescentar as três densidades ao contrato de rota piorou o R² em 8
+  de 9 configurações, delta médio -0,0446, cancelando quase todo o ganho de +0,0455 das
+  features de rota.</li>
+<li><strong>A explicação que sustentava "remedir depois" foi refutada.</strong> A hipótese era que a
+  culpa fosse a amostra efetiva, com janelas sobrepostas em 98%. A varredura de
+  <code>train_stride</code> (2, 10, 25, 50, 100), com o conjunto de validação mantido constante
+  via <code>stride × decimate = 100</code>, mostrou <code>r2_pooled</code> <strong>plano</strong> entre 0,4312 e 0,4387.
+  Mais amostra independente não muda nada, então não havia conserto pendente esperando.</li>
+</ul>
+<p>Guardar código sem consumidor e sem hipótese de melhora é dívida. O raciocínio, as
+armadilhas e os números ficam aqui; a implementação está no histórico do git.</p>
+<p><strong>O que falta para produção.</strong> O <code>ValhallaRouteProvider</code> pede apenas atributos de
+<strong>aresta</strong> (<code>edge.*</code> em <code>COLUNAS_DE_EDGE</code>) mais a altitude. Cruzamento e semáforo são
+atributos de <strong>nó</strong> (<code>node.*</code> no <code>trace_attributes</code>), um caminho de código diferente:
+nó é um ponto no trajeto, aresta é um trecho, então a agregação por distância também
+muda. Enquanto isso não existir, um contrato com estas features <strong>não pode ser usado
+no fluxo OBD</strong>, e a materialização em <code>context.py</code> só cobre o caminho eVED.</p>
+<p><strong>Resultado medido, e é negativo.</strong> Acrescentar as três densidades a um contrato que já
+tinha as três features de rota <strong>piorou</strong> o R² em 8 de 9 configurações, com delta médio
+de -0,0446, cancelando quase todo o ganho de +0,0455 que as features de rota tinham
+dado. Não é redundância: cruzamentos correlacionam apenas -0,18 com o limite de
+velocidade e -0,008 com o desnível, ou seja carregam sinal independente. É variância:
+ver a seção seguinte.</p>
+<h2 id="rota-contexto-e-o-que-nao-cabe-no-contrato">Rota, contexto e o que não cabe no contrato<a class="headerlink" href="#rota-contexto-e-o-que-nao-cabe-no-contrato" title="Permanent link">&para;</a></h2>
+<p>Dois vocabulários se sobrepõem neste projeto e vale separá-los, porque a confusão já
+gerou um contrato mal nomeado (<code>eved_potencia_contexto.toml</code>, cujos blocos novos são,
+mecanicamente, apenas mais <code>[[route_feature]]</code>).</p>
+<p><strong><code>[[route_feature]]</code> é um mecanismo.</strong> Um escalar por janela, obtido agregando uma
+coluna sobre o trecho <strong>à frente</strong>, numa grade de distância, e repetido em todos os
+passos da janela. O contrato proíbe que ele nomeie o alvo ou uma feature dinâmica já
+declarada, porque um sinal do veículo medido no trecho futuro revela como o trajeto foi
+percorrido, e não a via.</p>
+<p><strong>Contexto é uma procedência.</strong> Dado que não vem do barramento nem é calculado dos
+sensores: limite de velocidade, altitude, cruzamento, faixas, mas também temperatura
+ambiente e hora do dia.</p>
+<p>Contexto é mais amplo. Feature de rota é o subconjunto do contexto que descreve a via à
+frente <strong>e</strong> que dá para agregar sobre um trecho de distância definida.</p>
+<h3 id="o-que-nao-tem-como-ser-expresso-hoje">O que não tem como ser expresso hoje<a class="headerlink" href="#o-que-nao-tem-como-ser-expresso-hoje" title="Permanent link">&para;</a></h3>
+<p><code>derive_input_size</code> é <code>F + (F se máscara) + 1 + R</code>. Não existe conceito de escalar por
+janela que não venha do trecho à frente. Ficam de fora:</p>
+<table>
+<thead>
+<tr>
+<th>variável</th>
+<th>por que não cabe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>temperatura ambiente</td>
+<td>é contexto, mas não é atributo da via à frente</td>
+</tr>
+<tr>
+<td>hora do dia</td>
+<td>é contexto, mas não é espacial</td>
+</tr>
+<tr>
+<td>tempo desde o início da viagem (motor frio)</td>
+<td>é estado do veículo, nem contexto é</td>
+</tr>
+</tbody>
+</table>
+<p>Expressá-las exigiria um bloco novo, algo como <code>[[window_feature]]</code>: um escalar por
+janela, calculado no instante do fim do contexto, sem agregação espacial.</p>
+<h3 id="por-que-isso-nao-foi-implementado">Por que isso NÃO foi implementado<a class="headerlink" href="#por-que-isso-nao-foi-implementado" title="Permanent link">&para;</a></h3>
+<p>O motor frio é o mais tentador dos três: medimos <strong>+33% a +48% de consumo no primeiro
+minuto</strong> de viagem, efeito que some depois de ~2 minutos, e ele é derivável só do
+<code>Timestamp(ms)</code>, sem serviço externo, idêntico em produção. Ainda assim, três medidas
+dizem para não implementar agora:</p>
+<ol>
+<li><strong>Acrescentar features está saindo negativo.</strong> As densidades de acidente de via
+   têm sinal independente e mesmo assim pioraram 8 de 9 configurações.</li>
+<li><strong>O sinal já está na entrada.</strong> A janela de 100 leituras cobre 70,6 s em mediana
+   (p10 48 s, p90 89 s), e o alvo entra como canal autorregressivo. Uma janela no
+   início da viagem já contém as leituras de potência elevada do motor frio.</li>
+<li><strong>A restrição que morde é amostra efetiva, não feature.</strong> Com <code>train_stride=2</code> e
+   janela de 100, as janelas se sobrepõem em 98%: as ~21 mil janelas de treino de um
+   cliente equivalem a ~420 independentes. O <code>val_loss</code> sobe a partir da época 2, e uma
+   regressão ridge sobre a média da janela chega perto do melhor LSTM da grade.</li>
+</ol>
+<p>A ordem correta é resolver a amostra efetiva primeiro (começando por <code>train_stride</code>) e
+só então reavaliar features. Implementar <code>[[window_feature]]</code> antes disso seria repetir
+o experimento que já saiu negativo, com um mecanismo novo para manter.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Fleven - Apache-2.0
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../assets/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
