@@ -763,6 +763,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Protocolo: seleção por validação, teste só no final">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validação
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1036,6 +1053,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Protocolo: seleção por validação, teste só no final">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validação
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1137,12 +1171,51 @@
 <h2 id="protocolo-selecao-por-validacao-teste-so-no-final">Protocolo: seleção por validação, teste só no <code>final</code><a class="headerlink" href="#protocolo-selecao-por-validacao-teste-so-no-final" title="Permanent link">&para;</a></h2>
 <p>A seleção de hiperparâmetros (<code>cleven sweep</code>) usa <strong>validação</strong>, nunca o conjunto de teste. O teste só é construído e avaliado por <code>cleven final</code>, uma única vez, para a config já escolhida.</p>
 <p><strong>Trava de uso único do <code>final</code></strong>: o <code>cleven final</code> recusa rodar quando o grupo já tem um run FINISHED com a métrica <code>test/r2</code> gravada no experimento <code>cleven_{grupo}</code>, e sai com código 1 explicando o motivo. A razão é que rodar <code>final</code> várias vezes, com hashes diferentes ou não, permitiria escolher o melhor resultado de teste entre tentativas, que é exatamente a forma de vazamento que separar validação de teste existe para impedir. Para a re-execução legítima (correção de bug, contrato novo, mudança de pipeline) use <code>--force</code>: o comando então apenas avisa e prossegue. A checagem é fail-open, ou seja, se o MLflow estiver indisponível o comando roda com aviso em vez de travar o trabalho.</p>
-<p><strong>Recorte de validação</strong> (<code>cleven/data.py</code>, <code>split_validation</code>): para cada cliente, as janelas de treino chegam do pipeline do fleven em ordem de trip. <code>cleven</code> recorta o <strong>fim</strong> desse bloco como validação - uma aproximação de holdout temporal, sem re-embaralhar:</p>
-<ul>
-<li><strong>Corte</strong>: os últimos <code>val_fraction</code> (default 0.15) das janelas do bloco de treino do cliente viram candidatas a validação.</li>
-<li><strong>Embargo</strong>: as <code>sequence_length</code> janelas imediatamente antes do corte são descartadas do treino (não viram nem treino nem validação). Sem esse embargo, a última janela de treino e a primeira de validação compartilhariam a maior parte dos pontos (o treino avança de <code>train_stride</code> em <code>train_stride</code>, bem menor que <code>sequence_length</code>), vazando informação do "futuro" de validação para o treino.</li>
-<li><strong>Decimação de 25</strong>: dentro do bloco de validação, só 1 a cada 25 janelas é mantida. As janelas vizinhas dentro do mesmo bloco se sobrepõem quase totalmente (mesmo motivo do embargo), então sem decimar a métrica de validação seria essencialmente a média de milhares de cópias quase idênticas da mesma amostra - infla artificialmente a confiança sem agregar informação nova.</li>
-</ul>
+<h3 id="validacao">Validação<a class="headerlink" href="#validacao" title="Permanent link">&para;</a></h3>
+<p>A validação sai de <strong>viagens inteiras</strong>, cortadas <strong>antes</strong> de qualquer coisa
+tocar o pipeline do <code>fleven</code>: <code>cleven/source.py::TrainPoolSource</code> embrulha a
+fonte real (<code>EvedTripSource</code>) e esconde as viagens de validação de
+<code>read_trips</code>, usando o mesmo <code>_stratified_split</code> que separa treino/teste
+(ordena por consumo médio e distribui uniformemente, para cobrir regimes
+baixo/médio/alto). <code>build_dataloaders</code> (o pipeline compartilhado com o
+federado, sem nenhum código de validação) só enxerga o que sobra - o scaler é
+ajustado sobre isso, então a validação fica fora do fit por construção, não
+por um cuidado manual em cada chamada. <code>load_group</code> recupera as viagens
+escondidas (<code>source.val_trips</code>, um método extra fora do <code>Protocol
+TripSource</code> - só o <code>cleven</code> chama) e as janela por conta própria, reusando o
+scaler que <code>build_dataloaders</code> devolveu. As janelas são geradas com
+<code>non_overlapping=True</code>: o contexto de uma começa onde o rótulo da anterior
+terminou, então nenhum rótulo compartilha leituras com outro.</p>
+<p><strong>Mudança de semântica (2026-08-11, mover a validação para o <code>cleven</code>)</strong>:
+antes, <code>val_fraction</code> era fração das viagens de <strong>treino</strong> (o corte vinha
+<em>depois</em> do split treino/teste, dentro do pipeline). Agora é fração de
+<strong>todas</strong> as viagens, porque o corte acontece antes do pipeline, e é o
+pipeline quem faz o split treino/teste sobre o que sobrou. Com
+<code>train_test_split = 0.7</code> e <code>val_fraction = 0.15</code>, a divisão passa de
+59,5%/10,5%/30% para <strong>59,5% treino / 15% validação / 25,5% teste</strong>. Números
+de <code>val_fraction</code> de runs anteriores a esta data não são comparáveis - a
+fração nominal é a mesma, mas o denominador mudou.</p>
+<p>Um cliente só cede viagem para a validação se, depois do corte candidato,
+sobrarem pelo menos <strong>3</strong> viagens no pool (treino+teste) e pelo menos 1 na
+validação; abaixo disso o corte é descartado e o cliente contribui só com o
+pool inteiro, sem ceder nenhuma validação. O limiar do pool é 3, não 2,
+porque o pool ainda vai ser dividido em treino/teste PELO PIPELINE
+(<code>train_test_split</code> típico 0.7): com pool=2, <code>int(2*0.7)=1</code> deixaria uma
+única viagem de treino, que nos parâmetros de produção (<code>sequence_length=100</code>,
+<code>prediction_distance_km=0.5</code>) não rende nenhuma janela — é o caso real do
+<code>client_4</code> do G05 (3 viagens totais), que motivou a correção. Com pool=3,
+<code>int(3*0.7)=2</code> sobra para treino, o mesmo que o cliente teria sem nenhuma
+validação. Não é um limiar fixo arbitrário: para <code>val_fraction</code> grande, um
+limiar pequeno demais deixaria o pool com 1 viagem só de qualquer forma,
+então <code>TrainPoolSource</code> faz o split candidato e CONFERE o resultado, em vez
+de tentar prever de antemão se vai dar certo. <code>load_group</code> reporta
+(<code>clientes_sem_validacao</code>) quais clientes ficaram de fora.</p>
+<blockquote>
+<p><code>val_decimate</code> foi removido em 2026-08-10. Ele mantinha 1 janela a cada N para
+compensar a sobreposição da validação antiga, que era recortada da cauda das janelas
+de treino. Com o split por viagem não há o que decimar. <strong>Runs gravados antes dessa
+data não são comparáveis com os novos.</strong></p>
+</blockquote>
 <p><strong>Modo varredura não expõe o teste</strong>: <code>load_group(..., with_test=False)</code> (o modo usado por <code>cleven sweep</code>) nunca inclui <code>X_test</code>/<code>y_test</code>/<code>idx_test</code> no <code>GroupDataset</code> retornado - a seleção de hiperparâmetros não tem como alcançá-los, mesmo por engano. Isso é uma garantia de <strong>inalcançabilidade</strong>, não de <strong>não-cálculo</strong>: <code>build_dataloaders</code> (do <code>fleven.data.pipeline</code>, compartilhado com o federado) não tem parâmetro para pular o cálculo das janelas de teste, então ele sempre as monta internamente; <code>cleven</code> simplesmente as descarta antes de devolver o <code>GroupDataset</code>. É desperdício de CPU conhecido e aceito, não um risco de vazamento.</p>
 <h2 id="metricas">Métricas<a class="headerlink" href="#metricas" title="Permanent link">&para;</a></h2>
 <p>Todas em unidade física (Wh/km, ou a unidade do target do contrato), invertidas janela a janela pelo <code>StandardScaler</code> do cliente de origem - cada cliente tem seu próprio scaler, então não dá para inverter em bloco.</p>

@@ -1175,7 +1175,12 @@ dizendo onde procurou.</p>
 <tr>
 <td><code>route_grid_m</code></td>
 <td><code>25.0</code></td>
-<td>Passo da grade de distância das features de rota, em metros</td>
+<td>Passo da grade de distância das features de rota, em metros. Em <code>route_mode = "profile"</code> isso não é só escala: determina <code>P</code>, a forma da entrada de rota do modelo (ver abaixo). Contratos com <code>route_grid_m</code> diferentes produzem modelos com <code>route_shape</code> incompatível na mesma federação.</td>
+</tr>
+<tr>
+<td><code>route_mode</code></td>
+<td><code>"statistics"</code></td>
+<td><code>"statistics"</code>: cada <code>[[route_feature]]</code> (par coluna+agregação) vira um número. <code>"profile"</code>: cada coluna distinta vira <code>P</code> pontos da grade de distância, preservando a ordem espacial do trecho em vez de resumi-la numa média.</td>
 </tr>
 <tr>
 <td><code>target_kind</code></td>
@@ -1306,23 +1311,34 @@ matar viagens inteiras.</p>
 acontece de verdade no eVED: cerca de 1% das linhas trazem o limite de velocidade
 como faixa, no formato <code>'40-48'</code>.</p>
 <h2 id="como-o-input_size-e-derivado">Como o <code>input_size</code> é derivado<a class="headerlink" href="#como-o-input_size-e-derivado" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>input_size = F + (F se máscara ligada) + 1 + R
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>input_size = F + (F se máscara ligada) + 1
 </code></pre></div>
-<p>onde <code>F</code> é o número de features e <code>R</code> o número de features de rota. O <code>+1</code> é a
-coluna autorregressiva do alvo.</p>
-<p>A ordem das colunas no tensor é:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[ features escalonadas (F) ][ máscara (F, se ligada) ][ alvo (1) ][ rota (R) ]
+<p>onde <code>F</code> é o número de features. O <code>+1</code> é a coluna autorregressiva do alvo. A rota
+<strong>não</strong> entra em <code>input_size</code>: ela é um tensor próprio, injetado uma vez no estado
+final da sequência em vez de replicado em todos os passos da janela.</p>
+<p>A ordem das colunas do tensor de sequência é:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[ features escalonadas (F) ][ máscara (F, se ligada) ][ alvo (1) ]
 </code></pre></div>
-<p>As colunas de rota são um valor por janela, não por leitura, então são repetidas em
-todos os passos da janela. É isso que permite que LSTM, MLP e lstm_dense funcionem
-sem qualquer alteração: só a largura da entrada muda.</p>
-<p>Servidor e cliente chamam <code>derive_input_size</code> sobre o mesmo contrato. <strong>Não defina
-<code>input-size</code> manualmente.</strong></p>
+<p>Quando o contrato declara <code>[[route_feature]]</code>, o modelo recebe um segundo tensor,
+de forma <code>(batch, P, R)</code>, dado por <code>derive_route_shape(contract,
+prediction_distance_km)</code>:</p>
+<ul>
+<li>Em <code>route_mode = "statistics"</code>, <code>P = 1</code> e <code>R</code> é o número de pares
+  <code>(coluna, agregação)</code> — cada entrada de <code>[[route_feature]]</code> vira uma coluna.</li>
+<li>Em <code>route_mode = "profile"</code>, <code>P</code> vem da grade de distância
+  (<code>round(prediction_distance_km * 1000 / route_grid_m) + 1</code>) e <code>R</code> é o número de
+  <strong>colunas distintas</strong> citadas em <code>[[route_feature]]</code> (não o número de pares —
+  em modo perfil o contrato recusa a mesma coluna duas vezes).</li>
+</ul>
+<p>Servidor e cliente chamam <code>derive_input_size</code> <strong>e</strong> <code>derive_route_shape</code> sobre o
+mesmo contrato, e passam ambos os valores a <code>get_model</code> (<code>input_size</code> e
+<code>route_shape</code>). <strong>Não defina <code>input-size</code> manualmente.</strong></p>
 <h2 id="o-fingerprint-e-o-handshake-federado">O fingerprint e o handshake federado<a class="headerlink" href="#o-fingerprint-e-o-handshake-federado" title="Permanent link">&para;</a></h2>
 <p><code>contract_fingerprint</code> produz um hash de 16 caracteres cobrindo tudo que define a
 forma da entrada: <code>schema_version</code>, <code>target</code>, a flag de máscara, a sequência
 <strong>ordenada</strong> de features com seu <code>required</code>, a sequência ordenada dos pares de rota,
-e o <code>route_grid_m</code> quando há rota.</p>
+o <code>route_grid_m</code> quando há rota, e o <code>route_mode</code> quando ele não é o padrão
+(<code>"statistics"</code>).</p>
 <p>O servidor envia esse valor no <code>config</code> de cada mensagem de treino e avaliação. O
 cliente compara com o seu antes de participar; se divergir, ele se recusa e devolve
 <code>num-examples=0</code>, que é peso zero na agregação. Isso protege contra FAB misturado,

@@ -1061,11 +1061,17 @@ então runs com horizontes diferentes não são comparáveis entre si, veja a
 ressalva equivalente sobre <code>G04_fedper_fedavg</code> no <code>CLAUDE.md</code>.</p>
 <h3 id="atributos-do-trecho-a-frente-rota">Atributos do trecho à frente (rota)<a class="headerlink" href="#atributos-do-trecho-a-frente-rota" title="Permanent link">&para;</a></h3>
 <p>Quando o contrato (<code>data-contract</code>) declara um ou mais <code>[[route_feature]]</code>
-(ex.: <code>contracts/eved_potencia_rota.toml</code>), <code>X</code> ganha colunas extras: uma por feature
-de rota, repetidas (broadcast) em todos os passos da janela, porque o valor é
-um único escalar por trecho, não uma leitura por passo. O <code>input_size</code>
-cresce de <code>F + 1</code> para <code>F + 1 + R</code>, onde <code>R</code> é o número de features de rota
-(<code>derive_input_size</code> soma esse termo automaticamente).</p>
+(ex.: <code>contracts/eved_potencia_rota.toml</code>), a rota vira um <strong>tensor próprio</strong>,
+de forma <code>(P, R)</code>, injetado uma vez no estado final do modelo (depois do
+LSTM/achatamento), e não mais colunas replicadas em todos os passos de <code>X</code>.
+<code>R</code> é o número de features de rota; <code>P</code> vem da grade de distância
+(<code>prediction_distance_km * 1000 / route_grid_m + 1</code>, ou 1 em modo
+<code>statistics</code>). O <code>input_size</code> de <code>X</code> continua <code>F + (F se máscara) + 1</code> — a
+rota <strong>não</strong> entra nele (veja <code>derive_input_size</code>/<code>derive_route_shape</code> em
+<code>fleven/data/contract.py</code>). Isso também permite carregar o <strong>perfil</strong> do
+trecho (a sequência de pontos ao longo da grade) em vez de só a média por
+agregação, preservando a ordem espacial do trecho à frente
+(<code>route_mode = "profile"</code>).</p>
 <p>Essas colunas são agregadas sobre uma <strong>grade de distância</strong> (passo
 <code>route_grid_m</code>, padrão 25 m), nunca sobre as leituras OBD cruas. Agregar por
 leitura vazaria a velocidade futura para dentro das features: o OBD amostra

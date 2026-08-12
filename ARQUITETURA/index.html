@@ -1611,7 +1611,11 @@ estivesse errada, e sim que a evidência ficou contrária em duas frentes:</p>
   culpa fosse a amostra efetiva, com janelas sobrepostas em 98%. A varredura de
   <code>train_stride</code> (2, 10, 25, 50, 100), com o conjunto de validação mantido constante
   via <code>stride × decimate = 100</code>, mostrou <code>r2_pooled</code> <strong>plano</strong> entre 0,4312 e 0,4387.
-  Mais amostra independente não muda nada, então não havia conserto pendente esperando.</li>
+  Mais amostra independente não muda nada, então não havia conserto pendente esperando.
+  (O mecanismo <code>stride × decimate</code> não existe mais: a validação, a partir de
+  2026-08-10, sai de viagens inteiras, separadas do treino e janeladas sem
+  sobreposição — <code>val_decimate</code> foi removido. A conclusão acima continua valendo,
+  é só o "como" que mudou; ver <code>sweeps/stride.toml</code>.)</li>
 </ul>
 <p>Guardar código sem consumidor e sem hipótese de melhora é dívida. O raciocínio, as
 armadilhas e os números ficam aqui; a implementação está no histórico do git.</p>
@@ -1631,19 +1635,26 @@ ver a seção seguinte.</p>
 <p>Dois vocabulários se sobrepõem neste projeto e vale separá-los, porque a confusão já
 gerou um contrato mal nomeado (<code>eved_potencia_contexto.toml</code>, cujos blocos novos são,
 mecanicamente, apenas mais <code>[[route_feature]]</code>).</p>
-<p><strong><code>[[route_feature]]</code> é um mecanismo.</strong> Um escalar por janela, obtido agregando uma
-coluna sobre o trecho <strong>à frente</strong>, numa grade de distância, e repetido em todos os
-passos da janela. O contrato proíbe que ele nomeie o alvo ou uma feature dinâmica já
-declarada, porque um sinal do veículo medido no trecho futuro revela como o trajeto foi
-percorrido, e não a via.</p>
+<p><strong><code>[[route_feature]]</code> é um mecanismo.</strong> Uma coluna agregada sobre o trecho <strong>à
+frente</strong>, numa grade de distância. <code>[implementado]</code> Não é mais replicada nos passos
+da janela: é um tensor próprio <code>(batch, P, R)</code>, injetado uma vez no estado final da
+sequência, via <code>RouteEncoder</code>. Em <code>route_mode = "statistics"</code> (padrão) <code>P = 1</code> e cada
+<code>[[route_feature]]</code> (par coluna+agregação) vira uma entrada — mecanicamente
+equivalente à agregação escalar de antes, só que fora da sequência em vez de
+repetida dentro dela. Em <code>route_mode = "profile"</code>, <code>P</code> são os pontos da própria
+grade de distância e o modelo recebe o perfil, não o resumo: preserva a ordem
+espacial do trecho, que a média apaga (ver <code>docs/CONTRACTS.md</code>). O contrato proíbe
+que ele nomeie o alvo ou uma feature dinâmica já declarada, porque um sinal do
+veículo medido no trecho futuro revela como o trajeto foi percorrido, e não a via.</p>
 <p><strong>Contexto é uma procedência.</strong> Dado que não vem do barramento nem é calculado dos
 sensores: limite de velocidade, altitude, cruzamento, faixas, mas também temperatura
 ambiente e hora do dia.</p>
 <p>Contexto é mais amplo. Feature de rota é o subconjunto do contexto que descreve a via à
 frente <strong>e</strong> que dá para agregar sobre um trecho de distância definida.</p>
 <h3 id="o-que-nao-tem-como-ser-expresso-hoje">O que não tem como ser expresso hoje<a class="headerlink" href="#o-que-nao-tem-como-ser-expresso-hoje" title="Permanent link">&para;</a></h3>
-<p><code>derive_input_size</code> é <code>F + (F se máscara) + 1 + R</code>. Não existe conceito de escalar por
-janela que não venha do trecho à frente. Ficam de fora:</p>
+<p><code>derive_input_size</code> é <code>F + (F se máscara) + 1</code>; a rota não entra mais aí, é
+<code>derive_route_shape</code> que dá a forma <code>(P, R)</code> do tensor separado. Não existe conceito
+de escalar por janela que não venha do trecho à frente. Ficam de fora:</p>
 <table>
 <thead>
 <tr>
