@@ -911,10 +911,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grade-padrao-sweepsbaselinetoml" class="md-nav__link">
+  <a href="#grade-padrao-clevensweepsbaselinetoml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Grade padrão (sweeps/baseline.toml)
+        Grade padrão (cleven/sweeps/baseline.toml)
       
     </span>
   </a>
@@ -1313,10 +1313,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grade-padrao-sweepsbaselinetoml" class="md-nav__link">
+  <a href="#grade-padrao-clevensweepsbaselinetoml" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Grade padrão (sweeps/baseline.toml)
+        Grade padrão (cleven/sweeps/baseline.toml)
       
     </span>
   </a>
@@ -1357,7 +1357,7 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 3. Ver o ranking dos runs do grupo, ordenado por val/r2 (pooled, default)</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>cleven<span class="w"> </span>report<span class="w"> </span>-g<span class="w"> </span>G05
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>cleven<span class="w"> </span>report<span class="w"> </span>-g<span class="w"> </span>G05<span class="w"> </span>--order-by<span class="w"> </span>r2_mean<span class="w">   </span><span class="c1"># ranking menos otimista, ver abaixo</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>cleven<span class="w"> </span>report<span class="w"> </span>-g<span class="w"> </span>G05<span class="w"> </span>-c<span class="w"> </span>sweeps/baseline.toml<span class="w">   </span><span class="c1"># lê a tracking_uri do TOML</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>cleven<span class="w"> </span>report<span class="w"> </span>-g<span class="w"> </span>G05<span class="w"> </span>-c<span class="w"> </span>cleven/sweeps/baseline.toml<span class="w">   </span><span class="c1"># lê a tracking_uri do TOML</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># 4. Avaliação única no teste, para a config vencedora</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>cleven<span class="w"> </span>final<span class="w"> </span>--config-hash<span class="w"> </span>&lt;hash&gt;
@@ -1443,8 +1443,8 @@ data não são comparáveis com os novos.</strong></p>
 <li><strong>O cache do pipeline é invalidado ao varrer eixos de janela.</strong> A chave do cache (<code>_cache/client_N_&lt;hash&gt;.npz</code>) inclui a configuração de janelamento, então varrer <code>sequence_length</code> ou <code>prediction_distance_km</code> invalida o cache e reprocessa os parquets a cada combinação nova. Varrer eixos de modelo e de treino (tipo de modelo, learning rate, hidden size) é barato - reaproveita o cache. Por isso <code>cleven sweep</code> ordena a grade agrupando por (grupo, contrato, janela), para que as combinações que compartilham janela rodem em sequência.</li>
 <li><strong>Trips 100% NaN reduzem o dado útil bem abaixo do número de trips.</strong> Ver a seção de métricas acima: no G01, 77 de 397 trips do teste não produzem nenhuma janela, e o cliente 3 perde 94 de 150 trips.</li>
 </ol>
-<h2 id="grade-padrao-sweepsbaselinetoml">Grade padrão (<code>sweeps/baseline.toml</code>)<a class="headerlink" href="#grade-padrao-sweepsbaselinetoml" title="Permanent link">&para;</a></h2>
-<p>A grade em <code>sweeps/baseline.toml</code> varia <code>train.model_type</code> (<code>lstm</code>, <code>lstm_dense</code>, <code>mlp</code>), <code>train.learning_rate</code> (<code>0.001</code>, <code>0.0005</code>) e <code>train.hidden_size</code> (<code>64</code>, <code>128</code>) - 12 combinações - sobre os grupos G01 a G05, com janela e demais hiperparâmetros de treino fixos em <code>[defaults]</code>. Isso dá 12 experimentos por grupo e 60 no total. <code>model_type = "fedper"</code> não é aceito pelo <code>cleven</code> (<code>build_model</code> rejeita explicitamente): a cauda pessoal do FedPer só faz sentido em esquema federado, onde ela nunca sai do cliente.</p>
+<h2 id="grade-padrao-clevensweepsbaselinetoml">Grade padrão (<code>cleven/sweeps/baseline.toml</code>)<a class="headerlink" href="#grade-padrao-clevensweepsbaselinetoml" title="Permanent link">&para;</a></h2>
+<p>A grade em <code>cleven/sweeps/baseline.toml</code> varia <code>train.model_type</code> (<code>lstm</code>, <code>lstm_dense</code>, <code>mlp</code>), <code>train.learning_rate</code> (<code>0.001</code>, <code>0.0005</code>) e <code>train.hidden_size</code> (<code>64</code>, <code>128</code>) - 12 combinações - sobre os grupos G01 a G05, com janela e demais hiperparâmetros de treino fixos em <code>[defaults]</code>. Isso dá 12 experimentos por grupo e 60 no total. <code>model_type = "fedper"</code> não é aceito pelo <code>cleven</code> (<code>build_model</code> rejeita explicitamente): a cauda pessoal do FedPer só faz sentido em esquema federado, onde ela nunca sai do cliente.</p>
 
 
 
