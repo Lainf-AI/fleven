@@ -1,0 +1,1501 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Federated Learning for Vehicular Environment">
+      
+      
+      
+        <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/LAINF-DEPLOY/">
+      
+      
+        <link rel="prev" href="../DOCKER_DEPLOY/">
+      
+      
+        <link rel="next" href="../../reference/CLI-COMANDS/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/fleven-favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Deploy em Raspberry Pi - Fleven</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    <meta property="og:type" content="website">
+  <meta property="og:title" content="Deploy em Raspberry Pi - Fleven">
+  <meta property="og:description" content="Federated Learning for Vehicular Environment">
+  <meta property="og:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
+  <meta property="og:url" content="https://lainf-ai.github.io/fleven/guides/LAINF-DEPLOY/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Deploy em Raspberry Pi - Fleven">
+  <meta name="twitter:description" content="Federated Learning for Vehicular Environment">
+  <meta name="twitter:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#como-o-flower-distribui-as-configuracoes" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Fleven" class="md-header__button md-logo" aria-label="Fleven" data-md-component="logo">
+      
+  <img src="../../assets/fleven-logo-car-cheio-best.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fleven
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deploy em Raspberry Pi
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/josewilsonsouza/fleven" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Fleven
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/instalacao/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../VISAO-GERAL/" class="md-tabs__link">
+          
+  
+  
+  Guias
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/CLI-COMANDS/" class="md-tabs__link">
+          
+  
+  
+  Referencias CLI
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fleven" class="md-nav__button md-logo" aria-label="Fleven" data-md-component="logo">
+      
+  <img src="../../assets/fleven-logo-car-cheio-best.png" alt="logo">
+
+    </a>
+    Fleven
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/josewilsonsouza/fleven" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Fleven
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/instalacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/execucao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Execução
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guias
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guias
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VISAO-GERAL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visão geral
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ARQUITETURA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Arquitetura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXPERIMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SLIDING_WINDOW/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Janela deslizante
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRAIN-TEST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split treino/teste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEDPER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FedPer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLEVEN/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Baseline centralizado (cleven)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEEDER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FLEVENCLIENT_PRODUCAO/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cliente em produção
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DOCKER_DEPLOY/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy com Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy em Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy em Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#como-o-flower-distribui-as-configuracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como o Flower distribui as configurações
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabela-de-portas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabela de Portas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tabela de Portas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-superlink-distribui-tarefas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. SuperLink distribui tarefas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-supernodes-executam-clientapp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. SuperNodes executam ClientApp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-resultados-voltam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Resultados voltam
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias CLI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Referencias CLI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/CLI-COMANDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comandos CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/CLIENT_IMAGE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imagem do cliente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/REALISES/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Histórico de versões
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#como-o-flower-distribui-as-configuracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como o Flower distribui as configurações
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tabela-de-portas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tabela de Portas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tabela de Portas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#4-superlink-distribui-tarefas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. SuperLink distribui tarefas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-supernodes-executam-clientapp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. SuperNodes executam ClientApp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-resultados-voltam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Resultados voltam
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Deploy em Raspberry Pi</h1>
+
+<p>Vamos simular o deploy do Fleven em 3 Raspberry Pi conecatado em uma rede Taiscale e um PC como servidor (na mesma rede).</p>
+<p><img alt="Ilust" src="../../assets/flwr_ports.png" /></p>
+<ol>
+<li>Em cada Pi clonamos o repositório:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/josewilsonsouza/fleven.git
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>fleven
+</code></pre></div>
+⚠️ <strong>Obs.</strong> No nosso caso todos os Pi tem usuário <code>lainf</code>, isso vai ser importante mais na frente. Com isso o Fleven clonado está no seguinte <em>path</em> em cada Pi:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/home/lainf/fleven
+</code></pre></div></li>
+<li>
+<p>Agora, no SERVIDOR, configure o endereço do SuperLink. No Flower 1.31 a config de conexão das federações saiu do <code>pyproject.toml</code> e fica no <code>.flwr/config.toml</code> (lido via <code>FLWR_HOME</code>), na seção <code>[superlink.fleven-deployment]</code>. Substitua <code>&lt;IP-SERVIDOR&gt;</code> pelo ip da rede Tailscale do servidor (seu PC):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[superlink.fleven-deployment]</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&lt;IP-SERVIDOR&gt;:9093&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">insecure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Como nosso diretório <code>fleven</code>, em todos os Pi, tem o mesmo caminho <code>/home/lainf/fleven</code>, no SERVIDOR
+altere o <code>pyproject.toml</code> para ficar assim
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/home/lainf/fleven/data&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">metrics-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/home/seu-usuario/fleven/metrics&quot;</span><span class="w"> </span><span class="c1"># qualquer caminho onde queira ver as métricas salvas (pode ser /home/lainf/fleven/metrics)</span>
+</code></pre></div>
+Note que, por todos os Pi terem o mesmo caminho <code>/home/lainf/fleven</code>, o <code>data-base-path</code> único definido no servidor vale para todos, sem ajuste por Pi.</p>
+</li>
+<li>
+<p><strong>Instalação das Dependências:</strong></p>
+<ul>
+<li><strong>Em cada Raspberry Pi (Cliente):</strong> Certifique-se de ter um ambiente Python (recomendado usar <code>venv</code>) e instale o projeto e suas dependências.
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Dentro de /home/lainf/fleven em cada Pi</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</code></pre></div></li>
+<li><strong>No PC (Servidor):</strong> Faça o mesmo, mas com o extra <code>dev</code>, pois o servidor precisa do MLflow e da simulação.
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c"># No diretório do projeto no seu PC</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="n">venv</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">.\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span> <span class="c"># No Windows PowerShell</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c"># source venv/bin/activate # No Linux/macOS</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">-e</span> <span class="s2">&quot;.[dev]&quot;</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Iniciar o SuperLink (no Servidor):</strong>
+    Abra um terminal no seu PC, ative o ambiente virtual e inicie o SuperLink em modo inseguro (já que estamos na VPN Tailscale). Ele vai escutar no endereço definido no passo 2 (<code>&lt;IP-SERVIDOR&gt;:9093</code>) para o <code>flwr run</code> e na porta 9092 para os SuperNodes.
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># No PC (Servidor)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>flower-superlink<span class="w"> </span>--insecure
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Iniciar os SuperNodes (em cada Pi):</strong>
+    Conecte-se via SSH a cada Raspberry Pi, ative o ambiente virtual e inicie o <code>flower-supernode</code>. Cada Pi precisa de um <code>partition-id</code> diferente e deve apontar para o IP e porta (9092) do SuperLink.</p>
+<blockquote>
+<p><strong>Nota📝</strong>. Como é só um SuperNode por Pi, o <code>--clientappio-api-address</code> pode ser omitido: ele usa o default local (9094) e não há colisão entre Pis distintos. Esse flag seria necessário nos comandos a seguir só se você rodasse mais de um SuperNode na mesma máquina.</p>
+</blockquote>
+<ul>
+<li><strong>No Pi 1 (partition-id=0):</strong>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c"># Dentro de /home/lainf/fleven no Pi 1</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">source</span> <span class="n">venv</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">activate</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">flower-supernode</span> <span class="p">-</span><span class="n">-insecure</span> <span class="p">-</span><span class="n">-superlink</span> <span class="p">&lt;</span><span class="n">IP-SERVIDOR</span><span class="p">&gt;:</span><span class="n">9092</span> <span class="p">-</span><span class="n">-node-config</span> <span class="s2">&quot;partition-id=0&quot;</span>
+</code></pre></div></li>
+<li><strong>No Pi 2 (partition-id=1):</strong>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c"># Dentro de /home/lainf/fleven no Pi 2</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">source</span> <span class="n">venv</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">activate</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">flower-supernode</span> <span class="p">-</span><span class="n">-insecure</span> <span class="p">-</span><span class="n">-superlink</span> <span class="p">&lt;</span><span class="n">IP-SERVIDOR</span><span class="p">&gt;:</span><span class="n">9092</span> <span class="p">-</span><span class="n">-node-config</span> <span class="s2">&quot;partition-id=1&quot;</span>
+</code></pre></div></li>
+<li><strong>No Pi 3 (partition-id=2):</strong>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c"># Dentro de /home/lainf/fleven no Pi 3</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">source</span> <span class="n">venv</span><span class="p">/</span><span class="n">bin</span><span class="p">/</span><span class="n">activate</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">flower-supernode</span> <span class="p">-</span><span class="n">-insecure</span> <span class="p">-</span><span class="n">-superlink</span> <span class="p">&lt;</span><span class="n">IP-SERVIDOR</span><span class="p">&gt;:</span><span class="n">9092</span> <span class="p">-</span><span class="n">-node-config</span> <span class="s2">&quot;partition-id=2&quot;</span>
+</code></pre></div></li>
+<li><strong>Executar a Federação (no Servidor):</strong>
+Abra <em>outro</em> terminal no seu PC, ative o ambiente virtual e execute o <code>flwr run</code>. Ele vai ler o <code>pyproject.toml</code>, encontrar a federação <code>fleven-deployment</code>, conectar-se ao SuperLink (no endereço <code>&lt;IP-SERVIDOR&gt;:9093</code>) e iniciar o processo.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">flwr</span> <span class="n">run</span> <span class="p">.</span> <span class="n">fleven-deployment</span> <span class="p">-</span><span class="n">-stream</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>Resultados</strong></p>
+<ul>
+<li>Após o run, explore os resultados localmente com <code>mlflow ui</code> (abre em http://127.0.0.1:5000) ou publique no DagHub com <code>fleven push</code>.</li>
+<li>No <code>pyproject.toml</code> você pode mudar o nome do experimento via <code>mlflow-experiment-name</code>.</li>
+<li>Atualmente prevemos <code>Energy_Consumption</code> a partir de 4 features (definidas no contrato): <code>Vehicle Speed[km/h]</code>, <code>MAF[g/sec]</code>, <code>Engine RPM[RPM]</code>, <code>Absolute Load[%]</code>.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Nota sobre features:</strong> as features e o target vêm do contrato (<code>data-contract = contracts/eved_potencia_rota.toml</code>) através do FAB, para cada Pi; o servidor envia o <em>fingerprint</em> do contrato em cada mensagem e o cliente recusa participar se o seu contrato não bater, garantindo o mesmo <code>input_size</code> na federação.</p>
+<p>O <code>pyproject.toml</code> presente nos Raspberry Pis <strong>não é lido</strong> durante a execução do <code>ClientApp</code>; ele serve apenas para o <code>pip install -e .</code> saber quais dependências instalar.
+Toda configuração vem do servidor via FAB (Flower Application Bundle).</p>
+<h2 id="como-o-flower-distribui-as-configuracoes">Como o Flower distribui as configurações<a class="headerlink" href="#como-o-flower-distribui-as-configuracoes" title="Permanent link">&para;</a></h2>
+<p><strong>Componentes Principais (Modo Fleet API)</strong>: SuperLink (Servidor - PC). Ele gerencia a conexão dos SuperNodes, recebe "Runs" (trabalhos de FL) submetidos pelo flwr run, e encaminha as tarefas (instruções + código + configuração) para os SuperNodes selecionados. Ele escuta na porta 9092 para os SuperNodes e na <strong>9093</strong> para o <code>flwr run</code>.</p>
+<p><strong>SuperNode (Cliente - Raspberry Pi)</strong>: É o agente de longa duração que roda em cada dispositivo cliente. Ele se conecta ao SuperLink, anuncia sua disponibilidade, recebe tarefas, executa o ClientApp correspondente à tarefa recebida, e envia os resultados de volta.</p>
+<p><strong>flwr run (Servidor - PC)</strong>: É um comando CLI de curta duração usado para iniciar um "Run". Ele lê o <code>pyproject.toml</code> do servidor , empacota o código do projeto (<code>ServerApp</code>, <code>ClientApp</code>, <code>utils.py</code>, etc.) e a configuração ([tool.flwr.app.config]) em um arquivo chamado <em>FAB (Flower Application Bundle)</em> , e o submete ao SuperLink pela porta 9093.</p>
+<p><strong>ServerApp (Servidor - PC)</strong>: Código Python de curta duração (definido em <code>server.py</code>) que contém a lógica específica do servidor para um determinado Run (ex: a estratégia FedAvg, inicialização do modelo global). É iniciado pelo <code>SuperLink/SuperExec</code> quando um Run começa.</p>
+<p><strong>ClientApp (Cliente - Raspberry Pi)</strong>: Código Python de curta duração (definido em <code>client.py</code> e usando <code>utils.py</code>) que contém a lógica específica do cliente para um determinado Run (ex: carregar dados locais, treinar/avaliar o modelo). É iniciado pelo <code>SuperNode/SuperExec</code> quando recebe uma tarefa.</p>
+<p><strong>Distribuição das Configurações:</strong></p>
+<p>O comando <code>flwr run</code> no PC lê o <code>pyproject.toml</code> do PC, incluindo a seção <code>[tool.flwr.app.config]</code> (onde foi definido <code>data-base-path="/home/lainf/fleven/data"</code>). Essa configuração é empacotada junto com o código (<code>client.py</code>, <code>utils.py</code>, etc.) no FAB. O <code>flwr run</code> envia o FAB para o <code>SuperLink</code>.</p>
+<p>Quando o <code>ServerApp</code> (rodando no servidor) decide iniciar um round e seleciona os Pis, o <code>SuperLink</code> envia as instruções e o FAB para os <code>SuperNodes</code> selecionados. Cada <code>SuperNode</code> recebe o FAB, descompacta o código e a configuração em um diretório temporário (como <code>/home/lainf/.flwr/apps/...</code>).</p>
+<p>O <code>SuperNode</code> inicia o <code>ClientApp</code> (o <code>client.py</code>). O código dentro do <code>ClientApp</code> (a fonte de dados + o pipeline em <code>fleven/data/</code>) recebe a configuração que veio do FAB via <code>Context</code>, não do <code>pyproject.toml</code> local do Pi. O pyproject.toml presente nos Raspberry Pis não é lido durante a execução do <code>ClientApp</code> neste modo; ele serve apenas para o <code>pip install -e .</code> saber quais dependências instalar.</p>
+<p><img alt="Portas do Flower" src="../../assets/flwr_ports.png" /></p>
+<h2 id="tabela-de-portas">Tabela de Portas<a class="headerlink" href="#tabela-de-portas" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Porta</th>
+<th>Componente</th>
+<th>Protocolo</th>
+<th>Conecta de</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>9093</strong></td>
+<td>Control API</td>
+<td>HTTP/REST</td>
+<td><code>flwr</code> CLI</td>
+<td>Comandos admin (run/ls/stop)</td>
+</tr>
+<tr>
+<td><strong>9092</strong></td>
+<td>Fleet API</td>
+<td>gRPC-rere</td>
+<td>SuperNodes</td>
+<td>Coordenação clientes - servidor</td>
+</tr>
+<tr>
+<td><strong>9091</strong></td>
+<td>ServerAppIo</td>
+<td>gRPC</td>
+<td>Interno</td>
+<td>SuperLink - ServerApp</td>
+</tr>
+<tr>
+<td><strong>9094</strong></td>
+<td>ClientAppIo</td>
+<td>gRPC</td>
+<td>Local</td>
+<td>SuperNode - ClientApp (local em cada Pi, usa o default)</td>
+</tr>
+</tbody>
+</table>
+<p>Veja o fluxo de execução com Flower
+1. <strong>Execução de <code>flwr run</code></strong>. A porta 9093 recebe comandos administrativos. É a API de controle do SuperLink.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="o">[</span>Seu<span class="w"> </span>PC<span class="o">]</span><span class="w"> </span>--&gt;<span class="w"> </span><span class="o">[</span><span class="m">9093</span><span class="w"> </span>Control<span class="w"> </span>API<span class="o">]</span><span class="w"> </span>no<span class="w"> </span>SuperLink
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="s2">&quot;Inicie um novo run com este FAB&quot;</span>
+</code></pre></div></p>
+<ol>
+<li>
+<p><strong>SuperLink recebe o FAB</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="o">[</span>SuperLink<span class="o">]</span><span class="w"> </span>&lt;-&gt;<span class="w"> </span>FAB<span class="w"> </span>recebido<span class="w">  </span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="o">[</span>Armazena<span class="w"> </span>FAB<span class="w"> </span>internamente<span class="o">]</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="o">[</span>Aguarda<span class="w"> </span>SuperNodes<span class="o">]</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>SuperNodes conectam</strong>. A porta 9092 coordena comunicação entre servidor e clientes. É a API para gerenciar a "frota" de SuperNodes</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="o">[</span>Rasp1<span class="o">]</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="o">[</span><span class="m">9092</span><span class="w"> </span>Fleet<span class="w"> </span>API<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Estou disponível!&quot;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="o">[</span>Rasp2<span class="o">]</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="o">[</span><span class="m">9092</span><span class="w"> </span>Fleet<span class="w"> </span>API<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Estou disponível!&quot;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="o">[</span>Rasp3<span class="o">]</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="o">[</span><span class="m">9092</span><span class="w"> </span>Fleet<span class="w"> </span>API<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Estou disponível!&quot;</span>
+</code></pre></div>
+<h3 id="4-superlink-distribui-tarefas">4. <strong>SuperLink distribui tarefas</strong><a class="headerlink" href="#4-superlink-distribui-tarefas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="o">[</span>SuperLink<span class="w"> </span>via<span class="w"> </span><span class="m">9092</span><span class="o">]</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="o">[</span>Rasp1<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Execute treino com estes params&quot;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="o">[</span>SuperLink<span class="w"> </span>via<span class="w"> </span><span class="m">9092</span><span class="o">]</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="o">[</span>Rasp2<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Execute treino com estes params&quot;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="o">[</span>SuperLink<span class="w"> </span>via<span class="w"> </span><span class="m">9092</span><span class="o">]</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="o">[</span>Rasp3<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Execute treino com estes params&quot;</span>
+</code></pre></div>
+<h3 id="5-supernodes-executam-clientapp">5. <strong>SuperNodes executam ClientApp</strong><a class="headerlink" href="#5-supernodes-executam-clientapp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="o">[</span>Rasp1<span class="o">]</span><span class="w"> </span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>SuperNode<span class="w"> </span><span class="o">(</span>porta<span class="w"> </span><span class="m">9092</span><span class="w"> </span>-<span class="w"> </span>SuperLink<span class="o">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>ClientApp<span class="w"> </span><span class="o">(</span>porta<span class="w"> </span><span class="m">9094</span><span class="w"> </span><span class="nb">local</span><span class="o">)</span><span class="w"> </span>&lt;-&gt;<span class="w"> </span>Executa<span class="w"> </span>o<span class="w"> </span>código
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>Resultado<span class="w"> </span>enviado<span class="w"> </span>de<span class="w"> </span>volta<span class="w"> </span>via<span class="w"> </span><span class="m">9092</span>
+</code></pre></div>
+<h3 id="6-resultados-voltam">6. <strong>Resultados voltam</strong><a class="headerlink" href="#6-resultados-voltam" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="o">[</span>Rasp1<span class="o">]</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="o">[</span><span class="m">9092</span><span class="w"> </span>Fleet<span class="w"> </span>API<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Treino concluído, aqui o modelo&quot;</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="o">[</span>Rasp2<span class="o">]</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="o">[</span><span class="m">9092</span><span class="w"> </span>Fleet<span class="w"> </span>API<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Treino concluído, aqui o modelo&quot;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="o">[</span>Rasp3<span class="o">]</span><span class="w"> </span>-&gt;<span class="w"> </span><span class="o">[</span><span class="m">9092</span><span class="w"> </span>Fleet<span class="w"> </span>API<span class="o">]</span><span class="w"> </span><span class="s2">&quot;Treino concluído, aqui o modelo&quot;</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="o">[</span>SuperLink<span class="w"> </span>agrega<span class="o">]</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="o">[</span>Próxima<span class="w"> </span>rodada...<span class="o">]</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Fleven - Apache-2.0
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
