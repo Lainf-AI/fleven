@@ -1,8 +1,3 @@
-/* Paleta derivada da logo do Fleven (figures/fleven-logo-1.png)
-   Cor de marca: âmbar #F5970A (tom predominante da logo).
-   accent: laranja profundo #C2410C (corange das figuras TikZ) para hover/links.
-   Modo escuro: fundo darkbg #0A0A0F (figuras de arquitetura). */
-
 :root {
   --md-primary-fg-color:        #fbb040 ;
   --md-primary-fg-color--light: #fbb040;
@@ -10,20 +5,26 @@
   /* Texto/ícones sobre o header âmbar: escuro, para contraste legível */
   --md-primary-bg-color:        #16130e;
   --md-primary-bg-color--light: #332004;
-  /* Links no tema claro: o âmbar dava 1.84:1 sobre branco e era ilegível.
-     Cyan-700 (5.36:1) fica na família do aqua da marca e passa em AA;
-     o hover escurece para cyan-800 (7.27:1) — clarear reprovaria. */
+  /* Links no tema claro */
   --md-accent-fg-color:         #155e75;
   --md-typeset-a-color:         #0e7490;
+  --fleven-hero-title:          #000000;
 }
 
 /* Modo escuro: header âmbar mais quente sobre o fundo darkbg das figuras */
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color:        #00FFFF;
   --md-primary-bg-color:        #211400;
-  --md-accent-fg-color:         #fb923c;
+  --md-accent-fg-color:         #00ffc8;
   --md-default-bg-color:        #0a0a0f;
   --md-default-bg-color--light: #12121a;
   /* Links no corpo em ciano (em vez do azul padrão do slate): 6.40:1 */
-  --md-typeset-a-color:         #00b9f1d8;
+  --md-typeset-a-color:         #00FFFF;
+  --fleven-hero-title:          #00FFFF;
+}
+
+.md-typeset .hero-title {
+  color: var(--fleven-hero-title);
+  font-weight: 700;
+  margin-top: .4rem;
 }
