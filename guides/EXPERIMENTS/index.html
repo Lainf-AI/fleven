@@ -681,17 +681,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#contrato-com-rota-contractseved_potencia_rotatoml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contrato com rota (contracts/eved_potencia_rota.toml)
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1022,17 +1011,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#contrato-com-rota-contractseved_potencia_rotatoml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Contrato com rota (contracts/eved_potencia_rota.toml)
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1123,9 +1101,6 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>Perfil completo de todos os clientes salvo em <code>data/vehicle_profiles.csv</code></p>
-</blockquote>
 <h3 id="experimentos-testados">Experimentos testados:<a class="headerlink" href="#experimentos-testados" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>G01</strong> - 14 clientes HEV 1.8L/3000 kg (maior grupo, melhor para convergência)</li>
@@ -1139,24 +1114,20 @@
 <li>Editar <code>pyproject.toml</code></li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:/Users/jose.souza/Documents/fleven/data/G01_HEV_18L_3000&quot;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">mlflow-experiment-name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;G01_HEV_18L_3000&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"C:/Users/jose.souza/Documents/fleven/data/G01_HEV_18L_3000"</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">mlflow-experiment-name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"G01_HEV_18L_3000"</span>
 </code></pre></div>
-<blockquote>
-<p><strong>Flower 1.31+📝</strong>. No Flower 1.31 o número de clientes (<code>num_supernodes</code>) saiu do <code>pyproject.toml</code>. Ele é passado por run com <code>--federation-config</code> (chave com <strong>underscore</strong>), e a config das federações fica em <code>.flwr/config.toml</code>, que é lida via <code>FLWR_HOME</code>.</p>
-</blockquote>
 <ol>
 <li>Executar</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--federation-config<span class="w"> </span><span class="s2">&quot;num_supernodes=14&quot;</span><span class="w"> </span>--stream
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--federation-config<span class="w"> </span><span class="s2">"num_supernodes=14"</span><span class="w"> </span>--stream
 </code></pre></div>
 <blockquote>
 <p>Mais simples: <code>fleven run --only G01</code> já faz tudo isso (caminho dos dados, num_supernodes, <code>--stream</code> e a avaliação) automaticamente.</p>
 </blockquote>
 <p>Cada execução em lote grava métricas em um diretório próprio com timestamp,
 por exemplo <code>metrics/G05_fedper_fedavg/20260805_133000/</code>. Isso impede que um
-<code>--no-skip-existing</code> misture históricos de runs anteriores. Passe esse diretório
-exato a <code>fleven eval</code> ao reavaliar manualmente.</p>
+<code>--no-skip-existing</code> misture históricos de runs anteriores. Passe esse diretório exato a <code>fleven eval</code> ao reavaliar manualmente.</p>
 <ol>
 <li>Avaliar resultados (após o run terminar)</li>
 </ol>
@@ -1169,15 +1140,11 @@ exato a <code>fleven eval</code> ao reavaliar manualmente.</p>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Apontando para um diretório de métricas diferente</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>fleven<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>-e<span class="w"> </span>G01_HEV_18L_3000<span class="w"> </span>-s<span class="w"> </span>fedyogi<span class="w"> </span>-m<span class="w"> </span>/caminho/metrics
 </code></pre></div>
-<p>O comando gera em <code>results/</code>:
-- <code>report_&lt;exp&gt;_&lt;strategy&gt;_&lt;timestamp&gt;.pdf</code> - 6 páginas: loss curves, loss por cliente, heatmap, distribuição final, scatter R², e R²/RMSE/MAE por step de predição
-- <code>loss_curves_&lt;exp&gt;_&lt;strategy&gt;_&lt;timestamp&gt;.csv</code> - loss por round × cliente
-- <code>pred_metrics_&lt;exp&gt;_&lt;strategy&gt;_&lt;timestamp&gt;.csv</code> - R², RMSE, MAE por cliente (quando disponível)</p>
 <ol>
 <li>Publicar no Dagshub (opcional)</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$env:DAGSHUB_USER</span>  <span class="p">=</span> <span class="s2">&quot;&lt;seu_usuario_dagshub&gt;&quot;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$env:DAGSHUB_TOKEN</span> <span class="p">=</span> <span class="s2">&quot;&lt;token: dagshub.com/user/settings/tokens&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$env:DAGSHUB_USER</span>  <span class="p">=</span> <span class="s2">"&lt;seu_usuario_dagshub&gt;"</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$env:DAGSHUB_TOKEN</span> <span class="p">=</span> <span class="s2">"&lt;token: dagshub.com/user/settings/tokens&gt;"</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">fleven</span> <span class="n">push</span>
 </code></pre></div>
 <p>O script lê o <code>mlflow.db</code> local e copia para o seu repositório <code>&lt;usuario&gt;/fleven</code> no DagHub via API REST.
@@ -1195,7 +1162,6 @@ EC [\text{kWh/amostra}] = \frac{v [\text{km/h}]}{3600 \times 100} \times MAF [\t
 - <span class="arithmatex">\(MAF \times 3.785\)</span>: converte g/s para L/s (aproximado)
 - <span class="arithmatex">\(STFT_{B1}\)</span> / <span class="arithmatex">\(LTFT_{B1}\)</span>: Short-Term e Long-Term Fuel Trim Bank 1 [%]: São correções da ECU à mistura ar-combustível. O STFT reage em tempo real; o LTFT acumula ao longo do tempo como correção específica do veículo, refletindo desgaste do motor, estado dos injetores e calibração
 - Fator de conversão: <span class="arithmatex">\(1 \text{kWh} \approx 0.1123 \text{L}\)</span> de gasolina</p>
-<p><strong>Observação sobre NaN:</strong> quando STFT ou LTFT estão ausentes (nem todos os veículos reportam fuel trims via OBD-II), a fórmula produz <code>NaN</code>, tornando <code>Energy_Consumption</code> indisponível para esses instantes. O pipeline de dados (<code>pipeline.py</code>) descarta as linhas com NaN nas features obrigatórias e no target antes de janelar, portanto apenas os instantes com fuel trims válidos contribuem para o treinamento. O scaler é ajustado com <code>nanmean</code>/<code>nanstd</code> (ignora esses NaN), então a normalização reflete só os valores reais.</p>
 <p>Para veículos <strong>HEV</strong>, o VED aplica a mesma fórmula dos ICE: contabiliza o consumo de combustível do motor a combustão. A contribuição do motor elétrico não é rastreada separadamente nesses grupos.</p>
 <h4 id="veiculos-phev-e-ev">📍 Veículos PHEV e EV<a class="headerlink" href="#veiculos-phev-e-ev" title="Permanent link">&para;</a></h4>
 <p>O consumo de energia é calculado diretamente da bateria de alta tensão:</p>
@@ -1204,35 +1170,7 @@ EC [\text{kWh/amostra}] = -\frac{I_{HV}[\text{A}] \times V_{HV} [\text{V}]}{3.6 
 \]</div>
 <p>A convenção de sinal é: corrente negativa durante descarga (consumo), logo multiplicar por <span class="arithmatex">\(-1\)</span> resulta em valor positivo. Nenhum dado de MAF ou fuel trim é utilizado.</p>
 <h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
-<p>Os experimentos atuais utilizam as seguintes features, definidas no <strong>contrato de dados</strong> (<a href="../../../contracts/eved_potencia_rota.toml"><code>contracts/eved_potencia_rota.toml</code></a>):
-<code>Vehicle Speed[km/h]</code>, <code>MAF[g/sec]</code>, <code>Engine RPM[RPM]</code>, <code>Absolute Load[%]</code>, com target <code>Total Power[kW]</code>.</p>
-<blockquote>
-<p>⚠️ <strong>O target mudou.</strong> <code>Energy_Consumption</code>, herdado do eVED, multiplicava a taxa de
-queima pela velocidade instantânea, o que não está no Algoritmo 1 do artigo do VED.
-Na mesma grade de 12 configurações no G05, ele mediu <code>r2_weighted</code> de <strong>+0,0173</strong>
-contra <strong>+0,3610</strong> do alvo corrigido. Os contratos que apontavam para ele foram
-removidos. Ver <code>docs/superpowers/specs/2026-08-08-target-de-energia-design.md</code>.</p>
-<p>📝 <strong>Para o G08 (PHEV):</strong> com o alvo corrigido, MAF <strong>passa a ser entrada
-significativa também no G08</strong>. O alvo antigo usava só o ramo da bateria e ignorava o
-combustível, apesar de os clientes do G08 terem MAF a 100%: em <code>G08/client_0</code>, 46,4%
-das leituras com o motor queimando tinham alvo menor ou igual a zero. <code>Total
-Power[kW]</code> soma os dois termos, então o conjunto de features padrão serve.</p>
-</blockquote>
-<h2 id="contrato-com-rota-contractseved_potencia_rotatoml">Contrato com rota (<code>contracts/eved_potencia_rota.toml</code>)<a class="headerlink" href="#contrato-com-rota-contractseved_potencia_rotatoml" title="Permanent link">&para;</a></h2>
-<p>Este é o contrato padrão. Ele acrescenta atributos do trecho à frente às quatro features do eVED. A premissa é que o condutor já definiu o trajeto, então o perfil da via que vem pela frente (limite de velocidade, desnível, subida acumulada) é conhecido de antemão, não algo que o modelo precisa adivinhar. Por isso usa apenas atributos derivados da via, nunca latitude/longitude cruas.</p>
-<p><strong>As features de rota se pagam.</strong> Comparação pareada no G05, mesma grade de 12 configurações, <code>sequence_length=100</code>, variando apenas o contrato: elas vencem em <strong>12 de 12</strong>, com ganho médio de <strong>+0,0455</strong> em <code>r2_weighted</code> (teste de sinais, p = 0,0005). O melhor resultado sobe de +0,3610 para +0,4107.</p>
-<p>Correlação medida no G05, dentro de cada cliente, com horizonte de 0,5 km, contra <code>Total Power[kW]</code> acumulado no trecho: limite de velocidade <strong>-0,222</strong>, desnível líquido +0,218, subida acumulada +0,207.</p>
-<blockquote>
-<p>⚠️ <strong>O sinal do limite de velocidade é negativo, e versões anteriores deste
-documento afirmavam +0,501.</strong> Aquele número foi medido contra <code>Energy_Consumption</code>,
-cujo peso de velocidade espúrio inverte a relação. O valor negativo é o fisicamente
-correto: para uma distância <strong>fixa</strong> de 500 m, andar mais rápido significa menos
-tempo, menos marcha lenta e menos energia. Medido: 0-10 km/h custa 21,93 L/100km
-contra 5,61 em cruzeiro de 70-80 km/h. Pelo mesmo motivo, a afirmação de que o
-limite de velocidade carregaria mais sinal que a velocidade real observada
-<strong>foi retirada</strong>: ela dependia inteiramente do alvo defeituoso.</p>
-</blockquote>
-<p>Esse contrato exige <code>prediction-mode = "distance-energy"</code> (o modo <code>steps</code> não tem um trecho futuro com distância definida para agregar; <code>build_dataloaders</code> recusa a combinação).</p>
+<p>Os experimentos atuais utilizam as seguintes features, definidas no <strong>contrato de dados</strong>: <code>Vehicle Speed[km/h]</code>, <code>MAF[g/sec]</code>, <code>Engine RPM[RPM]</code>, <code>Absolute Load[%]</code>, com target <code>Total Power[kW]</code>.</p>
 
 
 

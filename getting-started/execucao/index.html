@@ -1034,12 +1034,12 @@ paralelo, sem necessidade de configurar servidores.</p>
 (<code>num_supernodes</code>) vai por run via <code>--federation-config</code> (chave com underscore),
 que o <code>fleven run</code> passa automaticamente. Para o <code>flwr run .</code> puro usar a config
 versionada, aponte o <code>FLWR_HOME</code> para a pasta do projeto antes de rodar:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">&quot;$PWD\.flwr&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>
 </code></pre></div></p>
 </div>
 <p>As configurações da aplicação (modelo, hiperparâmetros, features) vêm do
 <code>pyproject.toml</code>. Para ajustar parâmetros sem editar o arquivo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--run-config<span class="w"> </span><span class="s2">&quot;rounds=5 learning-rate=1e-4 prediction-length=10&quot;</span><span class="w"> </span>--stream
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--run-config<span class="w"> </span><span class="s2">"rounds=5 learning-rate=1e-4 prediction-length=10"</span><span class="w"> </span>--stream
 </code></pre></div>
 <h2 id="metodo-2-deployment-local">Método 2: Deployment Local<a class="headerlink" href="#metodo-2-deployment-local" title="Permanent link">&para;</a></h2>
 <p>Simula um cenário mais real, com o servidor (SuperLink) e os clientes (SuperNodes)
@@ -1047,7 +1047,7 @@ rodando em processos separados na mesma máquina. Útil para testar a comunicaç
 de ir para hardware real.</p>
 <p>Primeiro ajuste o caminho dos dados no <code>pyproject.toml</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:/client/fleven/data/G01_HEV_18L_3000&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"C:/client/fleven/data/G01_HEV_18L_3000"</span>
 </code></pre></div>
 <p>No Terminal 1:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>flower-superlink<span class="w"> </span>--insecure
@@ -1057,11 +1057,11 @@ de ir para hardware real.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>flower-supernode<span class="w"> </span>--insecure<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--superlink<span class="w"> </span><span class="m">127</span>.0.0.1:9092<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--clientappio-api-address<span class="w"> </span><span class="m">127</span>.0.0.1:909V<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--node-config<span class="w"> </span><span class="s2">&quot;partition-id=X&quot;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--node-config<span class="w"> </span><span class="s2">"partition-id=X"</span>
 </code></pre></div>
 <p>No terminal final (aponte <code>FLWR_HOME</code> para a config versionada em <code>.flwr/</code>, senão o
 <code>flwr run</code> não encontra a federação <code>fleven-deployment</code>):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/.flwr&quot;</span><span class="w">   </span><span class="c1"># PowerShell: $env:FLWR_HOME = &quot;$PWD\.flwr&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span><span class="w">   </span><span class="c1"># PowerShell: $env:FLWR_HOME = "$PWD\.flwr"</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment<span class="w"> </span>--stream
 </code></pre></div>
 <p>Para ver os nós conectados:</p>
@@ -1084,7 +1084,7 @@ dados do seu próprio cliente.</p>
 <a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Aponte FLWR_HOME para .flwr/ (onde vivem as federações)</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/.flwr&quot;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span>
 <a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
 <a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Execute o treinamento federado</span>
 <a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment<span class="w"> </span>--stream
@@ -1106,7 +1106,7 @@ credenciais:</p>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nv">TLS_ENABLED</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/.flwr&quot;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span>
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment-tls<span class="w"> </span>--stream
 </code></pre></div>
 </div>

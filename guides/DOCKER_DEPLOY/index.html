@@ -1117,15 +1117,15 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>build
 </code></pre></div>
 <p>se ainda não instalou as dependências na sua máquina (que age como servidor), então execute com o extra de desenvolvimento:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">-e</span> <span class="s2">&quot;.[dev]&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">-e</span> <span class="s2">".[dev]"</span>
 </code></pre></div>
 <h2 id="antes-de-rodar-dois-ajustes-obrigatorios">Antes de rodar: dois ajustes obrigatórios<a class="headerlink" href="#antes-de-rodar-dois-ajustes-obrigatorios" title="Permanent link">&para;</a></h2>
 <p><strong>1. <code>data-base-path</code> precisa ser um caminho de dentro do container.</strong> Essa chave do <code>pyproject.toml</code> viaja no FAB e é lida pelo cliente, que roda no container. Se ela apontar para um caminho do seu host (por exemplo <code>C:/Users/.../data/G08_PHEV_20L_CVT_4000</code>), os SuperNodes não acham os dados e o run falha. Os containers montam os dados em <code>/app/data/EVED_Clients/train/client_N</code>, então use:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/app/data/EVED_Clients&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/app/data/EVED_Clients"</span>
 </code></pre></div>
 <p>Deixar a chave vazia (<code>data-base-path = ""</code>) também funciona: a fonte eVED detecta <code>/app/data/EVED_Clients</code> sozinha quando o caminho não é informado.</p>
 <p><strong>2. Aponte o <code>FLWR_HOME</code> para o <code>.flwr/</code> do projeto</strong> antes de qualquer <code>flwr run</code>. A config das federações (<code>fleven-deployment</code>, <code>fleven-deployment-tls</code>) mora em <a href="../../../.flwr/config.toml">.flwr/config.toml</a>, e sem essa variável o Flower lê o <code>~/.flwr/config.toml</code> da sua home e não encontra a federação:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">&quot;$PWD\.flwr&quot;</span>   <span class="c"># Linux/macOS: export FLWR_HOME=&quot;$PWD/.flwr&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>   <span class="c"># Linux/macOS: export FLWR_HOME="$PWD/.flwr"</span>
 </code></pre></div>
 <h2 id="deploy">Deploy<a class="headerlink" href="#deploy" title="Permanent link">&para;</a></h2>
 <p>O Fleven permite deploy via Docker, mas de maneira híbrida: cada cliente será um container Docker e o servidor será o proprio PC onde o Docker está instalado.</p>
@@ -1152,7 +1152,7 @@
 <p><strong>Nota📝</strong> Não é preciso alterar o <code>mlflow-tracking-uri</code> para ver os resultados, o <code>mlflow ui</code> lê o <code>mlflow.db</code> local. Para <strong>compartilhar com a equipe</strong>, use <code>fleven push</code> (envia os runs para o DagsHub). Veja <a href="#compartilhando-as-metricas-com-a-equipe">Compartilhando as métricas com a equipe</a>.</p>
 </blockquote>
 <p><strong>Terminal 3 - Execute o treinamento:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/.flwr&quot;</span><span class="w">   </span><span class="c1"># PowerShell: $env:FLWR_HOME = &quot;$PWD\.flwr&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span><span class="w">   </span><span class="c1"># PowerShell: $env:FLWR_HOME = "$PWD\.flwr"</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment-tls<span class="w"> </span>--stream
 </code></pre></div>
 <p>Pronto, você pode acompanhar o desempenho pelo MLflow, e pode também ver os logs direto pelo Docker Desktop.</p>
@@ -1174,7 +1174,7 @@ Inicie o servidor</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
 <p>neste mesmo terminal, execute</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">/.flwr&quot;</span><span class="w">   </span><span class="c1"># PowerShell: $env:FLWR_HOME = &quot;$PWD\.flwr&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span><span class="w">   </span><span class="c1"># PowerShell: $env:FLWR_HOME = "$PWD\.flwr"</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment<span class="w"> </span>--stream
 </code></pre></div>
 <p>Pronto, você pode acompanhar as métricas no MLflow e no Docker. Se fizer mudanças no código e desejar aplicar nos containers, você terá que parar os containers.</p>
@@ -1184,8 +1184,8 @@ Inicie o servidor</p>
 <p>Para adicionar mais clientes precisará editar o <a href="../../../docker/docker-compose.yml">docker-compose.yml</a>, replicando um bloco <code>client_N</code> com <code>PARTITION_ID</code> novo e os volumes do cliente correspondente. Se for usar autenticação de nó, gere também as credenciais dos clientes adicionais: o <a href="../../../docker/generate_certificates.py">generate_certificates.py</a> tem <code>num_clients = 3</code> fixo no código, então aumente esse número antes de rodá-lo de novo.</p>
 <h2 id="compartilhando-as-metricas-com-a-equipe">Compartilhando as métricas com a equipe<a class="headerlink" href="#compartilhando-as-metricas-com-a-equipe" title="Permanent link">&para;</a></h2>
 <p>Por padrão os experimentos ficam <strong>locais</strong> (<code>sqlite:///mlflow.db</code>). Para publicá-los e compartilhá-los com colaboradores, o Fleven sincroniza os runs para o <a href="https://dagshub.com/jw/fleven">DagsHub</a> via <code>fleven push</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">$env:DAGSHUB_USER</span>  <span class="p">=</span> <span class="s2">&quot;&lt;seu_usuario_dagshub&gt;&quot;</span>   <span class="c"># token em dagshub.com/user/settings/tokens</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">$env:DAGSHUB_TOKEN</span> <span class="p">=</span> <span class="s2">&quot;&lt;token&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">$env:DAGSHUB_USER</span>  <span class="p">=</span> <span class="s2">"&lt;seu_usuario_dagshub&gt;"</span>   <span class="c"># token em dagshub.com/user/settings/tokens</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">$env:DAGSHUB_TOKEN</span> <span class="p">=</span> <span class="s2">"&lt;token&gt;"</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">fleven</span> <span class="n">push</span>
 </code></pre></div>
 <p>O comando lê o <code>mlflow.db</code> local e copia os runs para o servidor MLflow do DagsHub via API REST, pulando automaticamente os que já existem. Para empurrar automaticamente após cada experimento em lote, use <code>fleven run --push-dagshub</code>.</p>

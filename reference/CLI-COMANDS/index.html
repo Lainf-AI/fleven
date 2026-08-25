@@ -1196,8 +1196,8 @@
 </ul>
 <h2 id="fleven-push"><code>fleven push</code>🦮<a class="headerlink" href="#fleven-push" title="Permanent link">&para;</a></h2>
 <p>Copia runs do banco local (<code>sqlite:///mlflow.db</code>) para o DagHub via API REST do MLflow. Pula runs que já existem no destino.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$env:DAGSHUB_USER</span>  <span class="p">=</span> <span class="s2">&quot;&lt;seu_usuario_dagshub&gt;&quot;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">$env:DAGSHUB_TOKEN</span> <span class="p">=</span> <span class="s2">&quot;&lt;token: DagHub &gt; Settings &gt; Tokens&gt;&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$env:DAGSHUB_USER</span>  <span class="p">=</span> <span class="s2">"&lt;seu_usuario_dagshub&gt;"</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">$env:DAGSHUB_TOKEN</span> <span class="p">=</span> <span class="s2">"&lt;token: DagHub &gt; Settings &gt; Tokens&gt;"</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">fleven</span> <span class="n">push</span>
 </code></pre></div>
@@ -1210,14 +1210,14 @@ O `flwr run .` roda a federação com atores Ray na sua máquina. Precisa do `FL
 
 Inicia o treino; `--stream` acompanha e espera terminar.
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$env</span>:FLWR_HOME<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PWD</span><span class="s2">\.flwr&quot;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--federation-config<span class="w"> </span><span class="s2">&quot;num_supernodes=14&quot;</span><span class="w"> </span>--stream
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$env</span>:FLWR_HOME<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">\.flwr"</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--federation-config<span class="w"> </span><span class="s2">"num_supernodes=14"</span><span class="w"> </span>--stream
 </code></pre></div>
 
 - `--federation-config` — número de clientes por run.
 - `--run-config` — sobrescreve hiperparâmetros da app:
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--run-config<span class="w"> </span><span class="s2">&quot;rounds=5 learning-rate=1e-4&quot;</span><span class="w"> </span>--stream
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--run-config<span class="w"> </span><span class="s2">"rounds=5 learning-rate=1e-4"</span><span class="w"> </span>--stream
 </code></pre></div>
 
 !!! warning "Hífen vs underscore (mesmo ajuste, superfícies diferentes)"
@@ -1251,7 +1251,7 @@ O Flower guarda a config dele (entre ela, o `config.toml` com as federações) n
 - **Padrão:** `~/.flwr`, na home do usuário (`C:\Users\<voce>\.flwr`). Fica fora do projeto e não vai pro Git.
 - **No Fleven:** apontamos para a pasta `.flwr` **dentro do projeto**, que é versionada. Assim a config das federações viaja junto com o repositório, e um clone novo já vem com tudo.
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">&quot;$PWD\.flwr&quot;</span>   <span class="c"># estando na raiz do projeto</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>   <span class="c"># estando na raiz do projeto</span>
 </code></pre></div>
 
 - `$PWD` é a pasta atual do terminal — se rodar de outro lugar, aponta para o `.flwr` errado.
@@ -1272,7 +1272,7 @@ Servidor e clientes rodam como processos separados. Suba o SuperLink, depois os 
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># Cliente (um por nó, mudando partition-id)</span>
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>flower-supernode<span class="w"> </span>--insecure<span class="w"> </span>--superlink<span class="w"> </span>&lt;IP&gt;:9092<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">  </span>--clientappio-api-address<span class="w"> </span><span class="m">0</span>.0.0.0:9094<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span>--node-config<span class="w"> </span><span class="s2">&quot;partition-id=0&quot;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">  </span>--node-config<span class="w"> </span><span class="s2">"partition-id=0"</span>
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
 <a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Rodar a federação</span>
 <a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment<span class="w"> </span>--stream
@@ -1288,7 +1288,7 @@ Servidor e clientes rodam como processos separados. Suba o SuperLink, depois os 
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># Cliente valida o servidor pela CA</span>
 <a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>flower-supernode<span class="w"> </span>--root-certificates<span class="w"> </span>certificates/ca-cert.pem<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span>--superlink<span class="w"> </span>&lt;IP&gt;:9092<span class="w"> </span>--node-config<span class="w"> </span><span class="s2">&quot;partition-id=0&quot;</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">  </span>--superlink<span class="w"> </span>&lt;IP&gt;:9092<span class="w"> </span>--node-config<span class="w"> </span><span class="s2">"partition-id=0"</span>
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
 <a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment-tls<span class="w"> </span>--stream
 </code></pre></div>

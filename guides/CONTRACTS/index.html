@@ -1084,7 +1084,7 @@ dois lugares e torcer para não divergirem, ambos derivam a forma do mesmo contr
 e comparam um resumo dele antes de trocar parâmetros.</p>
 <p>O contrato é indicado pela chave <code>data-contract</code> em <code>pyproject.toml</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contracts/eved_potencia_rota.toml&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"contracts/eved_potencia_rota.toml"</span>
 </code></pre></div>
 <h2 id="onde-o-arquivo-e-procurado">Onde o arquivo é procurado<a class="headerlink" href="#onde-o-arquivo-e-procurado" title="Permanent link">&para;</a></h2>
 <p><code>_resolve_contract_path</code> tenta, nesta ordem:</p>
@@ -1098,26 +1098,26 @@ partir do FAB extraído ou da imagem Docker, e o diretório de trabalho não é
 garantidamente a raiz. Se não achar em lugar nenhum, levanta <code>FileNotFoundError</code>
 dizendo onde procurou.</p>
 <h2 id="anatomia-de-um-contrato">Anatomia de um contrato<a class="headerlink" href="#anatomia-de-um-contrato" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">schema_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Energy_Consumption&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">schema_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.0"</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Energy_Consumption"</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">use_feature_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">route_grid_m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">25.0</span><span class="w">            </span><span class="c1"># só relevante se houver features de rota</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">[[feature]]</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Vehicle Speed[km/h]&quot;</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;km/h&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vehicle Speed[km/h]"</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"km/h"</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">]</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">[[feature]]</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;MAF[g/sec]&quot;</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;g/sec&quot;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MAF[g/sec]"</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"g/sec"</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">655</span><span class="p">]</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="k">[[route_feature]]</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Speed Limit[km/h]&quot;</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mean&quot;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Speed Limit[km/h]"</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mean"</span>
 </code></pre></div>
 <h3 id="campos-de-topo">Campos de topo<a class="headerlink" href="#campos-de-topo" title="Permanent link">&para;</a></h3>
 <table>
@@ -1174,7 +1174,7 @@ dizendo onde procurou.</p>
   descartadas antes do janelamento. Se <code>false</code>, a linha sobrevive e a célula
   ausente é imputada.</li>
 <li><strong><code>range</code></strong> (opcional): <code>[min, max]</code>. <strong>É aplicado, não é documentação.</strong>
-  <code>_clip_to_ranges</code> grampeia valores fora da faixa antes de ajustar o scaler e
+  <code>clip_to_ranges</code> grampeia valores fora da faixa antes de ajustar o scaler e
   janelar, protegendo o treino de glitches de sensor, como um RPM de 65535 vindo de
   um frame CAN perdido. NaN é preservado, o total grampeado é logado por feature, e
   uma feature sem <code>range</code> fica intocada. O range é opt-in.</li>
@@ -1204,16 +1204,16 @@ média. No eVED a frota é homogênea, então o default é <code>false</code>.</
 premissa de que o condutor definiu o trajeto. Enquanto as features normais dizem
 como o veículo vinha se comportando, as de rota dizem por onde ele vai passar.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[[route_feature]]</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Speed Limit[km/h]&quot;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mean&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Speed Limit[km/h]"</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mean"</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">[[route_feature]]</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Elevation Smoothed[m]&quot;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;delta&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Elevation Smoothed[m]"</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"delta"</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">[[route_feature]]</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Elevation Smoothed[m]&quot;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;positive_sum&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Elevation Smoothed[m]"</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"positive_sum"</span>
 </code></pre></div>
 <p>A identidade de uma feature de rota é o par <strong>coluna mais agregação</strong>, e não só a
 coluna. Por isso a altitude pode aparecer duas vezes, como desnível líquido e como
@@ -1385,7 +1385,7 @@ contratos do alvo antigo (<code>eved.toml</code>, <code>eved_rota.toml</code>, <
 <h2 id="criando-um-contrato-novo">Criando um contrato novo<a class="headerlink" href="#criando-um-contrato-novo" title="Permanent link">&para;</a></h2>
 <p>Copie um dos existentes, ajuste, e aponte <code>data-contract</code> para ele. Confira o
 resultado antes de rodar:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from fleven.data.contract import load_contract, derive_input_size, contract_fingerprint as fp; c = load_contract({&#39;data-contract&#39;: &#39;contracts/meu.toml&#39;}); print(derive_input_size(c), fp(c))&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from fleven.data.contract import load_contract, derive_input_size, contract_fingerprint as fp; c = load_contract({'data-contract': 'contracts/meu.toml'}); print(derive_input_size(c), fp(c))"</span>
 </code></pre></div>
 <p>Três coisas a lembrar:</p>
 <p><strong>Todos os nós precisam do mesmo contrato.</strong> Ele viaja dentro do FAB, construído na
