@@ -44,8 +44,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
       
     
     
@@ -578,6 +578,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../SLIDING_WINDOW/" class="md-nav__link">
         
   
@@ -634,14 +662,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../FEDPER_GUIDE/" class="md-nav__link">
+      <a href="../MODELS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEEDER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
   
 
     
@@ -1190,7 +1246,7 @@ na seção "Decisões adotadas".</p>
 <p>Na simulação, um split treino/teste estratificado serve para medir R² offline. Em produção isso muda: o carro treina em tudo que está na janela, sem segurar um conjunto de teste estático.</p>
 <p>A avaliação passa a ser online. Como o carro acaba observando o consumo real conforme a viagem acontece, dá para comparar a previsão com o valor que de fato ocorreu, continuamente. Isso fornece um sinal vivo de qualidade do modelo, sem conjunto de teste fixo, e serve de alarme se o modelo começar a degradar (por exemplo, por deriva de conceito não acompanhada pelo retreino).</p>
 <h2 id="9-seguranca-tls-e-autenticacao-de-no">9. Segurança: TLS e autenticação de nó<a class="headerlink" href="#9-seguranca-tls-e-autenticacao-de-no" title="Permanent link">&para;</a></h2>
-<p>O Flower trata segurança em dois mecanismos separados (confirmado na documentação do Flower 1.31), e o desenho precisa respeitar essa divisão.</p>
+<p>O Flower trata segurança em dois mecanismos separados, e o desenho precisa respeitar essa divisão.</p>
 <p><strong>TLS (criptografia e identidade do servidor).</strong> É de mão única: o carro verifica o servidor, o servidor não verifica o carro por certificado. Precisa de um único certificado de servidor, assinado por uma CA, mais o certificado da CA distribuído a todos os carros para validarem o servidor.
 - SuperLink: <code>--ssl-ca-certfile</code>, <code>--ssl-certfile</code>, <code>--ssl-keyfile</code>.
 - SuperNode: <code>--root-certificates</code> (só o certificado da CA).</p>

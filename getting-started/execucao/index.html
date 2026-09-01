@@ -48,8 +48,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
       
     
     
@@ -534,10 +534,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#metodo-1-simulacao-local" class="md-nav__link">
+  <a href="#preparar-os-dados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Método 1: Simulação Local
+        Preparar os dados
       
     </span>
   </a>
@@ -545,10 +545,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metodo-2-deployment-local" class="md-nav__link">
+  <a href="#executar-um-experimento" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Método 2: Deployment Local
+        Executar um experimento
       
     </span>
   </a>
@@ -556,10 +556,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metodo-3-modo-hibrido-com-docker" class="md-nav__link">
+  <a href="#resultados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Método 3: Modo Híbrido com Docker
+        Resultados
       
     </span>
   </a>
@@ -567,21 +567,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rastreamento-com-mlflow" class="md-nav__link">
+  <a href="#outras-formas-de-execucao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rastreamento com MLflow
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proximos-passos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Próximos passos
+        Outras formas de execução
       
     </span>
   </a>
@@ -691,6 +680,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../guides/CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../guides/SLIDING_WINDOW/" class="md-nav__link">
         
   
@@ -747,14 +764,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/FEDPER_GUIDE/" class="md-nav__link">
+      <a href="../../guides/MODELS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/FEEDER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
   
 
     
@@ -945,10 +990,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#metodo-1-simulacao-local" class="md-nav__link">
+  <a href="#preparar-os-dados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Método 1: Simulação Local
+        Preparar os dados
       
     </span>
   </a>
@@ -956,10 +1001,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metodo-2-deployment-local" class="md-nav__link">
+  <a href="#executar-um-experimento" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Método 2: Deployment Local
+        Executar um experimento
       
     </span>
   </a>
@@ -967,10 +1012,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metodo-3-modo-hibrido-com-docker" class="md-nav__link">
+  <a href="#resultados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Método 3: Modo Híbrido com Docker
+        Resultados
       
     </span>
   </a>
@@ -978,21 +1023,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rastreamento-com-mlflow" class="md-nav__link">
+  <a href="#outras-formas-de-execucao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rastreamento com MLflow
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proximos-passos" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Próximos passos
+        Outras formas de execução
       
     </span>
   </a>
@@ -1020,110 +1054,27 @@
 
 
 <h1 id="execucao">Execução<a class="headerlink" href="#execucao" title="Permanent link">&para;</a></h1>
-<p>O Fleven segue o padrão de apps do Flower e pode ser executado de três formas, do mais
-simples ao mais próximo de um cenário real.</p>
-<h2 id="metodo-1-simulacao-local">Método 1: Simulação Local<a class="headerlink" href="#metodo-1-simulacao-local" title="Permanent link">&para;</a></h2>
-<p>A forma mais fácil de começar. Tudo roda na mesma máquina usando atores Ray em
-paralelo, sem necessidade de configurar servidores.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">flwr</span> <span class="n">run</span> <span class="p">.</span> <span class="p">-</span><span class="n">-stream</span>
+<p>O caminho mais simples para executar o Fleven é usar a CLI do projeto, que prepara cada run com o grupo, a quantidade de clientes e os diretórios de resultados correspondentes.</p>
+<h2 id="preparar-os-dados">Preparar os dados<a class="headerlink" href="#preparar-os-dados" title="Permanent link">&para;</a></h2>
+<p>Disponibilize o eVED em <code>data/EVED_Clients</code>, com as viagens de treinamento organizadas em <code>train/client_N/trip_*.parquet</code>. Em seguida, crie os grupos experimentais:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fleven</span> <span class="n">setup</span>
 </code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Federações (Flower 1.31+)</p>
-<p>A partir do Flower 1.31, a configuração de conexão das federações saiu do
-<code>pyproject.toml</code> e fica em <code>.flwr/config.toml</code>. O número de clientes por grupo
-(<code>num_supernodes</code>) vai por run via <code>--federation-config</code> (chave com underscore),
-que o <code>fleven run</code> passa automaticamente. Para o <code>flwr run .</code> puro usar a config
-versionada, aponte o <code>FLWR_HOME</code> para a pasta do projeto antes de rodar:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>
-</code></pre></div></p>
-</div>
-<p>As configurações da aplicação (modelo, hiperparâmetros, features) vêm do
-<code>pyproject.toml</code>. Para ajustar parâmetros sem editar o arquivo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--run-config<span class="w"> </span><span class="s2">"rounds=5 learning-rate=1e-4 prediction-length=10"</span><span class="w"> </span>--stream
+<p>Os grupos resultantes ficam em <code>data/</code>. A pasta <code>train</code> do dataset identifica a origem usada para formar esses grupos e não representa o split entre treino e teste do modelo.</p>
+<h2 id="executar-um-experimento">Executar um experimento<a class="headerlink" href="#executar-um-experimento" title="Permanent link">&para;</a></h2>
+<p>Para uma primeira execução, escolha um grupo, um modelo e uma estratégia:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">fleven</span> <span class="n">run</span> <span class="p">-</span><span class="n">-only</span> <span class="n">G01</span> <span class="p">-</span><span class="n">-model-types</span> <span class="n">lstm</span> <span class="p">-</span><span class="n">-strategies</span> <span class="n">fedavg</span>
 </code></pre></div>
-<h2 id="metodo-2-deployment-local">Método 2: Deployment Local<a class="headerlink" href="#metodo-2-deployment-local" title="Permanent link">&para;</a></h2>
-<p>Simula um cenário mais real, com o servidor (SuperLink) e os clientes (SuperNodes)
-rodando em processos separados na mesma máquina. Útil para testar a comunicação antes
-de ir para hardware real.</p>
-<p>Primeiro ajuste o caminho dos dados no <code>pyproject.toml</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"C:/client/fleven/data/G01_HEV_18L_3000"</span>
+<p>O comando executa a simulação federada e gera a avaliação ao final. As configurações do modelo, das janelas e do treinamento vêm de <code>pyproject.toml</code>; as features e o alvo vêm do contrato indicado por <code>data-contract</code>.</p>
+<p>Runs já concluídos no MLflow são ignorados. Use <code>--no-skip-existing</code> quando quiser executar novamente a mesma combinação.</p>
+<h2 id="resultados">Resultados<a class="headerlink" href="#resultados" title="Permanent link">&para;</a></h2>
+<p>As métricas e checkpoints locais são gravados em <code>metrics/</code>, enquanto os relatórios produzidos pela avaliação ficam em <code>results/</code>. O rastreamento do experimento é armazenado no banco configurado por <code>mlflow-tracking-uri</code>.</p>
+<p>Para abrir a interface local do MLflow usando a configuração padrão do projeto:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">mlflow</span> <span class="n">ui</span> <span class="p">-</span><span class="n">-backend-store-uri</span> <span class="n">sqlite</span><span class="p">:///</span><span class="n">mlflow</span><span class="p">.</span><span class="n">db</span>
 </code></pre></div>
-<p>No Terminal 1:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>flower-superlink<span class="w"> </span>--insecure
-</code></pre></div>
-<p>Terminal 2, 3, …, N - para cada cliente, abra um terminal e execute, alterando o valor
-<code>V</code> de <code>--clientappio-api-address</code> e o id <code>X</code> de <code>partition-id</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>flower-supernode<span class="w"> </span>--insecure<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--superlink<span class="w"> </span><span class="m">127</span>.0.0.1:9092<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--clientappio-api-address<span class="w"> </span><span class="m">127</span>.0.0.1:909V<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--node-config<span class="w"> </span><span class="s2">"partition-id=X"</span>
-</code></pre></div>
-<p>No terminal final (aponte <code>FLWR_HOME</code> para a config versionada em <code>.flwr/</code>, senão o
-<code>flwr run</code> não encontra a federação <code>fleven-deployment</code>):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span><span class="w">   </span><span class="c1"># PowerShell: $env:FLWR_HOME = "$PWD\.flwr"</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment<span class="w"> </span>--stream
-</code></pre></div>
-<p>Para ver os nós conectados:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">flwr</span> <span class="nb">ls </span><span class="n">fleven-deployment</span>
-</code></pre></div>
-<h2 id="metodo-3-modo-hibrido-com-docker">Método 3: Modo Híbrido com Docker<a class="headerlink" href="#metodo-3-modo-hibrido-com-docker" title="Permanent link">&para;</a></h2>
-<p>Seu PC age como SuperLink (servidor), enquanto containers Docker simulam os SuperNodes,
-como se fossem Raspberry Pis embarcados nos veículos. Cada container recebe apenas os
-dados do seu próprio cliente.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>build
-</code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Modo inseguro</label><label for="__tabbed_1_2">Modo seguro (TLS)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Clientes em containers Docker, <strong>sem</strong> certificados de autenticação:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Inicie o SuperLink no seu PC</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>flower-superlink<span class="w"> </span>--insecure
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Inicie os containers Docker (outro terminal)</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># Aponte FLWR_HOME para .flwr/ (onde vivem as federações)</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Execute o treinamento federado</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment<span class="w"> </span>--stream
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>O Flower 1.31 tem dois mecanismos independentes: <strong>(1) TLS</strong> (sempre) criptografa
-o canal e o SuperNode verifica o SuperLink pela CA, de uma via; <strong>(2) autenticação
-de nó</strong> (opcional) usa par de chaves EC por SuperNode. Primeiro gere as
-credenciais:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pip<span class="w"> </span>install<span class="w"> </span>cryptography
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>python<span class="w"> </span>docker/generate_certificates.py
-</code></pre></div>
-<p>Inicie o SuperLink com TLS e suba os containers:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>flower-superlink<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span>--ssl-ca-certfile<span class="w"> </span>certificates/ca-cert.pem<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span>--ssl-certfile<span class="w"> </span>certificates/server-cert.pem<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span>--ssl-keyfile<span class="w"> </span>certificates/server-key.pem
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nv">TLS_ENABLED</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment-tls<span class="w"> </span>--stream
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Veja o guia de <a href="../../guides/DOCKER_DEPLOY/">Deploy com Docker</a> para instruções detalhadas.</p>
-<h2 id="rastreamento-com-mlflow">Rastreamento com MLflow<a class="headerlink" href="#rastreamento-com-mlflow" title="Permanent link">&para;</a></h2>
-<p>O Fleven usa SQLite como backend de tracking (padrão MLflow 3.x): todas as métricas,
-parâmetros e metadados ficam em um único <code>mlflow.db</code> na raiz do projeto.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">mlflow</span> <span class="n">ui</span>
-</code></pre></div>
-<p>Acesse <a href="http://127.0.0.1:5000">http://127.0.0.1:5000</a> para ver os resultados.</p>
-<h2 id="proximos-passos">Próximos passos<a class="headerlink" href="#proximos-passos" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../../guides/EXPERIMENTS/">Experimentos</a></li>
-<li><a href="../../reference/CLI-COMANDS/">Comandos CLI</a></li>
-</ul>
+<p>A interface fica disponível em <a href="http://127.0.0.1:5000">http://127.0.0.1:5000</a>.</p>
+<h2 id="outras-formas-de-execucao">Outras formas de execução<a class="headerlink" href="#outras-formas-de-execucao" title="Permanent link">&para;</a></h2>
+<p>O Flower também permite executar o app diretamente com <code>flwr run</code> ou separar SuperLink e SuperNodes em processos e dispositivos distintos. Para os experimentos comparativos do projeto, prefira <code>fleven run</code>, pois ele mantém grupo, número de clientes, nome do experimento e diretórios de saída consistentes.</p>
+<p>Consulte <a href="../../guides/EXPERIMENTS/">Experimentos</a> para os grupos disponíveis, <a href="../../guides/DOCKER_DEPLOY/">Deploy com Docker</a> para containers e <a href="../../guides/LAINF-DEPLOY/">Deploy em Raspberry Pi</a> para os clientes embarcados.</p>
 
 
 

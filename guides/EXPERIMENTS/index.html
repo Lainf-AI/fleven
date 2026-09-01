@@ -16,7 +16,7 @@
         <link rel="prev" href="../../getting-started/execucao/">
       
       
-        <link rel="next" href="../SLIDING_WINDOW/">
+        <link rel="next" href="../CONTRACTS/">
       
       
         
@@ -48,8 +48,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
       
     
     
@@ -621,10 +621,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#experimentos-testados" class="md-nav__link">
+  <a href="#grupos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Experimentos testados:
+        Grupos
       
     </span>
   </a>
@@ -632,49 +632,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#target-energy-consumption" class="md-nav__link">
+  <a href="#execucao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Target (Energy Consumption)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Target (Energy Consumption)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#veiculos-ice-e-hev" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📍 Veículos ICE e HEV
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#veiculos-phev-e-ev" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📍 Veículos PHEV e EV
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Features
+        Execução
       
     </span>
   </a>
@@ -685,6 +646,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -753,14 +742,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../FEDPER_GUIDE/" class="md-nav__link">
+      <a href="../MODELS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEEDER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
   
 
     
@@ -951,10 +968,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#experimentos-testados" class="md-nav__link">
+  <a href="#grupos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Experimentos testados:
+        Grupos
       
     </span>
   </a>
@@ -962,49 +979,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#target-energy-consumption" class="md-nav__link">
+  <a href="#execucao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Target (Energy Consumption)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Target (Energy Consumption)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#veiculos-ice-e-hev" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📍 Veículos ICE e HEV
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#veiculos-phev-e-ev" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        📍 Veículos PHEV e EV
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Features
+        Execução
       
     </span>
   </a>
@@ -1032,145 +1010,76 @@
 
 
 <h1 id="experimentos">Experimentos<a class="headerlink" href="#experimentos" title="Permanent link">&para;</a></h1>
-<p>Para testar a arquitetura Fleven no dataset eVED, separamos alguns veículos do dataset em oito grupos, tendo como critério as variáveis:</p>
-<ul>
-<li><code>Vehicle Type</code></li>
-<li><code>Engine Type</code></li>
-<li><code>Transmission</code></li>
-<li><code>Generalized_Weight</code></li>
-</ul>
-<p>Convém destacar que a primeira sepração do dataset foi dividi-lo em <code>train/</code>, <code>test/</code> e <code>bads/</code>. A pasta <code>train/</code> foi a pasta onde realizamos essa divisão dos grupos. Nesse projeto, essa pasta se refere à pasta de dados principal que trabalhamos, não é a pasta de treino do modelo. A pasta <code>test/</code> foi criada para responder a pergunta: se treinarmos o modelo em <code>train/</code> e avaliá-lo em <code>test/</code>, qual será o desempenho? No momento não usamos essa pasta.</p>
-<p>Ao realizar o agrupamento dos veículos, foi obtido o seguinte perfil:</p>
+<p>Os experimentos do Fleven usam veículos do dataset eVED agrupados por tipo de veículo, motorização, transmissão e peso. Cada grupo representa um cenário federado, e cada veículo corresponde a um cliente.</p>
+<h2 id="grupos">Grupos<a class="headerlink" href="#grupos" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>#</th>
-<th>Pasta</th>
-<th>Veículo</th>
-<th>Clientes</th>
+<th>Grupo</th>
+<th>Diretório</th>
+<th>Perfil</th>
+<th style="text-align: right;">Clientes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
+<td>G01</td>
 <td><code>G01_HEV_18L_3000</code></td>
-<td>HEV · 4-GAS/ELECTRIC 1.8L · NO DATA · 3000 kg</td>
-<td><strong>14</strong></td>
+<td>HEV - 4-GAS/ELECTRIC 1.8L - transmissão não informada - 3000 kg</td>
+<td style="text-align: right;">14</td>
 </tr>
 <tr>
-<td>2</td>
+<td>G02</td>
 <td><code>G02_HEV_15L_3000</code></td>
-<td>HEV · 4-GAS/ELECTRIC 1.5L · NO DATA · 3000 kg</td>
-<td><strong>13</strong></td>
+<td>HEV - 4-GAS/ELECTRIC 1.5L - transmissão não informada - 3000 kg</td>
+<td style="text-align: right;">13</td>
 </tr>
 <tr>
-<td>3</td>
+<td>G03</td>
 <td><code>G03_ICE_24L_5AT_3500</code></td>
-<td>ICE · 4-FI 2.4L · 5-SP AUTOMATIC · 3500 kg</td>
-<td><strong>7</strong></td>
+<td>ICE - 4-FI 2.4L - automática de 5 marchas - 3500 kg</td>
+<td style="text-align: right;">7</td>
 </tr>
 <tr>
-<td>4</td>
+<td>G04</td>
 <td><code>G04_ICE_25L_CVT_3500</code></td>
-<td>ICE · 4-FI 2.5L · AUTOMATIC/CVT · 3500 kg</td>
-<td><strong>7</strong></td>
+<td>ICE - 4-FI 2.5L - automática/CVT - 3500 kg</td>
+<td style="text-align: right;">7</td>
 </tr>
 <tr>
-<td>5</td>
+<td>G05</td>
 <td><code>G05_ICE_20L_ND_2500</code></td>
-<td>ICE · 4-FI 2.0L · NO DATA · 2500 kg</td>
-<td><strong>6</strong></td>
+<td>ICE - 4-FI 2.0L - transmissão não informada - 2500 kg</td>
+<td style="text-align: right;">6</td>
 </tr>
 <tr>
-<td>6</td>
+<td>G06</td>
 <td><code>G06_ICE_35L_ND_4500</code></td>
-<td>ICE · 6-FI 3.5L · NO DATA · 4500 kg</td>
-<td><strong>6</strong></td>
+<td>ICE - 6-FI 3.5L - transmissão não informada - 4500 kg</td>
+<td style="text-align: right;">6</td>
 </tr>
 <tr>
-<td>7</td>
+<td>G07</td>
 <td><code>G07_ICE_25L_ND_3500</code></td>
-<td>ICE · 4-FI 2.5L · NO DATA · 3500 kg</td>
-<td><strong>6</strong></td>
+<td>ICE - 4-FI 2.5L - transmissão não informada - 3500 kg</td>
+<td style="text-align: right;">6</td>
 </tr>
 <tr>
-<td>8</td>
+<td>G08</td>
 <td><code>G08_PHEV_20L_CVT_4000</code></td>
-<td>PHEV · 4-GAS/ELECTRIC 2.0L · CVT · 4000 kg</td>
-<td><strong>6</strong></td>
+<td>PHEV - 4-GAS/ELECTRIC 2.0L - CVT - 4000 kg</td>
+<td style="text-align: right;">6</td>
 </tr>
 </tbody>
 </table>
-<h3 id="experimentos-testados">Experimentos testados:<a class="headerlink" href="#experimentos-testados" title="Permanent link">&para;</a></h3>
-<ol>
-<li><strong>G01</strong> - 14 clientes HEV 1.8L/3000 kg (maior grupo, melhor para convergência)</li>
-<li><strong>G02</strong> - 13 clientes HEV 1.5L/3000 kg (Prius-like, comparação intra-HEV)</li>
-<li><strong>G03</strong> - 7 clientes ICE 2.4L automático (benchmark ICE sedã médio)</li>
-<li><strong>G04</strong> - 7 clientes ICE 2.5L CVT (mesmo porte, transmissão diferente)</li>
-<li><strong>G05</strong> - 6 clientes ICE 2.0L leve (menor engine/peso, contraste com G06)</li>
-</ol>
-<p>Para rodar cada experimento, basta modificarmos no pyproject:</p>
-<ol>
-<li>Editar <code>pyproject.toml</code></li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"C:/Users/jose.souza/Documents/fleven/data/G01_HEV_18L_3000"</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">mlflow-experiment-name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"G01_HEV_18L_3000"</span>
+<p>Os diretórios são criados por <code>fleven setup</code> a partir dos dados de origem. A pasta <code>train/</code> do eVED identifica a partição usada para formar os grupos e não corresponde ao split de treinamento dos modelos.</p>
+<h2 id="execucao">Execução<a class="headerlink" href="#execucao" title="Permanent link">&para;</a></h2>
+<p>Use o identificador do grupo para executar um experimento:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fleven</span> <span class="n">run</span> <span class="p">-</span><span class="n">-only</span> <span class="n">G01</span>
 </code></pre></div>
-<ol>
-<li>Executar</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--federation-config<span class="w"> </span><span class="s2">"num_supernodes=14"</span><span class="w"> </span>--stream
-</code></pre></div>
-<blockquote>
-<p>Mais simples: <code>fleven run --only G01</code> já faz tudo isso (caminho dos dados, num_supernodes, <code>--stream</code> e a avaliação) automaticamente.</p>
-</blockquote>
-<p>Cada execução em lote grava métricas em um diretório próprio com timestamp,
-por exemplo <code>metrics/G05_fedper_fedavg/20260805_133000/</code>. Isso impede que um
-<code>--no-skip-existing</code> misture históricos de runs anteriores. Passe esse diretório exato a <code>fleven eval</code> ao reavaliar manualmente.</p>
-<ol>
-<li>Avaliar resultados (após o run terminar)</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Sumário no terminal + PDF + CSVs em results/</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>fleven<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>-e<span class="w"> </span>G01_HEV_18L_3000<span class="w"> </span>-s<span class="w"> </span>fedyogi
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Apenas sumário (sem gerar PDF)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>fleven<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>-e<span class="w"> </span>G01_HEV_18L_3000<span class="w"> </span>-s<span class="w"> </span>fedyogi<span class="w"> </span>--no-pdf
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Apontando para um diretório de métricas diferente</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>fleven<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>-e<span class="w"> </span>G01_HEV_18L_3000<span class="w"> </span>-s<span class="w"> </span>fedyogi<span class="w"> </span>-m<span class="w"> </span>/caminho/metrics
-</code></pre></div>
-<ol>
-<li>Publicar no Dagshub (opcional)</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$env:DAGSHUB_USER</span>  <span class="p">=</span> <span class="s2">"&lt;seu_usuario_dagshub&gt;"</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$env:DAGSHUB_TOKEN</span> <span class="p">=</span> <span class="s2">"&lt;token: dagshub.com/user/settings/tokens&gt;"</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">fleven</span> <span class="n">push</span>
-</code></pre></div>
-<p>O script lê o <code>mlflow.db</code> local e copia para o seu repositório <code>&lt;usuario&gt;/fleven</code> no DagHub via API REST.
-Runs já existentes (identificados pelo nome) são pulados automaticamente.</p>
-<h2 id="target-energy-consumption">Target (Energy Consumption)<a class="headerlink" href="#target-energy-consumption" title="Permanent link">&para;</a></h2>
-<p>A coluna <code>Energy_Consumption</code> em cada arquivo parquet foi calculada pelos autores do VED. A fórmula varia conforme o tipo de motorização.</p>
-<h4 id="veiculos-ice-e-hev">📍 Veículos ICE  e HEV<a class="headerlink" href="#veiculos-ice-e-hev" title="Permanent link">&para;</a></h4>
-<p>O consumo de energia é derivado do sensor de fluxo de ar (MAF) e das correções de combustível reportadas pela interface OBD-II:</p>
-<div class="arithmatex">\[
-EC [\text{kWh/amostra}] = \frac{v [\text{km/h}]}{3600 \times 100} \times MAF [\text{g/s}] \times 3.785 \times \frac{1 + \dfrac{STFT_{B1}}{100} + \dfrac{LTFT_{B1}}{100}}{AFR \times 0.1123}
-\]</div>
-<p>onde <span class="arithmatex">\(AFR = 14.08\)</span> (razão estequiométrica ar-combustível para gasolina).</p>
-<p>Onde:
-- <span class="arithmatex">\(v / 3600\)</span>: converte km/h em km por amostra de 1 segundo
-- <span class="arithmatex">\(MAF \times 3.785\)</span>: converte g/s para L/s (aproximado)
-- <span class="arithmatex">\(STFT_{B1}\)</span> / <span class="arithmatex">\(LTFT_{B1}\)</span>: Short-Term e Long-Term Fuel Trim Bank 1 [%]: São correções da ECU à mistura ar-combustível. O STFT reage em tempo real; o LTFT acumula ao longo do tempo como correção específica do veículo, refletindo desgaste do motor, estado dos injetores e calibração
-- Fator de conversão: <span class="arithmatex">\(1 \text{kWh} \approx 0.1123 \text{L}\)</span> de gasolina</p>
-<p>Para veículos <strong>HEV</strong>, o VED aplica a mesma fórmula dos ICE: contabiliza o consumo de combustível do motor a combustão. A contribuição do motor elétrico não é rastreada separadamente nesses grupos.</p>
-<h4 id="veiculos-phev-e-ev">📍 Veículos PHEV e EV<a class="headerlink" href="#veiculos-phev-e-ev" title="Permanent link">&para;</a></h4>
-<p>O consumo de energia é calculado diretamente da bateria de alta tensão:</p>
-<div class="arithmatex">\[
-EC [\text{kWh/amostra}] = -\frac{I_{HV}[\text{A}] \times V_{HV} [\text{V}]}{3.6 \times 10^{6}}
-\]</div>
-<p>A convenção de sinal é: corrente negativa durante descarga (consumo), logo multiplicar por <span class="arithmatex">\(-1\)</span> resulta em valor positivo. Nenhum dado de MAF ou fuel trim é utilizado.</p>
-<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
-<p>Os experimentos atuais utilizam as seguintes features, definidas no <strong>contrato de dados</strong>: <code>Vehicle Speed[km/h]</code>, <code>MAF[g/sec]</code>, <code>Engine RPM[RPM]</code>, <code>Absolute Load[%]</code>, com target <code>Total Power[kW]</code>.</p>
+<p>O comando configura o diretório de dados, a quantidade de clientes e a avaliação. Para selecionar estratégias, modelos ou mais de um grupo, consulte os <a href="../../reference/CLI-COMANDS/">comandos da CLI</a>.</p>
+<p>Os resultados dos experimentos estão disponíveis no <a href="https://dagshub.com/jw/fleven.mlflow/">DagsHub</a>.</p>
+<p>As features e o alvo são definidos pelo contrato escolhido para o experimento. Consulte <a href="../CONTRACTS/">Contratos de dados</a> para conhecer os contratos disponíveis e sua relação com cada fonte de dados.</p>
 
 
 

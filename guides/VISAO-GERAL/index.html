@@ -44,8 +44,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
       
     
     
@@ -578,6 +578,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../SLIDING_WINDOW/" class="md-nav__link">
         
   
@@ -634,14 +662,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../FEDPER_GUIDE/" class="md-nav__link">
+      <a href="../MODELS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEEDER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
   
 
     
@@ -918,7 +974,7 @@
 
 
 <h1 id="fleven-em-uma-pagina">Fleven em uma página<a class="headerlink" href="#fleven-em-uma-pagina" title="Permanent link">&para;</a></h1>
-<p>O Fleven treina modelos de série temporal sobre dados veiculares sem centralizar os dados. Cada veículo, ou cada cliente do conjunto eVED, guarda suas viagens e só troca parâmetros com o servidor. A orquestração é do Flower 1.31, o modelo é PyTorch, e o histórico de experimentos vai para o MLflow.</p>
+<p>O Fleven treina modelos de série temporal sobre dados veiculares sem centralizar os dados. Cada veículo, ou cada cliente do conjunto eVED, guarda suas viagens e só troca parâmetros com o servidor. A orquestração é do Flower, o modelo é PyTorch, e o histórico de experimentos vai para o MLflow.</p>
 <h2 id="o-que-ele-preve">O que ele prevê<a class="headerlink" href="#o-que-ele-preve" title="Permanent link">&para;</a></h2>
 <p>O alvo padrão é o consumo à frente: dado o que os sensores mostraram nos últimos passos, quanta energia o veículo vai gastar nos próximos 500 metros. Esse é o modo <code>distance-energy</code>, e a distância é integrada a partir do tempo e da velocidade, não do GPS, porque no GPS o zigue-zague da posição infla o percurso em cerca de 3,5% nessa escala. O modo alternativo, <code>steps</code>, prevê as próximas leituras em vez de um escalar por distância.</p>
 <h2 id="as-tres-direcoes">As três direções<a class="headerlink" href="#as-tres-direcoes" title="Permanent link">&para;</a></h2>
@@ -932,7 +988,7 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>fleven<span class="w"> </span>run<span class="w"> </span>--only<span class="w"> </span>G05<span class="w">        </span><span class="c1"># roda o experimento federado</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>fleven<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>-e<span class="w"> </span>G05_ICE_20L_ND_2500<span class="w"> </span>-s<span class="w"> </span>fedavg
 </code></pre></div>
-<p>A configuração fica em <code>pyproject.toml</code>, sob <code>[tool.flwr.app.config]</code>. As conexões de SuperLink ficam em <code>.flwr/config.toml</code>, que mudou de lugar no Flower 1.31.</p>
+<p>A configuração fica em <code>pyproject.toml</code>, sob <code>[tool.flwr.app.config]</code>. As conexões de SuperLink ficam em <code>.flwr/config.toml</code>.</p>
 <h2 id="o-que-ja-se-sabe">O que já se sabe<a class="headerlink" href="#o-que-ja-se-sabe" title="Permanent link">&para;</a></h2>
 <p>FedAvg é a estratégia mais estável e é o default recomendado. O FedPer funciona bem depois que a cauda pessoal passou a ser persistida entre rodadas, com R² perto de 0,77 no G01 e 0,83 no G05. O FedYogi diverge no G02, e o FedAdagrad é instável o bastante para ser evitado.</p>
 <p>Antes de comparar R² entre grupos, confira <code>prediction_length</code> e <code>prediction_distance_km</code> no <code>final_predictions.json</code>. Runs com horizontes diferentes não são comparáveis, e o default de distância mudou de 1,0 km para 0,5 km em agosto de 2026.</p>

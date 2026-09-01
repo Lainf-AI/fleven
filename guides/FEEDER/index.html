@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/FEEDER/">
       
       
+        <link rel="prev" href="../MODELS/">
+      
+      
+        <link rel="next" href="../DOCKER_DEPLOY/">
       
       
         
@@ -44,8 +48,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
       
     
     
@@ -269,10 +273,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../EXPERIMENTS/" class="md-tabs__link">
           
   
@@ -495,26 +501,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -532,7 +543,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -558,6 +569,34 @@
     
   
     Experimentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
   
 
     
@@ -634,14 +673,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../FEDPER_GUIDE/" class="md-nav__link">
+      <a href="../MODELS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
   
 
     
@@ -650,6 +689,147 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#replay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replay
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dados-materializados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dados materializados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predicao-ao-vivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predição ao vivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bootstrap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-rota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de rota
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opcoes-principais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opções principais
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -832,88 +1012,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#execucao" class="md-nav__link">
+  <a href="#replay" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Execução
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Execução">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fluxo-dos-dados" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fluxo dos dados
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#demo-de-predicao-ao-vivo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Demo de predição ao vivo
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fluxo-federado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fluxo federado
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#saidas" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Saídas
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Saídas">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#provedor-de-rota-valhalla" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Provedor de rota (Valhalla)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#replay-e-de-sensor-nao-de-tudo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Replay é de sensor, não de tudo
+        Replay
       
     </span>
   </a>
@@ -921,10 +1023,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cuidados" class="md-nav__link">
+  <a href="#dados-materializados" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cuidados
+        Dados materializados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predicao-ao-vivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predição ao vivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bootstrap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bootstrap
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#atributos-de-rota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atributos de rota
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opcoes-principais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opções principais
       
     </span>
   </a>
@@ -952,193 +1098,117 @@
 
 
 <h1 id="feeder">Feeder<a class="headerlink" href="#feeder" title="Permanent link">&para;</a></h1>
-<p>Este guia explica como rodar os mesmos experimentos do Fleven, mas com o fluxo de dados realista: os dados de cada veículo chegam ao longo do tempo via OBD, em vez de já estarem todos coletados.</p>
-<ul>
-<li><strong><code>fleven feeder</code></strong>: simula a coleta dos dados das Trips do eVED</li>
-<li><strong><code>fleven bootstrap</code></strong>: pré-treina um modelo inicial em conjunto de dados externos ao grupo de experimento considerado</li>
-<li><strong><code>--time-scale</code></strong>: segundos de dado por segundo de relógio.</li>
-<li><code>1</code> = tempo real (uma viagem de 10 min leva 10 min).</li>
-<li><code>600</code> = uma viagem de 10 min vira ~1s.</li>
-<li><code>86400</code> = 1 dia de dado por segundo.</li>
-<li><code>0</code> = para o fluxo de dados.</li>
-</ul>
-<h2 id="execucao">Execução<a class="headerlink" href="#execucao" title="Permanent link">&para;</a></h2>
-<h3 id="fluxo-dos-dados">Fluxo dos dados<a class="headerlink" href="#fluxo-dos-dados" title="Permanent link">&para;</a></h3>
-<p>Forma as trips de cada cliente do grupo numa pasta, ao longo do tempo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">group</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">dir</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-time-scale</span> <span class="p">&lt;</span><span class="n">timescale</span><span class="p">&gt;</span>
+<p>O feeder reproduz o fluxo de um coletor veicular usando as viagens do eVED. Ele libera as viagens ao longo do tempo, calcula as grandezas derivadas e pode avaliar um checkpoint por inferência contínua. É uma ferramenta de bancada e não faz parte do cliente embarcado.</p>
+<p>O comando lê o contrato e as configurações temporais de <code>pyproject.toml</code>. O grupo de origem deve conter <code>train/client_N/trip_*.parquet</code>.</p>
+<h2 id="replay">Replay<a class="headerlink" href="#replay" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-time-scale</span> <span class="p">&lt;</span><span class="n">escala</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>Resultado: <code>sim/obd_g07/client_N/trip_*.parquet</code> aparecendo conforme as viagens terminam. Aponte uma <code>ObdTripSource</code> para <code>sim/obd_g07/client_N</code> e o FL lê o dado crescente.</p>
-<h3 id="demo-de-predicao-ao-vivo">Demo de predição ao vivo<a class="headerlink" href="#demo-de-predicao-ao-vivo" title="Permanent link">&para;</a></h3>
-<p>Dois passos: treina o modelo bootstrap, depois roda o feeder <strong>com inferência</strong>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># 1) pre-treina modelo+scaler nos held-out matched do perfil do grupo (~1-2 min)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">fleven</span> <span class="n">bootstrap</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G07_ICE_25L_ND_3500</span> <span class="p">-</span><span class="n">-out</span> <span class="n">sim</span><span class="p">/</span><span class="n">g07_boot</span><span class="p">.</span><span class="n">pt</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c"># 2) feeder com inferencia ao vivo</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G07_ICE_25L_ND_3500</span> <span class="p">-</span><span class="n">-target</span> <span class="n">sim</span><span class="p">/</span><span class="n">obd_g07</span> <span class="p">-</span><span class="n">-time-scale</span> <span class="n">600</span> <span class="p">-</span><span class="n">-predict</span> <span class="p">-</span><span class="n">-model</span> <span class="n">sim</span><span class="p">/</span><span class="n">g07_boot</span><span class="p">.</span><span class="n">pt</span> <span class="p">-</span><span class="n">-pred-out</span> <span class="n">sim</span><span class="p">/</span><span class="n">preds_g07</span>
+<p>Cada cliente é executado concorrentemente. Suas viagens seguem a ordem numérica do nome do arquivo e são reproduzidas sem pausa entre elas. Dentro de uma viagem, a cadência vem de <code>Timestamp(ms)</code>.</p>
+<p><code>time-scale</code> representa quantos segundos do dado passam em um segundo de relógio. O valor <code>1</code> mantém o tempo original; valores maiores aceleram o replay; valores menores ou iguais a zero executam sem espera.</p>
+<p>A viagem só aparece no destino depois de ser concluída. A escrita usa um arquivo temporário e a finalização é atômica, por isso a fonte OBD não lê uma viagem parcial.</p>
+<h2 id="dados-materializados">Dados materializados<a class="headerlink" href="#dados-materializados" title="Permanent link">&para;</a></h2>
+<p>As viagens são gravadas em:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;saida&gt;/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── _route_meta.json
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>├── client_0/
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   ├── _route_meta.json
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   └── trip_*.parquet
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>└── client_N/
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    ├── _route_meta.json
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    └── trip_*.parquet
 </code></pre></div>
-<p>O que você vê:
-- <strong>No terminal, ao vivo</strong>: <code>[1009.0 t=592700] prev[0]=0.0014 real[0]=0.0018 erro[0]=+0.0002</code> (<code>prev</code>=previsto, <code>real</code>=o que de fato veio, <code>erro</code>=resíduo; em kWh/amostra).
-- <strong>Em arquivo, tempo real</strong>: <code>sim/preds_g07/client_N/live_predictions.jsonl</code> crescendo (uma linha por predição resolvida), e <code>live_predictions.parquet</code> no fim (<code>close()</code>).</p>
-<blockquote>
-<p>Se omitir <code>--pred-out</code>, o default é <code>metrics/</code>.</p>
-</blockquote>
-<h3 id="fluxo-federado">Fluxo federado<a class="headerlink" href="#fluxo-federado" title="Permanent link">&para;</a></h3>
-<p>O mais fiel: deployment (vários terminais), a FL treina federado sobre o dado que o feeder vai liberando, e a predição usa o <strong>modelo federado</strong> do cliente.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c"># 0) bootstrap (init quente da FL)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">fleven</span> <span class="n">bootstrap</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G07_ICE_25L_ND_3500</span> <span class="p">-</span><span class="n">-out</span> <span class="n">sim</span><span class="p">/</span><span class="n">g07_boot</span><span class="p">.</span><span class="n">pt</span>
+<p>O feeder não copia os parquets integralmente. O coletor acrescenta as colunas de potência total, potência do combustível, potência da bateria e qualidade do cálculo. O manifesto <code>_route_meta.json</code> registra o contrato e a procedência dos atributos de rota.</p>
+<p>Para consumir essas viagens em um SuperNode, configure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">data-source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"obd"</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">obd-data-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;diretorio-local-com-trip_*.parquet&gt;"</span>
 </code></pre></div>
-<p>No <code>pyproject.toml</code>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">data-source</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"obd"</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">bootstrap-init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"sim/g07_boot.pt"</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">obd-data-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"&lt;pasta obd deste no&gt;"</span>
-</code></pre></div></p>
-<p>Terminais:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c"># Terminal 1 - SuperLink</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">flower-superlink</span> <span class="p">-</span><span class="n">-insecure</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c"># Terminais 2..N - um SuperNode por cliente (cada um com seu obd-data-path)</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">flower-supernode</span> <span class="p">-</span><span class="n">-insecure</span> <span class="p">-</span><span class="n">-superlink</span> <span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">9092</span> <span class="p">-</span><span class="n">-node-config</span> <span class="s2">"partition-id=0"</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c"># Terminal feeder - alimenta as pastas obd em wall-clock</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G07_ICE_25L_ND_3500</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">raiz</span> <span class="n">obd</span> <span class="n">dos</span> <span class="n">nos</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-time-scale</span> <span class="n">600</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c"># Terminal final - dispara a FL (comeca do bootstrap, treina sobre o dado crescente)</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span><span class="p">;</span> <span class="n">flwr</span> <span class="n">run</span> <span class="p">.</span> <span class="n">fleven-deployment</span> <span class="p">-</span><span class="n">-stream</span>
-</code></pre></div></p>
-<p>Conforme a FL roda, cada cliente salva <code>metrics/&lt;exp&gt;/client_N/model_round_N.pt</code> (modelo <strong>+ scaler</strong>, formato carregável pelo Predictor). Para a predição ao vivo com o modelo <strong>federado</strong> (último checkpoint do cliente), em vez do bootstrap fixo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">...</span> <span class="p">-</span><span class="n">-target</span> <span class="p">...</span> <span class="p">-</span><span class="n">-predict</span> <span class="p">`</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  <span class="p">-</span><span class="n">-model</span> <span class="n">metrics</span><span class="p">/&lt;</span><span class="n">exp</span><span class="p">&gt;/</span><span class="n">client_N</span><span class="p">/</span><span class="n">model_round_N</span><span class="p">.</span><span class="n">pt</span> <span class="p">-</span><span class="n">-pred-out</span> <span class="n">sim</span><span class="p">/</span><span class="n">preds_g07</span>
+<p><code>obd-data-path</code> aponta diretamente para a pasta local de um veículo, como <code>&lt;saida&gt;/client_0</code>. Em dispositivos diferentes, o mesmo caminho configurado pode representar dados diferentes em cada sistema de arquivos. A identidade do cliente vem do <code>node_id</code> do SuperNode; <code>partition-id</code> não seleciona a pasta OBD.</p>
+<p>A fonte OBD considera apenas viagens finalizadas e reprocessa o diretório a cada inicialização do ClientApp. Os DataLoaders permanecem em memória durante o run, portanto viagens concluídas depois dessa inicialização só participam de um run posterior. O parâmetro opcional <code>obd-retention-trips</code> limita a leitura às viagens mais recentes; zero mantém todas.</p>
+<h2 id="predicao-ao-vivo">Predição ao vivo<a class="headerlink" href="#predicao-ao-vivo" title="Permanent link">&para;</a></h2>
+<p>A predição exige um checkpoint que contenha modelo, scaler e configuração compatíveis com o contrato ativo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-time-scale</span> <span class="p">&lt;</span><span class="n">escala</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-predict</span> <span class="p">-</span><span class="n">-model</span> <span class="p">&lt;</span><span class="n">checkpoint</span><span class="p">.</span><span class="n">pt</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-pred-out</span> <span class="p">&lt;</span><span class="n">predicoes</span><span class="p">&gt;</span>
 </code></pre></div>
-<blockquote>
-<p>O ciclo completo: **bootstrap aquece -&gt; FL melhora federado -&gt; predição ao vivo</p>
-</blockquote>
-<h2 id="saidas">Saídas<a class="headerlink" href="#saidas" title="Permanent link">&para;</a></h2>
+<p>O preditor mantém uma janela por cliente, ignora leituras inválidas, reinicia o estado na troca de viagem e respeita o limite de gap definido pelo contrato. No modo <code>steps</code>, a predição é resolvida quando chegam os próximos valores do alvo. No modo <code>distance-energy</code>, ela é resolvida quando o veículo percorre a distância configurada.</p>
+<p>As predições são gravadas em:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&lt;predicoes&gt;/client_N/live_predictions.jsonl
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>&lt;predicoes&gt;/client_N/live_predictions.parquet
+</code></pre></div>
+<p>O JSONL cresce a cada predição resolvida. O Parquet é produzido quando o feeder termina ou é interrompido. Como o JSONL usa append, reutilizar a mesma pasta mistura as execuções; use uma saída nova ou esvazie o arquivo antes de outro replay.</p>
+<p>Cada registro contém <code>timestamp</code>, <code>trip</code>, <code>y_pred</code>, <code>y_true</code>, <code>residual</code>, <code>prediction_mode</code> e <code>prediction_distance_km</code>. Os valores estão na unidade física do alvo.</p>
+<h2 id="bootstrap">Bootstrap<a class="headerlink" href="#bootstrap" title="Permanent link">&para;</a></h2>
+<p><code>fleven bootstrap</code> produz um checkpoint inicial usando clientes held-out cujo perfil veicular corresponde ao grupo:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">fleven</span> <span class="n">bootstrap</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-test</span> <span class="p">&lt;</span><span class="n">held-out</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-out</span> <span class="p">&lt;</span><span class="n">checkpoint</span><span class="p">.</span><span class="n">pt</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>O modelo, o scaler e o fingerprint do contrato são salvos juntos. O checkpoint pode iniciar a federação por meio de <code>bootstrap-init</code> ou ser usado diretamente por <code>fleven feeder --predict</code>.</p>
+<p>O bootstrap usa as configurações do projeto e não suporta contratos com atributos de rota.</p>
+<p>Os clientes federados salvam checkpoints em <code>&lt;metrics-base-path&gt;/client_&lt;node_id&gt;/model_round_N.pt</code> conforme <code>save-checkpoint-every</code>. O preditor recusa checkpoints cujo fingerprint ou estrutura de rota divergem do contrato ativo.</p>
+<h2 id="atributos-de-rota">Atributos de rota<a class="headerlink" href="#atributos-de-rota" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Integração ainda não validada</p>
+<p>O provedor e o fluxo de consulta estão implementados, mas o feeder ainda não foi testado conectado a uma instância real do Valhalla. Os comandos desta seção descrevem a interface prevista e permanecem pendentes de validação ponta a ponta.</p>
+</div>
+<p>Quando o contrato declara atributos de rota, o feeder exige um Valhalla acessível:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-route-provider</span> <span class="n">valhalla</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="p">&lt;</span><span class="n">url</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>O serviço é verificado antes do replay. Uma falha de consulta durante a execução marca a corrida como parcial. Pontos sem cobertura cartográfica recebem valores ausentes, e o feeder apresenta a cobertura por coluna ao final.</p>
+<p>O cache evita repetir consultas para a mesma geometria:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-route-provider</span> <span class="n">valhalla</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="p">&lt;</span><span class="n">url</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-route-cache</span> <span class="p">&lt;</span><span class="n">cache</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-extract-version</span> <span class="p">&lt;</span><span class="n">versao-do-mapa</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><code>--extract-version</code> é obrigatório com <code>--route-cache</code> porque participa da chave de invalidação. Use a mesma fonte e versão cartográfica no treino e na inferência para não alterar silenciosamente a distribuição dos atributos.</p>
+<p><code>--route-provider none</code> só é válido quando o contrato não possui atributos de rota. Nesse modo, o feeder não consulta um provedor; as colunas já existentes no parquet de origem permanecem no arquivo, mas não fazem parte da entrada definida pelo contrato.</p>
+<p>A inferência ao vivo com atributos de rota ainda não é equivalente ao treinamento: o checkpoint federado salva a estrutura do encoder, mas não persiste o scaler da rota usado pelo pipeline. Até esse estado ser incluído no checkpoint e restaurado pelo preditor, use <code>--predict</code> somente com contratos sem atributos de rota.</p>
+<h2 id="opcoes-principais">Opções principais<a class="headerlink" href="#opcoes-principais" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>O quê</th>
-<th>Onde</th>
-<th>Cadência</th>
+<th>Opção</th>
+<th>Função</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Trips materializadas (dado OBD)</td>
-<td><code>&lt;target&gt;/client_N/trip_*.parquet</code></td>
-<td>por viagem</td>
+<td><code>--group</code></td>
+<td>Grupo eVED usado como origem do replay</td>
 </tr>
 <tr>
-<td>Predição ao vivo (linha a linha)</td>
-<td><code>&lt;pred-out&gt;/client_N/live_predictions.jsonl</code></td>
-<td>por predição (tempo real)</td>
+<td><code>--target</code></td>
+<td>Raiz onde as viagens são materializadas</td>
 </tr>
 <tr>
-<td>Predição (columnar, p/ análise)</td>
-<td><code>&lt;pred-out&gt;/client_N/live_predictions.parquet</code></td>
-<td>no <code>close()</code></td>
+<td><code>--time-scale</code></td>
+<td>Relação entre tempo do dado e tempo de relógio</td>
 </tr>
 <tr>
-<td>Print ao vivo</td>
-<td>terminal do feeder</td>
-<td>por predição</td>
+<td><code>--predict</code></td>
+<td>Habilita a inferência contínua</td>
 </tr>
 <tr>
-<td>Modelo federado do cliente</td>
-<td><code>metrics/&lt;exp&gt;/client_N/model_round_N.pt</code></td>
-<td>a cada <code>save-checkpoint-every</code></td>
+<td><code>--model</code></td>
+<td>Checkpoint usado na inferência</td>
 </tr>
-</tbody>
-</table>
-<p>As trips escritas pelo feeder contêm quatro colunas que <strong>não existem</strong> no parquet
-de origem: <code>Total Power[kW]</code>, <code>Fuel Power[kW]</code>, <code>Battery Power[kW]</code> e
-<code>Power Quality</code>. O feeder faz o papel do coletor, e potência é calculada, não
-medida. Por isso a saída nunca é cópia byte a byte da entrada, mesmo sem provedor
-de rota.</p>
-<p>Schema do <code>live_predictions</code>: <code>timestamp, trip, y_pred (lista H), y_true (lista H), residual (lista H)</code>.</p>
-<h3 id="provedor-de-rota-valhalla">Provedor de rota (Valhalla)<a class="headerlink" href="#provedor-de-rota-valhalla" title="Permanent link">&para;</a></h3>
-<p>Se o contrato declara <code>[[route_feature]]</code>, o feeder precisa de um provedor que
-produza essas colunas de contexto (limite de velocidade, altitude etc.) — ele
-não copia mais essas colunas do eVED, ver a seção "Replay é de sensor, não de
-tudo" abaixo. Com <code>--route-provider valhalla</code>, o feeder produz essas colunas
-consultando um Valhalla local — a premissa é a de <strong>rota definida</strong>: o condutor
-já escolheu o destino, então a poligonal de coordenadas da viagem é conhecida
-antes de percorrê-la, e o provedor responde "quais são os atributos da via
-nestes pontos" de uma vez, não ponto a ponto conforme o carro anda.</p>
-<p>Quatro flags novas:</p>
-<table>
-<thead>
 <tr>
-<th>Flag</th>
-<th>Efeito</th>
+<td><code>--pred-out</code></td>
+<td>Raiz das predições; o padrão é <code>metrics</code></td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td><code>--route-provider {none,valhalla}</code></td>
-<td>fonte das colunas de contexto (<code>none</code> = copia do eVED, default)</td>
+<td><code>--route-provider</code></td>
+<td>Seleciona <code>none</code> ou <code>valhalla</code></td>
 </tr>
 <tr>
 <td><code>--valhalla-url</code></td>
-<td>URL do Valhalla local (default <code>http://localhost:8002</code>)</td>
-</tr>
-<tr>
-<td><code>--extract-version</code></td>
-<td>identificador do extrato do mapa; <strong>obrigatório quando <code>--route-cache</code> é usado</strong></td>
+<td>Endereço do serviço Valhalla</td>
 </tr>
 <tr>
 <td><code>--route-cache</code></td>
-<td>pasta do cache de rota (se omitida, cada viagem consulta o serviço de novo)</td>
+<td>Diretório do cache de consultas</td>
+</tr>
+<tr>
+<td><code>--extract-version</code></td>
+<td>Identificador da versão do mapa</td>
 </tr>
 </tbody>
 </table>
-<p>Exemplo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G05_ICE_20L_ND_2500</span> <span class="p">-</span><span class="n">-target</span> <span class="n">sim</span><span class="p">/</span><span class="n">obd_g05</span> <span class="p">\</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  <span class="p">-</span><span class="n">-route-provider</span> <span class="n">valhalla</span> <span class="p">-</span><span class="n">-extract-version</span> <span class="n">michigan</span><span class="p">-</span><span class="n">2026</span><span class="p">-</span><span class="n">08</span> <span class="p">\</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  <span class="p">-</span><span class="n">-route-cache</span> <span class="p">.</span><span class="n">cache</span><span class="p">/</span><span class="n">rota</span>
-</code></pre></div>
-<p>Serviço fora do ar <strong>impede o início</strong> do feeder (<code>health_check</code> falha cedo, antes
-de processar qualquer viagem) — não é um modo degradado silencioso. Já um buraco
-no mapa (trecho sem cobertura) não derruba a viagem: a coluna daquele ponto vira
-NaN, contado no resumo de cobertura impresso ao fim da corrida.</p>
-<p><strong>Não misture fontes entre treino e serviço</strong>: se o modelo foi treinado com
-colunas de rota vindas do eVED (ou de um extrato de mapa), sirva com a mesma
-fonte/extrato — trocar de fonte entre treino e inferência muda a distribuição
-das features de rota sem aviso. <code>--extract-version</code> existe justamente para que
-essa troca fique registrada na chave do cache, em vez de passar despercebida.</p>
-<p>Para medir o quanto as duas fontes divergem e inventariar a cobertura das
-colunas novas na região do dataset, use <code>tools/feeder/validate_route.py</code> (ferramenta de
-operador, exige um Valhalla no ar — fora da suíte de testes):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">feeder</span><span class="p">/</span><span class="n">validate_route</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-group</span> <span class="n">data</span><span class="p">/</span><span class="n">G05_ICE_20L_ND_2500</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="n">http</span><span class="p">://</span><span class="n">localhost</span><span class="p">:</span><span class="n">8002</span>
-</code></pre></div>
-<p>O relatório não é um portão de aprovação: o objetivo é melhorar o modelo, não
-reproduzir o eVED. A comparação é feita sobre os <strong>vetores de rota</strong> (o que o
-modelo de fato vê), não sobre as colunas cruas, porque <code>delta</code> e <code>positive_sum</code>
-de altitude são invariantes a deslocamento — um Valhalla que reporte tudo 12 m
-acima do eVED (datum diferente) ainda produz esses vetores idênticos, e
-comparar altitude absoluta reprovaria uma fonte perfeitamente utilizável. A
-divergência é reportada em <code>dif_media_sd</code> (diferença média em desvios-padrão da
-própria feature, não em unidade física — o que a torna comparável entre
-features de escalas diferentes), ao lado de <code>correlacao</code> e <code>cobertura</code>.</p>
-<h2 id="replay-e-de-sensor-nao-de-tudo">Replay é de sensor, não de tudo<a class="headerlink" href="#replay-e-de-sensor-nao-de-tudo" title="Permanent link">&para;</a></h2>
-<p>O barramento OBD entrega <strong>só sensor</strong>. O feeder separa isso em duas peças:</p>
-<ul>
-<li><code>CarSimulator</code> (<code>tools/feeder/car.py</code>) é transporte puro: lê, respeita a cadência
-  de <code>Timestamp(ms)</code>, emite ponto a ponto e finaliza a trip atomicamente.</li>
-<li><code>DerivingCollector</code> (<code>tools/feeder/collector.py</code>) é o coletor: consulta o
-  contexto por posição e calcula as grandezas derivadas.</li>
-</ul>
-<p>O eVED entrega sensor, contexto (<code>Speed Limit[km/h]</code>, <code>Elevation Smoothed[m]</code>) e
-derivada (<code>Energy_Consumption</code>) misturados no mesmo parquet. Copiar o arquivo e
-chamar de replay fingiria que as três vieram do barramento.</p>
-<p>Por isso, <strong>se o contrato declara <code>[[route_feature]]</code> e nenhum provedor foi
-configurado, o feeder recusa rodar</strong>. Sem provedor essas colunas só poderiam vir
-copiadas do dataset de origem, e em campo elas não existem. Use
-<code>--route-provider valhalla</code>, ou um contrato sem features de rota.</p>
-<h2 id="cuidados">Cuidados<a class="headerlink" href="#cuidados" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><code>--time-scale 0</code> (instantâneo) só para o fluxo de dados.</strong> Com <code>--predict</code>, o instantâneo vira um loop apertado de inferências por ponto e trava. Use <code>--time-scale</code> moderado (1 a ~600) com predição.</li>
-<li><strong>Cliente com 1 trip</strong> não gera split treino/teste (o pipeline exige ≥2). É o cold-start; o bootstrap cobre o início via init quente.</li>
-</ul>
+<p>Para os modos de horizonte e a formação dos alvos, consulte <a href="../SLIDING_WINDOW/">Janelas temporais</a>. Para o schema exigido do coletor, consulte <a href="../CONTRACTS/">Contratos de dados</a>.</p>
 
 
 

@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/DOCKER_DEPLOY/">
       
       
-        <link rel="prev" href="../FEDPER_GUIDE/">
+        <link rel="prev" href="../FEEDER/">
       
       
         <link rel="next" href="../LAINF-DEPLOY/">
@@ -48,8 +48,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docker-deploy" class="md-skip">
+        <a href="#deploy-com-docker" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -589,6 +589,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../SLIDING_WINDOW/" class="md-nav__link">
         
   
@@ -645,14 +673,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../FEDPER_GUIDE/" class="md-nav__link">
+      <a href="../MODELS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEEDER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
   
 
     
@@ -733,10 +789,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#instalacao" class="md-nav__link">
+  <a href="#preparacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Instalação
+        Preparação
       
     </span>
   </a>
@@ -744,10 +800,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#antes-de-rodar-dois-ajustes-obrigatorios" class="md-nav__link">
+  <a href="#execucao-sem-tls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Antes de rodar: dois ajustes obrigatórios
+        Execução sem TLS
       
     </span>
   </a>
@@ -755,80 +811,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy" class="md-nav__link">
+  <a href="#execucao-com-tls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy
+        Execução com TLS
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Deploy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-deploy-seguro-tls" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1 - Deploy Seguro (TLS)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#autenticacao-de-no-opcional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Autenticação de nó (opcional)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-deploy-inserguro-sem-tls" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2 - Deploy Inserguro (sem TLS)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#compartilhando-as-metricas-com-a-equipe" class="md-nav__link">
+  <a href="#autenticacao-dos-supernodes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compartilhando as métricas com a equipe
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Compartilhando as métricas com a equipe">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Referências
+        Autenticação dos SuperNodes
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#encerramento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encerramento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adicionando-clientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adicionando clientes
+      
+    </span>
+  </a>
   
 </li>
       
@@ -990,10 +1012,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#instalacao" class="md-nav__link">
+  <a href="#preparacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Instalação
+        Preparação
       
     </span>
   </a>
@@ -1001,10 +1023,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#antes-de-rodar-dois-ajustes-obrigatorios" class="md-nav__link">
+  <a href="#execucao-sem-tls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Antes de rodar: dois ajustes obrigatórios
+        Execução sem TLS
       
     </span>
   </a>
@@ -1012,80 +1034,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploy" class="md-nav__link">
+  <a href="#execucao-com-tls" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploy
+        Execução com TLS
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Deploy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-deploy-seguro-tls" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1 - Deploy Seguro (TLS)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#autenticacao-de-no-opcional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Autenticação de nó (opcional)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-deploy-inserguro-sem-tls" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2 - Deploy Inserguro (sem TLS)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#compartilhando-as-metricas-com-a-equipe" class="md-nav__link">
+  <a href="#autenticacao-dos-supernodes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compartilhando as métricas com a equipe
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Compartilhando as métricas com a equipe">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Referências
+        Autenticação dos SuperNodes
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#encerramento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encerramento
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adicionando-clientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adicionando clientes
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1109,93 +1097,92 @@
   
 
 
-<h1 id="docker-deploy">Docker Deploy<a class="headerlink" href="#docker-deploy" title="Permanent link">&para;</a></h1>
-<p>Este guia explica como usar Docker para simular um ambiente de produção distribuído do Fleven. A arquitetura padrão é <strong>híbrida</strong>: seu PC executará o servidor (SuperLink) e os containers Docker executam apenas os clientes (SuperNodes). Utilizamos a biblioteca <code>cryptography</code> para gerar certificados TLS (Transport Layer Security) para testes.</p>
-<p>O <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security</a> (TLS) é um protocolo criptográfico projetado para fornecer segurança nas comunicações em uma rede de computadores, como a Internet. Aplicações cliente-servidor usam TLS para se comunicar em uma rede de forma a evitar espionagem e adulteração.</p>
-<h2 id="instalacao">Instalação<a class="headerlink" href="#instalacao" title="Permanent link">&para;</a></h2>
-<p>Com o Docker instalado, crie as imagens dos três clientes:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>build
+<h1 id="deploy-com-docker">Deploy com Docker<a class="headerlink" href="#deploy-com-docker" title="Permanent link">&para;</a></h1>
+<p>Este guia executa o Fleven em uma arquitetura híbrida: o SuperLink roda no host e três containers executam os SuperNodes. Cada container recebe somente os dados do cliente correspondente.</p>
+<h2 id="preparacao">Preparação<a class="headerlink" href="#preparacao" title="Permanent link">&para;</a></h2>
+<p>Os containers acessam os dados em <code>/app/data/EVED_Clients</code>. O projeto deixa <code>data-base-path</code> vazio para que a fonte eVED detecte esse diretório no container:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[tool.flwr.app.config]</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span>
 </code></pre></div>
-<p>se ainda não instalou as dependências na sua máquina (que age como servidor), então execute com o extra de desenvolvimento:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">-e</span> <span class="s2">".[dev]"</span>
+<p>O caminho também pode ser definido explicitamente como <code>/app/data/EVED_Clients</code> para uma execução exclusivamente em Docker.</p>
+<p>As conexões do SuperLink estão em <a href="../../../.flwr/config.toml"><code>.flwr/config.toml</code></a>. No PowerShell, aponte <code>FLWR_HOME</code> para essa configuração:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>
 </code></pre></div>
-<h2 id="antes-de-rodar-dois-ajustes-obrigatorios">Antes de rodar: dois ajustes obrigatórios<a class="headerlink" href="#antes-de-rodar-dois-ajustes-obrigatorios" title="Permanent link">&para;</a></h2>
-<p><strong>1. <code>data-base-path</code> precisa ser um caminho de dentro do container.</strong> Essa chave do <code>pyproject.toml</code> viaja no FAB e é lida pelo cliente, que roda no container. Se ela apontar para um caminho do seu host (por exemplo <code>C:/Users/.../data/G08_PHEV_20L_CVT_4000</code>), os SuperNodes não acham os dados e o run falha. Os containers montam os dados em <code>/app/data/EVED_Clients/train/client_N</code>, então use:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/app/data/EVED_Clients"</span>
+<p>Construa as imagens:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">docker</span> <span class="n">compose</span> <span class="o">-f</span> <span class="n">docker</span><span class="p">/</span><span class="n">docker-compose</span><span class="p">.</span><span class="n">yml</span> <span class="n">build</span>
 </code></pre></div>
-<p>Deixar a chave vazia (<code>data-base-path = ""</code>) também funciona: a fonte eVED detecta <code>/app/data/EVED_Clients</code> sozinha quando o caminho não é informado.</p>
-<p><strong>2. Aponte o <code>FLWR_HOME</code> para o <code>.flwr/</code> do projeto</strong> antes de qualquer <code>flwr run</code>. A config das federações (<code>fleven-deployment</code>, <code>fleven-deployment-tls</code>) mora em <a href="../../../.flwr/config.toml">.flwr/config.toml</a>, e sem essa variável o Flower lê o <code>~/.flwr/config.toml</code> da sua home e não encontra a federação:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>   <span class="c"># Linux/macOS: export FLWR_HOME="$PWD/.flwr"</span>
+<p>O projeto fixa o Flower em <code>1.33.0</code> para que o host e os containers utilizem a mesma versão.</p>
+<h2 id="execucao-sem-tls">Execução sem TLS<a class="headerlink" href="#execucao-sem-tls" title="Permanent link">&para;</a></h2>
+<p>Inicie o SuperLink no primeiro terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">flower-superlink</span> <span class="p">-</span><span class="n">-insecure</span>
 </code></pre></div>
-<h2 id="deploy">Deploy<a class="headerlink" href="#deploy" title="Permanent link">&para;</a></h2>
-<p>O Fleven permite deploy via Docker, mas de maneira híbrida: cada cliente será um container Docker e o servidor será o proprio PC onde o Docker está instalado.</p>
-<p>Nessa configuração, o Fleven possui dois métodos de execução. O primeiro é o <strong>método inserguro</strong>, quando não temos certificados. Já o segundo, o <strong>método seguro</strong>, é pensando no caso real, onde o canal é criptografado e o cliente verifica a identidade do servidor pelo certificado da CA. A autenticação do cliente é um mecanismo à parte, por chaves EC, descrita em <a href="#autenticacao-de-no-opcional">Autenticação de nó</a>.</p>
-<h3 id="1-deploy-seguro-tls">1 - Deploy Seguro (TLS)<a class="headerlink" href="#1-deploy-seguro-tls" title="Permanent link">&para;</a></h3>
-<p>Se você deseja simular utilizando certificados, então crie os certificados para teste:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">python</span> <span class="n">docker</span><span class="p">/</span><span class="n">generate_certificates</span><span class="p">.</span><span class="n">py</span>
+<p>No segundo terminal, inicie os SuperNodes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$env:TLS_ENABLED</span> <span class="p">=</span> <span class="s2">"false"</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">$env:NODE_AUTH_ENABLED</span> <span class="p">=</span> <span class="s2">"false"</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">docker</span> <span class="n">compose</span> <span class="o">-f</span> <span class="n">docker</span><span class="p">/</span><span class="n">docker-compose</span><span class="p">.</span><span class="n">yml</span> <span class="n">up</span> <span class="n">-d</span>
 </code></pre></div>
-<p>depois disso, precisamos iniciar o servidor (SuperLink). Para isso, execute</p>
-<p><strong>Terminal 1 - SuperLink no PC:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>flower-superlink<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--ssl-ca-certfile<span class="w"> </span>certificates/ca-cert.pem<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--ssl-certfile<span class="w"> </span>certificates/server-cert.pem<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--ssl-keyfile<span class="w"> </span>certificates/server-key.pem
+<p>No terceiro terminal, envie o app para a conexão sem TLS:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">flwr</span> <span class="n">run</span> <span class="p">.</span> <span class="n">fleven-deployment</span> <span class="p">-</span><span class="n">-stream</span>
 </code></pre></div>
-<p><strong>Terminal 2 - Inicie os containers:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">TLS_ENABLED</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d
+<p>Use esse modo somente em desenvolvimento local, pois a comunicação entre SuperNodes e SuperLink não é criptografada.</p>
+<h2 id="execucao-com-tls">Execução com TLS<a class="headerlink" href="#execucao-com-tls" title="Permanent link">&para;</a></h2>
+<p>O script do projeto gera uma autoridade certificadora e um certificado para o SuperLink:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">pip</span> <span class="n">install</span> <span class="n">cryptography</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">python</span> <span class="n">docker</span><span class="p">/</span><span class="n">generate_certificates</span><span class="p">.</span><span class="n">py</span>
 </code></pre></div>
-<ul>
-<li><strong>Veja as métricas (opcional):</strong> o Fleven registra tudo localmente no <code>mlflow.db</code> (padrão <code>mlflow-tracking-uri = "sqlite:///mlflow.db"</code>). Para inspecionar:</li>
-</ul>
-<p><code>mlflow ui</code>   # abre em http://127.0.0.1:5000</p>
 <blockquote>
-<p><strong>Nota📝</strong> Não é preciso alterar o <code>mlflow-tracking-uri</code> para ver os resultados, o <code>mlflow ui</code> lê o <code>mlflow.db</code> local. Para <strong>compartilhar com a equipe</strong>, use <code>fleven push</code> (envia os runs para o DagsHub). Veja <a href="#compartilhando-as-metricas-com-a-equipe">Compartilhando as métricas com a equipe</a>.</p>
+<p>Os certificados gerados são autoassinados e servem para desenvolvimento. Em produção, use certificados emitidos e armazenados conforme a política da infraestrutura.</p>
 </blockquote>
-<p><strong>Terminal 3 - Execute o treinamento:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span><span class="w">   </span><span class="c1"># PowerShell: $env:FLWR_HOME = "$PWD\.flwr"</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment-tls<span class="w"> </span>--stream
+<p>Inicie o SuperLink com TLS:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">flower-superlink</span> <span class="p">`</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  <span class="p">-</span><span class="n">-ssl-ca-certfile</span> <span class="n">certificates</span><span class="p">/</span><span class="n">ca-cert</span><span class="p">.</span><span class="n">pem</span> <span class="p">`</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  <span class="p">-</span><span class="n">-ssl-certfile</span> <span class="n">certificates</span><span class="p">/</span><span class="n">server-cert</span><span class="p">.</span><span class="n">pem</span> <span class="p">`</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  <span class="p">-</span><span class="n">-ssl-keyfile</span> <span class="n">certificates</span><span class="p">/</span><span class="n">server-key</span><span class="p">.</span><span class="n">pem</span>
 </code></pre></div>
-<p>Pronto, você pode acompanhar o desempenho pelo MLflow, e pode também ver os logs direto pelo Docker Desktop.</p>
-<h3 id="autenticacao-de-no-opcional">Autenticação de nó (opcional)<a class="headerlink" href="#autenticacao-de-no-opcional" title="Permanent link">&para;</a></h3>
-<p>O TLS do Flower 1.31 é de <strong>uma via</strong>: o canal é criptografado e o SuperNode verifica o SuperLink pela CA, mas o nó não apresenta certificado de cliente. Quem autentica o nó é um mecanismo separado, por par de chaves EC (P-384, formato OpenSSH). O <code>generate_certificates.py</code> já emite <code>certificates/client_N/supernode_credentials</code> (+ <code>.pub</code>) junto com a CA de cada nó, e o entrypoint do container passa a chave privada em <code>--auth-supernode-private-key</code> quando você liga o toggle.</p>
-<p>É opt-in e exige TLS. Antes de subir os containers, registre cada chave pública no SuperLink e então suba com a variável ligada:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>flwr<span class="w"> </span>supernode<span class="w"> </span>register<span class="w"> </span>certificates/client_0/supernode_credentials.pub<span class="w"> </span>fleven-deployment-tls
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">TLS_ENABLED</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="nv">NODE_AUTH_ENABLED</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d
+<p>Em outro terminal, habilite TLS nos containers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">$env:TLS_ENABLED</span> <span class="p">=</span> <span class="s2">"true"</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">$env:NODE_AUTH_ENABLED</span> <span class="p">=</span> <span class="s2">"false"</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">docker</span> <span class="n">compose</span> <span class="o">-f</span> <span class="n">docker</span><span class="p">/</span><span class="n">docker-compose</span><span class="p">.</span><span class="n">yml</span> <span class="n">up</span> <span class="n">-d</span>
 </code></pre></div>
-<p>O SuperLink precisa ter subido com <code>--enable-supernode-auth</code>. Sem a chave registrada, o nó é recusado na conexão.</p>
-<h3 id="2-deploy-inserguro-sem-tls">2 - Deploy Inserguro (sem TLS)<a class="headerlink" href="#2-deploy-inserguro-sem-tls" title="Permanent link">&para;</a></h3>
-<p>Nesse tipo de Deploy a única diferença para o anterior é a não utilização dos certificados.</p>
-<p>As métricas ficam no <code>mlflow.db</code> local; rode <code>mlflow ui</code> para vê-las em http://127.0.0.1:5000 e <code>fleven push</code> para compartilhá-las com a equipe no DagsHub. Veja <a href="#compartilhando-as-metricas-com-a-equipe">Compartilhando as métricas com a equipe</a>.</p>
-<p><strong>Terminal 1 - SuperLink no PC:</strong>
-Inicie o servidor</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>flower-superlink<span class="w"> </span>--insecure
+<p>Envie o app pela conexão TLS:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">flwr</span> <span class="n">run</span> <span class="p">.</span> <span class="n">fleven-deployment-tls</span> <span class="p">-</span><span class="n">-stream</span>
 </code></pre></div>
-<p><strong>Terminal 2 - Inicie os containers:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>up<span class="w"> </span>-d
+<p>Nesse modo, o SuperNode verifica o certificado do SuperLink por meio da CA. A autenticação dos SuperNodes é configurada separadamente.</p>
+<h2 id="autenticacao-dos-supernodes">Autenticação dos SuperNodes<a class="headerlink" href="#autenticacao-dos-supernodes" title="Permanent link">&para;</a></h2>
+<p>A autenticação de nós exige TLS. Inicie o SuperLink acrescentando <code>--enable-supernode-auth</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">flower-superlink</span> <span class="p">`</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  <span class="p">-</span><span class="n">-ssl-ca-certfile</span> <span class="n">certificates</span><span class="p">/</span><span class="n">ca-cert</span><span class="p">.</span><span class="n">pem</span> <span class="p">`</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  <span class="p">-</span><span class="n">-ssl-certfile</span> <span class="n">certificates</span><span class="p">/</span><span class="n">server-cert</span><span class="p">.</span><span class="n">pem</span> <span class="p">`</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  <span class="p">-</span><span class="n">-ssl-keyfile</span> <span class="n">certificates</span><span class="p">/</span><span class="n">server-key</span><span class="p">.</span><span class="n">pem</span> <span class="p">`</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  <span class="p">-</span><span class="n">-enable-supernode-auth</span>
 </code></pre></div>
-<p>neste mesmo terminal, execute</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">FLWR_HOME</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/.flwr"</span><span class="w">   </span><span class="c1"># PowerShell: $env:FLWR_HOME = "$PWD\.flwr"</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>fleven-deployment<span class="w"> </span>--stream
+<p>Com o SuperLink em execução, registre a chave pública de cada SuperNode:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">flwr</span> <span class="n">supernode</span> <span class="n">register</span> <span class="n">certificates</span><span class="p">/</span><span class="n">client_0</span><span class="p">/</span><span class="n">supernode_credentials</span><span class="p">.</span><span class="n">pub</span> <span class="n">fleven-deployment-tls</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">flwr</span> <span class="n">supernode</span> <span class="n">register</span> <span class="n">certificates</span><span class="p">/</span><span class="n">client_1</span><span class="p">/</span><span class="n">supernode_credentials</span><span class="p">.</span><span class="n">pub</span> <span class="n">fleven-deployment-tls</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">flwr</span> <span class="n">supernode</span> <span class="n">register</span> <span class="n">certificates</span><span class="p">/</span><span class="n">client_2</span><span class="p">/</span><span class="n">supernode_credentials</span><span class="p">.</span><span class="n">pub</span> <span class="n">fleven-deployment-tls</span>
 </code></pre></div>
-<p>Pronto, você pode acompanhar as métricas no MLflow e no Docker. Se fizer mudanças no código e desejar aplicar nos containers, você terá que parar os containers.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>docker/docker-compose.yml<span class="w"> </span>down
+<p>Depois, inicie os containers com TLS e autenticação:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">$env:TLS_ENABLED</span> <span class="p">=</span> <span class="s2">"true"</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nv">$env:NODE_AUTH_ENABLED</span> <span class="p">=</span> <span class="s2">"true"</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">docker</span> <span class="n">compose</span> <span class="o">-f</span> <span class="n">docker</span><span class="p">/</span><span class="n">docker-compose</span><span class="p">.</span><span class="n">yml</span> <span class="n">up</span> <span class="n">-d</span>
 </code></pre></div>
-<p>Para parar o SuperLink, feche a janela do terminal ou pressione <code>Ctrl+C</code>.</p>
-<p>Para adicionar mais clientes precisará editar o <a href="../../../docker/docker-compose.yml">docker-compose.yml</a>, replicando um bloco <code>client_N</code> com <code>PARTITION_ID</code> novo e os volumes do cliente correspondente. Se for usar autenticação de nó, gere também as credenciais dos clientes adicionais: o <a href="../../../docker/generate_certificates.py">generate_certificates.py</a> tem <code>num_clients = 3</code> fixo no código, então aumente esse número antes de rodá-lo de novo.</p>
-<h2 id="compartilhando-as-metricas-com-a-equipe">Compartilhando as métricas com a equipe<a class="headerlink" href="#compartilhando-as-metricas-com-a-equipe" title="Permanent link">&para;</a></h2>
-<p>Por padrão os experimentos ficam <strong>locais</strong> (<code>sqlite:///mlflow.db</code>). Para publicá-los e compartilhá-los com colaboradores, o Fleven sincroniza os runs para o <a href="https://dagshub.com/jw/fleven">DagsHub</a> via <code>fleven push</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">$env:DAGSHUB_USER</span>  <span class="p">=</span> <span class="s2">"&lt;seu_usuario_dagshub&gt;"</span>   <span class="c"># token em dagshub.com/user/settings/tokens</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">$env:DAGSHUB_TOKEN</span> <span class="p">=</span> <span class="s2">"&lt;token&gt;"</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">fleven</span> <span class="n">push</span>
+<p>Cada container usa sua chave privada em <code>certificates/client_N/supernode_credentials</code>. Não compartilhe chaves privadas entre clientes.</p>
+<p>Para executar o treinamento:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">flwr</span> <span class="n">run</span> <span class="p">.</span> <span class="n">fleven-deployment-tls</span> <span class="p">-</span><span class="n">-stream</span>
 </code></pre></div>
-<p>O comando lê o <code>mlflow.db</code> local e copia os runs para o servidor MLflow do DagsHub via API REST, pulando automaticamente os que já existem. Para empurrar automaticamente após cada experimento em lote, use <code>fleven run --push-dagshub</code>.</p>
-<h3 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="https://docs.docker.com/">Docker Documentation</a></li>
-<li><a href="https://docs.docker.com/compose/">Docker Compose</a></li>
-<li><a href="https://flower.ai/docs/framework/how-to-run-flower-using-docker.html">Flower Deployment</a></li>
-<li><a href="https://flower.ai/docs/framework/how-to-enable-tls-connections.html">Flower TLS Documentation</a></li>
-</ul>
+<h2 id="encerramento">Encerramento<a class="headerlink" href="#encerramento" title="Permanent link">&para;</a></h2>
+<p>Pare e remova os containers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">docker</span> <span class="n">compose</span> <span class="o">-f</span> <span class="n">docker</span><span class="p">/</span><span class="n">docker-compose</span><span class="p">.</span><span class="n">yml</span> <span class="n">down</span>
+</code></pre></div>
+<p>Encerre o SuperLink com <code>Ctrl+C</code> no terminal em que ele está sendo executado.</p>
+<h2 id="adicionando-clientes">Adicionando clientes<a class="headerlink" href="#adicionando-clientes" title="Permanent link">&para;</a></h2>
+<p>Para adicionar um cliente, inclua outro serviço em <a href="../../../docker/docker-compose.yml"><code>docker/docker-compose.yml</code></a>, com um novo <code>PARTITION_ID</code> e volumes próprios de dados, métricas e certificados.</p>
+<p>O gerador cria credenciais para três clientes. Ajuste <code>num_clients</code> em <a href="../../../docker/generate_certificates.py"><code>docker/generate_certificates.py</code></a> antes de gerar as credenciais adicionais. Executar o gerador novamente substitui as chaves existentes; nesse caso, registre novamente todas as chaves públicas no SuperLink.</p>
+<p>Para detalhes sobre a infraestrutura, consulte a documentação do Flower 1.33 sobre <a href="https://flower.ai/docs/framework/1.33/en/docker/index.html">Docker</a>, <a href="https://flower.ai/docs/framework/1.33/en/how-to-enable-tls-connections.html">conexões TLS</a> e <a href="https://flower.ai/docs/framework/1.33/en/how-to-authenticate-supernodes.html">autenticação de SuperNodes</a>.</p>
 
 
 

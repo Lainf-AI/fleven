@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/FEDPER_GUIDE/">
+        <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/MODELS/">
       
       
         <link rel="prev" href="../TRAIN-TEST/">
       
       
-        <link rel="next" href="../DOCKER_DEPLOY/">
+        <link rel="next" href="../FEEDER/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>FedPer - Fleven</title>
+        <title>Modelos e estratégias - Fleven</title>
       
     
     
@@ -48,8 +48,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
       
     
     
@@ -61,13 +61,13 @@
 
     
     <meta property="og:type" content="website">
-  <meta property="og:title" content="FedPer - Fleven">
+  <meta property="og:title" content="Modelos e estratégias - Fleven">
   <meta property="og:description" content="Federated Learning for Vehicular Environment">
   <meta property="og:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
-  <meta property="og:url" content="https://lainf-ai.github.io/fleven/guides/FEDPER_GUIDE/">
+  <meta property="og:url" content="https://lainf-ai.github.io/fleven/guides/MODELS/">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FedPer - Fleven">
+  <meta name="twitter:title" content="Modelos e estratégias - Fleven">
   <meta name="twitter:description" content="Federated Learning for Vehicular Environment">
   <meta name="twitter:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
 
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fedper-federated-personalization" class="md-skip">
+        <a href="#modelos-e-estrategias" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FedPer
+              Modelos e estratégias
             
           </span>
         </div>
@@ -589,6 +589,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../SLIDING_WINDOW/" class="md-nav__link">
         
   
@@ -661,7 +689,7 @@
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
   
 
     
@@ -679,7 +707,7 @@
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
   
 
     
@@ -705,10 +733,143 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#como-usar" class="md-nav__link">
+  <a href="#notacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Como usar
+        Notação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LSTM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lstm-dense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LSTM Dense
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MLP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fedper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FedPer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacao-de-rota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informação de rota
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrategias-de-agregacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estratégias de agregação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estratégias de agregação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fedavg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FedAvg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrategias-adaptativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estratégias adaptativas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escolha-da-combinacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escolha da combinação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referências
       
     </span>
   </a>
@@ -719,6 +880,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEEDER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -901,10 +1090,143 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#como-usar" class="md-nav__link">
+  <a href="#notacao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Como usar
+        Notação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modelos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modelos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modelos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lstm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LSTM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lstm-dense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LSTM Dense
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MLP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fedper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FedPer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#informacao-de-rota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Informação de rota
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estrategias-de-agregacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estratégias de agregação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estratégias de agregação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fedavg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FedAvg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estrategias-adaptativas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estratégias adaptativas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escolha-da-combinacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escolha da combinação
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referências
       
     </span>
   </a>
@@ -931,45 +1253,94 @@
   
 
 
-<h1 id="fedper-federated-personalization">FedPer - Federated Personalization<a class="headerlink" href="#fedper-federated-personalization" title="Permanent link">&para;</a></h1>
-<p>É uma estratégia de aprendizado federado personalizado que divide o modelo em duas partes:</p>
-<ol>
-<li>
-<p><strong>CABEÇA GLOBAL (Shared Head)</strong></p>
-<ul>
-<li>LSTM compartilhado entre todos</li>
-<li>Agregado pelo servidor</li>
-<li>Aprende padrões temporais gerais</li>
-</ul>
-</li>
-<li>
-<p><strong>CAUDA LOCAL (Personal Tail)</strong></p>
-<ul>
-<li>Camadas Dense específicas do veículo</li>
-<li>NUNCA enviadas ao servidor</li>
-<li>Aprende padrões individuais</li>
-</ul>
-</li>
-</ol>
-<p>No modelo FedPer, todos os veículos (ICE, HEV, PHEV, EV) contribuem para melhorar a extração de features temporais compartilhada através da camada LSTM global. Cada veículo mantém sua própria cabeça de predição personalizada através das camadas Dense locais. Por exemplo, veículos ICE aprendem seu próprio mapeamento de velocidade para consumo, enquanto EVs aprendem um mapeamento diferente e mais eficiente. Veículos híbridos (HEV/PHEV) desenvolvem padrões únicos que refletem suas características de operação dual. O modelo utiliza as mesmas features universais para todos os tipos de veículos, mas apenas a cabeça global LSTM (aproximadamente 60-70% dos parâmetros) é enviada ao servidor durante a agregação, enquanto a cauda local permanece sempre no dispositivo do cliente.</p>
-<h2 id="como-usar">Como usar<a class="headerlink" href="#como-usar" title="Permanent link">&para;</a></h2>
-<p>Selecione o <code>fedper</code> no <code>pyproject.toml</code>:</p>
+<h1 id="modelos-e-estrategias">Modelos e estratégias<a class="headerlink" href="#modelos-e-estrategias" title="Permanent link">&para;</a></h1>
+<p>O Fleven permite combinar quatro modelos de previsão com quatro estratégias de agregação. O modelo define como cada cliente transforma uma janela de dados em uma previsão; a estratégia define como o servidor atualiza os parâmetros globais após cada rodada.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">model-type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fedper"</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">strategy</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"fedavg"</span><span class="w">   </span><span class="c1"># recomendado para FedPer</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">model-type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"lstm"</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">strategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fedavg"</span>
 </code></pre></div>
-<p>Para configurar a Cabeça e a Cauda:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># CABEÇA GLOBAL (LSTM)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">hidden-size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="w">               </span><span class="c1"># Tamanho da camada LSTM compartilhada</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">num-layers</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">                </span><span class="c1"># Número de camadas LSTM</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">dropout</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mf">0.2</span><span class="w">              </span><span class="c1"># Dropout</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># CAUDA LOCAL (Dense)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">personal-hidden-size</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w">    </span><span class="c1"># Tamanho da camada densa local</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">personal-learning-rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5e-3</span><span class="w">  </span><span class="c1"># LR só da cauda pessoal (treina do zero a cada</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">                               </span><span class="c1"># cliente, por isso um LR maior que o global)</span>
+<h2 id="notacao">Notação<a class="headerlink" href="#notacao" title="Permanent link">&para;</a></h2>
+<p>Considere uma janela de entrada <span class="arithmatex">\(X \in \mathbb{R}^{T \times F}\)</span>, com <span class="arithmatex">\(T\)</span> passos e <span class="arithmatex">\(F\)</span> features, e uma saída <span class="arithmatex">\(\hat{y} \in \mathbb{R}^{H}\)</span>. Quando o contrato inclui rota, o modelo também recebe <span class="arithmatex">\(R \in \mathbb{R}^{P \times Q}\)</span>.</p>
+<p>Em uma federação com clientes <span class="arithmatex">\(k = 1, \ldots, K\)</span>, cada cliente possui <span class="arithmatex">\(n_k\)</span> exemplos e otimiza uma função de perda local <span class="arithmatex">\(L_k\)</span>. O total de exemplos participantes é <span class="arithmatex">\(N = \sum_k n_k\)</span>.</p>
+<h2 id="modelos">Modelos<a class="headerlink" href="#modelos" title="Permanent link">&para;</a></h2>
+<h3 id="lstm">LSTM<a class="headerlink" href="#lstm" title="Permanent link">&para;</a></h3>
+<p>A LSTM processa a sequência na ordem temporal e mantém um estado oculto <span class="arithmatex">\(h_t\)</span> e um estado de memória <span class="arithmatex">\(c_t\)</span>:</p>
+<div class="arithmatex">\[
+(h_t, c_t) = \operatorname{LSTM}(x_t, h_{t-1}, c_{t-1})
+\]</div>
+<p>A previsão é obtida a partir do último estado:</p>
+<div class="arithmatex">\[
+\hat{y} = W h_T + b
+\]</div>
+<p>Esse é o modelo recorrente mais simples do Fleven e usa <code>hidden-size</code>, <code>num-layers</code> e <code>dropout</code>.</p>
+<h3 id="lstm-dense">LSTM Dense<a class="headerlink" href="#lstm-dense" title="Permanent link">&para;</a></h3>
+<p>O <code>lstm_dense</code> acrescenta uma camada densa com ativação ReLU entre o estado final da LSTM e a saída:</p>
+<div class="arithmatex">\[
+\hat{y} = W_2\,\operatorname{ReLU}(W_1\,\operatorname{Dropout}(h_T) + b_1) + b_2
+\]</div>
+<p>As larguras da parte recorrente e da camada densa são configuradas separadamente por <code>lstm-hidden-size</code> e <code>dense-hidden-size</code>.</p>
+<h3 id="mlp">MLP<a class="headerlink" href="#mlp" title="Permanent link">&para;</a></h3>
+<p>O MLP achata a janela e ignora uma estrutura recorrente explícita:</p>
+<div class="arithmatex">\[
+z = \operatorname{vec}(X), \qquad
+\hat{y} = W_2\,\operatorname{ReLU}(W_1 z + b_1) + b_2
+\]</div>
+<p>Ele funciona como referência para verificar se a modelagem temporal da LSTM oferece vantagem sobre uma rede densa.</p>
+<h3 id="fedper">FedPer<a class="headerlink" href="#fedper" title="Permanent link">&para;</a></h3>
+<p>O FedPer divide o modelo em parâmetros compartilhados <span class="arithmatex">\(\theta\)</span> e parâmetros pessoais <span class="arithmatex">\(\phi_k\)</span>:</p>
+<div class="arithmatex">\[
+\hat{y}_k = f(X; \theta, \phi_k)
+\]</div>
+<p>No Fleven, a LSTM e o codificador de rota formam a parte compartilhada. As camadas densas finais formam a parte pessoal de cada veículo.</p>
+<p>Durante o treino, o cliente atualiza as duas partes para minimizar sua perda local:</p>
+<div class="arithmatex">\[
+(\theta_k, \phi_k) \leftarrow \arg\min_{\theta,\phi} L_k(\theta, \phi)
+\]</div>
+<p>Ao final da rodada, somente <span class="arithmatex">\(\theta_k\)</span> é enviado ao servidor. A cauda <span class="arithmatex">\(\phi_k\)</span> permanece no cliente e é reutilizada nas rodadas seguintes. Sua largura e taxa de aprendizado são controladas por <code>personal-hidden-size</code> e <code>personal-learning-rate</code>.</p>
+<h2 id="informacao-de-rota">Informação de rota<a class="headerlink" href="#informacao-de-rota" title="Permanent link">&para;</a></h2>
+<p>Nos modelos <code>lstm</code>, <code>lstm_dense</code> e <code>mlp</code>, o tensor de rota é comprimido por uma projeção linear e concatenado à representação principal. No FedPer, o codificador de rota pertence à parte compartilhada e sua saída é somada ao estado final da LSTM.</p>
+<p>Quando o contrato não declara features de rota, os modelos operam apenas sobre a janela temporal.</p>
+<h2 id="estrategias-de-agregacao">Estratégias de agregação<a class="headerlink" href="#estrategias-de-agregacao" title="Permanent link">&para;</a></h2>
+<p>Após o treino local, cada cliente devolve parâmetros <span class="arithmatex">\(\theta_k^{t+1}\)</span>. O servidor combina as atualizações ponderando cada cliente por seu número de exemplos.</p>
+<h3 id="fedavg">FedAvg<a class="headerlink" href="#fedavg" title="Permanent link">&para;</a></h3>
+<p>O FedAvg calcula diretamente a média ponderada dos modelos locais:</p>
+<div class="arithmatex">\[
+\theta^{t+1} = \sum_{k=1}^{K} \frac{n_k}{N}\,\theta_k^{t+1}
+\]</div>
+<p>No FedPer, essa média é aplicada somente aos parâmetros compartilhados; as caudas pessoais não participam da agregação.</p>
+<h3 id="estrategias-adaptativas">Estratégias adaptativas<a class="headerlink" href="#estrategias-adaptativas" title="Permanent link">&para;</a></h3>
+<p>FedAdam, FedAdagrad e FedYogi tratam a atualização agregada como um gradiente no servidor. Primeiro, calcula-se:</p>
+<div class="arithmatex">\[
+\Delta_t = \sum_{k=1}^{K}\frac{n_k}{N}\left(\theta_k^{t+1} - \theta^t\right)
+\]</div>
+<p>FedAdam mantém momentos de primeira e segunda ordem:</p>
+<div class="arithmatex">\[
+m_t = \beta_1 m_{t-1} + (1-\beta_1)\Delta_t
+\]</div>
+<div class="arithmatex">\[
+v_t = \beta_2 v_{t-1} + (1-\beta_2)\Delta_t^2
+\]</div>
+<p>FedAdagrad acumula o quadrado das atualizações:</p>
+<div class="arithmatex">\[
+v_t = v_{t-1} + \Delta_t^2
+\]</div>
+<p>FedYogi controla o crescimento do segundo momento de acordo com a direção da diferença:</p>
+<div class="arithmatex">\[
+v_t = v_{t-1} - (1-\beta_2)\Delta_t^2\,\operatorname{sign}(v_{t-1}-\Delta_t^2)
+\]</div>
+<p>A atualização do servidor segue a forma:</p>
+<div class="arithmatex">\[
+\theta^{t+1} = \theta^t + \eta\frac{m_t}{\sqrt{v_t}+\tau}
+\]</div>
+<p>Em FedAdagrad, <span class="arithmatex">\(m_t\)</span> corresponde à atualização agregada. Os parâmetros <code>eta</code>, <code>beta_1</code>, <code>beta_2</code> e <code>tau</code> controlam o passo e a adaptação no servidor.</p>
+<h2 id="escolha-da-combinacao">Escolha da combinação<a class="headerlink" href="#escolha-da-combinacao" title="Permanent link">&para;</a></h2>
+<p>Modelo e estratégia são eixos independentes. Para comparar combinações pela CLI:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">fleven</span> <span class="n">run</span> <span class="p">-</span><span class="n">-only</span> <span class="n">G01</span> <span class="p">-</span><span class="n">-model-types</span> <span class="n">lstm</span> <span class="n">lstm_dense</span> <span class="n">mlp</span> <span class="n">fedper</span> <span class="p">-</span><span class="n">-strategies</span> <span class="n">fedavg</span> <span class="n">fedyogi</span> <span class="n">fedadam</span> <span class="n">fedadagrad</span>
 </code></pre></div>
+<p>Use o mesmo grupo, contrato, janelamento e hiperparâmetros ao comparar modelos ou estratégias. Os resultados dos experimentos estão disponíveis no <a href="https://dagshub.com/jw/fleven.mlflow/">DagsHub</a>.</p>
+<h2 id="referencias">Referências<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<p>Arivazhagan, M. G., Aggarwal, V., Singh, A. K., &amp; Choudhary, S. (2019). <em><a href="https://doi.org/10.48550/arXiv.1912.00818">Federated learning with personalization layers</a></em>. arXiv.</p>
+<p>Reddi, S. J., Charles, Z., Zaheer, M., Garrett, Z., Rush, K., Konečný, J., Kumar, S., &amp; McMahan, H. B. (2021). <em><a href="https://openreview.net/forum?id=LkFG3lB13U5">Adaptive federated optimization</a></em>. International Conference on Learning Representations.</p>
 
 
 

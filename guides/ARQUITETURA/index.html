@@ -44,8 +44,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
       
     
     
@@ -578,6 +578,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../SLIDING_WINDOW/" class="md-nav__link">
         
   
@@ -634,14 +662,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../FEDPER_GUIDE/" class="md-nav__link">
+      <a href="../MODELS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEEDER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
   
 
     
@@ -1413,8 +1469,7 @@ CAN.</p>
 <li><strong>[implementado]</strong> lê pontos em cadência real, ponto a ponto (<code>on_point</code>), não em lote;</li>
 <li><strong>[implementado]</strong> materializa a trip atomicamente, com <code>*.tmp</code> durante a escrita,
   para que o <code>ObdTripSource</code> nunca leia um arquivo pela metade;</li>
-<li><strong>[implementado]</strong> consulta o contexto de rota por posição, via Valhalla, em vez de
-  copiar as colunas de mapa que o eVED já traz;</li>
+<li><strong>[implementado; integração pendente]</strong> consulta o contexto de rota por posição, via Valhalla, em vez de copiar as colunas de mapa que o eVED já traz; a conexão com uma instância real do serviço ainda não foi testada;</li>
 <li><strong>[implementado]</strong> calcula o alvo (<code>materializar</code>);</li>
 <li><strong>[implementado]</strong> separa transporte de coleta, com o <code>DerivingCollector</code> recusando
   rodar quando o contrato exige contexto e nenhum provedor foi configurado.</li>
@@ -1516,9 +1571,7 @@ não.</p>
   chaves EC P-384, <code>--enable-supernode-auth</code>), falta o procedimento de frota.</li>
 <li><strong>Reprodutibilidade do scaler entre reinícios do cliente</strong>, apontada em
   <a href="../FLEVENCLIENT_PRODUCAO/">FLEVENCLIENT_PRODUCAO.md</a>.</li>
-<li><strong>Provedor de rota em produção.</strong> Hoje o Valhalla é local e o extrato é regional
-  (<code>--extract-version</code>). Em campo isso vira dependência de serviço, com latência e
-  disponibilidade a tratar.</li>
+<li><strong>Provedor de rota em produção.</strong> A interface considera um Valhalla local e identifica o extrato por <code>--extract-version</code>, mas ainda não passou por um teste de integração com o serviço real. Em campo, latência e disponibilidade também precisam ser tratadas.</li>
 <li><strong>Densidade de acidentes de via a partir do provedor</strong>, detalhado abaixo.</li>
 </ul>
 <h3 id="pendencia-especifica-acidentes-de-via-cruzamento-travessia-ponto-de-onibus">Pendência específica: acidentes de via (cruzamento, travessia, ponto de ônibus)<a class="headerlink" href="#pendencia-especifica-acidentes-de-via-cruzamento-travessia-ponto-de-onibus" title="Permanent link">&para;</a></h3>

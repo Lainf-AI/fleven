@@ -2,74 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://lainf-ai.github.io/fleven/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/getting-started/execucao/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/getting-started/instalacao/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/ARQUITETURA/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/CLEVEN/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/CONTRACTS/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/DOCKER_DEPLOY/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/EXPERIMENTS/</loc>
-         <lastmod>2026-08-25</lastmod>
-    </url>
-    <url>
-         <loc>https://lainf-ai.github.io/fleven/guides/FEDPER_GUIDE/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/FEEDER/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/FLEVENCLIENT_PRODUCAO/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/LAINF-DEPLOY/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
+    </url>
+    <url>
+         <loc>https://lainf-ai.github.io/fleven/guides/MODELS/</loc>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/SLIDING_WINDOW/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/TRAIN-TEST/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/guides/VISAO-GERAL/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/reference/CLI-COMANDS/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/reference/CLIENT_IMAGE/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
     <url>
          <loc>https://lainf-ai.github.io/fleven/reference/REALISES/</loc>
-         <lastmod>2026-08-25</lastmod>
+         <lastmod>2026-09-01</lastmod>
     </url>
 </urlset>

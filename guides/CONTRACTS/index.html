@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/CONTRACTS/">
       
       
+        <link rel="prev" href="../EXPERIMENTS/">
+      
+      
+        <link rel="next" href="../SLIDING_WINDOW/">
       
       
         
@@ -44,8 +48,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
       
     
     
@@ -269,10 +273,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../EXPERIMENTS/" class="md-tabs__link">
           
   
@@ -495,26 +501,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -532,7 +543,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -566,6 +577,203 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#estrutura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estrutura
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estrutura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#campos-do-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Campos do contrato
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alvo-de-potencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alvo de potência
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alvo de potência">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features-de-rota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features de rota
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forma-das-entradas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forma das entradas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibilidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibilidade
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contratos-disponiveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contratos disponíveis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#criando-um-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Criando um contrato
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Referência
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -634,14 +842,42 @@
   
   
     <li class="md-nav__item">
-      <a href="../FEDPER_GUIDE/" class="md-nav__link">
+      <a href="../MODELS/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    FedPer
+    Modelos e estratégias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../FEEDER/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feeder
   
 
     
@@ -832,77 +1068,50 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#o-que-e-e-por-que-existe" class="md-nav__link">
+  <a href="#estrutura" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O que é e por que existe
+        Estrutura
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#onde-o-arquivo-e-procurado" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Onde o arquivo é procurado
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#anatomia-de-um-contrato" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Anatomia de um contrato
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Anatomia de um contrato">
+    <nav class="md-nav" aria-label="Estrutura">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#campos-de-topo" class="md-nav__link">
+  <a href="#campos-do-contrato" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Campos de topo
+        Campos do contrato
       
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#feature-sinais-lidos-do-passado" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alvo-de-potencia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        [[feature]] — sinais lidos do passado
+        Alvo de potência
       
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Alvo de potência">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#o-alvo" class="md-nav__link">
+  <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O alvo
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#o-canal-de-mascara" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        O canal de máscara
+        Features
       
     </span>
   </a>
@@ -923,63 +1132,13 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Features de rota">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#agregacoes-disponiveis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Agregações disponíveis
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#a-grade-de-distancia-e-por-que-ela-nao-e-um-detalhe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        A grade de distância, e por que ela não é um detalhe
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restricoes-das-features-de-rota" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restrições das features de rota
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comportamento-com-colunas-ausentes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comportamento com colunas ausentes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
-  <a href="#como-o-input_size-e-derivado" class="md-nav__link">
+  <a href="#forma-das-entradas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Como o input_size é derivado
+        Forma das entradas
       
     </span>
   </a>
@@ -987,10 +1146,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#o-fingerprint-e-o-handshake-federado" class="md-nav__link">
+  <a href="#compatibilidade" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O fingerprint e o handshake federado
+        Compatibilidade
       
     </span>
   </a>
@@ -998,10 +1157,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validacoes" class="md-nav__link">
+  <a href="#contratos-disponiveis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Validações
+        Contratos disponíveis
       
     </span>
   </a>
@@ -1009,10 +1168,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#o-contrato-implicito" class="md-nav__link">
+  <a href="#criando-um-contrato" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O contrato implícito
+        Criando um contrato
       
     </span>
   </a>
@@ -1020,32 +1179,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#contratos-deste-repositorio" class="md-nav__link">
+  <a href="#referencia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Contratos deste repositório
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#criando-um-contrato-novo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Criando um contrato novo
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#erros-comuns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Erros comuns
+        Referência
       
     </span>
   </a>
@@ -1073,369 +1210,226 @@
 
 
 <h1 id="contratos-de-dados">Contratos de dados<a class="headerlink" href="#contratos-de-dados" title="Permanent link">&para;</a></h1>
-<h2 id="o-que-e-e-por-que-existe">O que é e por que existe<a class="headerlink" href="#o-que-e-e-por-que-existe" title="Permanent link">&para;</a></h2>
-<p>Um contrato é um arquivo TOML que declara <strong>quais colunas entram no modelo, em que
-ordem, quais são obrigatórias e o que é o alvo</strong>. Ele é a fonte única da verdade
-sobre a forma da entrada.</p>
-<p>Isso importa porque o Fleven é federado. O servidor cria o modelo global e cada
-cliente cria o seu; se os dois discordarem sobre a largura do tensor de entrada, a
-agregação corrompe os pesos em silêncio. Em vez de repetir a lista de features em
-dois lugares e torcer para não divergirem, ambos derivam a forma do mesmo contrato,
-e comparam um resumo dele antes de trocar parâmetros.</p>
-<p>O contrato é indicado pela chave <code>data-contract</code> em <code>pyproject.toml</code>:</p>
+<p>Um contrato é um arquivo TOML que define o alvo, as features e a forma das entradas usadas pelo Fleven. Servidor e clientes carregam o mesmo contrato para construir modelos compatíveis. O arquivo é indicado por <code>data-contract</code> no <code>pyproject.toml</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"contracts/eved_potencia_rota.toml"</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"contracts/eved_potencia.toml"</span>
 </code></pre></div>
-<h2 id="onde-o-arquivo-e-procurado">Onde o arquivo é procurado<a class="headerlink" href="#onde-o-arquivo-e-procurado" title="Permanent link">&para;</a></h2>
-<p><code>_resolve_contract_path</code> tenta, nesta ordem:</p>
-<ol>
-<li>caminho absoluto, se for absoluto;</li>
-<li>relativo ao diretório de trabalho, que cobre simulação e <code>flwr run</code> a partir da raiz;</li>
-<li>relativo à raiz do projeto, calculada a partir da localização do pacote <code>fleven</code>.</li>
-</ol>
-<p>O terceiro caso existe por causa do deployment: no SuperNode o ClientApp roda a
-partir do FAB extraído ou da imagem Docker, e o diretório de trabalho não é
-garantidamente a raiz. Se não achar em lugar nenhum, levanta <code>FileNotFoundError</code>
-dizendo onde procurou.</p>
-<h2 id="anatomia-de-um-contrato">Anatomia de um contrato<a class="headerlink" href="#anatomia-de-um-contrato" title="Permanent link">&para;</a></h2>
+<h2 id="estrutura">Estrutura<a class="headerlink" href="#estrutura" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">schema_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.0"</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Energy_Consumption"</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">use_feature_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">route_grid_m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">25.0</span><span class="w">            </span><span class="c1"># só relevante se houver features de rota</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">[[feature]]</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vehicle Speed[km/h]"</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"km/h"</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">]</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">[[feature]]</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MAF[g/sec]"</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"g/sec"</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">655</span><span class="p">]</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="k">[[route_feature]]</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Speed Limit[km/h]"</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mean"</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Total Power[kW]"</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">target_kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"rate"</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">trip_gap_split_s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60.0</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">use_feature_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">[[feature]]</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vehicle Speed[km/h]"</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"km/h"</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">]</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 </code></pre></div>
-<h3 id="campos-de-topo">Campos de topo<a class="headerlink" href="#campos-de-topo" title="Permanent link">&para;</a></h3>
+<h3 id="campos-do-contrato">Campos do contrato<a class="headerlink" href="#campos-do-contrato" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>Campo</th>
-<th>Default</th>
-<th>O que faz</th>
+<th>Padrão</th>
+<th>Descrição</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>schema_version</code></td>
 <td>obrigatório</td>
-<td>Versão do formato. Hoje só <code>"1.0"</code> é aceita</td>
+<td>Versão do formato; o valor aceito é <code>"1.0"</code></td>
 </tr>
 <tr>
 <td><code>target</code></td>
 <td>obrigatório</td>
-<td>Coluna a prever</td>
+<td>Coluna que o modelo deve prever</td>
+</tr>
+<tr>
+<td><code>target_kind</code></td>
+<td><code>"value"</code></td>
+<td>Use <code>"rate"</code> para uma taxa integrada no tempo ou <code>"value"</code> para valores já acumulados por leitura</td>
+</tr>
+<tr>
+<td><code>trip_gap_split_s</code></td>
+<td>desativado</td>
+<td>Intervalo máximo entre leituras antes de separar a viagem</td>
 </tr>
 <tr>
 <td><code>use_feature_mask</code></td>
 <td><code>false</code></td>
-<td>Liga o canal de máscara (ver abaixo)</td>
+<td>Adiciona canais que indicam valores ausentes</td>
 </tr>
 <tr>
 <td><code>route_grid_m</code></td>
 <td><code>25.0</code></td>
-<td>Passo da grade de distância das features de rota, em metros. Em <code>route_mode = "profile"</code> isso não é só escala: determina <code>P</code>, a forma da entrada de rota do modelo (ver abaixo). Contratos com <code>route_grid_m</code> diferentes produzem modelos com <code>route_shape</code> incompatível na mesma federação.</td>
+<td>Espaçamento, em metros, da grade usada pelas features de rota</td>
 </tr>
 <tr>
 <td><code>route_mode</code></td>
 <td><code>"statistics"</code></td>
-<td><code>"statistics"</code>: cada <code>[[route_feature]]</code> (par coluna+agregação) vira um número. <code>"profile"</code>: cada coluna distinta vira <code>P</code> pontos da grade de distância, preservando a ordem espacial do trecho em vez de resumi-la numa média.</td>
-</tr>
-<tr>
-<td><code>target_kind</code></td>
-<td>não</td>
-<td><code>"value"</code> (padrão) ou <code>"rate"</code>. Com <code>"rate"</code> o alvo é uma taxa instantânea (ex.: potência em kW) e o rótulo passa a ser a integral trapezoidal no tempo, em vez da soma dos valores.</td>
-</tr>
-<tr>
-<td><code>trip_gap_split_s</code></td>
-<td>não</td>
-<td>Segundos. Um intervalo maior que este entre leituras consecutivas encerra o segmento; janelas nunca atravessam o buraco. Ausente = não corta. Recomendado 60,0 para o eVED.</td>
+<td>Representação das features de rota: <code>"statistics"</code> ou <code>"profile"</code></td>
 </tr>
 </tbody>
 </table>
-<h3 id="feature-sinais-lidos-do-passado"><code>[[feature]]</code> — sinais lidos do passado<a class="headerlink" href="#feature-sinais-lidos-do-passado" title="Permanent link">&para;</a></h3>
-<p>Cada bloco declara uma coluna que o modelo lê ao longo da janela de contexto.</p>
-<ul>
-<li><strong><code>name</code></strong>: nome exato da coluna no parquet.</li>
-<li><strong><code>required</code></strong> (default <code>true</code>): se <code>true</code>, linhas com NaN nessa coluna são
-  descartadas antes do janelamento. Se <code>false</code>, a linha sobrevive e a célula
-  ausente é imputada.</li>
-<li><strong><code>range</code></strong> (opcional): <code>[min, max]</code>. <strong>É aplicado, não é documentação.</strong>
-  <code>clip_to_ranges</code> grampeia valores fora da faixa antes de ajustar o scaler e
-  janelar, protegendo o treino de glitches de sensor, como um RPM de 65535 vindo de
-  um frame CAN perdido. NaN é preservado, o total grampeado é logado por feature, e
-  uma feature sem <code>range</code> fica intocada. O range é opt-in.</li>
-<li><strong><code>unit</code></strong> e <strong><code>description</code></strong> (opcionais): documentação. Nenhuma conversão de
-  unidade é feita.</li>
-</ul>
-<p><strong>A ordem dos blocos importa.</strong> Ela define a ordem das colunas no tensor e entra no
-fingerprint.</p>
-<h3 id="o-alvo">O alvo<a class="headerlink" href="#o-alvo" title="Permanent link">&para;</a></h3>
-<p>O <code>target</code> pode ser <strong>qualquer coluna materializada</strong> no parquet, não só
-<code>Energy_Consumption</code>, que é apenas o default do eVED. Para prever outra grandeza,
-aponte <code>target</code> para ela.</p>
-<p>Duas restrições. O alvo não pode também estar declarado como feature, porque ele já
-entra no tensor como coluna autorregressiva. E ele precisa estar <strong>materializado</strong>:
-derivar o alvo a partir de sinais crus é responsabilidade de quem coleta, não do
-framework.</p>
-<h3 id="o-canal-de-mascara">O canal de máscara<a class="headerlink" href="#o-canal-de-mascara" title="Permanent link">&para;</a></h3>
-<p>Com <code>use_feature_mask = true</code>, o tensor ganha uma coluna binária por feature,
-indicando se aquela célula estava presente. Serve para frotas heterogêneas, onde
-alguns veículos não reportam certos sensores: o modelo passa a distinguir "valor
-ausente" de "valor igual à média".</p>
-<p>Com a máscara desligada, uma célula ausente vira 0 no espaço normalizado, que é a
-média, ou seja, um valor neutro mas indistinguível de uma leitura real igual à
-média. No eVED a frota é homogênea, então o default é <code>false</code>.</p>
+<h2 id="alvo-de-potencia">Alvo de potência<a class="headerlink" href="#alvo-de-potencia" title="Permanent link">&para;</a></h2>
+<p>Os contratos fornecidos usam <code>Total Power[kW]</code> como alvo. Essa coluna não é uma leitura direta do OBD: ela é calculada a partir dos sinais disponíveis segundo o método de estimativa energética apresentado para o VED (Oh et al., 2022). Nos dados eVED, a fonte materializa a coluna em memória; no replay, o feeder a grava junto às viagens; em um veículo, essa responsabilidade pertence ao coletor.</p>
+<p>Quando <code>Fuel Rate[L/hr]</code> está disponível, a potência associada ao combustível é:</p>
+<div class="arithmatex">\[
+P_{comb} = \frac{Q_{comb}}{0{,}1123}
+\]</div>
+<p>em que <code>Q_comb</code> é a vazão em litros por hora e <code>0,1123 L/kWh</code> corresponde à equivalência de <code>33,7 kWh</code> por galão. Se a vazão não está disponível, o Fleven estima o combustível pelo fluxo de ar:</p>
+<div class="arithmatex">\[
+P_{comb} = \dot{m}_{ar}\frac{1 + STFT/100 + LTFT/100}{AFR_{E10}}\frac{3600}{\rho_{gasolina}\,0{,}1123}
+\]</div>
+<p>O cálculo usa <code>AFR_E10 = 14,08</code> e <code>ρ_gasolina = 745 g/L</code>. Os fuel trims refinam a estimativa quando existem; na ausência deles, a correção é zero. <code>Fuel Rate</code> tem precedência sobre MAF para evitar duas estimativas da mesma parcela.</p>
+<p>Para veículos eletrificados, a potência da bateria de alta tensão é:</p>
+<div class="arithmatex">\[
+P_{bat} = -\frac{I_{bat}V_{bat}}{1000}
+\]</div>
+<p>O sinal segue a convenção do eVED: consumo da bateria resulta em potência positiva e regeneração em potência negativa. A potência total é a soma das parcelas que puderem ser calculadas:</p>
+<div class="arithmatex">\[
+P_{total} = P_{comb} + P_{bat}
+\]</div>
+<p>Se nenhuma parcela estiver disponível, o alvo é ausente. A coluna <code>Power Quality</code> registra quais sinais participaram do cálculo.</p>
+<p>O Fleven preserva a formulação energética do VED, mas materializa uma taxa em kW: não multiplica a potência por velocidade ou distância durante essa etapa. Com <code>target_kind = "rate"</code>, a energia futura é calculada posteriormente pela integração trapezoidal:</p>
+<div class="arithmatex">\[
+E = \sum_k \frac{P_k + P_{k+1}}{2}\,\Delta t_k
+\]</div>
+<p>Quando <code>Δt</code> está em horas, o resultado é dado em kWh. Assim, o modo <code>steps</code> prevê valores futuros de potência, enquanto <code>distance-energy</code> prevê a energia acumulada até o horizonte de distância.</p>
+<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<p>Cada bloco <code>[[feature]]</code> declara uma coluna lida ao longo da janela de contexto. A ordem dos blocos define a ordem das colunas no tensor.</p>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Padrão</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>obrigatório</td>
+<td>Nome exato da coluna</td>
+</tr>
+<tr>
+<td><code>required</code></td>
+<td><code>true</code></td>
+<td>Descarta linhas nas quais a feature está ausente</td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td>desativado</td>
+<td>Limites <code>[mínimo, máximo]</code> aplicados antes da normalização</td>
+</tr>
+<tr>
+<td><code>unit</code></td>
+<td>vazio</td>
+<td>Unidade documental</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>vazio</td>
+<td>Descrição documental</td>
+</tr>
+</tbody>
+</table>
+<p>Features opcionais são imputadas quando estão ausentes. Com <code>use_feature_mask = true</code>, o modelo também recebe um canal binário que distingue valores presentes de valores imputados.</p>
+<p>O alvo não deve ser repetido em <code>[[feature]]</code>, pois ele já entra na sequência como coluna autorregressiva.</p>
 <h2 id="features-de-rota">Features de rota<a class="headerlink" href="#features-de-rota" title="Permanent link">&para;</a></h2>
-<p>São atributos do <strong>trecho de estrada que ainda será percorrido</strong>, e existem sob a
-premissa de que o condutor definiu o trajeto. Enquanto as features normais dizem
-como o veículo vinha se comportando, as de rota dizem por onde ele vai passar.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[[route_feature]]</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Speed Limit[km/h]"</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mean"</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">[[route_feature]]</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Elevation Smoothed[m]"</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"delta"</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="k">[[route_feature]]</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Elevation Smoothed[m]"</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"positive_sum"</span>
+<p>Features de rota descrevem o trecho à frente e são declaradas em blocos <code>[[route_feature]]</code>:</p>
+<p>No dataset eVED, limite de velocidade e elevação já estão presentes nos arquivos de viagem. No fluxo com dados OBD, o feeder foi implementado para obter as features de rota por meio do Valhalla, mas essa integração ainda não foi testada com uma instância real do serviço. Algumas colunas, como <code>Route Speed[km/h]</code>, existem somente nesse fluxo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">route_grid_m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">25.0</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">route_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"statistics"</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">[[route_feature]]</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Speed Limit[km/h]"</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mean"</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">[[route_feature]]</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Elevation Smoothed[m]"</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">aggregation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"delta"</span>
 </code></pre></div>
-<p>A identidade de uma feature de rota é o par <strong>coluna mais agregação</strong>, e não só a
-coluna. Por isso a altitude pode aparecer duas vezes, como desnível líquido e como
-subida acumulada, que são grandezas físicas diferentes.</p>
-<h3 id="agregacoes-disponiveis">Agregações disponíveis<a class="headerlink" href="#agregacoes-disponiveis" title="Permanent link">&para;</a></h3>
+<p>As agregações disponíveis são:</p>
 <table>
 <thead>
 <tr>
 <th>Agregação</th>
-<th>O que calcula</th>
+<th>Resultado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>mean</code></td>
-<td>Média dos valores ao longo do trecho</td>
+<td>Média ao longo do trecho</td>
 </tr>
 <tr>
 <td><code>delta</code></td>
-<td>Valor no fim menos valor no começo</td>
+<td>Valor final menos valor inicial</td>
 </tr>
 <tr>
 <td><code>positive_sum</code></td>
-<td>Soma apenas dos incrementos positivos</td>
+<td>Soma dos incrementos positivos</td>
 </tr>
 </tbody>
 </table>
-<h3 id="a-grade-de-distancia-e-por-que-ela-nao-e-um-detalhe">A grade de distância, e por que ela não é um detalhe<a class="headerlink" href="#a-grade-de-distancia-e-por-que-ela-nao-e-um-detalhe" title="Permanent link">&para;</a></h3>
-<p>As agregações <strong>não</strong> são feitas sobre as leituras do trecho. A coluna é primeiro
-interpolada em pontos igualmente espaçados ao longo da distância, a cada
-<code>route_grid_m</code> metros, e a agregação roda sobre essa grade.</p>
-<p>O motivo é que o OBD amostra por tempo, uma leitura por segundo, não por distância.
-Agregar por leitura faria as features carregarem velocidade futura. Um exemplo com
-números: num trecho de 500 m, metade numa via de 40 km/h percorrida a 20 km/h (45 s,
-45 leituras) e metade numa via de 90 km/h percorrida a 90 km/h (10 s, 10 leituras),
-a média por leitura dá 49,1 km/h e a média por distância dá 65,0 km/h. A primeira só
-vale 49,1 porque o motorista demorou na primeira metade, e essa diferença é
-invertível: o modelo deduziria o tempo gasto em cada parte, ou seja, exatamente a
-informação futura que ele não deve ter.</p>
-<p>Com a grade, as features passam a ser função da geometria do trajeto, iguais a 20 ou
-a 80 km/h. O número de pontos vem do horizonte nominal e do passo, nunca da
-amostragem: 500 m com passo de 25 m dão sempre 21 pontos.</p>
-<p><strong><code>route_grid_m</code> fica no contrato, não na configuração de execução</strong>, e isso é
-deliberado. Dois nós com resoluções diferentes produziriam features numericamente
-distintas com o <strong>mesmo</strong> <code>input_size</code>, e o handshake, que compara larguras, não
-pegaria a divergência. Estando no contrato, ele entra no fingerprint e a
-incompatibilidade é recusada na entrada.</p>
-<h3 id="restricoes-das-features-de-rota">Restrições das features de rota<a class="headerlink" href="#restricoes-das-features-de-rota" title="Permanent link">&para;</a></h3>
-<p>O contrato recusa três coisas, e as três protegem a premissa da feature:</p>
-<ol>
-<li><strong>Nomear o <code>target</code>.</strong> Agregar o alvo sobre o trecho futuro entregaria o próprio
-   rótulo ao modelo.</li>
-<li><strong>Nomear uma feature dinâmica já declarada.</strong> Sinais do veículo medidos no trecho
-   futuro revelam como o trajeto foi percorrido. Features de rota devem ser
-   atributos da via, não do comportamento do condutor.</li>
-<li><strong>Combinar com <code>prediction-mode = "steps"</code>.</strong> Nesse modo não existe trecho futuro
-   com distância definida para agregar. A validação roda em <code>load_contract</code>, então
-   servidor e cliente falham juntos na largada, e não com o servidor treinando
-   sobre clientes que silenciosamente reportam zero exemplos.</li>
-</ol>
-<h3 id="comportamento-com-colunas-ausentes">Comportamento com colunas ausentes<a class="headerlink" href="#comportamento-com-colunas-ausentes" title="Permanent link">&para;</a></h3>
-<p>Colunas de rota <strong>não</strong> entram no conjunto que provoca descarte de linha por NaN. Se
-a coluna não existe no parquet, ou o trecho não tem dados, o valor agregado vira
-neutro no espaço normalizado. Sem isso, acrescentar uma feature de rota passaria a
-matar viagens inteiras.</p>
-<p>Valores não numéricos são coeridos para NaN e a contagem é logada por coluna. Isso
-acontece de verdade no eVED: cerca de 1% das linhas trazem o limite de velocidade
-como faixa, no formato <code>'40-48'</code>.</p>
-<h2 id="como-o-input_size-e-derivado">Como o <code>input_size</code> é derivado<a class="headerlink" href="#como-o-input_size-e-derivado" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>input_size = F + (F se máscara ligada) + 1
+<p>No modo <code>statistics</code>, cada bloco produz um valor agregado. A mesma coluna pode aparecer com agregações diferentes.</p>
+<p>No modo <code>profile</code>, cada coluna produz uma sequência sobre a grade de distância, preservando a ordem espacial. Nesse modo, uma coluna deve ser declarada apenas uma vez.</p>
+<p>Contratos com rota exigem <code>prediction-mode = "distance-energy"</code>. O alvo, as features dinâmicas do veículo e colunas que descrevam o comportamento futuro do condutor não podem ser usados como features de rota.</p>
+<h2 id="forma-das-entradas">Forma das entradas<a class="headerlink" href="#forma-das-entradas" title="Permanent link">&para;</a></h2>
+<p>O tamanho da sequência é derivado automaticamente:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>input_size = features + máscaras opcionais + alvo autorregressivo
 </code></pre></div>
-<p>onde <code>F</code> é o número de features. O <code>+1</code> é a coluna autorregressiva do alvo. A rota
-<strong>não</strong> entra em <code>input_size</code>: ela é um tensor próprio, injetado uma vez no estado
-final da sequência em vez de replicado em todos os passos da janela.</p>
-<p>A ordem das colunas do tensor de sequência é:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[ features escalonadas (F) ][ máscara (F, se ligada) ][ alvo (1) ]
-</code></pre></div>
-<p>Quando o contrato declara <code>[[route_feature]]</code>, o modelo recebe um segundo tensor,
-de forma <code>(batch, P, R)</code>, dado por <code>derive_route_shape(contract,
-prediction_distance_km)</code>:</p>
+<p>As features de rota não aumentam o <code>input_size</code>; elas formam um segundo tensor com <code>route_shape = (P, R)</code>:</p>
 <ul>
-<li>Em <code>route_mode = "statistics"</code>, <code>P = 1</code> e <code>R</code> é o número de pares
-  <code>(coluna, agregação)</code> — cada entrada de <code>[[route_feature]]</code> vira uma coluna.</li>
-<li>Em <code>route_mode = "profile"</code>, <code>P</code> vem da grade de distância
-  (<code>round(prediction_distance_km * 1000 / route_grid_m) + 1</code>) e <code>R</code> é o número de
-  <strong>colunas distintas</strong> citadas em <code>[[route_feature]]</code> (não o número de pares —
-  em modo perfil o contrato recusa a mesma coluna duas vezes).</li>
+<li>em <code>statistics</code>, <code>P = 1</code> e <code>R</code> é o número de blocos <code>[[route_feature]]</code>;</li>
+<li>em <code>profile</code>, <code>P</code> depende de <code>prediction-distance-km</code> e <code>route_grid_m</code>, enquanto <code>R</code> é o número de colunas de rota distintas.</li>
 </ul>
-<p>Servidor e cliente chamam <code>derive_input_size</code> <strong>e</strong> <code>derive_route_shape</code> sobre o
-mesmo contrato, e passam ambos os valores a <code>get_model</code> (<code>input_size</code> e
-<code>route_shape</code>). <strong>Não defina <code>input-size</code> manualmente.</strong></p>
-<h2 id="o-fingerprint-e-o-handshake-federado">O fingerprint e o handshake federado<a class="headerlink" href="#o-fingerprint-e-o-handshake-federado" title="Permanent link">&para;</a></h2>
-<p><code>contract_fingerprint</code> produz um hash de 16 caracteres cobrindo tudo que define a
-forma da entrada: <code>schema_version</code>, <code>target</code>, a flag de máscara, a sequência
-<strong>ordenada</strong> de features com seu <code>required</code>, a sequência ordenada dos pares de rota,
-o <code>route_grid_m</code> quando há rota, e o <code>route_mode</code> quando ele não é o padrão
-(<code>"statistics"</code>).</p>
-<p>O servidor envia esse valor no <code>config</code> de cada mensagem de treino e avaliação. O
-cliente compara com o seu antes de participar; se divergir, ele se recusa e devolve
-<code>num-examples=0</code>, que é peso zero na agregação. Isso protege contra FAB misturado,
-override por nó e schema velho.</p>
-<p>Além do fingerprint, o handshake também confere o <code>prediction-mode</code> e, no modo por
-distância, o <code>prediction-distance-km</code>. Um servidor antigo que não envie handshake
-nenhum é tolerado, por compatibilidade.</p>
-<p>Duas propriedades que valem conhecer:</p>
-<ul>
-<li><strong>Contrato sem rota tem fingerprint idêntico ao de antes de a rota existir.</strong>
-  Acrescentar o bloco de rota a um contrato que não o usa não muda o hash, então
-  federações em execução não são invalidadas.</li>
-<li><strong>Mudar apenas o caminho do arquivo não muda o fingerprint.</strong> Ele descreve o
-  conteúdo, não a origem.</li>
-</ul>
-<h2 id="validacoes">Validações<a class="headerlink" href="#validacoes" title="Permanent link">&para;</a></h2>
-<p>O contrato é recusado quando:</p>
-<ul>
-<li><code>schema_version</code> é desconhecida;</li>
-<li>falta <code>target</code>, ou não há nenhuma feature;</li>
-<li>há nomes de feature duplicados;</li>
-<li>o <code>target</code> também aparece como feature;</li>
-<li>algum <code>range</code> tem mínimo maior que máximo;</li>
-<li>uma agregação de rota é desconhecida;</li>
-<li>um par coluna-agregação de rota está duplicado;</li>
-<li>uma feature de rota nomeia o <code>target</code> ou uma feature já declarada;</li>
-<li>há features de rota e <code>route_grid_m</code> não é positivo.</li>
-</ul>
-<h2 id="o-contrato-implicito">O contrato implícito<a class="headerlink" href="#o-contrato-implicito" title="Permanent link">&para;</a></h2>
-<p>Se <code>data-contract</code> estiver vazio ou ausente, o framework monta um contrato a partir
-de <code>feature-columns</code> e <code>target-column</code> do <code>run_config</code>, com máscara desligada e todas
-as features obrigatórias. É um caminho de compatibilidade, útil para overrides
-pontuais via <code>--run-config</code>. Sem nenhum dos dois, usa as quatro features padrão do
-eVED e <code>Energy_Consumption</code> como alvo.</p>
-<p>O contrato em arquivo tem precedência e é o caminho recomendado.</p>
-<h2 id="contratos-deste-repositorio">Contratos deste repositório<a class="headerlink" href="#contratos-deste-repositorio" title="Permanent link">&para;</a></h2>
+<p>Servidor e clientes derivam <code>input_size</code> e <code>route_shape</code> do contrato. Esses valores não devem ser configurados manualmente.</p>
+<h2 id="compatibilidade">Compatibilidade<a class="headerlink" href="#compatibilidade" title="Permanent link">&para;</a></h2>
+<p>O fingerprint identifica o conteúdo do contrato, incluindo a ordem das features, as features de rota e sua representação. Antes do treinamento, cliente e servidor comparam essa identidade e recusam contratos incompatíveis.</p>
+<p>Alterar o caminho sem mudar o conteúdo não modifica o fingerprint. Alterações no contrato também invalidam o cache correspondente do pipeline.</p>
+<p>Quando <code>data-contract</code> não é informado, o Fleven monta um contrato implícito a partir de <code>feature-columns</code> e <code>target-column</code>. Para experimentos reproduzíveis, prefira um arquivo TOML.</p>
+<h2 id="contratos-disponiveis">Contratos disponíveis<a class="headerlink" href="#contratos-disponiveis" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Arquivo</th>
-<th><code>input_size</code></th>
-<th>Fingerprint</th>
-<th>Para que serve</th>
+<th>Contrato</th>
+<th>Rota</th>
+<th>Uso</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>contracts/eved_potencia.toml</code></td>
-<td>5</td>
-<td><code>1dea1b17b81835ea</code></td>
-<td>Quatro sinais OBD, sem rota. Único que roda no fluxo OBD sem Valhalla</td>
+<td><code>eved_potencia.toml</code></td>
+<td>não</td>
+<td>Sinais OBD sem informação de rota</td>
 </tr>
 <tr>
-<td><code>contracts/eved_potencia_rota.toml</code></td>
-<td>8</td>
-<td><code>460b0cc4790a794e</code></td>
-<td><strong>Padrão.</strong> Os mesmos sinais mais três atributos da via. Melhor medido (+0,4107 no G05)</td>
+<td><code>eved_potencia_rota.toml</code></td>
+<td>estatísticas</td>
+<td>Limite de velocidade e elevação agregados</td>
 </tr>
 <tr>
-<td><code>contracts/eved_potencia_rota_speed.toml</code></td>
-<td>9</td>
-<td><code>51dbd56954d2335d</code></td>
-<td>Acrescenta a velocidade típica da via. <strong>Exige o feeder com Valhalla</strong>; sobre os parquets do eVED a coluna vira constante</td>
+<td><code>eved_potencia_perfil.toml</code></td>
+<td>perfil</td>
+<td>Limite de velocidade e elevação como sequências espaciais</td>
+</tr>
+<tr>
+<td><code>eved_potencia_rota_speed.toml</code></td>
+<td>estatísticas</td>
+<td>Acrescenta velocidade típica da via e requer dados produzidos pelo feeder com Valhalla</td>
 </tr>
 </tbody>
 </table>
-<p>Todos apontam para <code>Total Power[kW]</code>, materializado em memória pela fonte. Os
-contratos do alvo antigo (<code>eved.toml</code>, <code>eved_rota.toml</code>, <code>eved_rota_speed.toml</code>,
-<code>eved_rota_plus.toml</code>) foram <strong>removidos</strong>: mediram +0,0173 de <code>r2_weighted</code> contra
-+0,3610 do alvo corrigido na mesma grade. Ver
-<code>docs/superpowers/specs/2026-08-08-target-de-energia-design.md</code>.</p>
-<h2 id="criando-um-contrato-novo">Criando um contrato novo<a class="headerlink" href="#criando-um-contrato-novo" title="Permanent link">&para;</a></h2>
-<p>Copie um dos existentes, ajuste, e aponte <code>data-contract</code> para ele. Confira o
-resultado antes de rodar:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"from fleven.data.contract import load_contract, derive_input_size, contract_fingerprint as fp; c = load_contract({'data-contract': 'contracts/meu.toml'}); print(derive_input_size(c), fp(c))"</span>
-</code></pre></div>
-<p>Três coisas a lembrar:</p>
-<p><strong>Todos os nós precisam do mesmo contrato.</strong> Ele viaja dentro do FAB, construído na
-máquina do operador, então na prática isso é automático. O handshake existe para
-pegar os casos em que não é.</p>
-<p><strong>Trocar de contrato invalida o cache.</strong> A chave do cache do pipeline inclui as
-features, o alvo, as features de rota e a resolução da grade, então o primeiro run
-com um contrato novo reprocessa os parquets.</p>
-<p><strong>Para o G08, que é PHEV</strong>, o <code>Energy_Consumption</code> vem da bateria, não do MAF nem dos
-fuel trims. Um contrato para esse grupo deve usar <code>HV Battery Current[A]</code> e
-<code>HV Battery Voltage[V]</code> no lugar dos sinais de combustão.</p>
-<h2 id="erros-comuns">Erros comuns<a class="headerlink" href="#erros-comuns" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Mensagem</th>
-<th>O que aconteceu</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>data-contract não encontrado</code></td>
-<td>O arquivo não está no CWD nem na raiz do projeto</td>
-</tr>
-<tr>
-<td><code>contrato divergente do servidor</code></td>
-<td>Fingerprints diferentes. Cliente e servidor com contratos distintos, ou FAB desatualizado num nó</td>
-</tr>
-<tr>
-<td><code>O target ... não pode também ser uma feature</code></td>
-<td>O alvo já entra como coluna autorregressiva; remova-o dos blocos <code>[[feature]]</code></td>
-</tr>
-<tr>
-<td><code>Feature de rota ... não pode nomear uma feature dinâmica</code></td>
-<td>A coluna descreve o comportamento do condutor, não a via; agregá-la no futuro seria vazamento</td>
-</tr>
-<tr>
-<td><code>features de rota exigem prediction-mode='distance-energy'</code></td>
-<td>No modo <code>steps</code> não há trecho futuro com distância definida</td>
-</tr>
-<tr>
-<td><code>Cliente N sem janelas validas</code></td>
-<td>Features obrigatórias demais, ou cliente com muito NaN, ou viagens curtas demais para o horizonte. Considere <code>required = false</code> nos sensores intermitentes</td>
-</tr>
-<tr>
-<td><code>Cliente N sem coluna target 'X'</code></td>
-<td>A coluna do <code>target</code> não existe nos parquets daquele cliente</td>
-</tr>
-</tbody>
-</table>
+<p>Todos usam <code>Total Power[kW]</code> como alvo e quatro sinais do veículo como features de contexto. Consulte os próprios arquivos em <code>contracts/</code> para conhecer ranges e features de rota de cada variante.</p>
+<h2 id="criando-um-contrato">Criando um contrato<a class="headerlink" href="#criando-um-contrato" title="Permanent link">&para;</a></h2>
+<p>Copie o contrato mais próximo do experimento desejado, altere somente os campos necessários e configure seu caminho em <code>data-contract</code>. Antes de executar uma federação, confirme que todas as colunas obrigatórias podem ser produzidas pela fonte de dados escolhida.</p>
+<h2 id="referencia">Referência<a class="headerlink" href="#referencia" title="Permanent link">&para;</a></h2>
+<p>Oh, G., LeBlanc, D. J., &amp; Peng, H. (2022). Vehicle Energy Dataset (VED), a large-scale dataset for vehicle energy consumption research. <em>IEEE Transactions on Intelligent Transportation Systems, 23</em>(4), 3302–3312. https://doi.org/10.1109/TITS.2020.3035596</p>
 
 
 
