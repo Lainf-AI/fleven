@@ -690,6 +690,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../FEEDER/" class="md-nav__link">
         
   
@@ -920,6 +948,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#previsao-por-viagem-cleven-trip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Previsão por viagem (cleven trip)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -995,7 +1034,7 @@
 <a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="k">[groups.G05]</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"data/G05_ICE_20L_ND_2500"</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">fleet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"G05_ICE_20L_ND_2500"</span>
 <a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="k">[grid]</span>
 <a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="s2">"train.model_type"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"lstm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"lstm_dense"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mlp"</span><span class="p">]</span>
@@ -1009,6 +1048,14 @@
 <h2 id="protocolo-experimental">Protocolo experimental<a class="headerlink" href="#protocolo-experimental" title="Permanent link">&para;</a></h2>
 <p>A validação é formada por viagens inteiras separadas antes do ajuste dos scalers e do janelamento. Isso impede que leituras da mesma viagem apareçam em treino e validação. Cada cliente mantém seu próprio scaler.</p>
 <p>As métricas são calculadas na unidade física definida pelo contrato.</p>
+<h2 id="previsao-por-viagem-cleven-trip">Previsão por viagem (<code>cleven trip</code>)<a class="headerlink" href="#previsao-por-viagem-cleven-trip" title="Permanent link">&para;</a></h2>
+<p>Bancada separada do caminho de janelas, para decidir como prever a energia de uma viagem com rota conhecida. Ela monta uma tabela de trechos de comprimento fixo a partir de <code>EVED_Clients/train/</code> e compara bases (<code>vehicle_mean</code>, <code>cell_layer</code>), modos de correção (<code>direct</code>, <code>residual</code>), famílias de modelo (<code>ridge</code>, <code>gbm</code>) e unidades de previsão (<code>segment</code>, <code>trip</code>), com divisão temporal dentro de cada veículo.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cleven<span class="w"> </span>trip<span class="w"> </span>sweep<span class="w"> </span>-c<span class="w"> </span>cleven/trip/sweeps/q1_residual_vs_direct.toml
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cleven<span class="w"> </span>trip<span class="w"> </span>report<span class="w"> </span>-q<span class="w"> </span>q1
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>cleven<span class="w"> </span>trip<span class="w"> </span>final<span class="w"> </span>--config-hash<span class="w"> </span>&lt;hash&gt;
+</code></pre></div>
+<p>As grades em <code>cleven/trip/sweeps/</code> correspondem às perguntas da spec <code>docs/docs/superpowers/specs/2026-10-05-cleven-trip-energy-design.md</code>. Os resultados ficam em <code>results/cleven_trip/&lt;hash&gt;/</code> e no experimento <code>cleven_trip</code> do MLflow. O teste de cada pergunta só pode ser consultado uma vez.</p>
+<p>Os trechos, a camada de lugar, as variáveis, o histórico, a ridge e o corretor de estado vêm do núcleo <code>fleven/trip</code>. A bancada mantém as grades, o gradient boosting e as perguntas, e mede exatamente o que o produto calcula.</p>
 
 
 

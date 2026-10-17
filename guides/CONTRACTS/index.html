@@ -749,6 +749,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#contrato-de-viagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato de viagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapeamento-de-colunas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento de colunas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#criando-um-contrato" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -850,6 +872,34 @@
     
   
     Modelos e estratégias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
   
 
     
@@ -1168,6 +1218,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#contrato-de-viagem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contrato de viagem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapeamento-de-colunas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapeamento de colunas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#criando-um-contrato" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1426,6 +1498,24 @@ E = \sum_k \frac{P_k + P_{k+1}}{2}\,\Delta t_k
 </tbody>
 </table>
 <p>Todos usam <code>Total Power[kW]</code> como alvo e quatro sinais do veículo como features de contexto. Consulte os próprios arquivos em <code>contracts/</code> para conhecer ranges e features de rota de cada variante.</p>
+<h2 id="contrato-de-viagem">Contrato de viagem<a class="headerlink" href="#contrato-de-viagem" title="Permanent link">&para;</a></h2>
+<p>O modelo de energia por viagem (<code>task = "trip"</code>) lê um contrato próprio, apontado por <code>trip-contract</code> (<code>contracts/trip_eved.toml</code> no repositório). Ele tem o mesmo formato dos demais e uma seção a mais, <code>[trip]</code>, que diz qual coluna canônica cumpre cada papel:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[trip]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Timestamp Absolute[ms]"</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vehicle Speed[km/h]"</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">outside_temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OAT[DegC]"</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">soc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"HV Battery SOC[%]"</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">climate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Climate Power[kW]"</span>
+</code></pre></div>
+<p>A potência é sempre o <code>target</code> do contrato. Os <code>[[feature]]</code> são os sensores que o modelo pode usar; um sensor marcado <code>required = false</code> pode faltar em parte dos veículos. Papéis omitidos ficam com os nomes acima. O handshake do modo viagem confere a impressão desse contrato, que inclui os papéis; o contrato do modelo de janela (<code>data-contract</code>) não participa dele.</p>
+<p>O tempo absoluto, a potência e a potência de climatização são materializados pela fonte ou pelo coletor. O tempo absoluto é em milissegundos no <strong>horário local</strong> do veículo, não em UTC: a hora da partida e o dia da semana saem dele diretamente. Um coletor que só tem o relógio em UTC precisa somar o fuso antes de gravar. No eVED, a fonte calcula o tempo absoluto a partir do <code>DayNum</code> e a climatização somando ar-condicionado e aquecimento.</p>
+<h2 id="mapeamento-de-colunas">Mapeamento de colunas<a class="headerlink" href="#mapeamento-de-colunas" title="Permanent link">&para;</a></h2>
+<p>Os contratos usam nomes canônicos. Uma fonte cujos arquivos gravam outros nomes chega a eles por um mapeamento declarado, apontado por <code>column-map</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[columns]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s2">"0x0D"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vehicle Speed[km/h]"</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s2">"0x10"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MAF[g/sec]"</span>
+</code></pre></div>
+<p>A fonte renomeia as colunas cruas presentes antes de materializar qualquer grandeza; se o arquivo já tiver a coluna canônica, a mapeada a substitui. O repositório traz <code>contracts/maps/eved.toml</code> (identidade, porque o eVED já usa os nomes canônicos) e <code>contracts/maps/obd_pids.toml</code> (PIDs padrão do OBD-II pelo rótulo hexadecimal). Um formato de arquivo novo pede uma fonte nova; nomes diferentes no mesmo formato pedem só um mapeamento.</p>
 <h2 id="criando-um-contrato">Criando um contrato<a class="headerlink" href="#criando-um-contrato" title="Permanent link">&para;</a></h2>
 <p>Copie o contrato mais próximo do experimento desejado, altere somente os campos necessários e configure seu caminho em <code>data-contract</code>. Antes de executar uma federação, confirme que todas as colunas obrigatórias podem ser produzidas pela fonte de dados escolhida.</p>
 <h2 id="referencia">Referência<a class="headerlink" href="#referencia" title="Permanent link">&para;</a></h2>

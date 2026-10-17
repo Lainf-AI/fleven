@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/FEEDER/">
       
       
-        <link rel="prev" href="../MODELS/">
+        <link rel="prev" href="../TRIP/">
       
       
         <link rel="next" href="../DOCKER_DEPLOY/">
@@ -698,6 +698,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1101,7 +1129,7 @@
 <p>O feeder reproduz o fluxo de um coletor veicular usando as viagens do eVED. Ele libera as viagens ao longo do tempo, calcula as grandezas derivadas e pode avaliar um checkpoint por inferência contínua. É uma ferramenta de bancada e não faz parte do cliente embarcado.</p>
 <p>O comando lê o contrato e as configurações temporais de <code>pyproject.toml</code>. O grupo de origem deve conter <code>train/client_N/trip_*.parquet</code>.</p>
 <h2 id="replay">Replay<a class="headerlink" href="#replay" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-time-scale</span> <span class="p">&lt;</span><span class="n">escala</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-fleet</span> <span class="p">&lt;</span><span class="n">frota</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-time-scale</span> <span class="p">&lt;</span><span class="n">escala</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>Cada cliente é executado concorrentemente. Suas viagens seguem a ordem numérica do nome do arquivo e são reproduzidas sem pausa entre elas. Dentro de uma viagem, a cadência vem de <code>Timestamp(ms)</code>.</p>
 <p><code>time-scale</code> representa quantos segundos do dado passam em um segundo de relógio. O valor <code>1</code> mantém o tempo original; valores maiores aceleram o replay; valores menores ou iguais a zero executam sem espera.</p>
@@ -1126,7 +1154,7 @@
 <p>A fonte OBD considera apenas viagens finalizadas e reprocessa o diretório a cada inicialização do ClientApp. Os DataLoaders permanecem em memória durante o run, portanto viagens concluídas depois dessa inicialização só participam de um run posterior. O parâmetro opcional <code>obd-retention-trips</code> limita a leitura às viagens mais recentes; zero mantém todas.</p>
 <h2 id="predicao-ao-vivo">Predição ao vivo<a class="headerlink" href="#predicao-ao-vivo" title="Permanent link">&para;</a></h2>
 <p>A predição exige um checkpoint que contenha modelo, scaler e configuração compatíveis com o contrato ativo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-time-scale</span> <span class="p">&lt;</span><span class="n">escala</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-predict</span> <span class="p">-</span><span class="n">-model</span> <span class="p">&lt;</span><span class="n">checkpoint</span><span class="p">.</span><span class="n">pt</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-pred-out</span> <span class="p">&lt;</span><span class="n">predicoes</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-fleet</span> <span class="p">&lt;</span><span class="n">frota</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-time-scale</span> <span class="p">&lt;</span><span class="n">escala</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-predict</span> <span class="p">-</span><span class="n">-model</span> <span class="p">&lt;</span><span class="n">checkpoint</span><span class="p">.</span><span class="n">pt</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-pred-out</span> <span class="p">&lt;</span><span class="n">predicoes</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>O preditor mantém uma janela por cliente, ignora leituras inválidas, reinicia o estado na troca de viagem e respeita o limite de gap definido pelo contrato. No modo <code>steps</code>, a predição é resolvida quando chegam os próximos valores do alvo. No modo <code>distance-energy</code>, ela é resolvida quando o veículo percorre a distância configurada.</p>
 <p>As predições são gravadas em:</p>
@@ -1137,7 +1165,7 @@
 <p>Cada registro contém <code>timestamp</code>, <code>trip</code>, <code>y_pred</code>, <code>y_true</code>, <code>residual</code>, <code>prediction_mode</code> e <code>prediction_distance_km</code>. Os valores estão na unidade física do alvo.</p>
 <h2 id="bootstrap">Bootstrap<a class="headerlink" href="#bootstrap" title="Permanent link">&para;</a></h2>
 <p><code>fleven bootstrap</code> produz um checkpoint inicial usando clientes held-out cujo perfil veicular corresponde ao grupo:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">fleven</span> <span class="n">bootstrap</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-test</span> <span class="p">&lt;</span><span class="n">held-out</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-out</span> <span class="p">&lt;</span><span class="n">checkpoint</span><span class="p">.</span><span class="n">pt</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">fleven</span> <span class="n">bootstrap</span> <span class="p">-</span><span class="n">-fleet</span> <span class="p">&lt;</span><span class="n">frota</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-test</span> <span class="p">&lt;</span><span class="n">held-out</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-out</span> <span class="p">&lt;</span><span class="n">checkpoint</span><span class="p">.</span><span class="n">pt</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>O modelo, o scaler e o fingerprint do contrato são salvos juntos. O checkpoint pode iniciar a federação por meio de <code>bootstrap-init</code> ou ser usado diretamente por <code>fleven feeder --predict</code>.</p>
 <p>O bootstrap usa as configurações do projeto e não suporta contratos com atributos de rota.</p>
@@ -1148,11 +1176,11 @@
 <p>O provedor e o fluxo de consulta estão implementados, mas o feeder ainda não foi testado conectado a uma instância real do Valhalla. Os comandos desta seção descrevem a interface prevista e permanecem pendentes de validação ponta a ponta.</p>
 </div>
 <p>Quando o contrato declara atributos de rota, o feeder exige um Valhalla acessível:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-route-provider</span> <span class="n">valhalla</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="p">&lt;</span><span class="n">url</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-fleet</span> <span class="p">&lt;</span><span class="n">frota</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-route-provider</span> <span class="n">valhalla</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="p">&lt;</span><span class="n">url</span><span class="p">&gt;</span>
 </code></pre></div>
 <p>O serviço é verificado antes do replay. Uma falha de consulta durante a execução marca a corrida como parcial. Pontos sem cobertura cartográfica recebem valores ausentes, e o feeder apresenta a cobertura por coluna ao final.</p>
 <p>O cache evita repetir consultas para a mesma geometria:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-group</span> <span class="p">&lt;</span><span class="n">grupo</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-route-provider</span> <span class="n">valhalla</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="p">&lt;</span><span class="n">url</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-route-cache</span> <span class="p">&lt;</span><span class="n">cache</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-extract-version</span> <span class="p">&lt;</span><span class="n">versao-do-mapa</span><span class="p">&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">fleven</span> <span class="n">feeder</span> <span class="p">-</span><span class="n">-fleet</span> <span class="p">&lt;</span><span class="n">frota</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-target</span> <span class="p">&lt;</span><span class="n">saida</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-route-provider</span> <span class="n">valhalla</span> <span class="p">-</span><span class="n">-valhalla-url</span> <span class="p">&lt;</span><span class="n">url</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-route-cache</span> <span class="p">&lt;</span><span class="n">cache</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-extract-version</span> <span class="p">&lt;</span><span class="n">versao-do-mapa</span><span class="p">&gt;</span>
 </code></pre></div>
 <p><code>--extract-version</code> é obrigatório com <code>--route-cache</code> porque participa da chave de invalidação. Use a mesma fonte e versão cartográfica no treino e na inferência para não alterar silenciosamente a distribuição dos atributos.</p>
 <p><code>--route-provider none</code> só é válido quando o contrato não possui atributos de rota. Nesse modo, o feeder não consulta um provedor; as colunas já existentes no parquet de origem permanecem no arquivo, mas não fazem parte da entrada definida pelo contrato.</p>
@@ -1167,8 +1195,12 @@
 </thead>
 <tbody>
 <tr>
+<td><code>--fleet</code></td>
+<td>Frota do <code>fleets.toml</code> cujos veículos são reproduzidos; cada pasta de carro usa o id original</td>
+</tr>
+<tr>
 <td><code>--group</code></td>
-<td>Grupo eVED usado como origem do replay</td>
+<td>Pasta com <code>train/client_N</code>, no lugar de <code>--fleet</code></td>
 </tr>
 <tr>
 <td><code>--target</code></td>

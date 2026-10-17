@@ -10,9 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/VISAO-GERAL/">
+        <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/TRIP/">
       
       
+        <link rel="prev" href="../MODELS/">
+      
+      
+        <link rel="next" href="../FEEDER/">
       
       
         
@@ -23,7 +27,7 @@
     
     
       
-        <title>Fleven em uma página - Fleven</title>
+        <title>Previsão por viagem - Fleven</title>
       
     
     
@@ -57,13 +61,13 @@
 
     
     <meta property="og:type" content="website">
-  <meta property="og:title" content="Fleven em uma página - Fleven">
+  <meta property="og:title" content="Previsão por viagem - Fleven">
   <meta property="og:description" content="Federated Learning for Vehicular Environment">
   <meta property="og:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
-  <meta property="og:url" content="https://lainf-ai.github.io/fleven/guides/VISAO-GERAL/">
+  <meta property="og:url" content="https://lainf-ai.github.io/fleven/guides/TRIP/">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Fleven em uma página - Fleven">
+  <meta name="twitter:title" content="Previsão por viagem - Fleven">
   <meta name="twitter:description" content="Federated Learning for Vehicular Environment">
   <meta name="twitter:image" content="https://lainf-ai.github.io/fleven/assets/og-image.png">
 
@@ -86,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#fleven-em-uma-pagina" class="md-skip">
+        <a href="#previsao-de-energia-por-viagem" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -119,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Fleven em uma página
+              Previsão por viagem
             
           </span>
         </div>
@@ -269,10 +273,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../EXPERIMENTS/" class="md-tabs__link">
           
   
@@ -495,26 +501,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -532,7 +543,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -678,6 +689,147 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O modelo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-rodada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A rodada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-e-execucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuração e execução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preditor-ao-vivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preditor ao vivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entradas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entradas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-aparelho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No aparelho
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -888,10 +1040,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#o-que-ele-preve" class="md-nav__link">
+  <a href="#o-modelo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O que ele prevê
+        O modelo
       
     </span>
   </a>
@@ -899,10 +1051,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#as-tres-direcoes" class="md-nav__link">
+  <a href="#a-rodada" class="md-nav__link">
     <span class="md-ellipsis">
       
-        As três direções
+        A rodada
       
     </span>
   </a>
@@ -910,10 +1062,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#o-contrato-de-dados" class="md-nav__link">
+  <a href="#configuracao-e-execucao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O contrato de dados
+        Configuração e execução
       
     </span>
   </a>
@@ -921,10 +1073,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#um-ciclo-tipico" class="md-nav__link">
+  <a href="#preditor-ao-vivo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Um ciclo típico
+        Preditor ao vivo
       
     </span>
   </a>
@@ -932,10 +1084,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#o-que-ja-se-sabe" class="md-nav__link">
+  <a href="#entradas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        O que já se sabe
+        Entradas
       
     </span>
   </a>
@@ -943,10 +1095,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#para-onde-ir-depois" class="md-nav__link">
+  <a href="#no-aparelho" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Para onde ir depois
+        No aparelho
       
     </span>
   </a>
@@ -973,27 +1125,37 @@
   
 
 
-<h1 id="fleven-em-uma-pagina">Fleven em uma página<a class="headerlink" href="#fleven-em-uma-pagina" title="Permanent link">&para;</a></h1>
-<p>O Fleven treina modelos de série temporal sobre dados veiculares sem centralizar os dados. Cada veículo, ou cada cliente do conjunto eVED, guarda suas viagens e só troca parâmetros com o servidor. A orquestração é do Flower, o modelo é PyTorch, e o histórico de experimentos vai para o MLflow.</p>
-<h2 id="o-que-ele-preve">O que ele prevê<a class="headerlink" href="#o-que-ele-preve" title="Permanent link">&para;</a></h2>
-<p>O alvo padrão é o consumo à frente: dado o que os sensores mostraram nos últimos passos, quanta energia o veículo vai gastar nos próximos 500 metros. Esse é o modo <code>distance-energy</code>, e a distância é integrada a partir do tempo e da velocidade, não do GPS, porque no GPS o zigue-zague da posição infla o percurso em cerca de 3,5% nessa escala. O modo alternativo, <code>steps</code>, prevê as próximas leituras em vez de um escalar por distância.</p>
-<h2 id="as-tres-direcoes">As três direções<a class="headerlink" href="#as-tres-direcoes" title="Permanent link">&para;</a></h2>
-<p>O <code>cleven</code> é a bancada centralizada. Ele junta todos os clientes de um grupo num conjunto só e serve para escolher modelo, features e janelamento antes de voltar ao federado.</p>
-<p>O <code>fleven run</code> é o experimento federado propriamente dito, e é o único lugar onde a qualidade do modelo é medida de verdade, cliente a cliente.</p>
-<p>O feeder e o caminho de produção reproduzem o fluxo real de dados, com viagens chegando aos poucos por OBD. Eles provam que a arquitetura fecha ponta a ponta, não que o modelo é bom.</p>
-<h2 id="o-contrato-de-dados">O contrato de dados<a class="headerlink" href="#o-contrato-de-dados" title="Permanent link">&para;</a></h2>
-<p>Um arquivo TOML declara quais colunas entram no modelo, em que ordem e qual é o alvo. Servidor e cliente derivam a largura do tensor desse mesmo arquivo e comparam um hash dele antes de trocar parâmetros, então um nó com schema velho é recusado em vez de corromper a agregação em silêncio. Detalhes em <a href="../CONTRACTS/">CONTRACTS.md</a>.</p>
-<h2 id="um-ciclo-tipico">Um ciclo típico<a class="headerlink" href="#um-ciclo-tipico" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>fleven<span class="w"> </span>setup<span class="w">                 </span><span class="c1"># uma vez, monta os grupos em data/</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>fleven<span class="w"> </span>run<span class="w"> </span>--only<span class="w"> </span>G05<span class="w">        </span><span class="c1"># roda o experimento federado</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>fleven<span class="w"> </span><span class="nb">eval</span><span class="w"> </span>-e<span class="w"> </span>G05_ICE_20L_ND_2500<span class="w"> </span>-s<span class="w"> </span>fedavg
+<h1 id="previsao-de-energia-por-viagem">Previsão de energia por viagem<a class="headerlink" href="#previsao-de-energia-por-viagem" title="Permanent link">&para;</a></h1>
+<p>O modo viagem prevê a energia de uma viagem como a soma da energia de trechos de 250 m ao longo da rota. O mesmo modelo responde quanto a viagem vai gastar antes da partida, quanto falta durante a viagem e quanto o próximo trecho vai gastar.</p>
+<h2 id="o-modelo">O modelo<a class="headerlink" href="#o-modelo" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Consumo médio do veículo</strong>, calculado no aparelho.</li>
+<li><strong>Camada de lugar da frota</strong>: multiplicador de consumo por célula de 150 m e sentido, montado com as somas de todos os veículos. Uma célula só vale se por ela passaram pelo menos <code>trip-min-cell-vehicles</code> veículos.</li>
+<li><strong>Correção por ridge</strong> por tipo de veículo (ICE, HEV, PHEV) e regime de SOC na partida, com personalização puxada para o modelo da frota.</li>
+<li><strong>Preditor ao vivo</strong>: a cada trecho fechado, prevê a energia dos próximos <code>trip-live-horizon-km</code>, em duas versões, com e sem destino informado.</li>
+<li><strong>Faixa de 80%</strong>, calibrada com o histograma de erros das viagens avaliadas.</li>
+</ul>
+<h2 id="a-rodada">A rodada<a class="headerlink" href="#a-rodada" title="Permanent link">&para;</a></h2>
+<p>Não há estratégia (FedAvg e semelhantes). Cada veículo envia somas, e o servidor soma:</p>
+<ol>
+<li><code>train.trip_layer</code>: o veículo avalia as viagens novas com o modelo anterior e envia as somas da camada, o consumo médio e as somas para preenchimento de ausentes.</li>
+<li><code>train.trip_stats</code>: o veículo monta as variáveis com a camada nova e envia os momentos das ridges.</li>
+</ol>
+<p>Os coeficientes pessoais são calculados no aparelho e nunca saem dele.</p>
+<h2 id="configuracao-e-execucao">Configuração e execução<a class="headerlink" href="#configuracao-e-execucao" title="Permanent link">&para;</a></h2>
+<p><code>task = "trip"</code> em <code>[tool.flwr.app.config]</code> liga o modo. <code>trip-mode</code> escolhe entre <code>temporal</code> (rodadas ao longo do calendário dos dados) e <code>equivalence</code> (uma rodada sobre a divisão da bancada, para conferir com o <code>cleven trip</code>). <code>trip-segment-km</code> é o comprimento do trecho e entra na impressão do protocolo, então um nó com outro valor é recusado.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>fleven<span class="w"> </span>run<span class="w"> </span>--task<span class="w"> </span>trip<span class="w">                          </span><span class="c1"># modo temporal, todos os veículos do eVED</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>fleven<span class="w"> </span>run<span class="w"> </span>--task<span class="w"> </span>trip<span class="w"> </span>--trip-mode<span class="w"> </span>equivalence<span class="w">  </span><span class="c1"># conferência com a bancada</span>
 </code></pre></div>
-<p>A configuração fica em <code>pyproject.toml</code>, sob <code>[tool.flwr.app.config]</code>. As conexões de SuperLink ficam em <code>.flwr/config.toml</code>.</p>
-<h2 id="o-que-ja-se-sabe">O que já se sabe<a class="headerlink" href="#o-que-ja-se-sabe" title="Permanent link">&para;</a></h2>
-<p>FedAvg é a estratégia mais estável e é o default recomendado. O FedPer funciona bem depois que a cauda pessoal passou a ser persistida entre rodadas, com R² perto de 0,77 no G01 e 0,83 no G05. O FedYogi diverge no G02, e o FedAdagrad é instável o bastante para ser evitado.</p>
-<p>Antes de comparar R² entre grupos, confira <code>prediction_length</code> e <code>prediction_distance_km</code> no <code>final_predictions.json</code>. Runs com horizontes diferentes não são comparáveis, e o default de distância mudou de 1,0 km para 0,5 km em agosto de 2026.</p>
-<h2 id="para-onde-ir-depois">Para onde ir depois<a class="headerlink" href="#para-onde-ir-depois" title="Permanent link">&para;</a></h2>
-<p><a href="../ARQUITETURA/">ARQUITETURA.md</a> explica o porquê do desenho. <a href="../../reference/CLI-COMANDS/">CLI-COMANDS.md</a> tem os comandos exatos. <a href="../EXPERIMENTS/">EXPERIMENTS.md</a> descreve os grupos de veículos.</p>
+<p>As métricas vão para o MLflow como <code>trip/&lt;tipo&gt;/&lt;horizonte&gt;/&lt;fatia&gt;/&lt;métrica&gt;</code>, com os horizontes <code>trip</code>, <code>live_dest</code>, <code>live_nodest</code> e <code>live_departure</code> (a previsão de partida nos mesmos trechos do <code>live_dest</code>). As métricas são <code>mae</code> e <code>rmse</code> em kWh (na viagem, kWh por viagem; no preditor ao vivo, kWh no próximo km), <code>wape</code> (soma dos erros absolutos sobre a soma da energia real), <code>mape</code> (só previsões com energia real positiva), <code>nrmse</code>, <code>r2</code> da energia, <code>r2_rate</code> do consumo por km, <code>bias</code>, as habilidades sobre a média do veículo (<code>skill_mae</code>, <code>skill_mse</code>), as caudas (<code>tail10</code>, <code>tail20</code>) e a cobertura da faixa de 80%.</p>
+<h2 id="preditor-ao-vivo">Preditor ao vivo<a class="headerlink" href="#preditor-ao-vivo" title="Permanent link">&para;</a></h2>
+<p>O alvo é a energia dos trechos que começam a menos de <code>trip-live-horizon-km</code> do corte. As variáveis descrevem a partida, a viagem até ali, a janela dos últimos <code>trip-live-window-km</code>, o contexto de rota e o histórico do veículo. Com destino, a rota é a dos próximos km planejados, e a ridge aprende a correção sobre a base à frente (média do veículo vezes a camada de cada trecho). Sem destino, a rota é a da janela. Valores ausentes são preenchidos pela média federada.</p>
+<h2 id="entradas">Entradas<a class="headerlink" href="#entradas" title="Permanent link">&para;</a></h2>
+<p>As colunas vêm dos papéis do contrato de viagem, e o tipo e o peso do veículo vêm do perfil da fonte: no eVED, das colunas do dataset; numa fonte OBD, do <code>vehicle.json</code>, com o tipo inferido pelo SOC quando não foi informado. Ver <a href="../CONTRACTS/">Contratos</a>.</p>
+<p>Os atributos de rota (posição, altitude, limite, eventos da via) vêm de uma <code>RouteAttributes</code>: na simulação, das colunas do eVED; em produção, de uma tabela por célula distribuída por região.</p>
+<h2 id="no-aparelho">No aparelho<a class="headerlink" href="#no-aparelho" title="Permanent link">&para;</a></h2>
+<p>O treino corta as viagens fechadas em trechos de uma vez (<code>build_segments</code>). No aparelho, o <code>SegmentStream</code> fecha os mesmos trechos à medida que as leituras chegam, com as mesmas regras (<code>fleven/trip/steps.py</code> e <code>fleven/data/label.py</code>).</p>
+<p><code>TripSession</code> acompanha uma viagem: prevê a viagem na partida, com a faixa de 80%, e a cada trecho fechado prevê os próximos km. <code>VehicleRuntime</code> guarda o modelo em uso e o histórico, abre uma sessão por viagem e só troca de modelo na partida.</p>
 
 
 

@@ -694,6 +694,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../guides/TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../guides/FEEDER/" class="md-nav__link">
         
   
@@ -938,7 +966,7 @@
   <a href="#fleven-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        fleven setup🟠
+        fleven setup
       
     </span>
   </a>
@@ -1035,7 +1063,7 @@
   <a href="#fleven-setup" class="md-nav__link">
     <span class="md-ellipsis">
       
-        fleven setup🟠
+        fleven setup
       
     </span>
   </a>
@@ -1099,8 +1127,18 @@
 <tbody>
 <tr>
 <td><code>--only</code></td>
-<td>todos</td>
-<td>Grupos a rodar (ex: <code>G01 G03</code>)</td>
+<td>todas</td>
+<td>Frotas pelo começo do nome (ex: <code>G01 G03</code>)</td>
+</tr>
+<tr>
+<td><code>--fleet</code></td>
+<td>-</td>
+<td>Frotas do <code>fleets.toml</code> pelo nome; com <code>--task trip</code>, a primeira</td>
+</tr>
+<tr>
+<td><code>--fleets-file</code></td>
+<td><code>fleets.toml</code></td>
+<td>Outro arquivo de frotas</td>
 </tr>
 <tr>
 <td><code>--strategies</code></td>
@@ -1238,18 +1276,10 @@
 </tr>
 </tbody>
 </table>
-<h2 id="fleven-setup"><code>fleven setup</code>🟠<a class="headerlink" href="#fleven-setup" title="Permanent link">&para;</a></h2>
-<p>Cria pastas de experimento em <code>data/</code> com iformações para os dados originais em <code>data/EVED_Clients/train/</code>. Cada grupo agrupa veículos por tipo (HEV/ICE), cilindrada e peso.</p>
+<h2 id="fleven-setup"><code>fleven setup</code><a class="headerlink" href="#fleven-setup" title="Permanent link">&para;</a></h2>
+<p>Confere o <code>fleets.toml</code> e mostra os veículos de cada frota do eVED. Recusa uma frota que inclua um cliente sem alvo. Não cria pastas: cada run lê os veículos direto de <code>data/EVED_Clients</code>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">fleven</span> <span class="n">setup</span>
 </code></pre></div>
-<p>Grupos criados:</p>
-<ul>
-<li><code>G01_HEV_18L_3000</code>,</li>
-<li><code>G02_HEV_15L_3000</code>,</li>
-<li><code>G03_ICE_24L_5AT_3500</code>,</li>
-<li><code>G04_ICE_25L_CVT_3500</code>,</li>
-<li><code>G05_ICE_20L_ND_2500</code>.</li>
-</ul>
 <h2 id="fleven-push"><code>fleven push</code>🦮<a class="headerlink" href="#fleven-push" title="Permanent link">&para;</a></h2>
 <p>Copia runs do banco local (<code>sqlite:///mlflow.db</code>) para o DagHub via API REST do MLflow. Pula runs que já existem no destino.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$env:DAGSHUB_USER</span>  <span class="p">=</span> <span class="s2">"&lt;seu_usuario_dagshub&gt;"</span>
