@@ -1118,20 +1118,18 @@
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
 </code></pre></div>
 <h2 id="distribuicao-dos-dados">Distribuição dos dados<a class="headerlink" href="#distribuicao-dos-dados" title="Permanent link">&para;</a></h2>
-<p>Cada Raspberry Pi precisa apenas dos dados do cliente correspondente. O diretório configurado em <code>data-base-path</code> deve conter o seguinte layout:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>G05_ICE_20L_ND_2500/
+<p>Cada Raspberry Pi precisa apenas dos dados do seu veículo, na pasta com o id original do eVED. Os membros de cada frota aparecem com <code>fleven setup</code>; os exemplos abaixo usam três veículos da frota <code>G05_ICE_20L_ND_2500</code> (17, 27 e 49). Em cada Pi, o diretório configurado em <code>data-base-path</code> fica assim:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>EVED_Clients/
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>└── train/
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    ├── client_0/
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    ├── client_1/
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    └── client_2/
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    └── client_17/
 </code></pre></div>
 <p>Crie o diretório de destino em cada Pi:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/home/lainf/fleven/data/G05_ICE_20L_ND_2500/train
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/home/lainf/fleven/data/EVED_Clients/train
 </code></pre></div>
-<p>Copie para cada Pi somente o seu diretório. Por exemplo, no servidor:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>data/G05_ICE_20L_ND_2500/train/client_0<span class="w"> </span>lainf@&lt;IP-PI-1&gt;:/home/lainf/fleven/data/G05_ICE_20L_ND_2500/train/
+<p>Copie para cada Pi somente o diretório do seu veículo. Por exemplo, no servidor:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>scp<span class="w"> </span>-r<span class="w"> </span>data/EVED_Clients/train/client_17<span class="w"> </span>lainf@&lt;IP-PI-1&gt;:/home/lainf/fleven/data/EVED_Clients/train/
 </code></pre></div>
-<p>Repita o comando para <code>client_1</code> e <code>client_2</code>, usando o endereço do Raspberry Pi correspondente. Se o conjunto do servidor usar outros identificadores, renomeie os diretórios para os índices sequenciais usados em <code>partition-id</code>.</p>
+<p>Repita o comando para <code>client_27</code> e <code>client_49</code>, usando o endereço do Raspberry Pi correspondente. O <code>partition-id</code> de cada Pi é o id do seu veículo.</p>
 <h2 id="configuracao-do-servidor">Configuração do servidor<a class="headerlink" href="#configuracao-do-servidor" title="Permanent link">&para;</a></h2>
 <p>No PC, configure a conexão em <code>.flwr/config.toml</code>, substituindo <code>&lt;IP-SERVIDOR&gt;</code> pelo endereço Tailscale do servidor:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[superlink.fleven-deployment]</span>
@@ -1140,10 +1138,11 @@
 </code></pre></div>
 <p>No <code>pyproject.toml</code>, configure o caminho que existe em todos os Raspberry Pi:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[tool.flwr.app.config]</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/home/lainf/fleven/data/G05_ICE_20L_ND_2500"</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">metrics-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"metrics"</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/home/lainf/fleven/data/EVED_Clients"</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">fleet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"G05_ICE_20L_ND_2500"</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">metrics-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"metrics"</span>
 </code></pre></div>
-<p><code>data-base-path</code> aponta para o diretório do grupo, que deve conter <code>train/client_N</code>. Já <code>data-contract</code> deve usar um caminho relativo, como <code>contracts/eved_potencia.toml</code>: o contrato é incluído no FAB e entregue aos Raspberry Pi com a configuração do run, sem configuração adicional em cada dispositivo. Consulte o <a href="../CONTRACTS/">guia de contratos</a>.</p>
+<p><code>data-base-path</code> aponta para os dados do eVED, com <code>train/client_&lt;id&gt;</code>, e <code>fleet</code> diz a frota do run. O <code>fleets.toml</code> vai no FAB; cada Pi carrega o seu veículo e confere se ele está na frota antes de participar. Já <code>data-contract</code> deve usar um caminho relativo, como <code>contracts/eved_potencia.toml</code>: o contrato é incluído no FAB e entregue aos Raspberry Pi com a configuração do run, sem configuração adicional em cada dispositivo. Consulte o <a href="../CONTRACTS/">guia de contratos</a>.</p>
 <p>No servidor, instale o projeto com as dependências de desenvolvimento:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="n">venv</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">.\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
@@ -1159,17 +1158,17 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>flower-supernode<span class="w"> </span>--insecure<span class="w"> </span>--superlink<span class="w"> </span>&lt;IP-SERVIDOR&gt;:9092<span class="w"> </span>--node-config<span class="w"> </span><span class="s2">"partition-id=0"</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>flower-supernode<span class="w"> </span>--insecure<span class="w"> </span>--superlink<span class="w"> </span>&lt;IP-SERVIDOR&gt;:9092<span class="w"> </span>--node-config<span class="w"> </span><span class="s2">"partition-id=17"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>flower-supernode<span class="w"> </span>--insecure<span class="w"> </span>--superlink<span class="w"> </span>&lt;IP-SERVIDOR&gt;:9092<span class="w"> </span>--node-config<span class="w"> </span><span class="s2">"partition-id=1"</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>flower-supernode<span class="w"> </span>--insecure<span class="w"> </span>--superlink<span class="w"> </span>&lt;IP-SERVIDOR&gt;:9092<span class="w"> </span>--node-config<span class="w"> </span><span class="s2">"partition-id=27"</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">source</span><span class="w"> </span>venv/bin/activate
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>flower-supernode<span class="w"> </span>--insecure<span class="w"> </span>--superlink<span class="w"> </span>&lt;IP-SERVIDOR&gt;:9092<span class="w"> </span>--node-config<span class="w"> </span><span class="s2">"partition-id=2"</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>flower-supernode<span class="w"> </span>--insecure<span class="w"> </span>--superlink<span class="w"> </span>&lt;IP-SERVIDOR&gt;:9092<span class="w"> </span>--node-config<span class="w"> </span><span class="s2">"partition-id=49"</span>
 </code></pre></div>
 </div>
 </div>

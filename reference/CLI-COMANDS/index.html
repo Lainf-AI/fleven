@@ -1207,7 +1207,7 @@
 <tr>
 <td><code>--num-clients</code></td>
 <td>todos</td>
-<td>Limita a leitura aos clientes <code>0..N-1</code></td>
+<td>Limita a leitura aos N primeiros clientes, em ordem de id</td>
 </tr>
 <tr>
 <td><code>-m</code> / <code>--metrics-dir</code></td>
@@ -1297,7 +1297,7 @@ O `flwr run .` roda a federação com atores Ray na sua máquina. Precisa do `FL
 Inicia o treino; `--stream` acompanha e espera terminar.
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$env</span>:FLWR_HOME<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">\.flwr"</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--federation-config<span class="w"> </span><span class="s2">"num_supernodes=14"</span><span class="w"> </span>--stream
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>flwr<span class="w"> </span>run<span class="w"> </span>.<span class="w"> </span>--run-config<span class="w"> </span><span class="s2">"fleet='G01_HEV_18L_3000'"</span><span class="w"> </span>--federation-config<span class="w"> </span><span class="s2">"num_supernodes=14"</span><span class="w"> </span>--stream
 </code></pre></div>
 
 - `--federation-config` — número de clientes por run.
