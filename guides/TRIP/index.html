@@ -794,6 +794,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#o-estimador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O estimador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#preditor-ao-vivo" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1073,6 +1084,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#o-estimador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O estimador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#preditor-ao-vivo" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1131,7 +1153,7 @@
 <ul>
 <li><strong>Consumo médio do veículo</strong>, calculado no aparelho.</li>
 <li><strong>Camada de lugar da frota</strong>: multiplicador de consumo por célula de 150 m e sentido, montado com as somas de todos os veículos. Uma célula só vale se por ela passaram pelo menos <code>trip-min-cell-vehicles</code> veículos.</li>
-<li><strong>Correção por ridge</strong> por tipo de veículo (ICE, HEV, PHEV) e regime de SOC na partida, com personalização puxada para o modelo da frota.</li>
+<li><strong>Correção por um estimador</strong> (a ridge, por padrão) por tipo de veículo (ICE, HEV, PHEV) e regime de SOC na partida, com personalização puxada para o modelo da frota.</li>
 <li><strong>Preditor ao vivo</strong>: a cada trecho fechado, prevê a energia dos próximos <code>trip-live-horizon-km</code>, em duas versões, com e sem destino informado.</li>
 <li><strong>Faixa de 80%</strong>, calibrada com o histograma de erros das viagens avaliadas.</li>
 </ul>
@@ -1139,7 +1161,7 @@
 <p>Não há estratégia (FedAvg e semelhantes). Cada veículo envia somas, e o servidor soma:</p>
 <ol>
 <li><code>train.trip_layer</code>: o veículo avalia as viagens novas com o modelo anterior e envia as somas da camada, o consumo médio e as somas para preenchimento de ausentes.</li>
-<li><code>train.trip_stats</code>: o veículo monta as variáveis com a camada nova e envia os momentos das ridges.</li>
+<li><code>train.trip_stats</code>: o veículo monta as variáveis com a camada nova e envia as somas do estimador.</li>
 </ol>
 <p>Os coeficientes pessoais são calculados no aparelho e nunca saem dele.</p>
 <h2 id="configuracao-e-execucao">Configuração e execução<a class="headerlink" href="#configuracao-e-execucao" title="Permanent link">&para;</a></h2>
@@ -1148,6 +1170,11 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>fleven<span class="w"> </span>run<span class="w"> </span>--task<span class="w"> </span>trip<span class="w"> </span>--trip-mode<span class="w"> </span>equivalence<span class="w">  </span><span class="c1"># conferência com a bancada</span>
 </code></pre></div>
 <p>As métricas vão para o MLflow como <code>trip/&lt;tipo&gt;/&lt;horizonte&gt;/&lt;fatia&gt;/&lt;métrica&gt;</code>, com os horizontes <code>trip</code>, <code>live_dest</code>, <code>live_nodest</code> e <code>live_departure</code> (a previsão de partida nos mesmos trechos do <code>live_dest</code>). As métricas são <code>mae</code> e <code>rmse</code> em kWh (na viagem, kWh por viagem; no preditor ao vivo, kWh no próximo km), <code>wape</code> (soma dos erros absolutos sobre a soma da energia real), <code>mape</code> (só previsões com energia real positiva), <code>nrmse</code>, <code>r2</code> da energia, <code>r2_rate</code> do consumo por km, <code>bias</code>, as habilidades sobre a média do veículo (<code>skill_mae</code>, <code>skill_mse</code>), as caudas (<code>tail10</code>, <code>tail20</code>) e a cobertura da faixa de 80%.</p>
+<h2 id="o-estimador">O estimador<a class="headerlink" href="#o-estimador" title="Permanent link">&para;</a></h2>
+<p>A correção por tipo e regime, no modelo de viagem e no preditor ao vivo, é feita por um estimador escolhido em <code>trip-estimator</code> (padrão <code>ridge</code>). O nome entra na impressão do protocolo, então todos os nós usam o mesmo, e um nó que não conhece o nome recusa a rodada com <code>estimador desconhecido</code>.</p>
+<p>Um estimador decide só três coisas: que somas o carro calcula sobre as próprias linhas na fase <code>train.trip_stats</code>, como o servidor resolve a solução a partir da soma dessas somas, e como o carro calcula, sem enviar, os seus parâmetros pessoais (ou nenhum). Ficam fora dele as variáveis, o preenchimento de ausentes pela média federada (<code>fleven/trip/fills.py</code>), as chaves por tipo e regime, a camada de lugar, a faixa e as métricas.</p>
+<p>Para acrescentar um estimador, implemente o protocolo <code>Estimator</code> de <code>fleven/trip/estimators/__init__.py</code> (<code>local_sums</code>, <code>solve</code>, <code>personalize</code> e a conversão das somas e da solução para os registros do Flower), registre com <code>register_estimator</code> (um nome já registrado é recusado) e importe o módulo no fim desse arquivo, como a ridge. As somas precisam somar com <code>+</code> e ter o peso total em <code>.weight</code>; a solução precisa prever com <code>.predict(X, personal)</code>. Cabem aqui os estimadores de forma fechada que saem de somas: mínimos quadrados com outra penalidade, médias por grupo, regressões em bases fixas.</p>
+<p>Um modelo treinado por gradiente, como uma MLP, não sai de somas. Na fase B o carro enviaria pesos ou gradientes em vez de somas, o servidor faria uma média ponderada em vez de resolver um sistema, e uma rodada pediria várias trocas até convergir, com o estado do otimizador guardado no carro entre elas. Isso muda a forma da rodada e fica fora desta fronteira.</p>
 <h2 id="preditor-ao-vivo">Preditor ao vivo<a class="headerlink" href="#preditor-ao-vivo" title="Permanent link">&para;</a></h2>
 <p>O alvo é a energia dos trechos que começam a menos de <code>trip-live-horizon-km</code> do corte. As variáveis descrevem a partida, a viagem até ali, a janela dos últimos <code>trip-live-window-km</code>, o contexto de rota e o histórico do veículo. Com destino, a rota é a dos próximos km planejados, e a ridge aprende a correção sobre a base à frente (média do veículo vezes a camada de cada trecho). Sem destino, a rota é a da janela. Valores ausentes são preenchidos pela média federada.</p>
 <h2 id="entradas">Entradas<a class="headerlink" href="#entradas" title="Permanent link">&para;</a></h2>
