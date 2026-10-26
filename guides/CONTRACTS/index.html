@@ -1127,28 +1127,24 @@
 <h2 id="estrutura">Estrutura<a class="headerlink" href="#estrutura" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">schema_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"1.0"</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Total Power[kW]"</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">target_kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"rate"</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">trip_gap_split_s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60.0</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">use_feature_mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">[trip]</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Timestamp Absolute[ms]"</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vehicle Speed[km/h]"</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">outside_temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OAT[DegC]"</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">soc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"HV Battery SOC[%]"</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">climate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Climate Power[kW]"</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">lat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Latitude[deg]"</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">lon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Longitude[deg]"</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">[[feature]]</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vehicle Speed[km/h]"</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"km/h"</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">]</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="k">[[feature]]</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MAF[g/sec]"</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">655</span><span class="p">]</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="n">required</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">[trip]</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Timestamp Absolute[ms]"</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vehicle Speed[km/h]"</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">outside_temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"OAT[DegC]"</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">soc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"HV Battery SOC[%]"</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">climate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Climate Power[kW]"</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">lat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Latitude[deg]"</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">lon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Longitude[deg]"</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">[[feature]]</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Vehicle Speed[km/h]"</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"km/h"</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">220</span><span class="p">]</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="k">[[feature]]</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MAF[g/sec]"</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">655</span><span class="p">]</span>
 </code></pre></div>
 <h3 id="campos-do-contrato">Campos do contrato<a class="headerlink" href="#campos-do-contrato" title="Permanent link">&para;</a></h3>
 <table>
@@ -1170,23 +1166,9 @@
 <td>obrigatório</td>
 <td>Coluna da potência; a energia de cada trecho é a integral dela no tempo</td>
 </tr>
-<tr>
-<td><code>target_kind</code></td>
-<td><code>"value"</code></td>
-<td><code>"rate"</code> para uma taxa integrada no tempo, como a potência em kW</td>
-</tr>
-<tr>
-<td><code>trip_gap_split_s</code></td>
-<td>desativado</td>
-<td>Intervalo máximo entre leituras; acima dele, o intervalo não conta distância nem energia</td>
-</tr>
-<tr>
-<td><code>use_feature_mask</code></td>
-<td><code>false</code></td>
-<td>Reservado; o modelo de viagem não o usa</td>
-</tr>
 </tbody>
 </table>
+<p>O buraco de gravação (um intervalo de mais de 60 s entre leituras não conta distância nem energia) e a integração da potência no tempo são regras do protocolo do modelo de viagem, iguais em todos os nós, e não do contrato. Um contrato antigo que ainda traga <code>target_kind</code>, <code>trip_gap_split_s</code>, <code>use_feature_mask</code> ou <code>required</code> é recusado com uma mensagem que diz o que remover.</p>
 <p>A seção <code>[trip]</code> diz qual coluna canônica cumpre cada papel. Papéis omitidos ficam com os nomes acima. <code>lat</code> e <code>lon</code> são a posição bruta do GPS, de onde saem a célula e o sentido de cada trecho e onde a fonte de rota encaixa a viagem na via.</p>
 <p>O tempo absoluto, a potência e a potência de climatização são materializados pela fonte ou pelo coletor. O tempo absoluto é em milissegundos no <strong>horário local</strong> do veículo, não em UTC: a hora da partida e o dia da semana saem dele diretamente. Um coletor que só tem o relógio em UTC precisa somar o fuso antes de gravar. No eVED, a fonte calcula o tempo absoluto a partir do <code>DayNum</code> e a climatização somando ar-condicionado e aquecimento.</p>
 <h2 id="alvo-de-potencia">Alvo de potência<a class="headerlink" href="#alvo-de-potencia" title="Permanent link">&para;</a></h2>
@@ -1209,13 +1191,13 @@ P_{bat} = -\frac{I_{bat}V_{bat}}{1000}
 P_{total} = P_{comb} + P_{bat}
 \]</div>
 <p>Se nenhuma parcela estiver disponível, o alvo é ausente. A coluna <code>Power Quality</code> registra quais sinais participaram do cálculo.</p>
-<p>O Fleven preserva a formulação energética do VED, mas materializa uma taxa em kW: não multiplica a potência por velocidade ou distância durante essa etapa. Com <code>target_kind = "rate"</code>, a energia futura é calculada posteriormente pela integração trapezoidal:</p>
+<p>O Fleven preserva a formulação energética do VED, mas materializa uma taxa em kW: não multiplica a potência por velocidade ou distância durante essa etapa. A energia é calculada depois, pela integração trapezoidal no tempo:</p>
 <div class="arithmatex">\[
 E = \sum_k \frac{P_k + P_{k+1}}{2}\,\Delta t_k
 \]</div>
 <p>Quando <code>Δt</code> está em horas, o resultado é dado em kWh. É assim que se obtém a energia de cada trecho de 250 m e, somando os trechos, a da viagem.</p>
 <h2 id="sensores">Sensores<a class="headerlink" href="#sensores" title="Permanent link">&para;</a></h2>
-<p>Cada bloco <code>[[feature]]</code> declara um sensor que o modelo pode usar. A velocidade é sempre necessária; um sensor marcado <code>required = false</code> pode faltar em parte dos veículos.</p>
+<p>Cada bloco <code>[[feature]]</code> declara um sensor que o modelo pode usar. Todo sensor é opcional: a leitura só precisa de tempo, velocidade e potência, e a média de um sensor num trecho usa só os intervalos em que ele aparece.</p>
 <table>
 <thead>
 <tr>
@@ -1229,11 +1211,6 @@ E = \sum_k \frac{P_k + P_{k+1}}{2}\,\Delta t_k
 <td><code>name</code></td>
 <td>obrigatório</td>
 <td>Nome exato da coluna</td>
-</tr>
-<tr>
-<td><code>required</code></td>
-<td><code>true</code></td>
-<td>Leitura sem a coluna é descartada</td>
 </tr>
 <tr>
 <td><code>range</code></td>
