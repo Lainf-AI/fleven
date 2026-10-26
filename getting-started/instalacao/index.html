@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/fleven-favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -279,7 +279,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../guides/EXPERIMENTS/" class="md-tabs__link">
+        <a href="../../guides/TRIP/" class="md-tabs__link">
           
   
   
@@ -571,6 +571,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../guides/TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../guides/EXPERIMENTS/" class="md-nav__link">
         
   
@@ -607,118 +635,6 @@
     
   
     Contratos de dados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/SLIDING_WINDOW/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Janela deslizante
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/TRAIN-TEST/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Split treino/teste
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/MODELS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modelos e estratégias
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/TRIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Previsão por viagem
   
 
     
@@ -958,10 +874,12 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">.\.</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">-e</span> <span class="s2">".[dev]"</span>
 </code></pre></div>
-<p>Para executar um experimento:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">fleven</span> <span class="n">run</span> <span class="p">-</span><span class="n">-only</span> <span class="n">G01</span> <span class="p">-</span><span class="n">-model-types</span> <span class="n">lstm</span> <span class="p">-</span><span class="n">-strategies</span> <span class="n">fedavg</span>
+<p>O cliente embarcado só precisa de <code>pip install -e .</code>, sem o extra <code>dev</code>: Flower, pandas, NumPy e PyArrow.</p>
+<p>O contexto da via vem de um pacote da região e de um Valhalla local. Baixe os executáveis do Valhalla uma vez por máquina e monte o pacote (ver <code>tools/README.md</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">region_pack</span><span class="p">/</span><span class="n">get_valhalla</span><span class="p">.</span><span class="n">py</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">region_pack</span><span class="p">/</span><span class="n">build_pack</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-pbf</span> <span class="n">michigan-latest</span><span class="p">.</span><span class="n">osm</span><span class="p">.</span><span class="n">pbf</span> <span class="p">-</span><span class="n">-bbox</span> <span class="n">42</span><span class="p">.</span><span class="n">17</span> <span class="p">-</span><span class="n">83</span><span class="p">.</span><span class="n">85</span> <span class="n">42</span><span class="p">.</span><span class="n">38</span> <span class="p">-</span><span class="n">83</span><span class="p">.</span><span class="n">62</span> <span class="p">-</span><span class="n">-out</span> <span class="p">../</span><span class="n">fleven-pacotes</span><span class="p">/</span><span class="n">ann_arbor</span>
 </code></pre></div>
-<p>Consulte <a href="../execucao/">Execução</a> para preparar os dados e escolher outros grupos, modelos e estratégias.</p>
+<p>Consulte <a href="../execucao/">Execução</a> para rodar a primeira federação.</p>
 
 
 
@@ -1016,10 +934,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/mathjax.js"></script>
       

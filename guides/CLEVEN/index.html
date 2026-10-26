@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/fleven-favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,10 +27,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -273,7 +273,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../EXPERIMENTS/" class="md-tabs__link">
+        <a href="../TRIP/" class="md-tabs__link">
           
   
   
@@ -550,6 +550,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../EXPERIMENTS/" class="md-nav__link">
         
   
@@ -586,118 +614,6 @@
     
   
     Contratos de dados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SLIDING_WINDOW/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Janela deslizante
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TRAIN-TEST/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Split treino/teste
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../MODELS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modelos e estratégias
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TRIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Previsão por viagem
   
 
     
@@ -927,32 +843,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuracao-da-grade" class="md-nav__link">
+  <a href="#grades" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuração da grade
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#protocolo-experimental" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Protocolo experimental
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#previsao-por-viagem-cleven-trip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Previsão por viagem (cleven trip)
+        Grades
       
     </span>
   </a>
@@ -980,82 +874,46 @@
 
 
 <h1 id="cleven">CLEVEN<a class="headerlink" href="#cleven" title="Permanent link">&para;</a></h1>
-<p>O CLEVEN realiza analises centralizada. Ele reúne as janelas de todos os veículos de um grupo e treina um único modelo, permitindo avaliar contratos, arquiteturas e hiperparâmetros antes da experimentação federada.</p>
+<p>O CLEVEN é a bancada centralizada do modelo de viagem. Ele reúne os trechos de todos os veículos e treina o mesmo modelo que a federação, mas com validação, para escolher variáveis, bases e hiperparâmetros antes de levar uma mudança ao fleven. O fleven não tem validação; sem a bancada, a escolha de modelo cairia no teste.</p>
+<p>Cada pergunta (<code>question</code>, de <code>q1</code> a <code>q15</code>) compara os valores de um eixo, os braços, mantendo fixos os demais eixos de desenho. Dentro de cada braço, os hiperparâmetros são escolhidos pela validação; os braços são comparados nas mesmas viagens, com intervalo por reamostragem de veículos.</p>
 <h2 id="fluxo-de-uso">Fluxo de uso<a class="headerlink" href="#fluxo-de-uso" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Use <code>--dry-run</code> para listar as configurações sem ler os dados ou iniciar o treinamento:</li>
+<li>Liste as configurações de uma grade sem rodar nada:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">cleven</span> <span class="n">sweep</span> <span class="n">-c</span> <span class="n">cleven</span><span class="p">/</span><span class="n">sweeps</span><span class="p">/</span><span class="n">baseline</span><span class="p">.</span><span class="n">toml</span> <span class="p">-</span><span class="n">-only</span> <span class="n">G05</span> <span class="p">-</span><span class="n">-dry-run</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">cleven</span> <span class="n">trip</span> <span class="n">sweep</span> <span class="n">-c</span> <span class="n">cleven</span><span class="p">/</span><span class="n">trip</span><span class="p">/</span><span class="n">sweeps</span><span class="p">/</span><span class="n">q14_elevation</span><span class="p">.</span><span class="n">toml</span> <span class="p">-</span><span class="n">-dry-run</span>
 </code></pre></div>
 <ol>
-<li>Executar os experimentos</li>
+<li>Rode a grade:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">cleven</span> <span class="n">sweep</span> <span class="n">-c</span> <span class="n">cleven</span><span class="p">/</span><span class="n">sweeps</span><span class="p">/</span><span class="n">baseline</span><span class="p">.</span><span class="n">toml</span> <span class="p">-</span><span class="n">-only</span> <span class="n">G05</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">cleven</span> <span class="n">trip</span> <span class="n">sweep</span> <span class="n">-c</span> <span class="n">cleven</span><span class="p">/</span><span class="n">trip</span><span class="p">/</span><span class="n">sweeps</span><span class="p">/</span><span class="n">q14_elevation</span><span class="p">.</span><span class="n">toml</span>
 </code></pre></div>
-<p><code>--only</code> pode ser repetido para selecionar mais de um grupo. Por padrão, uma configuração já concluída é ignorada; use <code>--no-skip-existing</code> quando uma repetição for intencional.</p>
+<p>Uma configuração já executada é pulada; use <code>--no-skip-existing</code> para repetir. Com <code>region_pack</code> na grade, a bancada sobe um Valhalla local para o pacote enquanto roda.</p>
 <ol>
-<li>Comparar os resultados</li>
+<li>Compare os braços de uma pergunta:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">cleven</span> <span class="n">report</span> <span class="n">-g</span> <span class="n">G05</span> <span class="n">-c</span> <span class="n">cleven</span><span class="p">/</span><span class="n">sweeps</span><span class="p">/</span><span class="n">baseline</span><span class="p">.</span><span class="n">toml</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">cleven</span> <span class="n">trip</span> <span class="n">report</span> <span class="n">-q</span> <span class="n">q14</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">cleven</span> <span class="n">trip</span> <span class="n">report</span> <span class="n">-q</span> <span class="n">q15</span> <span class="p">-</span><span class="n">-metric</span> <span class="n">wape</span>
 </code></pre></div>
-<p>O relatório mostra o hash de cada configuração e pode ser ordenado por três formas de agregar o R²:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">cleven</span> <span class="n">report</span> <span class="n">-g</span> <span class="n">G05</span> <span class="p">-</span><span class="n">-order-by</span> <span class="n">r2</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">cleven</span> <span class="n">report</span> <span class="n">-g</span> <span class="n">G05</span> <span class="p">-</span><span class="n">-order-by</span> <span class="n">r2_mean</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">cleven</span> <span class="n">report</span> <span class="n">-g</span> <span class="n">G05</span> <span class="p">-</span><span class="n">-order-by</span> <span class="n">r2_weighted</span>
-</code></pre></div>
-<ul>
-<li><code>r2</code>: calcula o R² sobre todas as janelas reunidas;</li>
-<li><code>r2_mean</code>: dá o mesmo peso ao R² de cada cliente;</li>
-<li><code>r2_weighted</code>: pondera o R² de cada cliente pelo número de janelas.</li>
-</ul>
-<p>Compare as três medidas. O R² reunido pode ser favorecido pelas diferenças de escala entre veículos, enquanto as métricas por cliente mostram melhor o desempenho dentro de cada veículo.</p>
+<p>A métrica padrão é a habilidade sobre a média do veículo (<code>skill_mae</code>); o relatório mostra a diferença de cada braço para o melhor, com o intervalo.</p>
 <ol>
-<li>Avaliar a configuração escolhida</li>
+<li>Avalie no teste só as configurações escolhidas, uma vez:</li>
 </ol>
-<p>Depois de escolher uma configuração usando somente a validação, execute:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">cleven</span> <span class="n">final</span> <span class="n">-c</span> <span class="n">cleven</span><span class="p">/</span><span class="n">sweeps</span><span class="p">/</span><span class="n">baseline</span><span class="p">.</span><span class="n">toml</span> <span class="p">-</span><span class="n">-config-hash</span> <span class="p">&lt;</span><span class="n">hash</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-only</span> <span class="n">G05</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">cleven</span> <span class="n">trip</span> <span class="n">final</span> <span class="p">-</span><span class="n">-config-hash</span> <span class="p">&lt;</span><span class="n">hash</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-config-hash</span> <span class="p">&lt;</span><span class="n">hash</span><span class="p">&gt;</span>
 </code></pre></div>
-<h2 id="configuracao-da-grade">Configuração da grade<a class="headerlink" href="#configuracao-da-grade" title="Permanent link">&para;</a></h2>
-<p>Em <code>cleven/sweeps/</code>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[defaults]</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"contracts/eved_potencia.toml"</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">val_fraction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.15</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">[defaults.window]</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">sequence_length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">prediction_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"distance-energy"</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">prediction_distance_km</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="n">train_stride</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">[defaults.train]</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="n">epochs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="n">patience</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">batch_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="k">[groups.G05]</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="n">fleet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"G05_ICE_20L_ND_2500"</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="k">[grid]</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="s2">"train.model_type"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"lstm"</span><span class="p">,</span><span class="w"> </span><span class="s2">"lstm_dense"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mlp"</span><span class="p">]</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="s2">"train.learning_rate"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0005</span><span class="p">]</span>
-</code></pre></div></p>
-<ul>
-<li><code>[defaults]</code> define valores comuns;</li>
-<li><code>[groups]</code> associa cada grupo ao diretório de dados;</li>
-<li><code>[grid]</code> define os valores combinados pela varredura.</li>
-</ul>
-<h2 id="protocolo-experimental">Protocolo experimental<a class="headerlink" href="#protocolo-experimental" title="Permanent link">&para;</a></h2>
-<p>A validação é formada por viagens inteiras separadas antes do ajuste dos scalers e do janelamento. Isso impede que leituras da mesma viagem apareçam em treino e validação. Cada cliente mantém seu próprio scaler.</p>
-<p>As métricas são calculadas na unidade física definida pelo contrato.</p>
-<h2 id="previsao-por-viagem-cleven-trip">Previsão por viagem (<code>cleven trip</code>)<a class="headerlink" href="#previsao-por-viagem-cleven-trip" title="Permanent link">&para;</a></h2>
-<p>Bancada separada do caminho de janelas, para decidir como prever a energia de uma viagem com rota conhecida. Ela monta uma tabela de trechos de comprimento fixo a partir de <code>EVED_Clients/train/</code> e compara bases (<code>vehicle_mean</code>, <code>cell_layer</code>), modos de correção (<code>direct</code>, <code>residual</code>), famílias de modelo (<code>ridge</code>, <code>gbm</code>) e unidades de previsão (<code>segment</code>, <code>trip</code>), com divisão temporal dentro de cada veículo.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cleven<span class="w"> </span>trip<span class="w"> </span>sweep<span class="w"> </span>-c<span class="w"> </span>cleven/trip/sweeps/q1_residual_vs_direct.toml
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cleven<span class="w"> </span>trip<span class="w"> </span>report<span class="w"> </span>-q<span class="w"> </span>q1
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>cleven<span class="w"> </span>trip<span class="w"> </span>final<span class="w"> </span>--config-hash<span class="w"> </span>&lt;hash&gt;
+<h2 id="grades">Grades<a class="headerlink" href="#grades" title="Permanent link">&para;</a></h2>
+<p>As grades ficam em <code>cleven/trip/sweeps/</code>, uma por pergunta. <code>[defaults]</code> fixa os campos comuns e <code>[grid]</code> lista os valores de cada eixo; a grade é o produto cartesiano:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[defaults]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">question</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"q14"</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"direct"</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ridge"</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">region_pack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../fleven-pacotes/ann_arbor"</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">[grid]</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">vehicle_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"ICE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"HEV"</span><span class="p">,</span><span class="w"> </span><span class="s2">"PHEV"</span><span class="p">]</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"vehicle_mean"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cell_layer"</span><span class="p">]</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">elevation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">]</span>
 </code></pre></div>
-<p>As grades em <code>cleven/trip/sweeps/</code> correspondem às perguntas da spec <code>docs/docs/superpowers/specs/2026-10-05-cleven-trip-energy-design.md</code>. Os resultados ficam em <code>results/cleven_trip/&lt;hash&gt;/</code> e no experimento <code>cleven_trip</code> do MLflow. O teste de cada pergunta só pode ser consultado uma vez.</p>
-<p>Os trechos, a camada de lugar, as variáveis, o histórico, a ridge e o corretor de estado vêm do núcleo <code>fleven/trip</code>. A bancada mantém as grades, o gradient boosting e as perguntas, e mede exatamente o que o produto calcula.</p>
+<p>Os resultados vão para <code>results/cleven_trip/&lt;hash&gt;/</code> e para o MLflow, no experimento <code>cleven_trip</code>.</p>
 
 
 
@@ -1110,10 +968,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/mathjax.js"></script>
       

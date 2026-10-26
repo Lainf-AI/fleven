@@ -13,17 +13,17 @@
         <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/TRIP/">
       
       
-        <link rel="prev" href="../MODELS/">
+        <link rel="prev" href="../../getting-started/execucao/">
       
       
-        <link rel="next" href="../FEEDER/">
+        <link rel="next" href="../EXPERIMENTS/">
       
       
         
       
       
       <link rel="icon" href="../../assets/fleven-favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -279,7 +279,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../EXPERIMENTS/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -558,146 +558,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../EXPERIMENTS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Experimentos
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../CONTRACTS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Contratos de dados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SLIDING_WINDOW/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Janela deslizante
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TRAIN-TEST/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Split treino/teste
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../MODELS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modelos e estratégias
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -759,6 +619,17 @@
       Índice
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#organizacao-do-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Organização do código
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#o-modelo" class="md-nav__link">
@@ -841,6 +712,62 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EXPERIMENTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Experimentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRACTS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contratos de dados
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1051,6 +978,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#organizacao-do-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Organização do código
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#o-modelo" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1148,7 +1086,9 @@
 
 
 <h1 id="previsao-de-energia-por-viagem">Previsão de energia por viagem<a class="headerlink" href="#previsao-de-energia-por-viagem" title="Permanent link">&para;</a></h1>
-<p>O modo viagem prevê a energia de uma viagem como a soma da energia de trechos de 250 m ao longo da rota. O mesmo modelo responde quanto a viagem vai gastar antes da partida, quanto falta durante a viagem e quanto o próximo trecho vai gastar.</p>
+<p>O modo viagem é o modelo do fleven. Ele prevê a energia de uma viagem como a soma da energia de trechos de 250 m ao longo da rota. O mesmo modelo responde quanto a viagem vai gastar antes da partida, quanto falta durante a viagem e quanto o próximo trecho vai gastar.</p>
+<h2 id="organizacao-do-codigo">Organização do código<a class="headerlink" href="#organizacao-do-codigo" title="Permanent link">&para;</a></h2>
+<p><code>fleven/trip/</code> separa os módulos por papel. <code>segments/</code> corta as leituras em trechos, em lote e em fluxo, pelas mesmas regras; <code>model/</code> monta as variáveis, a camada de lugar, os estimadores, o modelo publicado e as métricas; <code>device/</code> tem o que o carro calcula numa rodada e a viagem em curso no aparelho; <code>federation/</code> tem as mensagens, a agregação e os dois apps do Flower (<code>fleven.trip.federation.server_app:app</code> e <code>fleven.trip.federation.client_app:app</code>). <code>protocol.py</code> e <code>inputs.py</code> ficam na raiz, porque todos usam. O que vai para o celular são <code>segments/</code>, <code>model/</code> e <code>device/</code>.</p>
 <h2 id="o-modelo">O modelo<a class="headerlink" href="#o-modelo" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Consumo médio do veículo</strong>, calculado no aparelho.</li>
@@ -1165,24 +1105,27 @@
 </ol>
 <p>Os coeficientes pessoais são calculados no aparelho e nunca saem dele.</p>
 <h2 id="configuracao-e-execucao">Configuração e execução<a class="headerlink" href="#configuracao-e-execucao" title="Permanent link">&para;</a></h2>
-<p><code>task = "trip"</code> em <code>[tool.flwr.app.config]</code> liga o modo. <code>trip-mode</code> escolhe entre <code>temporal</code> (rodadas ao longo do calendário dos dados) e <code>equivalence</code> (uma rodada sobre a divisão da bancada, para conferir com o <code>cleven trip</code>). <code>trip-segment-km</code> é o comprimento do trecho e entra na impressão do protocolo, então um nó com outro valor é recusado.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>fleven<span class="w"> </span>run<span class="w"> </span>--task<span class="w"> </span>trip<span class="w">                          </span><span class="c1"># modo temporal, todos os veículos do eVED</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>fleven<span class="w"> </span>run<span class="w"> </span>--task<span class="w"> </span>trip<span class="w"> </span>--trip-mode<span class="w"> </span>equivalence<span class="w">  </span><span class="c1"># conferência com a bancada</span>
+<p><code>trip-mode</code> escolhe entre <code>temporal</code> (rodadas ao longo do calendário dos dados) e <code>equivalence</code> (uma rodada sobre a divisão da bancada, para conferir com o <code>cleven trip</code>). <code>trip-segment-km</code> é o comprimento do trecho e entra na impressão do protocolo, então um nó com outro valor é recusado.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>fleven<span class="w"> </span>run<span class="w">                          </span><span class="c1"># modo temporal, todos os veículos do eVED (sobe o Valhalla do pacote)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>fleven<span class="w"> </span>run<span class="w"> </span>--trip-mode<span class="w"> </span>equivalence<span class="w">  </span><span class="c1"># conferência com a bancada</span>
 </code></pre></div>
 <p>As métricas vão para o MLflow como <code>trip/&lt;tipo&gt;/&lt;horizonte&gt;/&lt;fatia&gt;/&lt;métrica&gt;</code>, com os horizontes <code>trip</code>, <code>live_dest</code>, <code>live_nodest</code> e <code>live_departure</code> (a previsão de partida nos mesmos trechos do <code>live_dest</code>). As métricas são <code>mae</code> e <code>rmse</code> em kWh (na viagem, kWh por viagem; no preditor ao vivo, kWh no próximo km), <code>wape</code> (soma dos erros absolutos sobre a soma da energia real), <code>mape</code> (só previsões com energia real positiva), <code>nrmse</code>, <code>r2</code> da energia, <code>r2_rate</code> do consumo por km, <code>bias</code>, as habilidades sobre a média do veículo (<code>skill_mae</code>, <code>skill_mse</code>), as caudas (<code>tail10</code>, <code>tail20</code>) e a cobertura da faixa de 80%.</p>
 <h2 id="o-estimador">O estimador<a class="headerlink" href="#o-estimador" title="Permanent link">&para;</a></h2>
 <p>A correção por tipo e regime, no modelo de viagem e no preditor ao vivo, é feita por um estimador escolhido em <code>trip-estimator</code> (padrão <code>ridge</code>). O nome entra na impressão do protocolo, então todos os nós usam o mesmo, e um nó que não conhece o nome recusa a rodada com <code>estimador desconhecido</code>.</p>
-<p>Um estimador decide só três coisas: que somas o carro calcula sobre as próprias linhas na fase <code>train.trip_stats</code>, como o servidor resolve a solução a partir da soma dessas somas, e como o carro calcula, sem enviar, os seus parâmetros pessoais (ou nenhum). Ficam fora dele as variáveis, o preenchimento de ausentes pela média federada (<code>fleven/trip/fills.py</code>), as chaves por tipo e regime, a camada de lugar, a faixa e as métricas.</p>
-<p>Para acrescentar um estimador, implemente o protocolo <code>Estimator</code> de <code>fleven/trip/estimators/__init__.py</code> (<code>local_sums</code>, <code>solve</code>, <code>personalize</code> e a conversão das somas e da solução para os registros do Flower), registre com <code>register_estimator</code> (um nome já registrado é recusado) e importe o módulo no fim desse arquivo, como a ridge. As somas precisam somar com <code>+</code> e ter o peso total em <code>.weight</code>; a solução precisa prever com <code>.predict(X, personal)</code>. Cabem aqui os estimadores de forma fechada que saem de somas: mínimos quadrados com outra penalidade, médias por grupo, regressões em bases fixas.</p>
+<p>Um estimador decide só três coisas: que somas o carro calcula sobre as próprias linhas na fase <code>train.trip_stats</code>, como o servidor resolve a solução a partir da soma dessas somas, e como o carro calcula, sem enviar, os seus parâmetros pessoais (ou nenhum). Ficam fora dele as variáveis, o preenchimento de ausentes pela média federada (<code>fleven/trip/model/fills.py</code>), as chaves por tipo e regime, a camada de lugar, a faixa e as métricas.</p>
+<p>Para acrescentar um estimador, implemente o protocolo <code>Estimator</code> de <code>fleven/trip/model/estimators/__init__.py</code> (<code>local_sums</code>, <code>solve</code>, <code>personalize</code> e a conversão das somas e da solução para os registros do Flower), registre com <code>register_estimator</code> (um nome já registrado é recusado) e importe o módulo no fim desse arquivo, como a ridge. As somas precisam somar com <code>+</code> e ter o peso total em <code>.weight</code>; a solução precisa prever com <code>.predict(X, personal)</code>. Cabem aqui os estimadores de forma fechada que saem de somas: mínimos quadrados com outra penalidade, médias por grupo, regressões em bases fixas.</p>
 <p>Um modelo treinado por gradiente, como uma MLP, não sai de somas. Na fase B o carro enviaria pesos ou gradientes em vez de somas, o servidor faria uma média ponderada em vez de resolver um sistema, e uma rodada pediria várias trocas até convergir, com o estado do otimizador guardado no carro entre elas. Isso muda a forma da rodada e fica fora desta fronteira.</p>
 <h2 id="preditor-ao-vivo">Preditor ao vivo<a class="headerlink" href="#preditor-ao-vivo" title="Permanent link">&para;</a></h2>
 <p>O alvo é a energia dos trechos que começam a menos de <code>trip-live-horizon-km</code> do corte. As variáveis descrevem a partida, a viagem até ali, a janela dos últimos <code>trip-live-window-km</code>, o contexto de rota e o histórico do veículo. Com destino, a rota é a dos próximos km planejados, e a ridge aprende a correção sobre a base à frente (média do veículo vezes a camada de cada trecho). Sem destino, a rota é a da janela. Valores ausentes são preenchidos pela média federada.</p>
 <h2 id="entradas">Entradas<a class="headerlink" href="#entradas" title="Permanent link">&para;</a></h2>
 <p>As colunas vêm dos papéis do contrato de viagem, e o tipo e o peso do veículo vêm do perfil da fonte: no eVED, das colunas do dataset; numa fonte OBD, do <code>vehicle.json</code>, com o tipo inferido pelo SOC quando não foi informado. Ver <a href="../CONTRACTS/">Contratos</a>.</p>
-<p>Os atributos de rota (posição, altitude, limite, eventos da via) vêm de uma <code>RouteAttributes</code>: na simulação, das colunas do eVED; em produção, de uma tabela por célula distribuída por região.</p>
+<p>Os atributos de rota de cada trecho (subida, desnível, limite e a contagem de semáforos, travessias, cruzamentos e pontos de ônibus) vêm das colunas canônicas que a fonte de rota extrai do mapa, com o pacote da região de <code>region-pack</code>, igual na simulação e no aparelho (ver <a href="../CONTRACTS/#de-onde-vem-a-rota">Contratos</a>). A célula e o sentido de cada trecho vêm da posição bruta do GPS, que o contrato de viagem nomeia nos papéis <code>lat</code> e <code>lon</code>. Sem o pacote, o modo viagem não roda; a identidade do pacote vai no handshake (<code>region-pack-fp</code>), e um nó com outro pacote recusa a rodada.</p>
+<p>Com destino, <code>fleven/trip/segments/planned.py</code> monta os trechos de uma rota planejada pelo Valhalla, que não tem tempo nem velocidade, pela distância ao longo dela e com as mesmas regras de atributo. A bancada mede o efeito disso na pergunta q15 do <code>cleven trip</code>.</p>
+<p>Antes de qualquer conta de rota, célula ou sentido, a posição de cada leitura passa por uma regra local (<code>PositionFilter</code> em <code>fleven/data/readings/label.py</code>), no treino, no PC e no aparelho: uma posição que implica mais de 250 km/h desde a última aceita é descartada, e com o carro parado pelo OBD (abaixo de 2 km/h) a leitura repete a última posição aceita, porque parado o GPS oscila e o encaixe salta para ruas transversais. Depois de 30 s sem posição aceita, a próxima é aceita. A distância e a energia não mudam, porque vêm da velocidade do OBD.</p>
 <h2 id="no-aparelho">No aparelho<a class="headerlink" href="#no-aparelho" title="Permanent link">&para;</a></h2>
-<p>O treino corta as viagens fechadas em trechos de uma vez (<code>build_segments</code>). No aparelho, o <code>SegmentStream</code> fecha os mesmos trechos à medida que as leituras chegam, com as mesmas regras (<code>fleven/trip/steps.py</code> e <code>fleven/data/label.py</code>).</p>
+<p>O treino corta as viagens fechadas em trechos de uma vez (<code>build_segments</code>). No aparelho, o <code>SegmentStream</code> fecha os mesmos trechos à medida que as leituras chegam, com as mesmas regras (<code>fleven/trip/segments/steps.py</code> e <code>fleven/data/readings/label.py</code>).</p>
 <p><code>TripSession</code> acompanha uma viagem: prevê a viagem na partida, com a faixa de 80%, e a cada trecho fechado prevê os próximos km. <code>VehicleRuntime</code> guarda o modelo em uso e o histórico, abre uma sessão por viagem e só troca de modelo na partida.</p>
+<p>Durante a viagem o aparelho não tem o futuro, então a rota de cada leitura vem de <code>LiveRouteAnnotator</code> (<code>fleven/data/route/live.py</code>): a cada 10 s, as últimas 30 posições são encaixadas na via, e cada leitura fica com o primeiro encaixe em que apareceu. Com destino, a sessão recebe a rota do Valhalla (<code>planned_route</code>): a partida é prevista na primeira leitura válida, a leitura que está na rota (a até 30 m) recebe os atributos dela, e os trechos à frente num corte começam no trecho onde está o progresso do carro na rota, porque a distância percorrida e a da rota divergem. O modelo publicado é lido e gravado por <code>fleven/trip/model/model_file.py</code>, e cada viagem pode ser registrada por <code>TripRecorder</code> (<code>fleven/trip/device/record.py</code>), no formato descrito no <a href="../FEEDER/#previsao">Feeder</a>.</p>
 
 
 
@@ -1237,10 +1180,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/mathjax.js"></script>
       

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/fleven-favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -279,7 +279,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../EXPERIMENTS/" class="md-tabs__link">
+        <a href="../TRIP/" class="md-tabs__link">
           
   
   
@@ -561,6 +561,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../EXPERIMENTS/" class="md-nav__link">
         
   
@@ -597,118 +625,6 @@
     
   
     Contratos de dados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SLIDING_WINDOW/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Janela deslizante
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TRAIN-TEST/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Split treino/teste
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../MODELS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modelos e estratégias
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TRIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Previsão por viagem
   
 
     
@@ -1133,7 +1049,7 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span>
 </code></pre></div>
 <p>O caminho também pode ser definido explicitamente como <code>/app/data/EVED_Clients</code> para uma execução exclusivamente em Docker.</p>
-<p>As conexões do SuperLink estão em <a href="../../../.flwr/config.toml"><code>.flwr/config.toml</code></a>. No PowerShell, aponte <code>FLWR_HOME</code> para essa configuração:</p>
+<p>As conexões do SuperLink estão em <code>.flwr/config.toml</code>. No PowerShell, aponte <code>FLWR_HOME</code> para essa configuração:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$env:FLWR_HOME</span> <span class="p">=</span> <span class="s2">"$PWD\.flwr"</span>
 </code></pre></div>
 <p>Construa as imagens:</p>
@@ -1208,8 +1124,8 @@
 </code></pre></div>
 <p>Encerre o SuperLink com <code>Ctrl+C</code> no terminal em que ele está sendo executado.</p>
 <h2 id="adicionando-clientes">Adicionando clientes<a class="headerlink" href="#adicionando-clientes" title="Permanent link">&para;</a></h2>
-<p>Para adicionar um cliente, inclua outro serviço em <a href="../../../docker/docker-compose.yml"><code>docker/docker-compose.yml</code></a>, com um novo <code>PARTITION_ID</code> e volumes próprios de dados, métricas e certificados.</p>
-<p>O gerador cria credenciais para três clientes. Ajuste <code>num_clients</code> em <a href="../../../docker/generate_certificates.py"><code>docker/generate_certificates.py</code></a> antes de gerar as credenciais adicionais. Executar o gerador novamente substitui as chaves existentes; nesse caso, registre novamente todas as chaves públicas no SuperLink.</p>
+<p>Para adicionar um cliente, inclua outro serviço em <code>docker/docker-compose.yml</code>, com um novo <code>PARTITION_ID</code> e volumes próprios de dados, métricas e certificados.</p>
+<p>O gerador cria credenciais para três clientes. Ajuste <code>num_clients</code> em <code>docker/generate_certificates.py</code> antes de gerar as credenciais adicionais. Executar o gerador novamente substitui as chaves existentes; nesse caso, registre novamente todas as chaves públicas no SuperLink.</p>
 <p>Para detalhes sobre a infraestrutura, consulte a documentação do Flower 1.33 sobre <a href="https://flower.ai/docs/framework/1.33/en/docker/index.html">Docker</a>, <a href="https://flower.ai/docs/framework/1.33/en/how-to-enable-tls-connections.html">conexões TLS</a> e <a href="https://flower.ai/docs/framework/1.33/en/how-to-authenticate-supernodes.html">autenticação de SuperNodes</a>.</p>
 
 
@@ -1265,10 +1181,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/mathjax.js"></script>
       

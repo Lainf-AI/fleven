@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/fleven-favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -279,7 +279,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../EXPERIMENTS/" class="md-tabs__link">
+        <a href="../TRIP/" class="md-tabs__link">
           
   
   
@@ -561,6 +561,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../EXPERIMENTS/" class="md-nav__link">
         
   
@@ -597,118 +625,6 @@
     
   
     Contratos de dados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SLIDING_WINDOW/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Janela deslizante
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TRAIN-TEST/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Split treino/teste
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../MODELS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modelos e estratégias
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TRIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Previsão por viagem
   
 
     
@@ -1140,9 +1056,9 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">[tool.flwr.app.config]</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">data-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/home/lainf/fleven/data/EVED_Clients"</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">fleet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"G05_ICE_20L_ND_2500"</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">metrics-base-path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"metrics"</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">region-pack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"/home/lainf/fleven-pacotes/ann_arbor"</span>
 </code></pre></div>
-<p><code>data-base-path</code> aponta para os dados do eVED, com <code>train/client_&lt;id&gt;</code>, e <code>fleet</code> diz a frota do run. O <code>fleets.toml</code> vai no FAB; cada Pi carrega o seu veículo e confere se ele está na frota antes de participar. Já <code>data-contract</code> deve usar um caminho relativo, como <code>contracts/eved_potencia.toml</code>: o contrato é incluído no FAB e entregue aos Raspberry Pi com a configuração do run, sem configuração adicional em cada dispositivo. Consulte o <a href="../CONTRACTS/">guia de contratos</a>.</p>
+<p><code>data-base-path</code> aponta para os dados do eVED, com <code>train/client_&lt;id&gt;</code>, e <code>fleet</code> diz a frota do run. O <code>fleets.toml</code> vai no FAB; cada Pi carrega o seu veículo e confere se ele está na frota antes de participar. O contrato de viagem (<code>trip-contract</code>) usa um caminho relativo, como <code>contracts/trip.toml</code>: ele é incluído no FAB e entregue aos Raspberry Pi com a configuração do run. O pacote da região não vai no FAB: ele precisa existir em cada Pi, no caminho de <code>region-pack</code>, e cada Pi precisa de um Valhalla local no endereço de <code>valhalla-url</code>. Um Pi com o pacote em outro caminho pode sobrescrever <code>region-pack</code> e <code>valhalla-url</code> no <code>--node-config</code>. Consulte o <a href="../CONTRACTS/">guia de contratos</a>.</p>
 <p>No servidor, instale o projeto com as dependências de desenvolvimento:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">python</span> <span class="n">-m</span> <span class="n">venv</span> <span class="n">venv</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">.\</span><span class="n">venv</span><span class="p">\</span><span class="n">Scripts</span><span class="p">\</span><span class="n">Activate</span><span class="p">.</span><span class="n">ps1</span>
@@ -1266,10 +1182,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/mathjax.js"></script>
       

@@ -16,14 +16,14 @@
         <link rel="prev" href="../instalacao/">
       
       
-        <link rel="next" href="../../guides/EXPERIMENTS/">
+        <link rel="next" href="../../guides/TRIP/">
       
       
         
       
       
       <link rel="icon" href="../../assets/fleven-favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -279,7 +279,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../guides/EXPERIMENTS/" class="md-tabs__link">
+        <a href="../../guides/TRIP/" class="md-tabs__link">
           
   
   
@@ -545,10 +545,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#executar-um-experimento" class="md-nav__link">
+  <a href="#executar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Executar um experimento
+        Executar
       
     </span>
   </a>
@@ -652,6 +652,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../guides/TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../guides/EXPERIMENTS/" class="md-nav__link">
         
   
@@ -688,118 +716,6 @@
     
   
     Contratos de dados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/SLIDING_WINDOW/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Janela deslizante
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/TRAIN-TEST/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Split treino/teste
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/MODELS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modelos e estratégias
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/TRIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Previsão por viagem
   
 
     
@@ -1029,10 +945,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#executar-um-experimento" class="md-nav__link">
+  <a href="#executar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Executar um experimento
+        Executar
       
     </span>
   </a>
@@ -1082,27 +998,26 @@
 
 
 <h1 id="execucao">Execução<a class="headerlink" href="#execucao" title="Permanent link">&para;</a></h1>
-<p>O caminho mais simples para executar o Fleven é usar a CLI do projeto, que prepara cada run com o grupo, a quantidade de clientes e os diretórios de resultados correspondentes.</p>
+<p>O caminho mais simples é a CLI do projeto, que monta o run com a frota, o número de nós e o Valhalla do pacote da região.</p>
 <h2 id="preparar-os-dados">Preparar os dados<a class="headerlink" href="#preparar-os-dados" title="Permanent link">&para;</a></h2>
-<p>Disponibilize o eVED em <code>data/EVED_Clients</code>, com as viagens de treinamento organizadas em <code>train/client_N/trip_*.parquet</code>. Em seguida, crie os grupos experimentais:</p>
+<p>Disponibilize o eVED em <code>data/EVED_Clients</code>, com as viagens em <code>train/client_N/trip_*.parquet</code>, e confira as frotas:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">fleven</span> <span class="n">setup</span>
 </code></pre></div>
-<p>Os grupos resultantes ficam em <code>data/</code>. A pasta <code>train</code> do dataset identifica a origem usada para formar esses grupos e não representa o split entre treino e teste do modelo.</p>
-<h2 id="executar-um-experimento">Executar um experimento<a class="headerlink" href="#executar-um-experimento" title="Permanent link">&para;</a></h2>
-<p>Para uma primeira execução, escolha um grupo, um modelo e uma estratégia:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">fleven</span> <span class="n">run</span> <span class="p">-</span><span class="n">-only</span> <span class="n">G01</span> <span class="p">-</span><span class="n">-model-types</span> <span class="n">lstm</span> <span class="p">-</span><span class="n">-strategies</span> <span class="n">fedavg</span>
+<p>O pacote da região apontado por <code>region-pack</code> no <code>pyproject.toml</code> precisa existir (ver <a href="../instalacao/">Instalação</a>).</p>
+<h2 id="executar">Executar<a class="headerlink" href="#executar" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">fleven</span> <span class="n">run</span>                              <span class="c"># modo temporal: rodadas ao longo do calendário dos dados</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">fleven</span> <span class="n">run</span> <span class="p">-</span><span class="n">-trip-mode</span> <span class="n">equivalence</span>      <span class="c"># uma rodada, sobre a divisão da bancada cleven trip</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">fleven</span> <span class="n">run</span> <span class="p">-</span><span class="n">-fleet</span> <span class="n">G05_ICE_20L_ND_2500</span>  <span class="c"># outra frota</span>
 </code></pre></div>
-<p>O comando executa a simulação federada e gera a avaliação ao final. As configurações do modelo, das janelas e do treinamento vêm de <code>pyproject.toml</code>; as features e o alvo vêm do contrato indicado por <code>data-contract</code>.</p>
-<p>Runs já concluídos no MLflow são ignorados. Use <code>--no-skip-existing</code> quando quiser executar novamente a mesma combinação.</p>
+<p>O comando sobe um nó por veículo da frota e mantém um Valhalla local no ar durante o run. Na primeira vez, as viagens são encaixadas na via e o resultado fica em cache ao lado dos dados.</p>
 <h2 id="resultados">Resultados<a class="headerlink" href="#resultados" title="Permanent link">&para;</a></h2>
-<p>As métricas e checkpoints locais são gravados em <code>metrics/</code>, enquanto os relatórios produzidos pela avaliação ficam em <code>results/</code>. O rastreamento do experimento é armazenado no banco configurado por <code>mlflow-tracking-uri</code>.</p>
-<p>Para abrir a interface local do MLflow usando a configuração padrão do projeto:</p>
+<p>As métricas de cada rodada e o modelo publicado vão para o MLflow, no banco configurado por <code>mlflow-tracking-uri</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">mlflow</span> <span class="n">ui</span> <span class="p">-</span><span class="n">-backend-store-uri</span> <span class="n">sqlite</span><span class="p">:///</span><span class="n">mlflow</span><span class="p">.</span><span class="n">db</span>
 </code></pre></div>
-<p>A interface fica disponível em <a href="http://127.0.0.1:5000">http://127.0.0.1:5000</a>.</p>
+<p>A interface fica em <a href="http://127.0.0.1:5000">http://127.0.0.1:5000</a>.</p>
 <h2 id="outras-formas-de-execucao">Outras formas de execução<a class="headerlink" href="#outras-formas-de-execucao" title="Permanent link">&para;</a></h2>
-<p>O Flower também permite executar o app diretamente com <code>flwr run</code> ou separar SuperLink e SuperNodes em processos e dispositivos distintos. Para os experimentos comparativos do projeto, prefira <code>fleven run</code>, pois ele mantém grupo, número de clientes, nome do experimento e diretórios de saída consistentes.</p>
-<p>Consulte <a href="../../guides/EXPERIMENTS/">Experimentos</a> para os grupos disponíveis, <a href="../../guides/DOCKER_DEPLOY/">Deploy com Docker</a> para containers e <a href="../../guides/LAINF-DEPLOY/">Deploy em Raspberry Pi</a> para os clientes embarcados.</p>
+<p>O Flower também permite rodar o app com <code>flwr run</code> ou separar SuperLink e SuperNodes em processos e dispositivos distintos. Num <code>flwr run</code> direto, deixe um Valhalla no ar e passe o caminho absoluto do pacote em <code>--run-config</code>.</p>
+<p>Consulte <a href="../../guides/EXPERIMENTS/">Experimentos</a>, <a href="../../guides/DOCKER_DEPLOY/">Deploy com Docker</a> e <a href="../../guides/LAINF-DEPLOY/">Deploy em Raspberry Pi</a>.</p>
 
 
 
@@ -1157,10 +1072,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/mathjax.js"></script>
       

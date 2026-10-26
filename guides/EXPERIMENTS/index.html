@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://lainf-ai.github.io/fleven/guides/EXPERIMENTS/">
       
       
-        <link rel="prev" href="../../getting-started/execucao/">
+        <link rel="prev" href="../TRIP/">
       
       
         <link rel="next" href="../CONTRACTS/">
@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/fleven-favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -31,10 +31,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -279,7 +279,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../TRIP/" class="md-tabs__link">
           
   
   
@@ -558,6 +558,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../TRIP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Previsão por viagem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -677,118 +705,6 @@
     
   
     Contratos de dados
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../SLIDING_WINDOW/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Janela deslizante
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TRAIN-TEST/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Split treino/teste
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../MODELS/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Modelos e estratégias
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TRIP/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Previsão por viagem
   
 
     
@@ -1060,9 +976,9 @@
 
 
 <h1 id="experimentos">Experimentos<a class="headerlink" href="#experimentos" title="Permanent link">&para;</a></h1>
-<p>Os experimentos do Fleven usam veículos do dataset eVED agrupados em frotas por tipo de veículo, motorização, transmissão e peso. Cada frota representa um cenário federado, e cada veículo corresponde a um cliente.</p>
+<p>Os experimentos do Fleven usam os veículos do dataset eVED, agrupados em frotas por uma regra sobre o perfil do veículo. Cada veículo é um nó da federação. A frota padrão, <code>eved_todos</code>, tem todos os veículos: o modelo de viagem separa os tipos por dentro (uma correção por tipo) e usa todos na camada de lugar.</p>
 <h2 id="frotas">Frotas<a class="headerlink" href="#frotas" title="Permanent link">&para;</a></h2>
-<p>As frotas ficam declaradas em <code>fleets.toml</code>, na raiz do projeto, por uma regra sobre o perfil do veículo. Os grupos G01 a G08 são frotas desse arquivo:</p>
+<p>As frotas ficam declaradas em <code>fleets.toml</code>, na raiz do projeto. Além de <code>eved_todos</code>, o arquivo traz os grupos G01 a G08, que separam os veículos por motorização e peso:</p>
 <table>
 <thead>
 <tr>
@@ -1123,7 +1039,7 @@
 </tr>
 </tbody>
 </table>
-<p>Cada run lê os veículos direto de <code>data/EVED_Clients</code>, pelo id original, e sobe um nó por veículo da frota. <code>fleven setup</code> só confere o arquivo e mostra os veículos de cada frota. A pasta <code>train/</code> do eVED identifica a partição usada para formar os grupos e não corresponde ao split de treinamento dos modelos.</p>
+<p>Cada run lê os veículos direto de <code>data/EVED_Clients</code>, pelo id original, e sobe um nó por veículo da frota. <code>fleven setup</code> só confere o arquivo e mostra os veículos de cada frota.</p>
 <p>Para criar uma frota nova, copie uma seção do <code>fleets.toml</code>, mude o nome e a regra, e rode com <code>fleven run --fleet &lt;nome&gt;</code>. Cada campo escrito precisa casar; uma lista aceita um dos valores e <code>{min, max}</code> aceita uma faixa. Não há lista de veículos por id: quem não tem alvo suficiente fica de fora no próprio aparelho.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[fleet.ice_medio]</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"eved"</span>
@@ -1131,18 +1047,18 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">engine_l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">min</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1.8</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">2.5</span><span class="p">}</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">transmission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"AUTOMATIC/CVT"</span><span class="p">,</span><span class="w"> </span><span class="s2">"5-SP AUTOMATIC"</span><span class="p">]</span>
 </code></pre></div>
-<p>A seção <code>[defaults]</code> do arquivo diz quais frotas o <code>fleven run</code> usa quando nenhuma é escolhida: <code>window</code> para o modelo de janela (os G01 a G08) e <code>trip</code> para o modelo de viagem (<code>eved_todos</code>, todos os veículos do eVED). Os campos possíveis são <code>vtype</code>, <code>weight</code>, <code>engine</code>, <code>engine_l</code>, <code>transmission</code>, <code>drive</code>, <code>vclass</code> e <code>model</code>. Um veículo cujo perfil não informa um campo da regra fica fora da frota.</p>
+<p>A seção <code>[defaults]</code> do arquivo diz qual frota o <code>fleven run</code> usa quando nenhuma é escolhida (<code>trip = "eved_todos"</code>). Os campos possíveis são <code>vtype</code>, <code>weight</code>, <code>engine</code>, <code>engine_l</code>, <code>transmission</code>, <code>drive</code>, <code>vclass</code> e <code>model</code>. Um veículo cujo perfil não informa um campo da regra fica fora da frota.</p>
 <h2 id="execucao">Execução<a class="headerlink" href="#execucao" title="Permanent link">&para;</a></h2>
-<p>Use o identificador do grupo para executar um experimento:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">fleven</span> <span class="n">run</span> <span class="p">-</span><span class="n">-only</span> <span class="n">G01</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">fleven</span> <span class="n">run</span>                              <span class="c"># frota padrão, modo temporal</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">fleven</span> <span class="n">run</span> <span class="p">-</span><span class="n">-fleet</span> <span class="n">G05_ICE_20L_ND_2500</span> <span class="p">-</span><span class="n">-trip-mode</span> <span class="n">equivalence</span>
 </code></pre></div>
-<p>O comando configura o diretório de dados, a quantidade de clientes e a avaliação. Para selecionar estratégias, modelos ou mais de um grupo, consulte os <a href="../../reference/CLI-COMANDS/">comandos da CLI</a>.</p>
+<p>O comando configura o diretório de dados, a quantidade de nós e o Valhalla do pacote da região. Consulte os <a href="../../reference/CLI-COMANDS/">comandos da CLI</a> e o <a href="../TRIP/">modelo por viagem</a>.</p>
 <p>Os resultados dos experimentos estão disponíveis no <a href="https://dagshub.com/jw/fleven.mlflow/">DagsHub</a>.</p>
-<p>As features e o alvo são definidos pelo contrato escolhido para o experimento. Consulte <a href="../CONTRACTS/">Contratos de dados</a> para conhecer os contratos disponíveis e sua relação com cada fonte de dados.</p>
+<p>O alvo, os sensores e os papéis das colunas vêm do contrato de viagem (<code>trip-contract</code>). Consulte <a href="../CONTRACTS/">Contratos de dados</a>.</p>
 <h2 id="o-alvo">O alvo<a class="headerlink" href="#o-alvo" title="Permanent link">&para;</a></h2>
-<p>O alvo dos contratos é <code>Total Power[kW]</code>, a potência instantânea do veículo, calculada por <code>fleven/data/energy.py</code> a partir do MAF (ou do <code>Fuel Rate</code>, quando o veículo o reporta) e da corrente e tensão da bateria. No eVED, <code>EvedTripSource</code> aplica o cálculo ao ler cada viagem, sem alterar os parquets. Com <code>target_kind = "rate"</code>, o rótulo é a integral da potência no tempo.</p>
-<p>O alvo é uma estimativa, não uma medição: serve para comparar modelos e erro relativo dentro de cada veículo. O ramo do MAF não considera cortes de injeção, e nos HEV sem dados da bateria o alvo é só o combustível. Um veículo com o alvo em menos da metade das leituras fica de fora no próprio aparelho, nos dois modelos (<code>fleven/data/quality.py</code>); no eVED, é o caso do cliente 83, sem sinal de combustível.</p>
-<p>O contrato corta as viagens em intervalos sem leitura maiores que <code>trip_gap_split_s</code> (60 s), e nenhuma janela atravessa o corte.</p>
+<p>O alvo é <code>Total Power[kW]</code>, a potência instantânea do veículo, calculada por <code>fleven/data/readings/energy.py</code> a partir do MAF (ou do <code>Fuel Rate</code>, quando o veículo o reporta) e da corrente e tensão da bateria. No eVED, <code>EvedTripSource</code> (<code>datasources/eved.py</code>) aplica o cálculo ao ler cada viagem, sem alterar os parquets. Com <code>target_kind = "rate"</code>, a energia de cada trecho é a integral da potência no tempo.</p>
+<p>O alvo é uma estimativa, não uma medição: serve para comparar modelos e erro relativo dentro de cada veículo. O ramo do MAF não considera cortes de injeção, e nos HEV sem dados da bateria o alvo é só o combustível. Um veículo com o alvo em menos da metade das leituras fica de fora no próprio aparelho (<code>fleven/data/readings/quality.py</code>); no eVED, é o caso do cliente 83, sem sinal de combustível.</p>
+<p>Um intervalo sem leitura maior que 60 s não conta distância nem energia: o trecho não atravessa o buraco de gravação.</p>
 
 
 
@@ -1197,10 +1113,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.tabs", "navigation.top", "navigation.instant", "navigation.tracking", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../assets/mathjax.js"></script>
       
