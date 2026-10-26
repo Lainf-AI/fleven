@@ -749,6 +749,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#arquivos-para-o-celular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos para o celular
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gabarito-do-celular" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1000,6 +1011,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#arquivos-para-o-celular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arquivos para o celular
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gabarito-do-celular" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1105,6 +1127,8 @@
 </tbody>
 </table>
 <p>Número não finito vira <code>null</code>. O app do celular grava o mesmo registro.</p>
+<h2 id="arquivos-para-o-celular">Arquivos para o celular<a class="headerlink" href="#arquivos-para-o-celular" title="Permanent link">&para;</a></h2>
+<p>O app do celular toca viagens gravadas com o modelo de viagem e importa três arquivos gerados no PC: o pacote da região num zip só (<code>python tools/region_pack/zip_pack.py --pack &lt;pacote&gt; --out &lt;pasta&gt;</code>), o pacote de cada carro (<code>python -m feeder.car_package --client &lt;id&gt; --cutoff-daynum &lt;dia&gt; --max-trips &lt;n&gt; --data ../data/EVED_Clients --out &lt;pasta&gt;</code>, de dentro de <code>tools/</code>, com <code>--split test</code> para um carro que nunca entrou na federação) e o modelo publicado. O pacote do carro traz o perfil, o histórico até o corte e as viagens seguintes em CSV com gzip, só com as colunas do contrato; a rota é extraída no celular, pelo valhalla-mobile. O registro que o celular grava pode ser comparado com o do PC por <code>python tools/feeder/compare_records.py &lt;celular.jsonl&gt; &lt;pc.jsonl&gt;</code>.</p>
 <h2 id="gabarito-do-celular">Gabarito do celular<a class="headerlink" href="#gabarito-do-celular" title="Permanent link">&para;</a></h2>
 <p><code>python -m feeder.reference --fleet &lt;frota&gt; --model &lt;npz&gt; --cutoff-daynum &lt;dia&gt;</code>, rodado de dentro de <code>tools/</code> (como o <code>python -m feeder predict</code>), escolhe quatro viagens (com destino, sem destino, com salto de GPS e fora da rota planejada), reproduz cada uma com o Valhalla gravando pedidos e respostas, e escreve em <code>android/app/src/test/resources/trip/</code>: por caso, as leituras (só as colunas do contrato), o histórico, a configuração, as respostas do Valhalla e o registro esperado; uma vez só, o modelo, a camada de pontos e os quadrados de altitude usados. Os testes Kotlin rodam a mesma viagem com as respostas gravadas e exigem o mesmo registro.</p>
 <h2 id="opcoes-principais">Opções principais<a class="headerlink" href="#opcoes-principais" title="Permanent link">&para;</a></h2>
